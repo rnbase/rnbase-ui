@@ -1,0 +1,81 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should not render 1`] = `null`;
+
+exports[`should render normally 1`] = `
+<View
+  style={
+    Array [
+      Object {
+        "alignItems": "center",
+        "backgroundColor": "#DD2222",
+        "flexDirection": "row",
+        "height": 50,
+        "justifyContent": "center",
+        "paddingHorizontal": 15,
+      },
+      undefined,
+    ]
+  }
+>
+  <Text
+    numberOfLines={1}
+    style={
+      Array [
+        Object {
+          "color": "#FFFFFF",
+          "fontSize": 16,
+          "fontWeight": "bold",
+          "height": 16,
+          "lineHeight": 16,
+          "textTransform": "uppercase",
+        },
+        undefined,
+      ]
+    }
+  >
+    TEXT
+  </Text>
+</View>
+`;
+
+exports[`should render with custom styles 1`] = `
+<View
+  style={
+    Array [
+      Object {
+        "alignItems": "center",
+        "backgroundColor": "#DD2222",
+        "flexDirection": "row",
+        "height": 50,
+        "justifyContent": "center",
+        "paddingHorizontal": 15,
+      },
+      Object {
+        "backgroundColor": "#FFFFFF",
+      },
+    ]
+  }
+>
+  <Text
+    numberOfLines={1}
+    style={
+      Array [
+        Object {
+          "color": "#FFFFFF",
+          "fontSize": 16,
+          "fontWeight": "bold",
+          "height": 16,
+          "lineHeight": 16,
+          "textTransform": "uppercase",
+        },
+        Object {
+          "color": "#000000",
+        },
+      ]
+    }
+  >
+    TEXT
+  </Text>
+</View>
+`;
