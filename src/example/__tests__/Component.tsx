@@ -8,9 +8,7 @@ import TestRenderer from 'react-test-renderer';
  */
 import Component, { Props } from '../Component';
 
-const createElement = (props: Props) => (
-  <Component {...props}>TEXT</Component>
-);
+const createElement = (props: Props) => <Component {...props}>TEXT</Component>;
 
 const createRenderer = (props: Props) => TestRenderer.create(createElement(props));
 

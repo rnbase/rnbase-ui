@@ -1,13 +1,5 @@
 import React from 'react';
-import {
-  StyleProp,
-  StyleSheet,
-  Text,
-  TextStyle,
-  View,
-  ViewProps,
-  ViewStyle,
-} from 'react-native';
+import { StyleProp, StyleSheet, Text, TextStyle, View, ViewProps, ViewStyle } from 'react-native';
 
 export interface Props extends ViewProps {
   visible?: boolean;
@@ -16,13 +8,7 @@ export interface Props extends ViewProps {
   textStyle?: StyleProp<TextStyle>;
 }
 
-const Component: React.FC<Props> = ({
-  visible,
-  children,
-  style,
-  textStyle,
-  ...props
-}) => {
+const Component: React.FC<Props> = ({ visible, children, style, textStyle, ...props }) => {
   return !visible ? null : (
     <View style={[styles.wrapper, style]} {...props}>
       {children && (
