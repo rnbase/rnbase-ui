@@ -26,6 +26,8 @@ import {
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
 
+import { Component } from 'rnbase-ui';
+
 const App = () => {
   const usingHermes = typeof HermesInternal === 'object' && HermesInternal !== null;
   return (
@@ -41,6 +43,7 @@ const App = () => {
               <Text style={styles.footer}>Engine: Hermes</Text>
             </View>
           )}
+          <Component>Component From Library</Component>
           <View style={styles.body}>
             <View style={styles.sectionContainer}>
               <Text style={styles.sectionTitle}>Step One</Text>
