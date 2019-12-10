@@ -13,8 +13,12 @@ const reactNativeLib = path.resolve(__dirname, '..');
 module.exports = {
   watchFolders: [path.resolve(__dirname, 'node_modules'), reactNativeLib],
   resolver: {
-    blacklistRE: blacklist([new RegExp(`${reactNativeLib}/node_modules/react-native/.*`)]),
+    blacklistRE: blacklist([
+      new RegExp(`${reactNativeLib}/node_modules/react/.*`),
+      new RegExp(`${reactNativeLib}/node_modules/react-native/.*`),
+    ]),
     extraNodeModules: {
+      react: path.resolve(__dirname, 'node_modules/react'),
       'react-native': path.resolve(__dirname, 'node_modules/react-native'),
     },
   },
