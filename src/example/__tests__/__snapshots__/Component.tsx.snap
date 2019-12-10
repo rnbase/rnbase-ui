@@ -15,6 +15,9 @@ exports[`should render normally 1`] = `
         "paddingHorizontal": 15,
       },
       undefined,
+      Object {
+        "backgroundColor": "#3E88C5",
+      },
     ]
   }
 >
@@ -24,10 +27,9 @@ exports[`should render normally 1`] = `
       Array [
         Object {
           "color": "#FFFFFF",
+          "fontFamily": "System",
           "fontSize": 16,
           "fontWeight": "bold",
-          "height": 16,
-          "lineHeight": 16,
           "textTransform": "uppercase",
         },
         undefined,
@@ -54,6 +56,9 @@ exports[`should render with custom styles 1`] = `
       Object {
         "backgroundColor": "#FFFFFF",
       },
+      Object {
+        "backgroundColor": "#3E88C5",
+      },
     ]
   }
 >
@@ -63,10 +68,9 @@ exports[`should render with custom styles 1`] = `
       Array [
         Object {
           "color": "#FFFFFF",
+          "fontFamily": "System",
           "fontSize": 16,
           "fontWeight": "bold",
-          "height": 16,
-          "lineHeight": 16,
           "textTransform": "uppercase",
         },
         Object {

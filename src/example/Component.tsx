@@ -1,6 +1,8 @@
 import React from 'react';
 import { StyleProp, StyleSheet, Text, TextStyle, View, ViewProps, ViewStyle } from 'react-native';
 
+import { ThemeContext } from '../theming';
+
 export interface Props extends ViewProps {
   visible?: boolean;
   children?: React.ReactNode;
@@ -9,8 +11,10 @@ export interface Props extends ViewProps {
 }
 
 const Component: React.FC<Props> = ({ visible, children, style, textStyle, ...props }) => {
+  const { colors } = React.useContext(ThemeContext);
+
   return !visible ? null : (
-    <View style={[styles.wrapper, style]} {...props}>
+    <View style={[styles.wrapper, style, { backgroundColor: colors.blue }]} {...props}>
       {children && (
         <Text style={[styles.text, textStyle]} numberOfLines={1}>
           {children}
@@ -30,11 +34,10 @@ const styles = StyleSheet.create({
     backgroundColor: '#DD2222',
   },
   text: {
-    height: 16,
     fontSize: 16,
-    lineHeight: 16,
     color: '#FFFFFF',
     fontWeight: 'bold',
+    fontFamily: 'System',
     textTransform: 'uppercase',
   },
 });
