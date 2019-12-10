@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleProp, StyleSheet, Text, TextStyle, View, ViewProps, ViewStyle } from 'react-native';
 
-import { ThemeContext } from '../theming';
+import { useTheme } from '../theming';
 
 export interface Props extends ViewProps {
   visible?: boolean;
@@ -11,7 +11,7 @@ export interface Props extends ViewProps {
 }
 
 const Component: React.FC<Props> = ({ visible, children, style, textStyle, ...props }) => {
-  const { colors } = React.useContext(ThemeContext);
+  const { colors } = useTheme();
 
   return !visible ? null : (
     <View style={[styles.wrapper, style, { backgroundColor: colors.blue }]} {...props}>
