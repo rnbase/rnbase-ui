@@ -1,7 +1,7 @@
 import React from 'react';
 import deepmerge from 'deepmerge';
 import { ThemeType } from './theme';
-import ThemeContext from './themeContext';
+import ThemeContext from './ThemeContext';
 
 interface Props {
   theme?: ThemeType;
