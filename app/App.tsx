@@ -19,13 +19,15 @@ import {
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
 
-import { Component } from '../';
+import { theme } from './theme';
+import { ThemeProvider, Component } from '../';
 
 const App = () => {
   // eslint-disable-next-line no-undef
   const usingHermes = typeof HermesInternal === 'object' && HermesInternal !== null;
+
   return (
-    <>
+    <ThemeProvider theme={theme}>
       <StatusBar barStyle="dark-content" />
       <SafeAreaView>
         <ScrollView contentInsetAdjustmentBehavior="automatic" style={styles.scrollView}>
@@ -66,7 +68,7 @@ const App = () => {
           </View>
         </ScrollView>
       </SafeAreaView>
-    </>
+    </ThemeProvider>
   );
 };
 
