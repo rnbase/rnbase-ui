@@ -1,4 +1,6 @@
 import React from 'react';
-import { theme, ThemeType } from './';
+import theme, { ThemeType } from './theme';
 
-export const ThemeContext: React.Context<ThemeType> = React.createContext(theme);
+const ThemeContext: React.Context<ThemeType> = React.createContext(theme);
+
+export default ThemeContext;

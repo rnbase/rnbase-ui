@@ -1,7 +1,3 @@
-import { theme } from './theme';
-import { ThemeContext } from './themeContext';
-import { ThemeProvider } from './themeProvider';
-
-export type ThemeType = any;
-
-export { theme, ThemeContext, ThemeProvider };
+export { default as theme } from './theme';
+export { default as ThemeContext } from './themeContext';
+export { default as ThemeProvider } from './themeProvider';
