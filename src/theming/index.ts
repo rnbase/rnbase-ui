@@ -1,4 +1,5 @@
-import { useContext } from 'react';
+import { useContext, useMemo } from 'react';
+import { ViewStyle, TextStyle, ImageStyle } from 'react-native';
 
 import { Theme as ThemeType } from './theme';
 
@@ -8,8 +9,15 @@ export { default as ThemeProvider } from './ThemeProvider';
 
 export type Theme = ThemeType;
 
-export const useTheme = (): Theme => {
-  const theme = useContext(ThemeContext);
+type NamedStyles<T> = { [P in keyof T]: ViewStyle | TextStyle | ImageStyle };
 
-  return theme;
+export const useTheme = (): Theme => {
+  return useContext(ThemeContext);
+};
+
+export const useStyles = <T extends NamedStyles<T> | NamedStyles<any>>(
+  theme: Theme,
+  factory: (theme: Theme) => T,
+): T => {
+  return useMemo(() => factory(theme), [factory, theme]);
 };
