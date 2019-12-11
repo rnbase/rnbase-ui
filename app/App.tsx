@@ -27,7 +27,7 @@ const App = () => {
   const usingHermes = typeof HermesInternal === 'object' && HermesInternal !== null;
 
   return (
-    <ThemeProvider theme={theme}>
+    <ThemeProvider appearance="dark" theme={theme}>
       <StatusBar barStyle="dark-content" />
       <SafeAreaView>
         <ScrollView contentInsetAdjustmentBehavior="automatic" style={styles.scrollView}>

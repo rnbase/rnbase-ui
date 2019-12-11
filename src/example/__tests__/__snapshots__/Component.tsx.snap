@@ -5,35 +5,26 @@ exports[`should not render 1`] = `null`;
 exports[`should render normally 1`] = `
 <View
   style={
-    Array [
-      Object {
-        "alignItems": "center",
-        "backgroundColor": "#DD2222",
-        "flexDirection": "row",
-        "height": 50,
-        "justifyContent": "center",
-        "paddingHorizontal": 15,
-      },
-      undefined,
-      Object {
-        "backgroundColor": "#3E88C5",
-      },
-    ]
+    Object {
+      "alignItems": "center",
+      "backgroundColor": "#AEAEB2",
+      "flexDirection": "row",
+      "height": 50,
+      "justifyContent": "center",
+      "paddingHorizontal": 15,
+    }
   }
 >
   <Text
     numberOfLines={1}
     style={
-      Array [
-        Object {
-          "color": "#FFFFFF",
-          "fontFamily": "System",
-          "fontSize": 16,
-          "fontWeight": "bold",
-          "textTransform": "uppercase",
-        },
-        undefined,
-      ]
+      Object {
+        "color": "#FFFFFF",
+        "fontFamily": "System",
+        "fontSize": 16,
+        "fontWeight": "bold",
+        "textTransform": "uppercase",
+      }
     }
   >
     TEXT
@@ -44,39 +35,26 @@ exports[`should render normally 1`] = `
 exports[`should render with custom styles 1`] = `
 <View
   style={
-    Array [
-      Object {
-        "alignItems": "center",
-        "backgroundColor": "#DD2222",
-        "flexDirection": "row",
-        "height": 50,
-        "justifyContent": "center",
-        "paddingHorizontal": 15,
-      },
-      Object {
-        "backgroundColor": "#FFFFFF",
-      },
-      Object {
-        "backgroundColor": "#3E88C5",
-      },
-    ]
+    Object {
+      "alignItems": "center",
+      "backgroundColor": "#FFFFFF",
+      "flexDirection": "row",
+      "height": 50,
+      "justifyContent": "center",
+      "paddingHorizontal": 15,
+    }
   }
 >
   <Text
     numberOfLines={1}
     style={
-      Array [
-        Object {
-          "color": "#FFFFFF",
-          "fontFamily": "System",
-          "fontSize": 16,
-          "fontWeight": "bold",
-          "textTransform": "uppercase",
-        },
-        Object {
-          "color": "#000000",
-        },
-      ]
+      Object {
+        "color": "#000000",
+        "fontFamily": "System",
+        "fontSize": 16,
+        "fontWeight": "bold",
+        "textTransform": "uppercase",
+      }
     }
   >
     TEXT

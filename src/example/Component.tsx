@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleProp, StyleSheet, Text, TextStyle, View, ViewProps, ViewStyle } from 'react-native';
 
-import { useTheme } from '../theming';
+import { Theme, useTheme } from '../theming';
 
 export interface Props extends ViewProps {
   visible?: boolean;
@@ -11,12 +11,12 @@ export interface Props extends ViewProps {
 }
 
 const Component: React.FC<Props> = ({ visible, children, style, textStyle, ...props }) => {
-  const { colors } = useTheme();
+  const theme = useTheme();
 
   return !visible ? null : (
-    <View style={[styles.wrapper, style, { backgroundColor: colors.blue }]} {...props}>
+    <View style={StyleSheet.flatten([styles.wrapper(theme), style])} {...props}>
       {children && (
-        <Text style={[styles.text, textStyle]} numberOfLines={1}>
+        <Text style={StyleSheet.flatten([styles.text(theme), textStyle])} numberOfLines={1}>
           {children}
         </Text>
       )}
@@ -24,23 +24,23 @@ const Component: React.FC<Props> = ({ visible, children, style, textStyle, ...pr
   );
 };
 
-const styles = StyleSheet.create({
-  wrapper: {
+const styles = {
+  wrapper: ({ colors }: Theme): StyleProp<ViewStyle> => ({
     height: 50,
     alignItems: 'center',
     flexDirection: 'row',
     paddingHorizontal: 15,
     justifyContent: 'center',
-    backgroundColor: '#DD2222',
-  },
-  text: {
+    backgroundColor: colors.gray2,
+  }),
+  text: ({ colors }: Theme): StyleProp<TextStyle> => ({
     fontSize: 16,
-    color: '#FFFFFF',
+    color: colors.white,
     fontWeight: 'bold',
     fontFamily: 'System',
     textTransform: 'uppercase',
-  },
-});
+  }),
+};
 
 Component.defaultProps = {
   visible: true,
