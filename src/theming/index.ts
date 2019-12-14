@@ -1,5 +1,6 @@
+import deepmerge from 'deepmerge';
 import { useContext, useMemo } from 'react';
-import { ViewStyle, TextStyle, ImageStyle } from 'react-native';
+import { StyleSheet, ViewStyle, TextStyle, ImageStyle } from 'react-native';
 
 import { Theme as ThemeType } from './theme';
 
@@ -20,4 +21,20 @@ export const useStyles = <T extends NamedStyles<T> | NamedStyles<any>>(
   factory: (theme: Theme) => T,
 ): T => {
   return useMemo(() => factory(theme), [factory, theme]);
+};
+
+export const useThemeStyles = (
+  styleFactory: (theme: Theme) => Theme,
+  componentName?: string,
+): NamedStyles<any> => {
+  const theme = useTheme();
+  const componentTheme = componentName ? theme[componentName] : undefined;
+
+  return useMemo(
+    () =>
+      StyleSheet.create(
+        componentTheme ? deepmerge(styleFactory(theme), componentTheme) : styleFactory(theme),
+      ),
+    [componentTheme, styleFactory, theme],
+  );
 };

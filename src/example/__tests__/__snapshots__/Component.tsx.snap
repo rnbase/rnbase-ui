@@ -8,13 +8,12 @@ exports[`should render normally 1`] = `
     Array [
       Object {
         "alignItems": "center",
-        "backgroundColor": "#AEAEB2",
+        "backgroundColor": "#aeaeb2",
         "flexDirection": "row",
         "height": 50,
         "justifyContent": "center",
         "paddingHorizontal": 15,
       },
-      undefined,
       undefined,
     ]
   }
@@ -24,13 +23,12 @@ exports[`should render normally 1`] = `
     style={
       Array [
         Object {
-          "color": "#FFFFFF",
+          "color": "#ffffff",
           "fontFamily": "System",
           "fontSize": 16,
           "fontWeight": "bold",
           "textTransform": "uppercase",
         },
-        undefined,
         undefined,
       ]
     }
@@ -46,13 +44,12 @@ exports[`should render with custom styles 1`] = `
     Array [
       Object {
         "alignItems": "center",
-        "backgroundColor": "#AEAEB2",
+        "backgroundColor": "#aeaeb2",
         "flexDirection": "row",
         "height": 50,
         "justifyContent": "center",
         "paddingHorizontal": 15,
       },
-      undefined,
       Object {
         "backgroundColor": "#FFFFFF",
       },
@@ -64,13 +61,12 @@ exports[`should render with custom styles 1`] = `
     style={
       Array [
         Object {
-          "color": "#FFFFFF",
+          "color": "#ffffff",
           "fontFamily": "System",
           "fontSize": 16,
           "fontWeight": "bold",
           "textTransform": "uppercase",
         },
-        undefined,
         Object {
           "color": "#000000",
         },
