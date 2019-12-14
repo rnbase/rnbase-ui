@@ -18,7 +18,7 @@ const Component: React.FC<Props> = ({ visible, children, style, textStyle, ...pr
   return !visible ? null : (
     <View style={[styles.wrapper, themeStyles.wrapper, style]} {...props}>
       {children && (
-        <Text style={[styles.text, themeStyles.textStyle, textStyle]} numberOfLines={1}>
+        <Text style={[styles.text, themeStyles.text, textStyle]} numberOfLines={1}>
           {children}
         </Text>
       )}
@@ -26,7 +26,7 @@ const Component: React.FC<Props> = ({ visible, children, style, textStyle, ...pr
   );
 };
 
-const createStyleSheet = ({ colors }: Theme) =>
+const createStyleSheet = ({ Colors }: Theme) =>
   StyleSheet.create({
     wrapper: {
       height: 50,
@@ -34,11 +34,11 @@ const createStyleSheet = ({ colors }: Theme) =>
       flexDirection: 'row',
       paddingHorizontal: 15,
       justifyContent: 'center',
-      backgroundColor: colors.gray2,
+      backgroundColor: Colors.gray2,
     },
     text: {
       fontSize: 16,
-      color: colors.white,
+      color: Colors.white,
       fontWeight: 'bold',
       fontFamily: 'System',
       textTransform: 'uppercase',

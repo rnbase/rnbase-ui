@@ -19,7 +19,7 @@ import {
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
 
-import { theme } from './theme';
+import theme from './theme';
 import { ThemeProvider, Component } from '../';
 
 const App = () => {

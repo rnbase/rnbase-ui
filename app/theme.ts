@@ -1,11 +1,22 @@
-export const theme = {
-  colors: {
-    blue: '#00F',
-    green: '#0E0',
+const Colors = {
+  blue: '#00F',
+  green: '#0E0',
+};
+
+const Component = {
+  wrapper: {
+    height: 90,
   },
-  Component: {
-    textStyle: {
-      color: '#00F',
-    },
+  text: {
+    color: Colors.green,
+    textTransform: 'none',
   },
+  unused: {
+    color: 'transparent',
+  },
+};
+
+export default {
+  Colors,
+  Component,
 };
