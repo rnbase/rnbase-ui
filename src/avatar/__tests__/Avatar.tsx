@@ -45,7 +45,11 @@ it('should fallback to initials', () => {
 });
 
 it('should render default image if no image', () => {
-  const tree = createRenderer({ size, image: { uri: 'image.png' }, defaultImage: { uri: 'default.png' } });
+  const tree = createRenderer({
+    size,
+    image: { uri: 'image.png' },
+    defaultImage: { uri: 'default.png' },
+  });
   const image = tree.root.findByType(Image);
 
   image.props.onError();
@@ -54,7 +58,11 @@ it('should render default image if no image', () => {
 });
 
 it('should render default image if no gravatar', () => {
-  const tree = createRenderer({ size, email: 'user@email.com', defaultImage: { uri: 'default.png' } });
+  const tree = createRenderer({
+    size,
+    email: 'user@email.com',
+    defaultImage: { uri: 'default.png' },
+  });
   const image = tree.root.findByType(Image);
 
   image.props.onError();
