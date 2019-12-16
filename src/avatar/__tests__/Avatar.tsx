@@ -2,7 +2,7 @@ import React from 'react';
 import { Image } from 'react-native';
 
 // Note: test renderer must be required after react-native.
-import TestRenderer from 'react-test-renderer';
+import TestRenderer, { act } from 'react-test-renderer';
 
 /**
  * Under test
@@ -39,7 +39,7 @@ it('should fallback to initials', () => {
   const tree = createRenderer({ size, name: 'User Name', email: 'user@email.com' });
   const image = tree.root.findByType(Image);
 
-  image.props.onError();
+  act(() => image.props.onError());
 
   expect(tree).toMatchSnapshot();
 });
@@ -52,7 +52,7 @@ it('should render default image if no image', () => {
   });
   const image = tree.root.findByType(Image);
 
-  image.props.onError();
+  act(() => image.props.onError());
 
   expect(tree).toMatchSnapshot();
 });
@@ -65,7 +65,7 @@ it('should render default image if no gravatar', () => {
   });
   const image = tree.root.findByType(Image);
 
-  image.props.onError();
+  act(() => image.props.onError());
 
   expect(tree).toMatchSnapshot();
 });
@@ -74,20 +74,7 @@ it('should render default image if empty name', () => {
   const tree = createRenderer({ size, name: '', defaultImage: { uri: 'default.png' } });
   const image = tree.root.findByType(Image);
 
-  image.props.onError();
+  act(() => image.props.onError());
 
   expect(tree).toMatchSnapshot();
-});
-
-it('should properly get color and initials', () => {
-  const tree = createRenderer({ size });
-  const { instance } = tree.root.findByType(Avatar);
-
-  expect(instance.getColor('')).toEqual('hsl(0, 75%, 50%)');
-  expect(instance.getInitials('')).toEqual('');
-
-  expect(instance.getColor('User Name')).toEqual('hsl(-216, 75%, 50%)');
-  expect(instance.getInitials('User Name')).toEqual('UN');
-
-  expect(instance.getInitials('User Name Long')).toEqual('UL');
 });
