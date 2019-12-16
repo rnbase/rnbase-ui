@@ -41,7 +41,7 @@ class AvatarImage extends React.PureComponent<Props, State> {
     shape: 'circle',
     style: undefined,
     image: undefined,
-    defaultImage: undefined,
+    defaultImage: require('./default.png'),
   };
 
   constructor(props: Props) {
