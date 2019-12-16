@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import md5 from 'js-md5';
 import {
   Image,
@@ -14,8 +14,28 @@ import {
   StyleSheet,
 } from 'react-native';
 
-import { Theme } from '../theming';
-import ThemeContext from '../theming/ThemeContext';
+import { Theme as ThemeType, useTheme } from '../theming';
+
+const getColor = (string: string) => {
+  let hash = 0;
+
+  /* eslint-disable no-bitwise */
+  if (string.length > 0) {
+    for (let i = 0; i < string.length; i += 1) {
+      hash = string.charCodeAt(i) + ((hash << 5) - hash);
+      hash &= hash;
+    }
+  }
+  /* eslint-enable no-bitwise */
+
+  return `hsl(${hash % 360}, 75%, 50%)`;
+};
+
+const getInitials = (name: string) => {
+  const initials = name.match(/\b\w/g) || [];
+
+  return ((initials.shift() || '') + (initials.pop() || '')).toUpperCase();
+};
 
 export interface Props extends ViewProps {
   size: number;
@@ -29,126 +49,92 @@ export interface Props extends ViewProps {
   defaultImage?: ImageSourcePropType;
 }
 
-interface State {
-  imageSource?: ImageSourcePropType;
-}
+const Avatar: React.FC<Props> = ({
+  size,
+  name,
+  email,
+  shape,
+  style,
+  textStyle,
+  imageStyle,
+  image,
+  defaultImage,
+  ...props
+}) => {
+  const [imageSource, setImageSource] = useState(() => {
+    if (image) {
+      return image;
+    } else if (email) {
+      const h = md5(email.toLowerCase().trim());
+      const s = PixelRatio.getPixelSizeForLayoutSize(size);
 
-class AvatarImage extends React.PureComponent<Props, State> {
-  static contextType = ThemeContext;
-  static defaultProps = {
-    name: undefined,
-    email: undefined,
-    shape: 'circle',
-    style: undefined,
-    image: undefined,
-    defaultImage: require('./default.png'),
-  };
-
-  constructor(props: Props) {
-    super(props);
-
-    if (props.image) {
-      this.state = {
-        imageSource: props.image,
-      };
-    } else if (props.email) {
-      const hash = md5(props.email.toLowerCase().trim());
-      const size = PixelRatio.getPixelSizeForLayoutSize(props.size);
-
-      this.state = {
-        imageSource: { uri: `https://www.gravatar.com/avatar/${hash}?s=${size}&d=404` },
-      };
-    } else {
-      this.state = {
-        imageSource: props.defaultImage,
-      };
-    }
-  }
-
-  getColor = (string: string) => {
-    let hash = 0;
-
-    /* eslint-disable no-bitwise */
-    if (string.length > 0) {
-      for (let i = 0; i < string.length; i += 1) {
-        hash = string.charCodeAt(i) + ((hash << 5) - hash);
-        hash &= hash;
-      }
-    }
-    /* eslint-enable no-bitwise */
-
-    return `hsl(${hash % 360}, 75%, 50%)`;
-  };
-
-  getInitials = (name: string) => {
-    const initials = name.match(/\b\w/g) || [];
-
-    return ((initials.shift() || '') + (initials.pop() || '')).toUpperCase();
-  };
-
-  onError = () => {
-    this.setState({ imageSource: this.props.defaultImage });
-  };
-
-  render() {
-    const { imageSource } = this.state;
-    const {
-      size,
-      name,
-      email,
-      shape,
-      style,
-      textStyle,
-      imageStyle,
-      image,
-      defaultImage,
-      ...props
-    } = this.props;
-
-    const styles = createStyleSheet(this.context, this.props);
-
-    if (name && imageSource === defaultImage) {
-      const bgColor = {
-        backgroundColor: this.getColor(name),
-      };
-
-      return (
-        <View {...props} style={[styles.wrapper, bgColor, style]}>
-          <Text style={[styles.text, textStyle]} numberOfLines={1}>
-            {this.getInitials(name)}
-          </Text>
-        </View>
-      );
+      return { uri: `https://www.gravatar.com/avatar/${h}?s=${s}&d=404` };
     }
 
-    return !imageSource ? null : (
-      <View {...props} style={[styles.wrapper, style]}>
-        <Image style={[styles.image, imageStyle]} source={imageSource} onError={this.onError} />
+    return defaultImage;
+  });
+
+  const onError = () => setImageSource(defaultImage);
+
+  const theme = useTheme();
+  const styles = createStyleSheet(theme, { size, shape, style, imageStyle, textStyle });
+
+  if (name && imageSource === defaultImage) {
+    const bgColor = {
+      backgroundColor: getColor(name),
+    };
+
+    return (
+      <View {...props} style={[styles.wrapper, bgColor]}>
+        <Text style={styles.text} numberOfLines={1}>
+          {getInitials(name)}
+        </Text>
       </View>
     );
   }
-}
 
-const createStyleSheet = ({ Colors, Fonts }: Theme, { size, shape }: Props) =>
+  return !imageSource ? null : (
+    <View {...props} style={styles.wrapper}>
+      <Image style={styles.image} source={imageSource} onError={onError} />
+    </View>
+  );
+};
+
+Avatar.defaultProps = {
+  name: undefined,
+  email: undefined,
+  shape: 'circle',
+  style: undefined,
+  image: undefined,
+  defaultImage: require('./default.png'),
+};
+
+const createStyleSheet = ({ Colors, Fonts, Avatar: Theme }: ThemeType, props: Props) =>
   StyleSheet.create({
     wrapper: {
-      width: size,
-      height: size,
+      width: props.size,
+      height: props.size,
       overflow: 'hidden',
       alignItems: 'center',
       justifyContent: 'center',
-      borderRadius: shape === 'circle' ? size / 2 : 0,
+      borderRadius: props.shape === 'circle' ? props.size / 2 : 0,
+      ...(Theme && (Theme.wrapper as object)),
+      ...(props.style as object),
     },
     image: {
       width: '100%',
       height: '100%',
+      ...(Theme && (Theme.image as object)),
+      ...(props.imageStyle as object),
     },
     text: {
       ...Fonts.bold,
       color: Colors.white,
-      lineHeight: size / 2,
-      fontSize: PixelRatio.roundToNearestPixel(size / 2.5),
+      lineHeight: props.size / 2,
+      fontSize: PixelRatio.roundToNearestPixel(props.size / 2.5),
+      ...(Theme && (Theme.text as object)),
+      ...(props.textStyle as object),
     },
   });
 
-export default AvatarImage;
+export default Avatar;
