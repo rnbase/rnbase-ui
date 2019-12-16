@@ -20,7 +20,7 @@ import {
 } from 'react-native/Libraries/NewAppScreen';
 
 import theme from './theme';
-import { ThemeProvider, Component } from '../';
+import { ThemeProvider, Component, Avatar } from '../';
 
 const App = () => {
   // eslint-disable-next-line no-undef
@@ -38,6 +38,12 @@ const App = () => {
             </View>
           )}
           <Component>Component From Library</Component>
+          <Avatar
+            size={50}
+            name="John Smith"
+            image={{ uri: 'https://randomuser.me/api/portraits/women/noimage.jpg' }}
+            defaultImage={{ uri: 'https://randomuser.me/api/portraits/women/68.jpg' }}
+          />
           <View style={styles.body}>
             <View style={styles.sectionContainer}>
               <Text style={styles.sectionTitle}>Step One</Text>
