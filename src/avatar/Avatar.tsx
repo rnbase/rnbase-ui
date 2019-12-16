@@ -17,7 +17,7 @@ import {
 import { Theme } from '../theming';
 import ThemeContext from '../theming/ThemeContext';
 
-interface Props extends ViewProps {
+export interface Props extends ViewProps {
   size: number;
   name?: string;
   email?: string;
@@ -47,8 +47,6 @@ class AvatarImage extends React.PureComponent<Props, State> {
   constructor(props: Props) {
     super(props);
 
-    this.state = {};
-
     if (props.image) {
       this.state = {
         imageSource: props.image,
@@ -60,7 +58,7 @@ class AvatarImage extends React.PureComponent<Props, State> {
       this.state = {
         imageSource: { uri: `https://www.gravatar.com/avatar/${hash}?s=${size}&d=404` },
       };
-    } else if (props.defaultImage) {
+    } else {
       this.state = {
         imageSource: props.defaultImage,
       };
@@ -89,11 +87,7 @@ class AvatarImage extends React.PureComponent<Props, State> {
   };
 
   onError = () => {
-    const { defaultImage } = this.props;
-
-    if (defaultImage) {
-      this.setState({ imageSource: defaultImage });
-    }
+    this.setState({ imageSource: this.props.defaultImage });
   };
 
   render() {
