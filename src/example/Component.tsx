@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleProp, Text, TextStyle, View, ViewProps, ViewStyle } from 'react-native';
+import { StyleProp, StyleSheet, Text, TextStyle, View, ViewProps, ViewStyle } from 'react-native';
 
 import { Theme, useThemeStyles } from '../theming';
 
@@ -24,23 +24,24 @@ const Component: React.FC<Props> = ({ visible, children, style, textStyle, ...pr
   );
 };
 
-const createStyleSheet = ({ Colors }: Theme) => ({
-  wrapper: {
-    height: 50,
-    alignItems: 'center',
-    flexDirection: 'row',
-    paddingHorizontal: 15,
-    justifyContent: 'center',
-    backgroundColor: Colors.gray2,
-  },
-  text: {
-    fontSize: 16,
-    color: Colors.white,
-    fontWeight: 'bold',
-    fontFamily: 'System',
-    textTransform: 'uppercase',
-  },
-});
+const createStyleSheet = ({ Colors }: Theme) =>
+  StyleSheet.create({
+    wrapper: {
+      height: 50,
+      alignItems: 'center',
+      flexDirection: 'row',
+      paddingHorizontal: 15,
+      justifyContent: 'center',
+      backgroundColor: Colors.gray2,
+    },
+    text: {
+      fontSize: 16,
+      color: Colors.white,
+      fontWeight: 'bold',
+      fontFamily: 'System',
+      textTransform: 'uppercase',
+    },
+  });
 
 Component.defaultProps = {
   visible: true,

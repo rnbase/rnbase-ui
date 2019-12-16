@@ -23,18 +23,17 @@ export const useStyles = <T extends NamedStyles<T> | NamedStyles<any>>(
   return useMemo(() => factory(theme), [factory, theme]);
 };
 
-export const useThemeStyles = (
-  styleFactory: (theme: Theme) => Theme,
+export const useThemeStyles = <T extends NamedStyles<T> | NamedStyles<any>>(
+  styleFactory: (theme: Theme) => T,
   componentName?: string,
-): NamedStyles<any> => {
+): T => {
   const theme = useTheme();
-  const componentTheme = componentName ? theme[componentName] : undefined;
 
-  return useMemo(
-    () =>
-      StyleSheet.create(
-        componentTheme ? deepmerge(styleFactory(theme), componentTheme) : styleFactory(theme),
-      ),
-    [componentTheme, styleFactory, theme],
-  );
+  return useMemo(() => {
+    const componentTheme = componentName ? theme[componentName] : undefined;
+
+    return componentTheme
+      ? StyleSheet.create(deepmerge(styleFactory(theme), componentTheme))
+      : styleFactory(theme);
+  }, [componentName, styleFactory, theme]);
 };
