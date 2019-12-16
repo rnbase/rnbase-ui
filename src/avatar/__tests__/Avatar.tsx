@@ -15,7 +15,7 @@ const createElement = (props: Props) => <Avatar {...props} />;
 
 const createRenderer = (props: Props) => TestRenderer.create(createElement(props));
 
-it('should not render', () => {
+it('should render default image', () => {
   expect(createRenderer({ size })).toMatchSnapshot();
 });
 

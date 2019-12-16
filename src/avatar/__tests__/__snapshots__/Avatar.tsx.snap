@@ -42,7 +42,41 @@ exports[`should fallback to initials 1`] = `
 </View>
 `;
 
-exports[`should not render 1`] = `null`;
+exports[`should render default image 1`] = `
+<View
+  style={
+    Array [
+      Object {
+        "alignItems": "center",
+        "borderRadius": 25,
+        "height": 50,
+        "justifyContent": "center",
+        "overflow": "hidden",
+        "width": 50,
+      },
+      undefined,
+    ]
+  }
+>
+  <Image
+    onError={[Function]}
+    source={
+      Object {
+        "testUri": "../../../src/avatar/default.png",
+      }
+    }
+    style={
+      Array [
+        Object {
+          "height": "100%",
+          "width": "100%",
+        },
+        undefined,
+      ]
+    }
+  />
+</View>
+`;
 
 exports[`should render default image if empty name 1`] = `
 <View
