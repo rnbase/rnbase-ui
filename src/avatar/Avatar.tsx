@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useCallback, useMemo, useState } from 'react';
 import md5 from 'js-md5';
 import {
   Image,
@@ -19,14 +19,14 @@ import { Theme as ThemeType, useTheme } from '../theming';
 const getColor = (string: string) => {
   let hash = 0;
 
-  /* eslint-disable no-bitwise */
   if (string.length > 0) {
     for (let i = 0; i < string.length; i += 1) {
+      /* eslint-disable no-bitwise */
       hash = string.charCodeAt(i) + ((hash << 5) - hash);
       hash &= hash;
+      /* eslint-enable no-bitwise */
     }
   }
-  /* eslint-enable no-bitwise */
 
   return `hsl(${hash % 360}, 75%, 50%)`;
 };
@@ -37,14 +37,17 @@ const getInitials = (name: string) => {
   return ((initials.shift() || '') + (initials.pop() || '')).toUpperCase();
 };
 
-export interface Props extends ViewProps {
+interface StyleProps {
   size: number;
-  name?: string;
-  email?: string;
   shape?: 'square' | 'circle';
   style?: StyleProp<ViewStyle>;
   textStyle?: StyleProp<TextStyle>;
   imageStyle?: StyleProp<ImageStyle>;
+}
+
+export interface Props extends ViewProps, StyleProps {
+  name?: string;
+  email?: string;
   image?: ImageSourcePropType;
   defaultImage?: ImageSourcePropType;
 }
@@ -74,10 +77,14 @@ const Avatar: React.FC<Props> = ({
     return defaultImage;
   });
 
-  const onError = () => setImageSource(defaultImage);
+  const onError = useCallback(() => setImageSource(defaultImage), [defaultImage]);
 
   const theme = useTheme();
-  const styles = createStyleSheet(theme, { size, shape, style, imageStyle, textStyle });
+
+  const styles = useMemo(
+    () => createStyleSheet(theme, { size, shape, style, imageStyle, textStyle }),
+    [theme, size, shape, style, imageStyle, textStyle],
+  );
 
   if (name && imageSource === defaultImage) {
     const bgColor = {
@@ -101,15 +108,11 @@ const Avatar: React.FC<Props> = ({
 };
 
 Avatar.defaultProps = {
-  name: undefined,
-  email: undefined,
   shape: 'circle',
-  style: undefined,
-  image: undefined,
   defaultImage: require('./default.png'),
 };
 
-const createStyleSheet = ({ Colors, Fonts, Avatar: Theme }: ThemeType, props: Props) =>
+const createStyleSheet = ({ Colors, Fonts, Avatar: Theme }: ThemeType, props: StyleProps) =>
   StyleSheet.create({
     wrapper: {
       width: props.size,
@@ -118,13 +121,13 @@ const createStyleSheet = ({ Colors, Fonts, Avatar: Theme }: ThemeType, props: Pr
       alignItems: 'center',
       justifyContent: 'center',
       borderRadius: props.shape === 'circle' ? props.size / 2 : 0,
-      ...(Theme && (Theme.wrapper as object)),
+      ...(Theme && Theme.wrapper),
       ...(props.style as object),
     },
     image: {
       width: '100%',
       height: '100%',
-      ...(Theme && (Theme.image as object)),
+      ...(Theme && Theme.image),
       ...(props.imageStyle as object),
     },
     text: {
@@ -132,7 +135,7 @@ const createStyleSheet = ({ Colors, Fonts, Avatar: Theme }: ThemeType, props: Pr
       color: Colors.white,
       lineHeight: props.size / 2,
       fontSize: PixelRatio.roundToNearestPixel(props.size / 2.5),
-      ...(Theme && (Theme.text as object)),
+      ...(Theme && Theme.text),
       ...(props.textStyle as object),
     },
   });
