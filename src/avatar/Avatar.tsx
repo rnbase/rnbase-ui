@@ -1,4 +1,4 @@
-import React, { useCallback, useMemo, useState } from 'react';
+import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import md5 from 'js-md5';
 import {
   Image,
@@ -16,7 +16,7 @@ import {
 
 import { Theme as ThemeType, useTheme } from '../theming';
 
-const getColor = (string: string) => {
+const getColor = (string: string): string => {
   let hash = 0;
 
   if (string.length > 0) {
@@ -31,7 +31,7 @@ const getColor = (string: string) => {
   return `hsl(${hash % 360}, 75%, 50%)`;
 };
 
-const getInitials = (name: string) => {
+const getInitials = (name: string): string => {
   const initials = name.match(/\b\w/g) || [];
 
   return ((initials.shift() || '') + (initials.pop() || '')).toUpperCase();
@@ -64,7 +64,7 @@ const Avatar: React.FC<Props> = ({
   defaultImage,
   ...props
 }) => {
-  const [imageSource, setImageSource] = useState(() => {
+  const getImageSource = useCallback(() => {
     if (image) {
       return image;
     } else if (email) {
@@ -72,12 +72,27 @@ const Avatar: React.FC<Props> = ({
       const s = PixelRatio.getPixelSizeForLayoutSize(size);
 
       return { uri: `https://www.gravatar.com/avatar/${h}?s=${s}&d=404` };
+    } else {
+      return defaultImage;
     }
+  }, [image, email, defaultImage, size]);
 
-    return defaultImage;
-  });
+  const [imageSource, setImageSource] = useState(getImageSource);
+
+  useEffect(() => setImageSource(getImageSource()), [getImageSource, setImageSource]);
 
   const onError = useCallback(() => setImageSource(defaultImage), [defaultImage]);
+
+  const nameProps = useMemo(
+    () =>
+      name && {
+        style: {
+          backgroundColor: getColor(name),
+        },
+        text: getInitials(name),
+      },
+    [name],
+  );
 
   const theme = useTheme();
 
@@ -86,15 +101,11 @@ const Avatar: React.FC<Props> = ({
     [theme, size, shape, style, imageStyle, textStyle],
   );
 
-  if (name && imageSource === defaultImage) {
-    const bgColor = {
-      backgroundColor: getColor(name),
-    };
-
+  if (nameProps && imageSource === defaultImage) {
     return (
-      <View {...props} style={[styles.wrapper, bgColor]}>
+      <View {...props} style={[styles.wrapper, nameProps.style]}>
         <Text style={styles.text} numberOfLines={1}>
-          {getInitials(name)}
+          {nameProps.text}
         </Text>
       </View>
     );

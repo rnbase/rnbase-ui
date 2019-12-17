@@ -20,23 +20,50 @@ it('should render default image', () => {
 });
 
 it('should render image', () => {
-  expect(createRenderer({ size, image: { uri: 'image.png' } })).toMatchSnapshot();
+  const tree = createRenderer({ size });
+
+  act(() => {
+    tree.update(createElement({ size, image: { uri: 'image.png' } }));
+  });
+
+  expect(tree).toMatchSnapshot();
 });
 
 it('should render image as square', () => {
-  expect(createRenderer({ size, shape: 'square', image: { uri: 'image.png' } })).toMatchSnapshot();
+  const tree = createRenderer({ size, shape: 'square', image: { uri: 'image.png' } });
+
+  act(() => {});
+
+  expect(tree).toMatchSnapshot();
 });
 
 it('should render gravatar', () => {
-  expect(createRenderer({ size, email: 'user@email.com' })).toMatchSnapshot();
+  const tree = createRenderer({ size });
+
+  act(() => {
+    tree.update(createElement({ size, email: 'user@email.com' }));
+  });
+
+  expect(tree).toMatchSnapshot();
 });
 
 it('should render initials', () => {
-  expect(createRenderer({ size, name: 'User Name' })).toMatchSnapshot();
+  const tree = createRenderer({ size });
+
+  act(() => {
+    tree.update(createElement({ size, name: 'User Name' }));
+  });
+
+  expect(tree).toMatchSnapshot();
 });
 
 it('should fallback to initials', () => {
-  const tree = createRenderer({ size, name: 'User Name', email: 'user@email.com' });
+  const tree = createRenderer({ size });
+
+  act(() => {
+    tree.update(createElement({ size, name: 'User Name', email: 'user@email.com' }));
+  });
+
   const image = tree.root.findByType(Image);
 
   act(() => image.props.onError());
@@ -50,6 +77,9 @@ it('should render default image if no image', () => {
     image: { uri: 'image.png' },
     defaultImage: { uri: 'default.png' },
   });
+
+  act(() => {});
+
   const image = tree.root.findByType(Image);
 
   act(() => image.props.onError());
@@ -63,6 +93,9 @@ it('should render default image if no gravatar', () => {
     email: 'user@email.com',
     defaultImage: { uri: 'default.png' },
   });
+
+  act(() => {});
+
   const image = tree.root.findByType(Image);
 
   act(() => image.props.onError());
@@ -72,6 +105,9 @@ it('should render default image if no gravatar', () => {
 
 it('should render default image if empty name', () => {
   const tree = createRenderer({ size, name: '', defaultImage: { uri: 'default.png' } });
+
+  act(() => {});
+
   const image = tree.root.findByType(Image);
 
   act(() => image.props.onError());
