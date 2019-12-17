@@ -1,0 +1,237 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render as busy 1`] = `
+<View>
+  <View
+    style={
+      Object {
+        "alignItems": "center",
+        "bottom": 0,
+        "justifyContent": "center",
+        "left": 0,
+        "opacity": 1,
+        "position": "absolute",
+        "right": 0,
+        "top": 0,
+        "transform": Array [
+          Object {
+            "perspective": 1000,
+          },
+          Object {
+            "rotateX": "0deg",
+          },
+          Object {
+            "translateY": 0,
+          },
+        ],
+      }
+    }
+  >
+    <ActivityIndicator
+      animating={true}
+      color="#999999"
+      hidesWhenStopped={true}
+      size="small"
+    />
+  </View>
+  <View
+    style={
+      Object {
+        "opacity": 0,
+        "transform": Array [
+          Object {
+            "perspective": 1000,
+          },
+          Object {
+            "rotateX": "-90deg",
+          },
+          Object {
+            "translateY": 35,
+          },
+        ],
+      }
+    }
+  >
+    <Button>
+      <Text>
+        TEXT
+      </Text>
+    </Button>
+  </View>
+</View>
+`;
+
+exports[`should render as disabled 1`] = `
+<View>
+  <View
+    style={
+      Object {
+        "alignItems": "center",
+        "bottom": 0,
+        "justifyContent": "center",
+        "left": 0,
+        "opacity": 0,
+        "position": "absolute",
+        "right": 0,
+        "top": 0,
+        "transform": Array [
+          Object {
+            "perspective": 1000,
+          },
+          Object {
+            "rotateX": "90deg",
+          },
+          Object {
+            "translateY": -35,
+          },
+        ],
+      }
+    }
+  />
+  <View
+    style={
+      Object {
+        "opacity": 1,
+        "transform": Array [
+          Object {
+            "perspective": 1000,
+          },
+          Object {
+            "rotateX": "0deg",
+          },
+          Object {
+            "translateY": 0,
+          },
+        ],
+      }
+    }
+  >
+    <Button
+      disabled={true}
+    >
+      <Text>
+        TEXT
+      </Text>
+    </Button>
+  </View>
+</View>
+`;
+
+exports[`should render normally 1`] = `
+<View>
+  <View
+    style={
+      Object {
+        "alignItems": "center",
+        "bottom": 0,
+        "justifyContent": "center",
+        "left": 0,
+        "opacity": 0,
+        "position": "absolute",
+        "right": 0,
+        "top": 0,
+        "transform": Array [
+          Object {
+            "perspective": 1000,
+          },
+          Object {
+            "rotateX": "90deg",
+          },
+          Object {
+            "translateY": -35,
+          },
+        ],
+      }
+    }
+  />
+  <View
+    style={
+      Object {
+        "opacity": 1,
+        "transform": Array [
+          Object {
+            "perspective": 1000,
+          },
+          Object {
+            "rotateX": "0deg",
+          },
+          Object {
+            "translateY": 0,
+          },
+        ],
+      }
+    }
+  >
+    <Button>
+      <Text>
+        TEXT
+      </Text>
+    </Button>
+  </View>
+</View>
+`;
+
+exports[`should render with custom styles 1`] = `
+<View>
+  <View
+    style={
+      Object {
+        "alignItems": "center",
+        "bottom": 0,
+        "justifyContent": "center",
+        "left": 0,
+        "opacity": 0,
+        "position": "absolute",
+        "right": 0,
+        "top": 0,
+        "transform": Array [
+          Object {
+            "perspective": 1000,
+          },
+          Object {
+            "rotateX": "90deg",
+          },
+          Object {
+            "translateY": -35,
+          },
+        ],
+      }
+    }
+  />
+  <View
+    style={
+      Object {
+        "opacity": 1,
+        "transform": Array [
+          Object {
+            "perspective": 1000,
+          },
+          Object {
+            "rotateX": "0deg",
+          },
+          Object {
+            "translateY": 0,
+          },
+        ],
+      }
+    }
+  >
+    <Button
+      style={
+        Object {
+          "backgroundColor": "#000000",
+        }
+      }
+      textStyle={
+        Object {
+          "color": "#ffffff",
+        }
+      }
+    >
+      <Text>
+        TEXT
+      </Text>
+    </Button>
+  </View>
+</View>
+`;
