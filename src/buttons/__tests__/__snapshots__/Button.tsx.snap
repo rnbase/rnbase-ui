@@ -1,0 +1,209 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should not render 1`] = `null`;
+
+exports[`should render as disabled 1`] = `
+<TouchableOpacity
+  activeOpacity={0.5}
+  disabled={true}
+>
+  <View
+    style={
+      Array [
+        Object {
+          "alignItems": "center",
+          "backgroundColor": "#8e8e93",
+          "borderRadius": 5,
+          "flexDirection": "row",
+          "height": 50,
+          "justifyContent": "center",
+          "paddingHorizontal": 15,
+        },
+        undefined,
+        Object {
+          "opacity": 0.5,
+        },
+      ]
+    }
+  >
+    <Text
+      numberOfLines={1}
+      style={
+        Array [
+          Object {
+            "color": "#ffffff",
+            "fontSize": 16,
+            "height": 16,
+            "lineHeight": 16,
+            "textTransform": "uppercase",
+          },
+          undefined,
+        ]
+      }
+    >
+      <Text>
+        TEXT
+      </Text>
+    </Text>
+  </View>
+</TouchableOpacity>
+`;
+
+exports[`should render normally 1`] = `
+<TouchableOpacity
+  activeOpacity={0.5}
+  disabled={false}
+>
+  <View
+    style={
+      Array [
+        Object {
+          "alignItems": "center",
+          "backgroundColor": "#8e8e93",
+          "borderRadius": 5,
+          "flexDirection": "row",
+          "height": 50,
+          "justifyContent": "center",
+          "paddingHorizontal": 15,
+        },
+        undefined,
+        false,
+      ]
+    }
+  >
+    <Text
+      numberOfLines={1}
+      style={
+        Array [
+          Object {
+            "color": "#ffffff",
+            "fontSize": 16,
+            "height": 16,
+            "lineHeight": 16,
+            "textTransform": "uppercase",
+          },
+          undefined,
+        ]
+      }
+    >
+      <Text>
+        TEXT
+      </Text>
+    </Text>
+  </View>
+</TouchableOpacity>
+`;
+
+exports[`should render with custom styles 1`] = `
+<TouchableOpacity
+  activeOpacity={0.5}
+  disabled={false}
+>
+  <View
+    style={
+      Array [
+        Object {
+          "alignItems": "center",
+          "backgroundColor": "#8e8e93",
+          "borderRadius": 5,
+          "flexDirection": "row",
+          "height": 50,
+          "justifyContent": "center",
+          "paddingHorizontal": 15,
+        },
+        Object {
+          "backgroundColor": "#000000",
+        },
+        false,
+      ]
+    }
+  >
+    <Text
+      numberOfLines={1}
+      style={
+        Array [
+          Object {
+            "color": "#ffffff",
+            "fontSize": 16,
+            "height": 16,
+            "lineHeight": 16,
+            "textTransform": "uppercase",
+          },
+          Object {
+            "color": "#ffffff",
+          },
+        ]
+      }
+    >
+      <Text>
+        TEXT
+      </Text>
+    </Text>
+  </View>
+</TouchableOpacity>
+`;
+
+exports[`should render with icon 1`] = `
+<TouchableOpacity
+  activeOpacity={0.5}
+  disabled={false}
+>
+  <View
+    style={
+      Array [
+        Object {
+          "alignItems": "center",
+          "backgroundColor": "#8e8e93",
+          "borderRadius": 5,
+          "flexDirection": "row",
+          "height": 50,
+          "justifyContent": "center",
+          "paddingHorizontal": 15,
+        },
+        undefined,
+        false,
+      ]
+    }
+  >
+    <Text
+      numberOfLines={1}
+      style={
+        Array [
+          Object {
+            "color": "#ffffff",
+            "fontSize": 16,
+            "height": 16,
+            "lineHeight": 16,
+            "textTransform": "uppercase",
+          },
+          undefined,
+        ]
+      }
+    >
+      <Text>
+        TEXT
+      </Text>
+    </Text>
+    <Image
+      source={
+        Object {
+          "uri": "image.png",
+        }
+      }
+      style={
+        Array [
+          Object {
+            "flexShrink": 0,
+            "height": 20,
+            "tintColor": "#ffffff",
+            "width": 20,
+          },
+          Object {
+            "tintColor": "#ffffff",
+          },
+        ]
+      }
+    />
+  </View>
+</TouchableOpacity>
+`;
