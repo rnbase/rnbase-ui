@@ -68,10 +68,10 @@ const Avatar: React.FC<Props> = ({
     if (image) {
       return image;
     } else if (email) {
-      const h = md5(email.toLowerCase().trim());
-      const s = PixelRatio.getPixelSizeForLayoutSize(size);
+      const emailHash = md5(email.toLowerCase().trim());
+      const pixelSize = PixelRatio.getPixelSizeForLayoutSize(size);
 
-      return { uri: `https://www.gravatar.com/avatar/${h}?s=${s}&d=404` };
+      return { uri: `https://www.gravatar.com/avatar/${emailHash}?s=${pixelSize}&d=404` };
     } else {
       return defaultImage;
     }
