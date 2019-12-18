@@ -23,14 +23,14 @@ it('should render image', () => {
   const tree = createRenderer({ size });
 
   act(() => {
-    tree.update(createElement({ size, image: { uri: 'image.png' } }));
+    tree.update(createElement({ size, imageSource: { uri: 'image.png' } }));
   });
 
   expect(tree).toMatchSnapshot();
 });
 
 it('should render image as square', () => {
-  const tree = createRenderer({ size, shape: 'square', image: { uri: 'image.png' } });
+  const tree = createRenderer({ size, shape: 'square', imageSource: { uri: 'image.png' } });
 
   act(() => {});
 
@@ -74,8 +74,8 @@ it('should fallback to initials', () => {
 it('should render default image if no image', () => {
   const tree = createRenderer({
     size,
-    image: { uri: 'image.png' },
-    defaultImage: { uri: 'default.png' },
+    imageSource: { uri: 'image.png' },
+    defaultImageSource: { uri: 'default.png' },
   });
 
   act(() => {});
@@ -91,7 +91,7 @@ it('should render default image if no gravatar', () => {
   const tree = createRenderer({
     size,
     email: 'user@email.com',
-    defaultImage: { uri: 'default.png' },
+    defaultImageSource: { uri: 'default.png' },
   });
 
   act(() => {});
@@ -104,7 +104,7 @@ it('should render default image if no gravatar', () => {
 });
 
 it('should render default image if empty name', () => {
-  const tree = createRenderer({ size, name: '', defaultImage: { uri: 'default.png' } });
+  const tree = createRenderer({ size, name: '', defaultImageSource: { uri: 'default.png' } });
 
   act(() => {});
 

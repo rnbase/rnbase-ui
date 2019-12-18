@@ -41,8 +41,8 @@ const App = () => {
           <Avatar
             size={50}
             name="John Smith"
-            image={{ uri: 'https://randomuser.me/api/portraits/women/noimage.jpg' }}
-            defaultImage={{ uri: 'https://randomuser.me/api/portraits/women/68.jpg' }}
+            imageSource={{ uri: 'https://randomuser.me/api/portraits/women/noimage.jpg' }}
+            defaultImageSource={{ uri: 'https://randomuser.me/api/portraits/women/68.jpg' }}
           />
           <View style={styles.body}>
             <View style={styles.sectionContainer}>

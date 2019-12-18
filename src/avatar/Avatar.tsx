@@ -5,13 +5,13 @@ import {
   ImageStyle,
   ImageSourcePropType,
   PixelRatio,
+  StyleSheet,
   StyleProp,
   Text,
   TextStyle,
   View,
   ViewProps,
   ViewStyle,
-  StyleSheet,
 } from 'react-native';
 
 import { Theme, useThemeStyles } from '../theming';
@@ -42,8 +42,8 @@ export interface Props extends ViewProps {
   shape?: 'square' | 'circle';
   name?: string;
   email?: string;
-  image?: ImageSourcePropType;
-  defaultImage?: ImageSourcePropType;
+  imageSource?: ImageSourcePropType;
+  defaultImageSource?: ImageSourcePropType;
   style?: StyleProp<ViewStyle>;
   textStyle?: StyleProp<TextStyle>;
   imageStyle?: StyleProp<ImageStyle>;
@@ -54,30 +54,33 @@ const Avatar: React.FC<Props> = ({
   shape,
   name,
   email,
-  image,
-  defaultImage,
+  imageSource,
+  defaultImageSource,
   style,
   textStyle,
   imageStyle,
   ...props
 }) => {
-  const getImageSource = useCallback(() => {
-    if (image) {
-      return image;
+  const getAvatarImageSource = useCallback(() => {
+    if (imageSource) {
+      return imageSource;
     } else if (email) {
       const emailHash = md5(email.toLowerCase().trim());
       const pixelSize = PixelRatio.getPixelSizeForLayoutSize(size);
       return { uri: `https://www.gravatar.com/avatar/${emailHash}?s=${pixelSize}&d=404` };
     } else {
-      return defaultImage;
+      return defaultImageSource;
     }
-  }, [image, email, defaultImage, size]);
+  }, [imageSource, email, size, defaultImageSource]);
 
-  const [imageSource, setImageSource] = useState(getImageSource);
+  const [avatarImageSource, setAvatarImageSource] = useState(getAvatarImageSource);
 
-  useEffect(() => setImageSource(getImageSource()), [getImageSource, setImageSource]);
+  useEffect(() => setAvatarImageSource(getAvatarImageSource()), [
+    getAvatarImageSource,
+    setAvatarImageSource,
+  ]);
 
-  const onError = useCallback(() => setImageSource(defaultImage), [defaultImage]);
+  const onError = useCallback(() => setAvatarImageSource(defaultImageSource), [defaultImageSource]);
 
   const styles = useThemeStyles(createStyleSheet, 'Avatar');
 
@@ -90,11 +93,11 @@ const Avatar: React.FC<Props> = ({
   const initials = useMemo(
     () =>
       name &&
-      imageSource === defaultImage && {
+      avatarImageSource === defaultImageSource && {
         color: getColor(name),
         text: getInitials(name),
       },
-    [defaultImage, imageSource, name],
+    [name, defaultImageSource, avatarImageSource],
   );
 
   if (initials) {
@@ -115,16 +118,16 @@ const Avatar: React.FC<Props> = ({
     );
   }
 
-  return !imageSource ? null : (
+  return !avatarImageSource ? null : (
     <View {...props} style={[styles.root, rootShape, style]}>
-      <Image style={[styles.image, imageStyle]} source={imageSource} onError={onError} />
+      <Image style={[styles.image, imageStyle]} source={avatarImageSource} onError={onError} />
     </View>
   );
 };
 
 Avatar.defaultProps = {
   shape: 'circle',
-  defaultImage: require('./default.png'),
+  defaultImageSource: require('./default.png'),
 };
 
 const createStyleSheet = ({ Colors, Fonts }: Theme) =>
