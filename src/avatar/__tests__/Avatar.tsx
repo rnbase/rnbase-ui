@@ -51,7 +51,7 @@ it('should render initials', () => {
   const tree = createRenderer({ size });
 
   act(() => {
-    tree.update(createElement({ size, name: 'User Name' }));
+    tree.update(createElement({ size, name: 'User Name', colorize: true }));
   });
 
   expect(tree).toMatchSnapshot();
