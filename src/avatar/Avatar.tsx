@@ -89,7 +89,7 @@ const Avatar: React.FC<Props> = ({
   const rootShape = {
     width: size,
     height: size,
-    borderRadius: shape === 'circle' ? size / 2 : 0,
+    ...(shape === 'circle' && { borderRadius: size / 2 }),
   };
 
   const initials = useMemo(
@@ -112,8 +112,8 @@ const Avatar: React.FC<Props> = ({
     };
 
     return (
-      <View {...props} style={[styles.root, rootShape, rootBgColor, style]}>
-        <Text style={[styles.text, textFontSize, textStyle]} numberOfLines={1}>
+      <View {...props} style={[styles.root, style, rootShape, rootBgColor]}>
+        <Text style={[styles.text, textStyle, textFontSize]} numberOfLines={1}>
           {initials.text}
         </Text>
       </View>
@@ -121,7 +121,7 @@ const Avatar: React.FC<Props> = ({
   }
 
   return !avatarImageSource ? null : (
-    <View {...props} style={[styles.root, rootShape, style]}>
+    <View {...props} style={[styles.root, style, rootShape]}>
       <Image style={[styles.image, imageStyle]} source={avatarImageSource} onError={onError} />
     </View>
   );

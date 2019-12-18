@@ -10,13 +10,13 @@ exports[`should fallback to initials 1`] = `
         "justifyContent": "center",
         "overflow": "hidden",
       },
+      undefined,
       Object {
         "borderRadius": 25,
         "height": 50,
         "width": 50,
       },
       false,
-      undefined,
     ]
   }
 >
@@ -32,10 +32,10 @@ exports[`should fallback to initials 1`] = `
           "includeFontPadding": false,
           "textAlignVertical": "center",
         },
+        undefined,
         Object {
           "fontSize": 20,
         },
-        undefined,
       ]
     }
   >
@@ -54,12 +54,12 @@ exports[`should render default image 1`] = `
         "justifyContent": "center",
         "overflow": "hidden",
       },
+      undefined,
       Object {
         "borderRadius": 25,
         "height": 50,
         "width": 50,
       },
-      undefined,
     ]
   }
 >
@@ -93,12 +93,12 @@ exports[`should render default image if empty name 1`] = `
         "justifyContent": "center",
         "overflow": "hidden",
       },
+      undefined,
       Object {
         "borderRadius": 25,
         "height": 50,
         "width": 50,
       },
-      undefined,
     ]
   }
 >
@@ -132,12 +132,12 @@ exports[`should render default image if no gravatar 1`] = `
         "justifyContent": "center",
         "overflow": "hidden",
       },
+      undefined,
       Object {
         "borderRadius": 25,
         "height": 50,
         "width": 50,
       },
-      undefined,
     ]
   }
 >
@@ -171,12 +171,12 @@ exports[`should render default image if no image 1`] = `
         "justifyContent": "center",
         "overflow": "hidden",
       },
+      undefined,
       Object {
         "borderRadius": 25,
         "height": 50,
         "width": 50,
       },
-      undefined,
     ]
   }
 >
@@ -210,12 +210,12 @@ exports[`should render gravatar 1`] = `
         "justifyContent": "center",
         "overflow": "hidden",
       },
+      undefined,
       Object {
         "borderRadius": 25,
         "height": 50,
         "width": 50,
       },
-      undefined,
     ]
   }
 >
@@ -249,12 +249,12 @@ exports[`should render image 1`] = `
         "justifyContent": "center",
         "overflow": "hidden",
       },
+      undefined,
       Object {
         "borderRadius": 25,
         "height": 50,
         "width": 50,
       },
-      undefined,
     ]
   }
 >
@@ -288,12 +288,11 @@ exports[`should render image as square 1`] = `
         "justifyContent": "center",
         "overflow": "hidden",
       },
+      undefined,
       Object {
-        "borderRadius": 0,
         "height": 50,
         "width": 50,
       },
-      undefined,
     ]
   }
 >
@@ -327,6 +326,7 @@ exports[`should render initials 1`] = `
         "justifyContent": "center",
         "overflow": "hidden",
       },
+      undefined,
       Object {
         "borderRadius": 25,
         "height": 50,
@@ -335,7 +335,6 @@ exports[`should render initials 1`] = `
       Object {
         "backgroundColor": "hsl(-216, 75%, 50%)",
       },
-      undefined,
     ]
   }
 >
@@ -351,10 +350,10 @@ exports[`should render initials 1`] = `
           "includeFontPadding": false,
           "textAlignVertical": "center",
         },
+        undefined,
         Object {
           "fontSize": 20,
         },
-        undefined,
       ]
     }
   >
