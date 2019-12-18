@@ -42,6 +42,7 @@ export interface Props extends ViewProps {
   shape?: 'square' | 'circle';
   name?: string;
   email?: string;
+  colorize?: boolean;
   imageSource?: ImageSourcePropType;
   defaultImageSource?: ImageSourcePropType;
   style?: StyleProp<ViewStyle>;
@@ -54,6 +55,7 @@ const Avatar: React.FC<Props> = ({
   shape,
   name,
   email,
+  colorize,
   imageSource,
   defaultImageSource,
   style,
@@ -101,7 +103,7 @@ const Avatar: React.FC<Props> = ({
   );
 
   if (initials) {
-    const rootBgColor = {
+    const rootBgColor = colorize && {
       backgroundColor: initials.color,
     };
 
@@ -127,6 +129,7 @@ const Avatar: React.FC<Props> = ({
 
 Avatar.defaultProps = {
   shape: 'circle',
+  colorize: false,
   defaultImageSource: require('./default.png'),
 };
 
