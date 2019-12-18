@@ -14,7 +14,7 @@ import {
   StyleSheet,
 } from 'react-native';
 
-import { Theme as ThemeType, useTheme } from '../theming';
+import { Theme, useThemeStyles } from '../theming';
 
 const getColor = (string: string): string => {
   let hash = 0;
@@ -37,31 +37,28 @@ const getInitials = (name: string): string => {
   return ((initials.shift() || '') + (initials.pop() || '')).toUpperCase();
 };
 
-interface StyleProps {
+export interface Props extends ViewProps {
   size: number;
   shape?: 'square' | 'circle';
+  name?: string;
+  email?: string;
+  image?: ImageSourcePropType;
+  defaultImage?: ImageSourcePropType;
   style?: StyleProp<ViewStyle>;
   textStyle?: StyleProp<TextStyle>;
   imageStyle?: StyleProp<ImageStyle>;
 }
 
-export interface Props extends ViewProps, StyleProps {
-  name?: string;
-  email?: string;
-  image?: ImageSourcePropType;
-  defaultImage?: ImageSourcePropType;
-}
-
 const Avatar: React.FC<Props> = ({
   size,
+  shape,
   name,
   email,
-  shape,
+  image,
+  defaultImage,
   style,
   textStyle,
   imageStyle,
-  image,
-  defaultImage,
   ...props
 }) => {
   const getImageSource = useCallback(() => {
@@ -70,7 +67,6 @@ const Avatar: React.FC<Props> = ({
     } else if (email) {
       const emailHash = md5(email.toLowerCase().trim());
       const pixelSize = PixelRatio.getPixelSizeForLayoutSize(size);
-
       return { uri: `https://www.gravatar.com/avatar/${emailHash}?s=${pixelSize}&d=404` };
     } else {
       return defaultImage;
@@ -83,37 +79,45 @@ const Avatar: React.FC<Props> = ({
 
   const onError = useCallback(() => setImageSource(defaultImage), [defaultImage]);
 
-  const nameProps = useMemo(
+  const styles = useThemeStyles(createStyleSheet, 'Avatar');
+
+  const rootShape = {
+    width: size,
+    height: size,
+    borderRadius: shape === 'circle' ? size / 2 : 0,
+  };
+
+  const initials = useMemo(
     () =>
-      name && {
-        style: {
-          backgroundColor: getColor(name),
-        },
+      name &&
+      imageSource === defaultImage && {
+        color: getColor(name),
         text: getInitials(name),
       },
-    [name],
+    [defaultImage, imageSource, name],
   );
 
-  const theme = useTheme();
+  if (initials) {
+    const rootBgColor = {
+      backgroundColor: initials.color,
+    };
 
-  const styles = useMemo(
-    () => createStyleSheet(theme, { size, shape, style, imageStyle, textStyle }),
-    [theme, size, shape, style, imageStyle, textStyle],
-  );
+    const textFontSize = {
+      fontSize: PixelRatio.roundToNearestPixel(size / 2.5),
+    };
 
-  if (nameProps && imageSource === defaultImage) {
     return (
-      <View {...props} style={[styles.wrapper, nameProps.style]}>
-        <Text style={styles.text} numberOfLines={1}>
-          {nameProps.text}
+      <View {...props} style={[styles.root, rootShape, rootBgColor, style]}>
+        <Text style={[styles.text, textFontSize, textStyle]} numberOfLines={1}>
+          {initials.text}
         </Text>
       </View>
     );
   }
 
   return !imageSource ? null : (
-    <View {...props} style={styles.wrapper}>
-      <Image style={styles.image} source={imageSource} onError={onError} />
+    <View {...props} style={[styles.root, rootShape, style]}>
+      <Image style={[styles.image, imageStyle]} source={imageSource} onError={onError} />
     </View>
   );
 };
@@ -123,31 +127,21 @@ Avatar.defaultProps = {
   defaultImage: require('./default.png'),
 };
 
-const createStyleSheet = ({ Colors, Fonts, Avatar: Theme }: ThemeType, props: StyleProps) =>
+const createStyleSheet = ({ Colors, Fonts }: Theme) =>
   StyleSheet.create({
-    wrapper: {
-      width: props.size,
-      height: props.size,
+    root: {
       overflow: 'hidden',
       alignItems: 'center',
       justifyContent: 'center',
-      borderRadius: props.shape === 'circle' ? props.size / 2 : 0,
-      ...(Theme && Theme.wrapper),
-      ...(props.style as object),
+      backgroundColor: Colors.gray,
     },
     image: {
       width: '100%',
       height: '100%',
-      ...(Theme && Theme.image),
-      ...(props.imageStyle as object),
     },
     text: {
       ...Fonts.bold,
       color: Colors.white,
-      lineHeight: props.size / 2,
-      fontSize: PixelRatio.roundToNearestPixel(props.size / 2.5),
-      ...(Theme && Theme.text),
-      ...(props.textStyle as object),
     },
   });
 

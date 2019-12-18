@@ -6,31 +6,39 @@ exports[`should fallback to initials 1`] = `
     Array [
       Object {
         "alignItems": "center",
-        "borderRadius": 25,
-        "height": 50,
+        "backgroundColor": "#8e8e93",
         "justifyContent": "center",
         "overflow": "hidden",
+      },
+      Object {
+        "borderRadius": 25,
+        "height": 50,
         "width": 50,
       },
       Object {
         "backgroundColor": "hsl(-216, 75%, 50%)",
       },
+      undefined,
     ]
   }
 >
   <Text
     numberOfLines={1}
     style={
-      Object {
-        "backgroundColor": "transparent",
-        "color": "#ffffff",
-        "fontFamily": "System",
-        "fontSize": 20,
-        "fontWeight": "700",
-        "includeFontPadding": false,
-        "lineHeight": 25,
-        "textAlignVertical": "center",
-      }
+      Array [
+        Object {
+          "backgroundColor": "transparent",
+          "color": "#ffffff",
+          "fontFamily": "System",
+          "fontWeight": "700",
+          "includeFontPadding": false,
+          "textAlignVertical": "center",
+        },
+        Object {
+          "fontSize": 20,
+        },
+        undefined,
+      ]
     }
   >
     UN
@@ -41,14 +49,20 @@ exports[`should fallback to initials 1`] = `
 exports[`should render default image 1`] = `
 <View
   style={
-    Object {
-      "alignItems": "center",
-      "borderRadius": 25,
-      "height": 50,
-      "justifyContent": "center",
-      "overflow": "hidden",
-      "width": 50,
-    }
+    Array [
+      Object {
+        "alignItems": "center",
+        "backgroundColor": "#8e8e93",
+        "justifyContent": "center",
+        "overflow": "hidden",
+      },
+      Object {
+        "borderRadius": 25,
+        "height": 50,
+        "width": 50,
+      },
+      undefined,
+    ]
   }
 >
   <Image
@@ -59,10 +73,13 @@ exports[`should render default image 1`] = `
       }
     }
     style={
-      Object {
-        "height": "100%",
-        "width": "100%",
-      }
+      Array [
+        Object {
+          "height": "100%",
+          "width": "100%",
+        },
+        undefined,
+      ]
     }
   />
 </View>
@@ -71,14 +88,20 @@ exports[`should render default image 1`] = `
 exports[`should render default image if empty name 1`] = `
 <View
   style={
-    Object {
-      "alignItems": "center",
-      "borderRadius": 25,
-      "height": 50,
-      "justifyContent": "center",
-      "overflow": "hidden",
-      "width": 50,
-    }
+    Array [
+      Object {
+        "alignItems": "center",
+        "backgroundColor": "#8e8e93",
+        "justifyContent": "center",
+        "overflow": "hidden",
+      },
+      Object {
+        "borderRadius": 25,
+        "height": 50,
+        "width": 50,
+      },
+      undefined,
+    ]
   }
 >
   <Image
@@ -89,10 +112,13 @@ exports[`should render default image if empty name 1`] = `
       }
     }
     style={
-      Object {
-        "height": "100%",
-        "width": "100%",
-      }
+      Array [
+        Object {
+          "height": "100%",
+          "width": "100%",
+        },
+        undefined,
+      ]
     }
   />
 </View>
@@ -101,14 +127,20 @@ exports[`should render default image if empty name 1`] = `
 exports[`should render default image if no gravatar 1`] = `
 <View
   style={
-    Object {
-      "alignItems": "center",
-      "borderRadius": 25,
-      "height": 50,
-      "justifyContent": "center",
-      "overflow": "hidden",
-      "width": 50,
-    }
+    Array [
+      Object {
+        "alignItems": "center",
+        "backgroundColor": "#8e8e93",
+        "justifyContent": "center",
+        "overflow": "hidden",
+      },
+      Object {
+        "borderRadius": 25,
+        "height": 50,
+        "width": 50,
+      },
+      undefined,
+    ]
   }
 >
   <Image
@@ -119,10 +151,13 @@ exports[`should render default image if no gravatar 1`] = `
       }
     }
     style={
-      Object {
-        "height": "100%",
-        "width": "100%",
-      }
+      Array [
+        Object {
+          "height": "100%",
+          "width": "100%",
+        },
+        undefined,
+      ]
     }
   />
 </View>
@@ -131,14 +166,20 @@ exports[`should render default image if no gravatar 1`] = `
 exports[`should render default image if no image 1`] = `
 <View
   style={
-    Object {
-      "alignItems": "center",
-      "borderRadius": 25,
-      "height": 50,
-      "justifyContent": "center",
-      "overflow": "hidden",
-      "width": 50,
-    }
+    Array [
+      Object {
+        "alignItems": "center",
+        "backgroundColor": "#8e8e93",
+        "justifyContent": "center",
+        "overflow": "hidden",
+      },
+      Object {
+        "borderRadius": 25,
+        "height": 50,
+        "width": 50,
+      },
+      undefined,
+    ]
   }
 >
   <Image
@@ -149,10 +190,13 @@ exports[`should render default image if no image 1`] = `
       }
     }
     style={
-      Object {
-        "height": "100%",
-        "width": "100%",
-      }
+      Array [
+        Object {
+          "height": "100%",
+          "width": "100%",
+        },
+        undefined,
+      ]
     }
   />
 </View>
@@ -161,14 +205,20 @@ exports[`should render default image if no image 1`] = `
 exports[`should render gravatar 1`] = `
 <View
   style={
-    Object {
-      "alignItems": "center",
-      "borderRadius": 25,
-      "height": 50,
-      "justifyContent": "center",
-      "overflow": "hidden",
-      "width": 50,
-    }
+    Array [
+      Object {
+        "alignItems": "center",
+        "backgroundColor": "#8e8e93",
+        "justifyContent": "center",
+        "overflow": "hidden",
+      },
+      Object {
+        "borderRadius": 25,
+        "height": 50,
+        "width": 50,
+      },
+      undefined,
+    ]
   }
 >
   <Image
@@ -179,10 +229,13 @@ exports[`should render gravatar 1`] = `
       }
     }
     style={
-      Object {
-        "height": "100%",
-        "width": "100%",
-      }
+      Array [
+        Object {
+          "height": "100%",
+          "width": "100%",
+        },
+        undefined,
+      ]
     }
   />
 </View>
@@ -191,14 +244,20 @@ exports[`should render gravatar 1`] = `
 exports[`should render image 1`] = `
 <View
   style={
-    Object {
-      "alignItems": "center",
-      "borderRadius": 25,
-      "height": 50,
-      "justifyContent": "center",
-      "overflow": "hidden",
-      "width": 50,
-    }
+    Array [
+      Object {
+        "alignItems": "center",
+        "backgroundColor": "#8e8e93",
+        "justifyContent": "center",
+        "overflow": "hidden",
+      },
+      Object {
+        "borderRadius": 25,
+        "height": 50,
+        "width": 50,
+      },
+      undefined,
+    ]
   }
 >
   <Image
@@ -209,10 +268,13 @@ exports[`should render image 1`] = `
       }
     }
     style={
-      Object {
-        "height": "100%",
-        "width": "100%",
-      }
+      Array [
+        Object {
+          "height": "100%",
+          "width": "100%",
+        },
+        undefined,
+      ]
     }
   />
 </View>
@@ -221,14 +283,20 @@ exports[`should render image 1`] = `
 exports[`should render image as square 1`] = `
 <View
   style={
-    Object {
-      "alignItems": "center",
-      "borderRadius": 0,
-      "height": 50,
-      "justifyContent": "center",
-      "overflow": "hidden",
-      "width": 50,
-    }
+    Array [
+      Object {
+        "alignItems": "center",
+        "backgroundColor": "#8e8e93",
+        "justifyContent": "center",
+        "overflow": "hidden",
+      },
+      Object {
+        "borderRadius": 0,
+        "height": 50,
+        "width": 50,
+      },
+      undefined,
+    ]
   }
 >
   <Image
@@ -239,10 +307,13 @@ exports[`should render image as square 1`] = `
       }
     }
     style={
-      Object {
-        "height": "100%",
-        "width": "100%",
-      }
+      Array [
+        Object {
+          "height": "100%",
+          "width": "100%",
+        },
+        undefined,
+      ]
     }
   />
 </View>
@@ -254,31 +325,39 @@ exports[`should render initials 1`] = `
     Array [
       Object {
         "alignItems": "center",
-        "borderRadius": 25,
-        "height": 50,
+        "backgroundColor": "#8e8e93",
         "justifyContent": "center",
         "overflow": "hidden",
+      },
+      Object {
+        "borderRadius": 25,
+        "height": 50,
         "width": 50,
       },
       Object {
         "backgroundColor": "hsl(-216, 75%, 50%)",
       },
+      undefined,
     ]
   }
 >
   <Text
     numberOfLines={1}
     style={
-      Object {
-        "backgroundColor": "transparent",
-        "color": "#ffffff",
-        "fontFamily": "System",
-        "fontSize": 20,
-        "fontWeight": "700",
-        "includeFontPadding": false,
-        "lineHeight": 25,
-        "textAlignVertical": "center",
-      }
+      Array [
+        Object {
+          "backgroundColor": "transparent",
+          "color": "#ffffff",
+          "fontFamily": "System",
+          "fontWeight": "700",
+          "includeFontPadding": false,
+          "textAlignVertical": "center",
+        },
+        Object {
+          "fontSize": 20,
+        },
+        undefined,
+      ]
     }
   >
     UN
