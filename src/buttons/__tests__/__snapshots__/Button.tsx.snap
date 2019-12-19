@@ -39,9 +39,7 @@ exports[`should render as disabled 1`] = `
         ]
       }
     >
-      <Text>
-        TEXT
-      </Text>
+      TEXT
     </Text>
   </View>
 </TouchableOpacity>
@@ -84,9 +82,7 @@ exports[`should render normally 1`] = `
         ]
       }
     >
-      <Text>
-        TEXT
-      </Text>
+      TEXT
     </Text>
   </View>
 </TouchableOpacity>
@@ -133,9 +129,7 @@ exports[`should render with custom styles 1`] = `
         ]
       }
     >
-      <Text>
-        TEXT
-      </Text>
+      TEXT
     </Text>
   </View>
 </TouchableOpacity>
@@ -178,9 +172,7 @@ exports[`should render with icon 1`] = `
         ]
       }
     >
-      <Text>
-        TEXT
-      </Text>
+      TEXT
     </Text>
     <Image
       source={

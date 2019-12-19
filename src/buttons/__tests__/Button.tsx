@@ -1,5 +1,4 @@
 import React from 'react';
-import { Text } from 'react-native';
 
 // Note: test renderer must be required after react-native.
 import TestRenderer from 'react-test-renderer';
@@ -15,11 +14,7 @@ jest.doMock('react-native/Libraries/Components/Touchable/TouchableOpacity', () =
  */
 const { default: Button } = jest.requireActual('../Button');
 
-const createElement = (props: Props) => (
-  <Button {...props}>
-    <Text>TEXT</Text>
-  </Button>
-);
+const createElement = (props: Props) => <Button {...props} text="TEXT" />;
 
 const createRenderer = (props: Props) => TestRenderer.create(createElement(props));
 

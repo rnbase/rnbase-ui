@@ -16,31 +16,24 @@ import {
 import { Theme as ThemeType, useTheme } from '../theming';
 
 export interface Props extends TouchableOpacityProps {
-  children?: React.ReactNode;
   disabled?: boolean;
   style?: StyleProp<ViewStyle>;
+  text?: React.ReactNode;
   textStyle?: StyleProp<TextStyle>;
   imageSource?: ImageSourcePropType;
   imageStyle?: StyleProp<ImageStyle>;
 }
 
-const Button: React.FC<Props> = ({
-  children,
-  style,
-  textStyle,
-  imageSource,
-  imageStyle,
-  ...props
-}) => {
+const Button: React.FC<Props> = ({ style, text, textStyle, imageSource, imageStyle, ...props }) => {
   const theme = useTheme();
   const styles = useMemo(() => createStyleSheet(theme), [theme]);
 
   return (
     <TouchableOpacity activeOpacity={0.5} {...props}>
       <View style={[styles.button, style, props.disabled && styles.disabled]}>
-        {children && (
+        {text && (
           <Text style={[styles.text, textStyle]} numberOfLines={1}>
-            {children}
+            {text}
           </Text>
         )}
         {imageSource && <Image style={[styles.image, imageStyle]} source={imageSource} />}
