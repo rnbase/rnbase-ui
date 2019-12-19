@@ -5,7 +5,10 @@ import defaultTheme, { Theme, ThemeFactory, ColorSchemeName } from './theme';
 
 function resolveTheme(theme: ThemeFactory, colorScheme: ColorSchemeName): Theme {
   if (theme instanceof Function) {
-    return theme(colorScheme);
+    return theme({
+      colorScheme,
+      select: spec => (colorScheme in spec ? spec[colorScheme] : spec.default),
+    });
   }
 
   return theme;

@@ -4,29 +4,34 @@ export type Theme = {
   [key: string]: any;
 };
 
-export type ThemeFactory = Theme | ((colorScheme?: ColorSchemeName) => Theme);
+interface ThemeFactoryArgs {
+  colorScheme: ColorSchemeName;
+  select<T>(specifics: { [colorScheme in ColorSchemeName | 'default']?: T }): T | undefined;
+}
+
+export type ThemeFactory = Theme | ((args: ThemeFactoryArgs) => Theme);
 
 // Colors based on Apple Human Interface Guidelines
 // https://developer.apple.com/design/human-interface-guidelines/ios/visual-design/color/
-const defaultTheme: ThemeFactory = (colorScheme?: ColorSchemeName) => ({
+const defaultTheme: ThemeFactory = ({ select }) => ({
   Colors: {
     white: '#ffffff',
     black: '#000000',
-    blue: colorScheme === 'dark' ? '#0a84ff' : '#007aff',
-    green: colorScheme === 'dark' ? '#30d158' : '#34c759',
-    indigo: colorScheme === 'dark' ? '#5e5ce6' : '#5856d6',
-    orange: colorScheme === 'dark' ? '#ff9f0a' : '#ff9500',
-    pink: colorScheme === 'dark' ? '#ff375f' : '#ff2d55',
-    purple: colorScheme === 'dark' ? '#bf5af2' : '#af52de',
-    red: colorScheme === 'dark' ? '#ff453a' : '#ff3b30',
-    teal: colorScheme === 'dark' ? '#64d2ff' : '#5ac8fa',
-    yellow: colorScheme === 'dark' ? '#ffd60a' : '#ffcc00',
+    blue: select({ dark: '#0a84ff', default: '#007aff' }),
+    green: select({ dark: '#30d158', default: '#34c759' }),
+    indigo: select({ dark: '#5e5ce6', default: '#5856d6' }),
+    orange: select({ dark: '#ff9f0a', default: '#ff9500' }),
+    pink: select({ dark: '#ff375f', default: '#ff2d55' }),
+    purple: select({ dark: '#bf5af2', default: '#af52de' }),
+    red: select({ dark: '#ff453a', default: '#ff3b30' }),
+    teal: select({ dark: '#64d2ff', default: '#5ac8fa' }),
+    yellow: select({ dark: '#ffd60a', default: '#ffcc00' }),
     gray: '#8e8e93',
-    gray2: colorScheme === 'dark' ? '#636366' : '#aeaeb2',
-    gray3: colorScheme === 'dark' ? '#48484a' : '#c7c7cc',
-    gray4: colorScheme === 'dark' ? '#3a3a3c' : '#d1d1d6',
-    gray5: colorScheme === 'dark' ? '#2c2c2e' : '#e5e5ea',
-    gray6: colorScheme === 'dark' ? '#1c1c1e' : '#f2f2f7',
+    gray2: select({ dark: '#636366', default: '#aeaeb2' }),
+    gray3: select({ dark: '#48484a', default: '#c7c7cc' }),
+    gray4: select({ dark: '#3a3a3c', default: '#d1d1d6' }),
+    gray5: select({ dark: '#2c2c2e', default: '#e5e5ea' }),
+    gray6: select({ dark: '#1c1c1e', default: '#f2f2f7' }),
   },
   Fonts: {
     thin: {
