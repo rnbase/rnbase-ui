@@ -16,7 +16,6 @@ exports[`should fallback to initials 1`] = `
         "height": 50,
         "width": 50,
       },
-      false,
     ]
   }
 >

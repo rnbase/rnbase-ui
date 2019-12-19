@@ -86,36 +86,35 @@ const Avatar: React.FC<Props> = ({
 
   const onError = useCallback(() => setAvatarImageSource(defaultImageSource), [defaultImageSource]);
 
-  const styles = useThemeStyles(createStyleSheet, themeKey);
-
-  const rootShape = {
-    width: size,
-    height: size,
-    ...(shape === 'circle' && { borderRadius: size / 2 }),
-  };
-
   const initials = useMemo(
     () =>
       name &&
       avatarImageSource === defaultImageSource && {
-        color: getColor(name),
+        color: colorize && getColor(name),
         text: getInitials(name),
       },
     [name, defaultImageSource, avatarImageSource],
   );
 
-  if (initials) {
-    const rootBgColor = colorize && {
-      backgroundColor: initials.color,
-    };
+  const styles = useThemeStyles(createStyleSheet, themeKey);
 
-    const textFontSize = {
-      fontSize: PixelRatio.roundToNearestPixel(size / 2.5),
-    };
+  const rootStyles = [styles.root, style];
+  const textStyles = [styles.text, textStyle];
+  const imageStyles = [styles.image, imageStyle];
+
+  rootStyles.push({
+    width: size,
+    height: size,
+    ...(shape === 'circle' && { borderRadius: size / 2 }),
+  });
+
+  if (initials) {
+    initials.color && rootStyles.push({ backgroundColor: initials.color });
+    textStyles.push({ fontSize: PixelRatio.roundToNearestPixel(size / 2.5) });
 
     return (
-      <View {...props} style={[styles.root, style, rootShape, rootBgColor]}>
-        <Text style={[styles.text, textStyle, textFontSize]} numberOfLines={1}>
+      <View {...props} style={rootStyles}>
+        <Text style={textStyles} numberOfLines={1}>
           {initials.text}
         </Text>
       </View>
@@ -123,8 +122,8 @@ const Avatar: React.FC<Props> = ({
   }
 
   return !avatarImageSource ? null : (
-    <View {...props} style={[styles.root, style, rootShape]}>
-      <Image style={[styles.image, imageStyle]} source={avatarImageSource} onError={onError} />
+    <View {...props} style={rootStyles}>
+      <Image style={imageStyles} source={avatarImageSource} onError={onError} />
     </View>
   );
 };
