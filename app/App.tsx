@@ -9,7 +9,7 @@
  */
 
 import React from 'react';
-import { SafeAreaView, StyleSheet, ScrollView, View, Text, StatusBar } from 'react-native';
+import { Alert, SafeAreaView, StyleSheet, ScrollView, View, Text, StatusBar } from 'react-native';
 
 import {
   Header,
@@ -20,7 +20,7 @@ import {
 } from 'react-native/Libraries/NewAppScreen';
 
 import theme from './theme';
-import { ThemeProvider, Component, Avatar } from '../';
+import { ThemeProvider, Component, Avatar, Button } from '../';
 
 const App = () => {
   // eslint-disable-next-line no-undef
@@ -37,6 +37,11 @@ const App = () => {
               <Text style={styles.footer}>Engine: Hermes</Text>
             </View>
           )}
+          <Button
+            text="Simple Button"
+            imageSource={require('./src/assets/Search.png')}
+            onPress={() => Alert.alert('Pressed', 'Simple Button')}
+          />
           <Component>Component From Library</Component>
           <Avatar
             size={50}

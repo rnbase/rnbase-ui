@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React from 'react';
 import {
   Image,
   ImageStyle,
@@ -13,7 +13,7 @@ import {
   ViewStyle,
 } from 'react-native';
 
-import { Theme as ThemeType, useTheme } from '../theming';
+import { Theme, useThemeStyles } from '../theming';
 
 export interface Props extends TouchableOpacityProps {
   disabled?: boolean;
@@ -25,12 +25,11 @@ export interface Props extends TouchableOpacityProps {
 }
 
 const Button: React.FC<Props> = ({ style, text, textStyle, imageSource, imageStyle, ...props }) => {
-  const theme = useTheme();
-  const styles = useMemo(() => createStyleSheet(theme), [theme]);
+  const styles = useThemeStyles(createStyleSheet, 'Button');
 
   return (
     <TouchableOpacity activeOpacity={0.5} {...props}>
-      <View style={[styles.button, style, props.disabled && styles.disabled]}>
+      <View style={[styles.root, style, props.disabled && styles.disabled]}>
         {text && (
           <Text style={[styles.text, textStyle]} numberOfLines={1}>
             {text}
@@ -42,9 +41,9 @@ const Button: React.FC<Props> = ({ style, text, textStyle, imageSource, imageSty
   );
 };
 
-const createStyleSheet = ({ Colors, Button: Theme }: ThemeType) =>
+const createStyleSheet = ({ Colors }: Theme) =>
   StyleSheet.create({
-    button: {
+    root: {
       height: 50,
       borderRadius: 5,
       alignItems: 'center',
@@ -52,7 +51,6 @@ const createStyleSheet = ({ Colors, Button: Theme }: ThemeType) =>
       paddingHorizontal: 15,
       justifyContent: 'center',
       backgroundColor: Colors.gray,
-      ...(Theme && Theme.button),
     },
     text: {
       height: 16,
@@ -60,18 +58,16 @@ const createStyleSheet = ({ Colors, Button: Theme }: ThemeType) =>
       lineHeight: 16,
       color: Colors.white,
       textTransform: 'uppercase',
-      ...(Theme && Theme.text),
     },
     image: {
       width: 20,
       height: 20,
       flexShrink: 0,
       tintColor: Colors.white,
-      ...(Theme && Theme.image),
+      marginHorizontal: 5,
     },
     disabled: {
       opacity: 0.5,
-      ...(Theme && Theme.disabled),
     },
   });
 
