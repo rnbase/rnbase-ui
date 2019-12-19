@@ -16,27 +16,63 @@ import {
 import { Theme, useThemeStyles } from '../theming';
 
 export interface Props extends TouchableOpacityProps {
+  children?: React.ReactNode;
   disabled?: boolean;
   style?: StyleProp<ViewStyle>;
   text?: React.ReactNode;
   textStyle?: StyleProp<TextStyle>;
   imageSource?: ImageSourcePropType;
   imageStyle?: StyleProp<ImageStyle>;
+  imageAlignment?: 'left' | 'right';
 }
 
-const Button: React.FC<Props> = ({ style, text, textStyle, imageSource, imageStyle, ...props }) => {
+const Button: React.FC<Props> = ({
+  children,
+  style,
+  text,
+  textStyle,
+  imageSource,
+  imageStyle,
+  imageAlignment,
+  ...props
+}) => {
   const styles = useThemeStyles(createStyleSheet, 'Button');
+
+  let content;
+
+  if (children) {
+    content = children;
+  } else {
+    content = [];
+
+    if (text) {
+      content.push(
+        <Text key="text" style={[styles.text, textStyle]} numberOfLines={1}>
+          {text}
+        </Text>,
+      );
+    }
+
+    if (imageSource) {
+      const image = <Image key="image" style={[styles.image, imageStyle]} source={imageSource} />;
+
+      if (imageAlignment === 'left') {
+        content.unshift(image);
+      } else {
+        content.push(image);
+      }
+    }
+  }
+
+  const rootStyle = [styles.root, style];
+
+  if (props.disabled) {
+    rootStyle.push(styles.disabled);
+  }
 
   return (
     <TouchableOpacity activeOpacity={0.5} {...props}>
-      <View style={[styles.root, style, props.disabled && styles.disabled]}>
-        {text && (
-          <Text style={[styles.text, textStyle]} numberOfLines={1}>
-            {text}
-          </Text>
-        )}
-        {imageSource && <Image style={[styles.image, imageStyle]} source={imageSource} />}
-      </View>
+      <View style={rootStyle}>{content}</View>
     </TouchableOpacity>
   );
 };
@@ -73,6 +109,7 @@ const createStyleSheet = ({ Colors }: Theme) =>
 
 Button.defaultProps = {
   disabled: false,
+  imageAlignment: 'left',
 };
 
 export default Button;

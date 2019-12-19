@@ -23,29 +23,11 @@ exports[`should render as disabled 1`] = `
         },
       ]
     }
-  >
-    <Text
-      numberOfLines={1}
-      style={
-        Array [
-          Object {
-            "color": "#ffffff",
-            "fontSize": 16,
-            "height": 16,
-            "lineHeight": 16,
-            "textTransform": "uppercase",
-          },
-          undefined,
-        ]
-      }
-    >
-      TEXT
-    </Text>
-  </View>
+  />
 </TouchableOpacity>
 `;
 
-exports[`should render normally 1`] = `
+exports[`should render text only 1`] = `
 <TouchableOpacity
   activeOpacity={0.5}
   disabled={false}
@@ -63,7 +45,6 @@ exports[`should render normally 1`] = `
           "paddingHorizontal": 15,
         },
         undefined,
-        false,
       ]
     }
   >
@@ -82,7 +63,79 @@ exports[`should render normally 1`] = `
         ]
       }
     >
-      TEXT
+      Button
+    </Text>
+  </View>
+</TouchableOpacity>
+`;
+
+exports[`should render text with custom styles 1`] = `
+<TouchableOpacity
+  activeOpacity={0.5}
+  disabled={false}
+>
+  <View
+    style={
+      Array [
+        Object {
+          "alignItems": "center",
+          "backgroundColor": "#8e8e93",
+          "borderRadius": 5,
+          "flexDirection": "row",
+          "height": 50,
+          "justifyContent": "center",
+          "paddingHorizontal": 15,
+        },
+        undefined,
+      ]
+    }
+  >
+    <Text
+      numberOfLines={1}
+      style={
+        Array [
+          Object {
+            "color": "#ffffff",
+            "fontSize": 16,
+            "height": 16,
+            "lineHeight": 16,
+            "textTransform": "uppercase",
+          },
+          Object {
+            "color": "#aaa",
+          },
+        ]
+      }
+    >
+      Button
+    </Text>
+  </View>
+</TouchableOpacity>
+`;
+
+exports[`should render with custom content 1`] = `
+<TouchableOpacity
+  activeOpacity={0.5}
+  disabled={false}
+>
+  <View
+    style={
+      Array [
+        Object {
+          "alignItems": "center",
+          "backgroundColor": "#8e8e93",
+          "borderRadius": 5,
+          "flexDirection": "row",
+          "height": 50,
+          "justifyContent": "center",
+          "paddingHorizontal": 15,
+        },
+        undefined,
+      ]
+    }
+  >
+    <Text>
+      CUSTOM CONTENT
     </Text>
   </View>
 </TouchableOpacity>
@@ -108,34 +161,13 @@ exports[`should render with custom styles 1`] = `
         Object {
           "backgroundColor": "#000000",
         },
-        false,
       ]
     }
-  >
-    <Text
-      numberOfLines={1}
-      style={
-        Array [
-          Object {
-            "color": "#ffffff",
-            "fontSize": 16,
-            "height": 16,
-            "lineHeight": 16,
-            "textTransform": "uppercase",
-          },
-          Object {
-            "color": "#ffffff",
-          },
-        ]
-      }
-    >
-      TEXT
-    </Text>
-  </View>
+  />
 </TouchableOpacity>
 `;
 
-exports[`should render with icon 1`] = `
+exports[`should render with image only 1`] = `
 <TouchableOpacity
   activeOpacity={0.5}
   disabled={false}
@@ -153,7 +185,111 @@ exports[`should render with icon 1`] = `
           "paddingHorizontal": 15,
         },
         undefined,
-        false,
+      ]
+    }
+  >
+    <Image
+      source={
+        Object {
+          "uri": "image.png",
+        }
+      }
+      style={
+        Array [
+          Object {
+            "flexShrink": 0,
+            "height": 20,
+            "marginHorizontal": 5,
+            "tintColor": "#ffffff",
+            "width": 20,
+          },
+          undefined,
+        ]
+      }
+    />
+  </View>
+</TouchableOpacity>
+`;
+
+exports[`should render with left image 1`] = `
+<TouchableOpacity
+  activeOpacity={0.5}
+  disabled={false}
+>
+  <View
+    style={
+      Array [
+        Object {
+          "alignItems": "center",
+          "backgroundColor": "#8e8e93",
+          "borderRadius": 5,
+          "flexDirection": "row",
+          "height": 50,
+          "justifyContent": "center",
+          "paddingHorizontal": 15,
+        },
+        undefined,
+      ]
+    }
+  >
+    <Image
+      source={
+        Object {
+          "uri": "left.png",
+        }
+      }
+      style={
+        Array [
+          Object {
+            "flexShrink": 0,
+            "height": 20,
+            "marginHorizontal": 5,
+            "tintColor": "#ffffff",
+            "width": 20,
+          },
+          undefined,
+        ]
+      }
+    />
+    <Text
+      numberOfLines={1}
+      style={
+        Array [
+          Object {
+            "color": "#ffffff",
+            "fontSize": 16,
+            "height": 16,
+            "lineHeight": 16,
+            "textTransform": "uppercase",
+          },
+          undefined,
+        ]
+      }
+    >
+      Right Text
+    </Text>
+  </View>
+</TouchableOpacity>
+`;
+
+exports[`should render with right image 1`] = `
+<TouchableOpacity
+  activeOpacity={0.5}
+  disabled={false}
+>
+  <View
+    style={
+      Array [
+        Object {
+          "alignItems": "center",
+          "backgroundColor": "#8e8e93",
+          "borderRadius": 5,
+          "flexDirection": "row",
+          "height": 50,
+          "justifyContent": "center",
+          "paddingHorizontal": 15,
+        },
+        undefined,
       ]
     }
   >
@@ -172,12 +308,12 @@ exports[`should render with icon 1`] = `
         ]
       }
     >
-      TEXT
+      Left Text
     </Text>
     <Image
       source={
         Object {
-          "uri": "image.png",
+          "uri": "right.png",
         }
       }
       style={
@@ -185,12 +321,11 @@ exports[`should render with icon 1`] = `
           Object {
             "flexShrink": 0,
             "height": 20,
+            "marginHorizontal": 5,
             "tintColor": "#ffffff",
             "width": 20,
           },
-          Object {
-            "tintColor": "#ffffff",
-          },
+          undefined,
         ]
       }
     />

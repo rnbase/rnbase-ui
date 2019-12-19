@@ -1,4 +1,5 @@
 import React from 'react';
+import { Text } from 'react-native';
 
 // Note: test renderer must be required after react-native.
 import TestRenderer from 'react-test-renderer';
@@ -14,30 +15,55 @@ jest.doMock('react-native/Libraries/Components/Touchable/TouchableOpacity', () =
  */
 const { default: Button } = jest.requireActual('../Button');
 
-const createElement = (props: Props) => <Button {...props} text="TEXT" />;
+const createElement = (props: Props) => <Button {...props} />;
 
 const createRenderer = (props: Props) => TestRenderer.create(createElement(props));
 
-it('should render normally', () => {
-  expect(createRenderer({})).toMatchSnapshot();
+it('should render with custom styles', () => {
+  expect(createRenderer({ style: { backgroundColor: '#000000' } })).toMatchSnapshot();
 });
 
 it('should render as disabled', () => {
   expect(createRenderer({ disabled: true })).toMatchSnapshot();
 });
 
-it('should render with custom styles', () => {
+it('should render text only', () => {
+  expect(createRenderer({ text: 'Button' })).toMatchSnapshot();
+});
+
+it('should render text with custom styles', () => {
+  expect(createRenderer({ text: 'Button', textStyle: { color: '#aaa' } })).toMatchSnapshot();
+});
+
+it('should render with image only', () => {
+  expect(createRenderer({ imageSource: { uri: 'image.png' } })).toMatchSnapshot();
+});
+
+it('should render with left image', () => {
   expect(
     createRenderer({
-      style: { backgroundColor: '#000000' },
-      textStyle: { color: '#ffffff' },
+      text: 'Right Text',
+      imageSource: { uri: 'left.png' },
+      imageAlignment: 'left',
     }),
   ).toMatchSnapshot();
 });
 
-it('should render with icon', () => {
+it('should render with right image', () => {
   expect(
-    createRenderer({ imageSource: { uri: 'image.png' }, imageStyle: { tintColor: '#ffffff' } }),
+    createRenderer({
+      text: 'Left Text',
+      imageSource: { uri: 'right.png' },
+      imageAlignment: 'right',
+    }),
+  ).toMatchSnapshot();
+});
+
+it('should render with custom content', () => {
+  expect(
+    createRenderer({
+      children: <Text>CUSTOM CONTENT</Text>,
+    }),
   ).toMatchSnapshot();
 });
 
