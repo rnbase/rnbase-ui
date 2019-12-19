@@ -48,7 +48,7 @@ export interface Props extends ViewProps {
   style?: StyleProp<ViewStyle>;
   textStyle?: StyleProp<TextStyle>;
   imageStyle?: StyleProp<ImageStyle>;
-  themeKey?: string,
+  themeKey?: string;
 }
 
 const Avatar: React.FC<Props> = ({
