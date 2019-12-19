@@ -31,10 +31,6 @@ it('should render as disabled', () => {
   expect(createRenderer({ disabled: true })).toMatchSnapshot();
 });
 
-it('should not render', () => {
-  expect(createRenderer({ visible: false })).toMatchSnapshot();
-});
-
 it('should render with custom styles', () => {
   expect(
     createRenderer({

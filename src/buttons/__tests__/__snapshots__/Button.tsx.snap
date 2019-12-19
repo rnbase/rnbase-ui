@@ -1,7 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`should not render 1`] = `null`;
-
 exports[`should render as disabled 1`] = `
 <TouchableOpacity
   activeOpacity={0.5}

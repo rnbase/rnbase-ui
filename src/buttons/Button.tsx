@@ -16,7 +16,6 @@ import {
 import { Theme as ThemeType, useTheme } from '../theming';
 
 export interface Props extends TouchableOpacityProps {
-  visible?: boolean;
   children?: React.ReactNode;
   disabled?: boolean;
   style?: StyleProp<ViewStyle>;
@@ -26,7 +25,6 @@ export interface Props extends TouchableOpacityProps {
 }
 
 const Button: React.FC<Props> = ({
-  visible,
   children,
   style,
   textStyle,
@@ -37,7 +35,7 @@ const Button: React.FC<Props> = ({
   const theme = useTheme();
   const styles = useMemo(() => createStyleSheet(theme), [theme]);
 
-  return !visible ? null : (
+  return (
     <TouchableOpacity activeOpacity={0.5} {...props}>
       <View style={[styles.button, style, props.disabled && styles.disabled]}>
         {children && (
@@ -85,7 +83,6 @@ const createStyleSheet = ({ Colors, Button: Theme }: ThemeType) =>
   });
 
 Button.defaultProps = {
-  visible: true,
   disabled: false,
 };
 
