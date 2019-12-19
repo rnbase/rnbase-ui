@@ -1,7 +1,6 @@
 import React from 'react';
-import deepmerge from 'deepmerge';
-import defaultTheme, { ColorSchemeName, ThemeFactory, resolveTheme } from './theme';
-import ThemeContext from './ThemeContext';
+import ThemeContext, { createThemeCache } from './ThemeContext';
+import { ColorSchemeName, ThemeFactory } from './theme';
 
 interface Props {
   colorScheme?: ColorSchemeName;
@@ -9,18 +8,10 @@ interface Props {
   children?: React.ReactNode;
 }
 
-const ThemeProvider: React.FC<Props> = ({ colorScheme, theme, children }) => {
-  const value = React.useMemo(() => {
-    return theme
-      ? deepmerge(resolveTheme(defaultTheme, colorScheme), resolveTheme(theme, colorScheme))
-      : resolveTheme(defaultTheme, colorScheme);
-  }, [colorScheme, theme]);
+const ThemeProvider: React.FC<Props> = ({ theme, colorScheme, children }) => {
+  const value = React.useMemo(() => createThemeCache(theme, colorScheme), [theme, colorScheme]);
 
   return <ThemeContext.Provider value={value}>{children}</ThemeContext.Provider>;
-};
-
-ThemeProvider.defaultProps = {
-  colorScheme: 'no-preference',
 };
 
 export default ThemeProvider;

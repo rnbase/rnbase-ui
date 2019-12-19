@@ -67,15 +67,4 @@ const defaultTheme: ThemeFactory = (colorScheme?: ColorSchemeName) => ({
   },
 });
 
-export function resolveTheme(
-  theme: ThemeFactory = defaultTheme,
-  colorScheme?: ColorSchemeName,
-): Theme {
-  if (theme instanceof Function) {
-    return theme(colorScheme);
-  }
-
-  return theme;
-}
-
 export default defaultTheme;
