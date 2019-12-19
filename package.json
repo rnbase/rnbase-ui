@@ -25,7 +25,9 @@
   ],
   "scripts": {
     "test": "jest",
-    "lint": "eslint --ext .js,.jsx,.ts,.tsx ./"
+    "lint": "eslint --ext .js,.jsx,.ts,.tsx ./",
+    "validate": "yarn tsc && yarn lint --fix && yarn test -u",
+    "coverage": "yarn test --coverage --watchAll=false"
   },
   "main": "src/index.ts",
   "devDependencies": {
