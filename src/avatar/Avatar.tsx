@@ -98,19 +98,31 @@ const Avatar: React.FC<Props> = ({
 
   const styles = useThemeStyles(createStyleSheet, themeKey);
 
-  const rootStyles = [styles.root, style];
-  const textStyles = [styles.text, textStyle];
-  const imageStyles = [styles.image, imageStyle];
+  const rootStyles = [
+    styles.root,
+    style,
+    {
+      width: size,
+      height: size,
+    },
+  ];
 
-  rootStyles.push({
-    width: size,
-    height: size,
-    ...(shape === 'circle' && { borderRadius: size / 2 }),
-  });
+  if (shape === 'circle') {
+    rootStyles.push({ borderRadius: size / 2 });
+  }
 
   if (initials) {
-    initials.color && rootStyles.push({ backgroundColor: initials.color });
-    textStyles.push({ fontSize: PixelRatio.roundToNearestPixel(size / 2.5) });
+    const textStyles = [
+      styles.text,
+      textStyle,
+      {
+        fontSize: PixelRatio.roundToNearestPixel(size / 2.5),
+      },
+    ];
+
+    if (initials.color) {
+      rootStyles.push({ backgroundColor: initials.color });
+    }
 
     return (
       <View {...props} style={rootStyles}>
@@ -123,7 +135,7 @@ const Avatar: React.FC<Props> = ({
 
   return !avatarImageSource ? null : (
     <View {...props} style={rootStyles}>
-      <Image style={imageStyles} source={avatarImageSource} onError={onError} />
+      <Image style={[styles.image, imageStyle]} source={avatarImageSource} onError={onError} />
     </View>
   );
 };
