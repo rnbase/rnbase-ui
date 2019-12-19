@@ -93,7 +93,7 @@ const Avatar: React.FC<Props> = ({
         color: colorize && getColor(name),
         text: getInitials(name),
       },
-    [name, defaultImageSource, avatarImageSource],
+    [name, colorize, avatarImageSource, defaultImageSource],
   );
 
   const styles = useThemeStyles(createStyleSheet, themeKey);
