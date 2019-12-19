@@ -48,6 +48,7 @@ export interface Props extends ViewProps {
   style?: StyleProp<ViewStyle>;
   textStyle?: StyleProp<TextStyle>;
   imageStyle?: StyleProp<ImageStyle>;
+  themeKey?: string,
 }
 
 const Avatar: React.FC<Props> = ({
@@ -61,6 +62,7 @@ const Avatar: React.FC<Props> = ({
   style,
   textStyle,
   imageStyle,
+  themeKey,
   ...props
 }) => {
   const getAvatarImageSource = useCallback(() => {
@@ -84,7 +86,7 @@ const Avatar: React.FC<Props> = ({
 
   const onError = useCallback(() => setAvatarImageSource(defaultImageSource), [defaultImageSource]);
 
-  const styles = useThemeStyles(createStyleSheet, 'Avatar');
+  const styles = useThemeStyles(createStyleSheet, themeKey);
 
   const rootShape = {
     width: size,
@@ -131,6 +133,7 @@ Avatar.defaultProps = {
   shape: 'circle',
   colorize: false,
   defaultImageSource: require('./default.png'),
+  themeKey: 'Avatar',
 };
 
 const createStyleSheet = ({ Colors, Fonts }: Theme) =>
