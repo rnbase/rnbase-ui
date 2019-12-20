@@ -24,6 +24,7 @@ export interface Props extends TouchableOpacityProps {
   imageSource?: ImageSourcePropType;
   imageStyle?: StyleProp<ImageStyle>;
   imageAlignment?: 'left' | 'right';
+  themeKey?: string;
 }
 
 const Button: React.FC<Props> = ({
@@ -33,10 +34,11 @@ const Button: React.FC<Props> = ({
   textStyle,
   imageSource,
   imageStyle,
-  imageAlignment,
+  imageAlignment = 'left',
+  themeKey = 'Button',
   ...props
 }) => {
-  const { styles, activeOpacity = 0.5 } = useThemeProps(createStyleSheet, 'Button');
+  const { styles, activeOpacity = 0.5 } = useThemeProps(createStyleSheet, themeKey);
 
   let content;
 
@@ -106,10 +108,5 @@ const createStyleSheet = ({ Colors }: Theme) =>
       opacity: 0.5,
     },
   });
-
-Button.defaultProps = {
-  disabled: false,
-  imageAlignment: 'left',
-};
 
 export default Button;

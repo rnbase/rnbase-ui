@@ -8,7 +8,7 @@
  * @format
  */
 
-import React from 'react';
+import React, { useState } from 'react';
 import { Alert, SafeAreaView, StyleSheet, ScrollView, View, Text, StatusBar } from 'react-native';
 
 import {
@@ -20,11 +20,13 @@ import {
 } from 'react-native/Libraries/NewAppScreen';
 
 import theme from './theme';
-import { ThemeProvider, Avatar, Button } from '../';
+import { ThemeProvider, Avatar, ActivityButton, Button } from '../';
 
 const App = () => {
   // eslint-disable-next-line no-undef
   const usingHermes = typeof HermesInternal === 'object' && HermesInternal !== null;
+
+  const [busy, setBusy] = useState(false);
 
   return (
     <ThemeProvider colorScheme="dark" theme={theme}>
@@ -47,6 +49,16 @@ const App = () => {
             name="John Smith"
             imageSource={{ uri: 'https://randomuser.me/api/portraits/women/noimage.jpg' }}
             defaultImageSource={{ uri: 'https://randomuser.me/api/portraits/women/68.jpg' }}
+          />
+          <ActivityButton
+            busy={busy}
+            text="Activity Button"
+            imageSource={require('./src/assets/Check.png')}
+            imageAlignment="right"
+            onPress={() => {
+              setBusy(true);
+              setTimeout(() => setBusy(false), 1000);
+            }}
           />
           <View style={styles.body}>
             <View style={styles.sectionContainer}>

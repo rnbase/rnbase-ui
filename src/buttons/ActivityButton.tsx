@@ -3,6 +3,8 @@ import { ActivityIndicator, Animated, Easing, StyleSheet, View } from 'react-nat
 
 import Button, { Props as ButtonProps } from './Button';
 
+import { useThemeProps } from '../theming';
+
 export interface Props extends ButtonProps {
   busy?: boolean;
   indicatorColor?: string;
@@ -10,7 +12,12 @@ export interface Props extends ButtonProps {
 
 const toValue = (value?: boolean) => (value ? 1 : 0);
 
-const ActivityButton: React.FC<Props> = ({ busy, indicatorColor, ...props }) => {
+const ActivityButton: React.FC<Props> = ({
+  busy,
+  indicatorColor,
+  themeKey = 'ActivityButton',
+  ...props
+}) => {
   const [animatedValue] = useState(() => new Animated.Value(toValue(busy)));
 
   useEffect(() => {
@@ -21,6 +28,11 @@ const ActivityButton: React.FC<Props> = ({ busy, indicatorColor, ...props }) => 
       easing: Easing.out(Easing.exp),
     }).start();
   }, [animatedValue, busy]);
+
+  const { styles, indicatorColor: themeIndicatorColor, ...rest } = useThemeProps(
+    createStyleSheet,
+    themeKey,
+  );
 
   const buttonAnimation = {
     opacity: animatedValue.interpolate({
@@ -78,21 +90,22 @@ const ActivityButton: React.FC<Props> = ({ busy, indicatorColor, ...props }) => 
           the component initialized with animating=false
           https://github.com/facebook/react-native/issues/9023
         */}
-        {busy && <ActivityIndicator size="small" color={indicatorColor} />}
+        {busy && <ActivityIndicator size="small" color={indicatorColor || themeIndicatorColor} />}
       </Animated.View>
       <Animated.View style={buttonAnimation}>
-        <Button {...props} />
+        <Button {...rest} {...props} />
       </Animated.View>
     </View>
   );
 };
 
-const styles = StyleSheet.create({
-  indicator: {
-    ...StyleSheet.absoluteFillObject,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+const createStyleSheet = () =>
+  StyleSheet.create({
+    indicator: {
+      ...StyleSheet.absoluteFillObject,
+      alignItems: 'center',
+      justifyContent: 'center',
+    },
+  });
 
 export default ActivityButton;

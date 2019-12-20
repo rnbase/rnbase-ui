@@ -30,7 +30,6 @@ exports[`should render as disabled 1`] = `
 exports[`should render text only 1`] = `
 <TouchableOpacity
   activeOpacity={0.5}
-  disabled={false}
 >
   <View
     style={
@@ -72,7 +71,6 @@ exports[`should render text only 1`] = `
 exports[`should render text with custom styles 1`] = `
 <TouchableOpacity
   activeOpacity={0.5}
-  disabled={false}
 >
   <View
     style={
@@ -116,7 +114,6 @@ exports[`should render text with custom styles 1`] = `
 exports[`should render with custom content 1`] = `
 <TouchableOpacity
   activeOpacity={0.5}
-  disabled={false}
 >
   <View
     style={
@@ -144,7 +141,6 @@ exports[`should render with custom content 1`] = `
 exports[`should render with custom styles 1`] = `
 <TouchableOpacity
   activeOpacity={0.5}
-  disabled={false}
 >
   <View
     style={
@@ -170,7 +166,6 @@ exports[`should render with custom styles 1`] = `
 exports[`should render with image only 1`] = `
 <TouchableOpacity
   activeOpacity={0.5}
-  disabled={false}
 >
   <View
     style={
@@ -214,7 +209,6 @@ exports[`should render with image only 1`] = `
 exports[`should render with left image 1`] = `
 <TouchableOpacity
   activeOpacity={0.5}
-  disabled={false}
 >
   <View
     style={
@@ -275,7 +269,6 @@ exports[`should render with left image 1`] = `
 exports[`should render with right image 1`] = `
 <TouchableOpacity
   activeOpacity={0.5}
-  disabled={false}
 >
   <View
     style={
