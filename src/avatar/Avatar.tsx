@@ -14,7 +14,7 @@ import {
   ViewStyle,
 } from 'react-native';
 
-import { Theme, useThemeStyles } from '../theming';
+import { Theme, useThemeProps } from '../theming';
 
 const getColor = (string: string): string => {
   let hash = 0;
@@ -96,7 +96,7 @@ const Avatar: React.FC<Props> = ({
     [name, colorize, avatarImageSource, defaultImageSource],
   );
 
-  const styles = useThemeStyles(createStyleSheet, themeKey);
+  const { styles } = useThemeProps(createStyleSheet, themeKey);
 
   const rootStyles = [
     styles.root,

@@ -4,6 +4,11 @@ export type Theme = {
   [key: string]: any;
 };
 
+export type ThemeProps<T> = {
+  styles: T;
+  [key: string]: any;
+};
+
 interface ThemeFactoryArgs {
   colorScheme: ColorSchemeName;
   select<T>(specifics: { [colorScheme in ColorSchemeName | 'default']?: T }): T | undefined;

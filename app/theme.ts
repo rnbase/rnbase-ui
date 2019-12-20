@@ -7,20 +7,32 @@ const theme: ThemeFactory = ({ select }) => {
   };
 
   const Component = {
-    wrapper: {
-      height: 90,
+    styles: {
+      wrapper: {
+        height: 90,
+      },
+      text: {
+        color: Colors.green,
+        textTransform: 'none',
+      },
+      unused: {
+        color: 'transparent',
+      },
     },
-    text: {
-      color: Colors.green,
-      textTransform: 'none',
+  };
+
+  const Button = {
+    styles: {
+      root: {
+        backgroundColor: Colors.blue,
+      },
     },
-    unused: {
-      color: 'transparent',
-    },
+    activeOpacity: 0.75,
   };
 
   return {
     Colors,
+    Button,
     Component,
   };
 };

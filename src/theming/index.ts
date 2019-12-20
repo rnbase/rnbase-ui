@@ -12,9 +12,9 @@ export type ThemeFactory = ThemeFactoryType;
 
 type NamedStyles<T> = { [P in keyof T]: ViewStyle | TextStyle | ImageStyle };
 
-export const useThemeStyles = <T extends NamedStyles<T> | NamedStyles<any>>(
+export const useThemeProps = <T extends NamedStyles<T> | NamedStyles<any>>(
   stylesFactory: (theme: Theme) => T,
-  componentName: string,
-): T => {
-  return useContext(ThemeContext).getStyles(stylesFactory, componentName);
+  themeKey: string,
+) => {
+  return useContext(ThemeContext).getThemeProps(stylesFactory, themeKey);
 };

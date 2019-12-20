@@ -13,7 +13,7 @@ import {
   ViewStyle,
 } from 'react-native';
 
-import { Theme, useThemeStyles } from '../theming';
+import { Theme, useThemeProps } from '../theming';
 
 export interface Props extends TouchableOpacityProps {
   children?: React.ReactNode;
@@ -36,7 +36,7 @@ const Button: React.FC<Props> = ({
   imageAlignment,
   ...props
 }) => {
-  const styles = useThemeStyles(createStyleSheet, 'Button');
+  const { styles, activeOpacity = 0.5 } = useThemeProps(createStyleSheet, 'Button');
 
   let content;
 
@@ -71,7 +71,7 @@ const Button: React.FC<Props> = ({
   }
 
   return (
-    <TouchableOpacity activeOpacity={0.5} {...props}>
+    <TouchableOpacity activeOpacity={activeOpacity} {...props}>
       <View style={rootStyle}>{content}</View>
     </TouchableOpacity>
   );

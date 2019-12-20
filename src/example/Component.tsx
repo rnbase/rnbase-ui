@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleProp, StyleSheet, Text, TextStyle, View, ViewProps, ViewStyle } from 'react-native';
 
-import { Theme, useThemeStyles } from '../theming';
+import { Theme, useThemeProps } from '../theming';
 
 export interface Props extends ViewProps {
   visible?: boolean;
@@ -11,7 +11,7 @@ export interface Props extends ViewProps {
 }
 
 const Component: React.FC<Props> = ({ visible, children, style, textStyle, ...props }) => {
-  const styles = useThemeStyles(createStyleSheet, 'Component');
+  const { styles } = useThemeProps(createStyleSheet, 'Component');
 
   return !visible ? null : (
     <View style={[styles.wrapper, style]} {...props}>

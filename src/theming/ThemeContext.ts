@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet } from 'react-native';
 import deepmerge from 'deepmerge';
-import defaultTheme, { Theme, ThemeFactory, ColorSchemeName } from './theme';
+import defaultTheme, { Theme, ThemeFactory, ThemeProps, ColorSchemeName } from './theme';
 
 function resolveTheme(theme: ThemeFactory, colorScheme: ColorSchemeName): Theme {
   if (theme instanceof Function) {
@@ -16,30 +16,35 @@ function resolveTheme(theme: ThemeFactory, colorScheme: ColorSchemeName): Theme 
 
 interface ThemeCache {
   theme: Theme;
-  getStyles<T>(stylesFactory: (theme: Theme) => T, stylesKey: string): T;
+  getThemeProps<T>(stylesFactory: (theme: Theme) => T, themeKey: string): ThemeProps<T>;
 }
 
 export function createThemeCache(
   customTheme: ThemeFactory = defaultTheme,
   colorScheme: ColorSchemeName = 'no-preference',
 ): ThemeCache {
-  var styles: any = {};
+  var cache: any = {};
   var theme = customTheme
     ? deepmerge(resolveTheme(defaultTheme, colorScheme), resolveTheme(customTheme, colorScheme))
     : resolveTheme(defaultTheme, colorScheme);
 
   return {
     theme,
-    getStyles(stylesFactory, stylesKey) {
-      if (!styles[stylesKey]) {
-        const defaultStyles = stylesFactory(theme);
+    getThemeProps(stylesFactory, themeKey) {
+      if (!cache[themeKey]) {
+        const styles = stylesFactory(theme);
+        const props = theme[themeKey];
 
-        styles[stylesKey] = theme[stylesKey]
-          ? StyleSheet.create(deepmerge(defaultStyles, theme[stylesKey]))
-          : defaultStyles;
+        cache[themeKey] = {
+          ...props,
+          styles:
+            props && props.styles
+              ? StyleSheet.create(deepmerge(styles, props.styles) as any)
+              : styles,
+        };
       }
 
-      return styles[stylesKey];
+      return cache[themeKey];
     },
   };
 }
