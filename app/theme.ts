@@ -1,8 +1,8 @@
 import { ThemeFactory } from '../';
 
-const theme: ThemeFactory = ({ select }) => {
+const theme: ThemeFactory = ({ scheme }) => {
   const Colors = {
-    blue: select({ default: '#00F' }),
+    blue: scheme({ default: '#00F' }),
     green: '#0E0',
   };
 

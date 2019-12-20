@@ -7,7 +7,7 @@ function resolveTheme(theme: ThemeFactory, colorScheme: ColorSchemeName): Theme 
   if (theme instanceof Function) {
     return theme({
       colorScheme,
-      select: spec => (colorScheme in spec ? spec[colorScheme] : spec.default),
+      scheme: spec => (colorScheme in spec ? spec[colorScheme] : spec.default),
     });
   }
 
