@@ -34,10 +34,9 @@ export function createThemeCache(
       if (!styles[stylesKey]) {
         const defaultStyles = stylesFactory(theme);
 
-        styles[stylesKey] =
-          stylesKey && theme[stylesKey]
-            ? StyleSheet.create(deepmerge(defaultStyles, theme[stylesKey]))
-            : defaultStyles;
+        styles[stylesKey] = theme[stylesKey]
+          ? StyleSheet.create(deepmerge(defaultStyles, theme[stylesKey]))
+          : defaultStyles;
       }
 
       return styles[stylesKey];

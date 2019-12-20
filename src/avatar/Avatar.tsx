@@ -53,16 +53,16 @@ export interface Props extends ViewProps {
 
 const Avatar: React.FC<Props> = ({
   size,
-  shape,
+  shape = 'circle',
   name,
   email,
-  colorize,
+  colorize = false,
   imageSource,
-  defaultImageSource,
+  defaultImageSource = require('./default.png'),
   style,
   textStyle,
   imageStyle,
-  themeKey,
+  themeKey = 'Avatar',
   ...props
 }) => {
   const getAvatarImageSource = useCallback(() => {
@@ -90,7 +90,7 @@ const Avatar: React.FC<Props> = ({
     () =>
       name &&
       avatarImageSource === defaultImageSource && {
-        color: colorize && getColor(name),
+        color: colorize ? getColor(name) : undefined,
         text: getInitials(name),
       },
     [name, colorize, avatarImageSource, defaultImageSource],
@@ -138,13 +138,6 @@ const Avatar: React.FC<Props> = ({
       <Image style={[styles.image, imageStyle]} source={avatarImageSource} onError={onError} />
     </View>
   );
-};
-
-Avatar.defaultProps = {
-  shape: 'circle',
-  colorize: false,
-  defaultImageSource: require('./default.png'),
-  themeKey: 'Avatar',
 };
 
 const createStyleSheet = ({ Colors, Fonts }: Theme) =>
