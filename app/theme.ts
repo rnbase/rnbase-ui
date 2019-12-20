@@ -4,17 +4,17 @@ const theme: ThemeFactory = ({ scheme }) => {
   const BaseColors = {
     white: '#ffffff',
     black: '#000000',
-    blue: scheme({ dark: '#0a84ff', default: '#007aff' }),
-    green: scheme({ dark: '#30d158', default: '#34c759' }),
-    orange: scheme({ dark: '#ff9f0a', default: '#ff9500' }),
-    red: scheme({ dark: '#ff453a', default: '#ff3b30' }),
-    yellow: scheme({ dark: '#ffd60a', default: '#ffcc00' }),
+    blue: scheme({ default: '#007aff', dark: '#0a84ff' }),
+    green: scheme({ default: '#34c759', dark: '#30d158' }),
+    orange: scheme({ default: '#ff9500', dark: '#ff9f0a' }),
+    red: scheme({ default: '#ff3b30', dark: '#ff453a' }),
+    yellow: scheme({ default: '#ffcc00', dark: '#ffd60a' }),
     gray: '#8e8e93',
-    gray2: scheme({ dark: '#636366', default: '#aeaeb2' }),
-    gray3: scheme({ dark: '#48484a', default: '#c7c7cc' }),
-    gray4: scheme({ dark: '#3a3a3c', default: '#d1d1d6' }),
-    gray5: scheme({ dark: '#2c2c2e', default: '#e5e5ea' }),
-    gray6: scheme({ dark: '#1c1c1e', default: '#f2f2f7' }),
+    gray2: scheme({ default: '#aeaeb2', dark: '#636366' }),
+    gray3: scheme({ default: '#c7c7cc', dark: '#48484a' }),
+    gray4: scheme({ default: '#d1d1d6', dark: '#3a3a3c' }),
+    gray5: scheme({ default: '#e5e5ea', dark: '#2c2c2e' }),
+    gray6: scheme({ default: '#f2f2f7', dark: '#1c1c1e' }),
   };
 
   const Colors = {
