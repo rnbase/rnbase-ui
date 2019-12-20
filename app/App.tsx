@@ -20,7 +20,7 @@ import {
 } from 'react-native/Libraries/NewAppScreen';
 
 import theme from './theme';
-import { ThemeProvider, Component, Avatar, Button } from '../';
+import { ThemeProvider, Avatar, Button } from '../';
 
 const App = () => {
   // eslint-disable-next-line no-undef
@@ -42,7 +42,6 @@ const App = () => {
             imageSource={require('./src/assets/Search.png')}
             onPress={() => Alert.alert('Pressed', 'Simple Button')}
           />
-          <Component>Component From Library</Component>
           <Avatar
             size={50}
             name="John Smith"

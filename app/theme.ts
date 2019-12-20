@@ -6,21 +6,6 @@ const theme: ThemeFactory = ({ scheme }) => {
     green: '#0E0',
   };
 
-  const Component = {
-    styles: {
-      wrapper: {
-        height: 90,
-      },
-      text: {
-        color: Colors.green,
-        textTransform: 'none',
-      },
-      unused: {
-        color: 'transparent',
-      },
-    },
-  };
-
   const Button = {
     styles: {
       root: {
@@ -33,7 +18,6 @@ const theme: ThemeFactory = ({ scheme }) => {
   return {
     Colors,
     Button,
-    Component,
   };
 };
 
