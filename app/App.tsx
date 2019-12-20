@@ -39,28 +39,53 @@ const App = () => {
               <Text style={styles.footer}>Engine: Hermes</Text>
             </View>
           )}
-          <Button
-            text="Simple Button"
-            imageSource={require('./src/assets/Search.png')}
-            onPress={() => Alert.alert('Pressed', 'Simple Button')}
-          />
-          <Avatar
-            size={50}
-            name="John Smith"
-            imageSource={{ uri: 'https://randomuser.me/api/portraits/women/noimage.jpg' }}
-            defaultImageSource={{ uri: 'https://randomuser.me/api/portraits/women/68.jpg' }}
-          />
-          <ActivityButton
-            busy={busy}
-            text="Activity Button"
-            imageSource={require('./src/assets/Check.png')}
-            imageAlignment="right"
-            onPress={() => {
-              setBusy(true);
-              setTimeout(() => setBusy(false), 1000);
-            }}
-          />
           <View style={styles.body}>
+            <View style={styles.stack}>
+              <Avatar
+                size={50}
+                name="John Smith"
+                imageSource={{ uri: 'https://randomuser.me/api/portraits/none.jpg' }}
+                defaultImageSource={{ uri: 'https://randomuser.me/api/portraits/women/68.jpg' }}
+              />
+              <Avatar
+                size={50}
+                email="jitewaboh@lagify.com"
+                defaultImageSource={{ uri: 'https://randomuser.me/api/portraits/women/68.jpg' }}
+              />
+              <Avatar
+                size={50}
+                name="Elon Musk"
+                colorize={true}
+                imageSource={{ uri: 'https://randomuser.me/api/portraits/none.jpg' }}
+              />
+              <Avatar
+                size={50}
+                name="John Smith"
+                imageSource={{ uri: 'https://randomuser.me/api/portraits/women/68.jpg' }}
+              />
+              <Avatar
+                size={50}
+                email="user@email.com"
+                imageSource={{ uri: 'https://randomuser.me/api/portraits/none.jpg' }}
+              />
+            </View>
+            <View style={styles.stack}>
+              <Button
+                text="Simple Button"
+                imageSource={require('./src/assets/Search.png')}
+                onPress={() => Alert.alert('Pressed', 'Simple Button')}
+              />
+              <ActivityButton
+                busy={busy}
+                text="Activity Button"
+                imageSource={require('./src/assets/Check.png')}
+                imageAlignment="right"
+                onPress={() => {
+                  setBusy(true);
+                  setTimeout(() => setBusy(false), 3000);
+                }}
+              />
+            </View>
             <View style={styles.sectionContainer}>
               <Text style={styles.sectionTitle}>Step One</Text>
               <Text style={styles.sectionDescription}>
@@ -130,6 +155,11 @@ const styles = StyleSheet.create({
     padding: 4,
     paddingRight: 12,
     textAlign: 'right',
+  },
+  stack: {
+    marginVertical: 10,
+    flexDirection: 'row',
+    justifyContent: 'space-around',
   },
 });
 
