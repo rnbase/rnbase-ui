@@ -22,6 +22,17 @@ const theme: ThemeFactory = ({ scheme }) => {
     indicatorColor: Colors.red,
   };
 
+  const ActivityButtonButton = {
+    styles: {
+      root: {
+        margin: 5,
+      },
+      image: {
+        tintColor: Colors.blue,
+      },
+    },
+  };
+
   const Button = {
     styles: {
       root: {
@@ -36,6 +47,7 @@ const theme: ThemeFactory = ({ scheme }) => {
     Colors,
     Avatar,
     ActivityButton,
+    ActivityButtonButton,
     Button,
   };
 };

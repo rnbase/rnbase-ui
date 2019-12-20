@@ -93,7 +93,7 @@ const ActivityButton: React.FC<Props> = ({
         {busy && <ActivityIndicator size="small" color={indicatorColor || themeIndicatorColor} />}
       </Animated.View>
       <Animated.View style={buttonAnimation}>
-        <Button {...rest} {...props} />
+        <Button themeKey={`${themeKey}Button`} {...rest} {...props} />
       </Animated.View>
     </View>
   );

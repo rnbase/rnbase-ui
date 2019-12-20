@@ -52,7 +52,9 @@ exports[`should render as busy 1`] = `
       }
     }
   >
-    <Button>
+    <Button
+      themeKey="ActivityButtonButton"
+    >
       <Text>
         TEXT
       </Text>
@@ -108,6 +110,7 @@ exports[`should render as disabled 1`] = `
   >
     <Button
       disabled={true}
+      themeKey="ActivityButtonButton"
     >
       <Text>
         TEXT
@@ -162,7 +165,9 @@ exports[`should render normally 1`] = `
       }
     }
   >
-    <Button>
+    <Button
+      themeKey="ActivityButtonButton"
+    >
       <Text>
         TEXT
       </Text>
@@ -227,6 +232,7 @@ exports[`should render with custom styles 1`] = `
           "color": "#ffffff",
         }
       }
+      themeKey="ActivityButtonButton"
     >
       <Text>
         TEXT
