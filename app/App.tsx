@@ -29,7 +29,7 @@ const App = () => {
   const [busy, setBusy] = useState(false);
 
   return (
-    <ThemeProvider colorScheme="dark" theme={theme}>
+    <ThemeProvider colorScheme="no-preference" theme={theme}>
       <StatusBar barStyle="dark-content" />
       <SafeAreaView>
         <ScrollView contentInsetAdjustmentBehavior="automatic" style={styles.scrollView}>
