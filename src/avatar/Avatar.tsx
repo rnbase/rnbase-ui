@@ -86,6 +86,14 @@ const Avatar: React.FC<Props> = ({
 
   const onError = useCallback(() => setAvatarImageSource(defaultImageSource), [defaultImageSource]);
 
+  const shapeStyles = (stylesArray: Array<any>) => {
+    if (shape === 'circle') {
+      stylesArray.push({ borderRadius: size / 2 });
+    }
+
+    return stylesArray;
+  };
+
   const initials = useMemo(
     () =>
       name &&
@@ -98,18 +106,16 @@ const Avatar: React.FC<Props> = ({
 
   const { styles } = useThemeProps(createStyleSheet, themeKey);
 
-  const rootStyles = [
+  const rootStyles = shapeStyles([
     styles.root,
     style,
     {
       width: size,
       height: size,
     },
-  ];
+  ]);
 
-  if (shape === 'circle') {
-    rootStyles.push({ borderRadius: size / 2 });
-  }
+  let content;
 
   if (initials) {
     const textStyles = [
@@ -124,18 +130,20 @@ const Avatar: React.FC<Props> = ({
       rootStyles.push({ backgroundColor: initials.color });
     }
 
-    return (
-      <View {...props} style={rootStyles}>
-        <Text style={textStyles} numberOfLines={1}>
-          {initials.text}
-        </Text>
-      </View>
+    content = (
+      <Text style={textStyles} numberOfLines={1}>
+        {initials.text}
+      </Text>
     );
+  } else {
+    const imageStyles = shapeStyles([styles.image, imageStyle]);
+
+    content = <Image style={imageStyles} source={avatarImageSource} onError={onError} />;
   }
 
-  return !avatarImageSource ? null : (
+  return (
     <View {...props} style={rootStyles}>
-      <Image style={[styles.image, imageStyle]} source={avatarImageSource} onError={onError} />
+      {content}
     </View>
   );
 };
