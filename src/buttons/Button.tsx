@@ -38,6 +38,14 @@ const Button: React.FC<Props> = ({
   themeKey = 'Button',
   ...props
 }) => {
+  const setDisabledStyles = (stylesArray: Array<any>, disabledStyle: StyleProp<any>) => {
+    if (props.disabled) {
+      stylesArray.push(disabledStyle);
+    }
+
+    return stylesArray;
+  };
+
   const { styles, activeOpacity = 0.5 } = useThemeProps(createStyleSheet, themeKey);
 
   let content;
@@ -48,15 +56,18 @@ const Button: React.FC<Props> = ({
     content = [];
 
     if (text) {
+      const textStyles = setDisabledStyles([styles.text, textStyle], styles.disabledText);
+
       content.push(
-        <Text key="text" style={[styles.text, textStyle]} numberOfLines={1}>
+        <Text key="text" style={textStyles} numberOfLines={1}>
           {text}
         </Text>,
       );
     }
 
     if (imageSource) {
-      const image = <Image key="image" style={[styles.image, imageStyle]} source={imageSource} />;
+      const imageStyles = setDisabledStyles([styles.image, imageStyle], styles.disabledImage);
+      const image = <Image key="image" style={imageStyles} source={imageSource} />;
 
       if (imageAlignment === 'left') {
         content.unshift(image);
@@ -66,46 +77,46 @@ const Button: React.FC<Props> = ({
     }
   }
 
-  const rootStyle = [styles.root, style];
-
-  if (props.disabled) {
-    rootStyle.push(styles.disabled);
-  }
+  const rootStyles = setDisabledStyles([styles.root, style], styles.disabledRoot);
 
   return (
     <TouchableOpacity activeOpacity={activeOpacity} {...props}>
-      <View style={rootStyle}>{content}</View>
+      <View style={rootStyles}>{content}</View>
     </TouchableOpacity>
   );
 };
 
-const createStyleSheet = ({ Colors }: Theme) =>
+const createStyleSheet = ({ Colors, Fonts }: Theme) =>
   StyleSheet.create({
     root: {
       height: 50,
-      borderRadius: 5,
+      borderRadius: 8,
       alignItems: 'center',
       flexDirection: 'row',
       paddingHorizontal: 15,
       justifyContent: 'center',
-      backgroundColor: Colors.gray,
+      backgroundColor: Colors.blue,
     },
     text: {
-      height: 16,
-      fontSize: 16,
-      lineHeight: 16,
+      ...Fonts.semibold,
+      fontSize: 17,
       color: Colors.white,
-      textTransform: 'uppercase',
+      marginHorizontal: 5,
     },
     image: {
       width: 20,
       height: 20,
       flexShrink: 0,
       tintColor: Colors.white,
-      marginHorizontal: 5,
     },
-    disabled: {
-      opacity: 0.5,
+    disabledRoot: {
+      backgroundColor: Colors.gray5,
+    },
+    disabledText: {
+      color: Colors.gray2,
+    },
+    disabledImage: {
+      tintColor: Colors.gray2,
     },
   });
 

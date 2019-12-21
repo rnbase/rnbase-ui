@@ -10,8 +10,8 @@ exports[`should render as disabled 1`] = `
       Array [
         Object {
           "alignItems": "center",
-          "backgroundColor": "#8e8e93",
-          "borderRadius": 5,
+          "backgroundColor": "#007aff",
+          "borderRadius": 8,
           "flexDirection": "row",
           "height": 50,
           "justifyContent": "center",
@@ -19,7 +19,7 @@ exports[`should render as disabled 1`] = `
         },
         undefined,
         Object {
-          "opacity": 0.5,
+          "backgroundColor": "#e5e5ea",
         },
       ]
     }
@@ -36,8 +36,8 @@ exports[`should render text only 1`] = `
       Array [
         Object {
           "alignItems": "center",
-          "backgroundColor": "#8e8e93",
-          "borderRadius": 5,
+          "backgroundColor": "#007aff",
+          "borderRadius": 8,
           "flexDirection": "row",
           "height": 50,
           "justifyContent": "center",
@@ -52,11 +52,14 @@ exports[`should render text only 1`] = `
       style={
         Array [
           Object {
+            "backgroundColor": "transparent",
             "color": "#ffffff",
-            "fontSize": 16,
-            "height": 16,
-            "lineHeight": 16,
-            "textTransform": "uppercase",
+            "fontFamily": "System",
+            "fontSize": 17,
+            "fontWeight": "600",
+            "includeFontPadding": false,
+            "marginHorizontal": 5,
+            "textAlignVertical": "center",
           },
           undefined,
         ]
@@ -77,8 +80,8 @@ exports[`should render text with custom styles 1`] = `
       Array [
         Object {
           "alignItems": "center",
-          "backgroundColor": "#8e8e93",
-          "borderRadius": 5,
+          "backgroundColor": "#007aff",
+          "borderRadius": 8,
           "flexDirection": "row",
           "height": 50,
           "justifyContent": "center",
@@ -93,11 +96,14 @@ exports[`should render text with custom styles 1`] = `
       style={
         Array [
           Object {
+            "backgroundColor": "transparent",
             "color": "#ffffff",
-            "fontSize": 16,
-            "height": 16,
-            "lineHeight": 16,
-            "textTransform": "uppercase",
+            "fontFamily": "System",
+            "fontSize": 17,
+            "fontWeight": "600",
+            "includeFontPadding": false,
+            "marginHorizontal": 5,
+            "textAlignVertical": "center",
           },
           Object {
             "color": "#aaa",
@@ -120,8 +126,8 @@ exports[`should render with custom content 1`] = `
       Array [
         Object {
           "alignItems": "center",
-          "backgroundColor": "#8e8e93",
-          "borderRadius": 5,
+          "backgroundColor": "#007aff",
+          "borderRadius": 8,
           "flexDirection": "row",
           "height": 50,
           "justifyContent": "center",
@@ -147,8 +153,8 @@ exports[`should render with custom styles 1`] = `
       Array [
         Object {
           "alignItems": "center",
-          "backgroundColor": "#8e8e93",
-          "borderRadius": 5,
+          "backgroundColor": "#007aff",
+          "borderRadius": 8,
           "flexDirection": "row",
           "height": 50,
           "justifyContent": "center",
@@ -172,8 +178,8 @@ exports[`should render with image only 1`] = `
       Array [
         Object {
           "alignItems": "center",
-          "backgroundColor": "#8e8e93",
-          "borderRadius": 5,
+          "backgroundColor": "#007aff",
+          "borderRadius": 8,
           "flexDirection": "row",
           "height": 50,
           "justifyContent": "center",
@@ -194,7 +200,6 @@ exports[`should render with image only 1`] = `
           Object {
             "flexShrink": 0,
             "height": 20,
-            "marginHorizontal": 5,
             "tintColor": "#ffffff",
             "width": 20,
           },
@@ -215,8 +220,8 @@ exports[`should render with left image 1`] = `
       Array [
         Object {
           "alignItems": "center",
-          "backgroundColor": "#8e8e93",
-          "borderRadius": 5,
+          "backgroundColor": "#007aff",
+          "borderRadius": 8,
           "flexDirection": "row",
           "height": 50,
           "justifyContent": "center",
@@ -237,7 +242,6 @@ exports[`should render with left image 1`] = `
           Object {
             "flexShrink": 0,
             "height": 20,
-            "marginHorizontal": 5,
             "tintColor": "#ffffff",
             "width": 20,
           },
@@ -250,11 +254,14 @@ exports[`should render with left image 1`] = `
       style={
         Array [
           Object {
+            "backgroundColor": "transparent",
             "color": "#ffffff",
-            "fontSize": 16,
-            "height": 16,
-            "lineHeight": 16,
-            "textTransform": "uppercase",
+            "fontFamily": "System",
+            "fontSize": 17,
+            "fontWeight": "600",
+            "includeFontPadding": false,
+            "marginHorizontal": 5,
+            "textAlignVertical": "center",
           },
           undefined,
         ]
@@ -275,8 +282,8 @@ exports[`should render with right image 1`] = `
       Array [
         Object {
           "alignItems": "center",
-          "backgroundColor": "#8e8e93",
-          "borderRadius": 5,
+          "backgroundColor": "#007aff",
+          "borderRadius": 8,
           "flexDirection": "row",
           "height": 50,
           "justifyContent": "center",
@@ -291,11 +298,14 @@ exports[`should render with right image 1`] = `
       style={
         Array [
           Object {
+            "backgroundColor": "transparent",
             "color": "#ffffff",
-            "fontSize": 16,
-            "height": 16,
-            "lineHeight": 16,
-            "textTransform": "uppercase",
+            "fontFamily": "System",
+            "fontSize": 17,
+            "fontWeight": "600",
+            "includeFontPadding": false,
+            "marginHorizontal": 5,
+            "textAlignVertical": "center",
           },
           undefined,
         ]
@@ -314,7 +324,6 @@ exports[`should render with right image 1`] = `
           Object {
             "flexShrink": 0,
             "height": 20,
-            "marginHorizontal": 5,
             "tintColor": "#ffffff",
             "width": 20,
           },
