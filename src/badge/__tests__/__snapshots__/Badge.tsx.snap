@@ -1,0 +1,166 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should not render when value = 0 1`] = `null`;
+
+exports[`should not render when value = undefined 1`] = `null`;
+
+exports[`should render normally 1`] = `
+<View
+  style={
+    Array [
+      Object {
+        "alignItems": "center",
+        "backgroundColor": "#007aff",
+        "height": 10,
+        "justifyContent": "center",
+        "minWidth": 10,
+      },
+      undefined,
+      Object {
+        "height": 20,
+        "minWidth": 20,
+        "paddingHorizontal": 6,
+      },
+      Object {
+        "borderRadius": 10,
+      },
+    ]
+  }
+>
+  <Text
+    numberOfLines={1}
+    style={
+      Array [
+        Object {
+          "backgroundColor": "transparent",
+          "color": "#ffffff",
+          "fontFamily": "System",
+          "fontWeight": "400",
+          "includeFontPadding": false,
+          "textAlignVertical": "center",
+        },
+        undefined,
+        Object {
+          "fontSize": 12,
+        },
+      ]
+    }
+  >
+    12
+  </Text>
+</View>
+`;
+
+exports[`should render when greather than limit 1`] = `
+<View
+  style={
+    Array [
+      Object {
+        "alignItems": "center",
+        "backgroundColor": "#007aff",
+        "height": 10,
+        "justifyContent": "center",
+        "minWidth": 10,
+      },
+      undefined,
+      Object {
+        "height": 20,
+        "minWidth": 20,
+        "paddingHorizontal": 6,
+      },
+      Object {
+        "borderRadius": 10,
+      },
+    ]
+  }
+>
+  <Text
+    numberOfLines={1}
+    style={
+      Array [
+        Object {
+          "backgroundColor": "transparent",
+          "color": "#ffffff",
+          "fontFamily": "System",
+          "fontWeight": "400",
+          "includeFontPadding": false,
+          "textAlignVertical": "center",
+        },
+        undefined,
+        Object {
+          "fontSize": 12,
+        },
+      ]
+    }
+  >
+    99+
+  </Text>
+</View>
+`;
+
+exports[`should render with custom props 1`] = `
+<View
+  style={
+    Array [
+      Object {
+        "alignItems": "center",
+        "backgroundColor": "#007aff",
+        "height": 10,
+        "justifyContent": "center",
+        "minWidth": 10,
+      },
+      undefined,
+      Object {
+        "backgroundColor": "red",
+      },
+      Object {
+        "height": 26.5,
+        "minWidth": 26.5,
+        "paddingHorizontal": 8,
+      },
+    ]
+  }
+>
+  <Text
+    numberOfLines={1}
+    style={
+      Array [
+        Object {
+          "backgroundColor": "transparent",
+          "color": "#ffffff",
+          "fontFamily": "System",
+          "fontWeight": "400",
+          "includeFontPadding": false,
+          "textAlignVertical": "center",
+        },
+        undefined,
+        Object {
+          "fontSize": 16,
+        },
+      ]
+    }
+  >
+    12
+  </Text>
+</View>
+`;
+
+exports[`should render without number 1`] = `
+<View
+  style={
+    Array [
+      Object {
+        "alignItems": "center",
+        "backgroundColor": "#007aff",
+        "height": 10,
+        "justifyContent": "center",
+        "minWidth": 10,
+      },
+      undefined,
+      Object {
+        "borderRadius": 5,
+      },
+    ]
+  }
+/>
+`;
