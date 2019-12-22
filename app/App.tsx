@@ -24,6 +24,7 @@ import {
   ThemeProvider,
   Avatar,
   ActivityButton,
+  Badge,
   Button,
   OutlineButton,
   TextButton,
@@ -94,6 +95,14 @@ const App = () => {
                   setTimeout(() => setBusy(false), 3000);
                 }}
               />
+            </View>
+            <View style={styles.stack}>
+              <Badge value={true} color="#3B0" />
+              <Badge value={true} color="#FC0" rounded={false} />
+              <Badge value={3} />
+              <Badge value={35} color="#F20" />
+              <Badge value={350} size={16} />
+              <Badge value={355} limit={false} rounded={false} style={{ borderRadius: 3 }} />
             </View>
             <View style={styles.sectionContainer}>
               <Text style={styles.sectionTitle}>Step One</Text>

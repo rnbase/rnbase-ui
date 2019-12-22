@@ -10,9 +10,9 @@ import {
   ViewStyle,
 } from 'react-native';
 
-import { Theme, useThemeStyles } from '../theming';
+import { Stylized, Theme, WithThemeProps, withTheme } from '../theming';
 
-export interface Props extends ViewProps {
+interface BadgeProps extends ViewProps {
   size?: number;
   color?: string;
   value?: number | boolean;
@@ -23,7 +23,8 @@ export interface Props extends ViewProps {
   themeKey?: string;
 }
 
-const Badge: React.FC<Props> = ({
+const Badge: React.FC<Stylized<typeof createStyleSheet, BadgeProps>> = ({
+  styles,
   size = 12,
   color,
   value,
@@ -31,11 +32,8 @@ const Badge: React.FC<Props> = ({
   rounded = true,
   style,
   textStyle,
-  themeKey = 'Badge',
   ...props
 }) => {
-  const styles = useThemeStyles(createStyleSheet, themeKey);
-
   if (!value) {
     return null;
   }
@@ -101,4 +99,6 @@ const createStyleSheet = ({ Colors, Fonts }: Theme) =>
     },
   });
 
-export default Badge;
+export type Props = BadgeProps & WithThemeProps;
+
+export default withTheme(Badge, createStyleSheet, 'Badge');
