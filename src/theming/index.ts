@@ -6,6 +6,7 @@ import { Theme as ThemeType, ThemeFactory as ThemeFactoryType } from './theme';
 import ThemeContext from './ThemeContext';
 
 export { default as ThemeProvider } from './ThemeProvider';
+export { default as withTheme } from './withTheme';
 
 export type Theme = ThemeType;
 export type ThemeFactory = ThemeFactoryType;

@@ -63,12 +63,36 @@ const theme: ThemeFactory = ({ scheme }) => {
     activeOpacity: 0.75,
   };
 
+  const Component = {
+    styles: {
+      wrapper: {
+        height: 90,
+      },
+      text: {
+        color: Colors.blue,
+      },
+    },
+  };
+
+  const FunctionalComponent = {
+    styles: {
+      wrapper: {
+        marginVertical: 5,
+      },
+      text: {
+        textTransform: 'none',
+      },
+    },
+  };
+
   return {
     Colors,
     Avatar,
     ActivityButton,
     ActivityButtonButton,
     Button,
+    Component,
+    FunctionalComponent,
   };
 };
 
