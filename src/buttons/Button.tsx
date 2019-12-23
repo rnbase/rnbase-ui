@@ -27,17 +27,20 @@ export interface Props extends TouchableOpacityProps {
   themeKey?: string;
 }
 
-const Button: React.FC<Props> = ({
-  children,
-  style,
-  text,
-  textStyle,
-  imageSource,
-  imageStyle,
-  imageAlignment = 'left',
-  themeKey = 'Button',
-  ...props
-}) => {
+const Button: React.FC<Props> = ({ themeKey = 'Button', ...rest }) => {
+  const {
+    styles,
+    activeOpacity = 0.5,
+    children,
+    style,
+    text,
+    textStyle,
+    imageSource,
+    imageStyle,
+    imageAlignment = 'left',
+    ...props
+  } = useThemeProps(createStyleSheet, themeKey, rest);
+
   const setDisabledStyles = (stylesArray: Array<any>, disabledStyle: StyleProp<any>) => {
     if (props.disabled) {
       stylesArray.push(disabledStyle);
@@ -45,8 +48,6 @@ const Button: React.FC<Props> = ({
 
     return stylesArray;
   };
-
-  const { styles, activeOpacity = 0.5 } = useThemeProps(createStyleSheet, themeKey);
 
   let content;
 

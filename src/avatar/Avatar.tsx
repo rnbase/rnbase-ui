@@ -51,20 +51,22 @@ export interface Props extends ViewProps {
   themeKey?: string;
 }
 
-const Avatar: React.FC<Props> = ({
-  size,
-  shape = 'circle',
-  name,
-  email,
-  colorize = false,
-  imageSource,
-  defaultImageSource = require('./default.png'),
-  style,
-  textStyle,
-  imageStyle,
-  themeKey = 'Avatar',
-  ...props
-}) => {
+const Avatar: React.FC<Props> = ({ themeKey = 'Avatar', ...rest }) => {
+  const {
+    styles,
+    size,
+    shape = 'circle',
+    name,
+    email,
+    colorize = false,
+    imageSource,
+    defaultImageSource = require('./default.png'),
+    style,
+    textStyle,
+    imageStyle,
+    ...props
+  } = useThemeProps(createStyleSheet, themeKey, rest);
+
   const getAvatarImageSource = useCallback(() => {
     if (imageSource) {
       return imageSource;
@@ -103,8 +105,6 @@ const Avatar: React.FC<Props> = ({
       },
     [name, colorize, avatarImageSource, defaultImageSource],
   );
-
-  const { styles } = useThemeProps(createStyleSheet, themeKey);
 
   const rootStyles = shapeStyles([
     styles.root,

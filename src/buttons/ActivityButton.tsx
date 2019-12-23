@@ -12,12 +12,13 @@ export interface Props extends ButtonProps {
 
 const toValue = (value?: boolean) => (value ? 1 : 0);
 
-const ActivityButton: React.FC<Props> = ({
-  busy,
-  indicatorColor,
-  themeKey = 'ActivityButton',
-  ...props
-}) => {
+const ActivityButton: React.FC<Props> = ({ themeKey = 'ActivityButton', ...rest }) => {
+  const { styles, busy, indicatorColor, ...props } = useThemeProps(
+    createStyleSheet,
+    themeKey,
+    rest,
+  );
+
   const [animatedValue] = useState(() => new Animated.Value(toValue(busy)));
 
   useEffect(() => {
@@ -28,11 +29,6 @@ const ActivityButton: React.FC<Props> = ({
       easing: Easing.out(Easing.exp),
     }).start();
   }, [animatedValue, busy]);
-
-  const { styles, indicatorColor: themeIndicatorColor, ...rest } = useThemeProps(
-    createStyleSheet,
-    themeKey,
-  );
 
   const buttonAnimation = {
     opacity: animatedValue.interpolate({
@@ -90,10 +86,10 @@ const ActivityButton: React.FC<Props> = ({
           the component initialized with animating=false
           https://github.com/facebook/react-native/issues/9023
         */}
-        {busy && <ActivityIndicator size="small" color={indicatorColor || themeIndicatorColor} />}
+        {busy && <ActivityIndicator size="small" color={indicatorColor} />}
       </Animated.View>
       <Animated.View style={buttonAnimation}>
-        <Button themeKey={`${themeKey}Button`} {...rest} {...props} />
+        <Button themeKey={`${themeKey}Button`} {...props} />
       </Animated.View>
     </View>
   );
