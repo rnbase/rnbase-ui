@@ -14,7 +14,7 @@ import {
   ViewStyle,
 } from 'react-native';
 
-import { Theme, useThemeProps } from '../theming';
+import { Stylized, Theme, WithThemeProps, withTheme } from '../theming';
 
 const getColor = (string: string): string => {
   let hash = 0;
@@ -37,7 +37,7 @@ const getInitials = (name: string): string => {
   return ((initials.shift() || '') + (initials.pop() || '')).toUpperCase();
 };
 
-export interface Props extends ViewProps {
+interface AvatarProps extends ViewProps {
   size: number;
   shape?: 'square' | 'circle';
   name?: string;
@@ -48,25 +48,22 @@ export interface Props extends ViewProps {
   style?: StyleProp<ViewStyle>;
   textStyle?: StyleProp<TextStyle>;
   imageStyle?: StyleProp<ImageStyle>;
-  themeKey?: string;
 }
 
-const Avatar: React.FC<Props> = ({ themeKey = 'Avatar', ...rest }) => {
-  const {
-    styles,
-    size,
-    shape = 'circle',
-    name,
-    email,
-    colorize = false,
-    imageSource,
-    defaultImageSource = require('./default.png'),
-    style,
-    textStyle,
-    imageStyle,
-    ...props
-  } = useThemeProps(createStyleSheet, themeKey, rest);
-
+const Avatar: React.FC<Stylized<typeof createStyleSheet, AvatarProps>> = ({
+  styles,
+  size,
+  shape = 'circle',
+  name,
+  email,
+  colorize = false,
+  imageSource,
+  defaultImageSource = require('./default.png'),
+  style,
+  textStyle,
+  imageStyle,
+  ...props
+}) => {
   const getAvatarImageSource = useCallback(() => {
     if (imageSource) {
       return imageSource;
@@ -166,4 +163,6 @@ const createStyleSheet = ({ Colors, Fonts }: Theme) =>
     },
   });
 
-export default Avatar;
+export type Props = AvatarProps & WithThemeProps;
+
+export default withTheme(Avatar, createStyleSheet, 'Avatar');

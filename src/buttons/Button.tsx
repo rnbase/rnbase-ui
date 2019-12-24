@@ -13,9 +13,9 @@ import {
   ViewStyle,
 } from 'react-native';
 
-import { Theme, useThemeProps } from '../theming';
+import { Stylized, Theme, WithThemeProps, withTheme } from '../theming';
 
-export interface Props extends TouchableOpacityProps {
+export interface ButtonProps extends TouchableOpacityProps {
   children?: React.ReactNode;
   disabled?: boolean;
   style?: StyleProp<ViewStyle>;
@@ -24,23 +24,20 @@ export interface Props extends TouchableOpacityProps {
   imageSource?: ImageSourcePropType;
   imageStyle?: StyleProp<ImageStyle>;
   imageAlignment?: 'left' | 'right';
-  themeKey?: string;
 }
 
-const Button: React.FC<Props> = ({ themeKey = 'Button', ...rest }) => {
-  const {
-    styles,
-    activeOpacity = 0.5,
-    children,
-    style,
-    text,
-    textStyle,
-    imageSource,
-    imageStyle,
-    imageAlignment = 'left',
-    ...props
-  } = useThemeProps(createStyleSheet, themeKey, rest);
-
+const Button: React.FC<Stylized<typeof createStyleSheet, ButtonProps>> = ({
+  styles,
+  activeOpacity = 0.5,
+  children,
+  style,
+  text,
+  textStyle,
+  imageSource,
+  imageStyle,
+  imageAlignment = 'left',
+  ...props
+}) => {
   const setDisabledStyles = (stylesArray: Array<any>, disabledStyle: StyleProp<any>) => {
     if (props.disabled) {
       stylesArray.push(disabledStyle);
@@ -121,4 +118,6 @@ const createStyleSheet = ({ Colors, Fonts }: Theme) =>
     },
   });
 
-export default Button;
+export type Props = ButtonProps & WithThemeProps;
+
+export default withTheme(Button, createStyleSheet, 'Button');

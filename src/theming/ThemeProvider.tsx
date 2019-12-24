@@ -1,5 +1,5 @@
 import React from 'react';
-import ThemeContext, { createThemeCache } from './ThemeContext';
+import { ThemeContext, createThemeCache } from './ThemeContext';
 import { ColorSchemeName, ThemeFactory } from './theme';
 
 interface Props {

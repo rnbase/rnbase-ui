@@ -1,20 +1,16 @@
 import React from 'react';
 import { StyleProp, StyleSheet, Text, TextStyle, View, ViewProps, ViewStyle } from 'react-native';
 
-import { Theme, withTheme } from '../theming';
+import { Stylized, Theme, WithThemeProps, withTheme } from '../theming';
 
-export interface Props extends ViewProps {
+interface ComponentProps extends ViewProps {
   visible?: boolean;
   children?: React.ReactNode;
   style?: StyleProp<ViewStyle>;
   textStyle?: StyleProp<TextStyle>;
 }
 
-interface ComponentProps extends Props {
-  styles: ReturnType<typeof createStyleSheet>;
-}
-
-class Component extends React.Component<ComponentProps> {
+class Component extends React.Component<Stylized<typeof createStyleSheet, ComponentProps>> {
   static defaultProps = {
     visible: true,
   };
@@ -52,5 +48,7 @@ const createStyleSheet = ({ Colors }: Theme) =>
       textTransform: 'uppercase',
     },
   });
+
+export type Props = ComponentProps & WithThemeProps;
 
 export default withTheme(Component, createStyleSheet, 'Component');

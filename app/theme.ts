@@ -74,17 +74,6 @@ const theme: ThemeFactory = ({ scheme }) => {
     },
   };
 
-  const FunctionalComponent = {
-    styles: {
-      wrapper: {
-        marginVertical: 5,
-      },
-      text: {
-        textTransform: 'none',
-      },
-    },
-  };
-
   return {
     Colors,
     Avatar,
@@ -92,7 +81,6 @@ const theme: ThemeFactory = ({ scheme }) => {
     ActivityButtonButton,
     Button,
     Component,
-    FunctionalComponent,
   };
 };
 

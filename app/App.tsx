@@ -20,7 +20,7 @@ import {
 } from 'react-native/Libraries/NewAppScreen';
 
 import theme from './theme';
-import { ThemeProvider, Avatar, ActivityButton, Button, Component, FunctionalComponent } from '../';
+import { ThemeProvider, Avatar, ActivityButton, Button, Component } from '../';
 
 const App = () => {
   // eslint-disable-next-line no-undef
@@ -41,7 +41,6 @@ const App = () => {
           )}
           <View style={styles.body}>
             <Component>Themed Component</Component>
-            <FunctionalComponent>Functional Themed Component</FunctionalComponent>
             <View style={styles.stack}>
               <Avatar
                 size={50}

@@ -1,24 +1,23 @@
 import React, { useEffect, useState } from 'react';
 import { ActivityIndicator, Animated, Easing, StyleSheet, View } from 'react-native';
 
-import Button, { Props as ButtonProps } from './Button';
+import Button, { ButtonProps } from './Button';
 
-import { useThemeProps } from '../theming';
+import { Stylized, WithThemeProps, withTheme } from '../theming';
 
-export interface Props extends ButtonProps {
+interface ActivityButtonProps extends ButtonProps {
   busy?: boolean;
   indicatorColor?: string;
 }
 
 const toValue = (value?: boolean) => (value ? 1 : 0);
 
-const ActivityButton: React.FC<Props> = ({ themeKey = 'ActivityButton', ...rest }) => {
-  const { styles, busy, indicatorColor, ...props } = useThemeProps(
-    createStyleSheet,
-    themeKey,
-    rest,
-  );
-
+const ActivityButton: React.FC<Stylized<typeof createStyleSheet, ActivityButtonProps>> = ({
+  styles,
+  busy,
+  indicatorColor,
+  ...props
+}) => {
   const [animatedValue] = useState(() => new Animated.Value(toValue(busy)));
 
   useEffect(() => {
@@ -89,7 +88,7 @@ const ActivityButton: React.FC<Props> = ({ themeKey = 'ActivityButton', ...rest 
         {busy && <ActivityIndicator size="small" color={indicatorColor} />}
       </Animated.View>
       <Animated.View style={buttonAnimation}>
-        <Button themeKey={`${themeKey}Button`} {...props} />
+        <Button themeKey="ActivityButtonButton" {...props} />
       </Animated.View>
     </View>
   );
@@ -104,4 +103,6 @@ const createStyleSheet = () =>
     },
   });
 
-export default ActivityButton;
+export type Props = ActivityButtonProps & WithThemeProps;
+
+export default withTheme(ActivityButton, createStyleSheet, 'ActivityButton');

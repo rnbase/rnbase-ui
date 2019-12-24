@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet } from 'react-native';
 import deepmerge from 'deepmerge';
-import defaultTheme, { Theme, ThemeFactory, ThemeProps, ColorSchemeName } from './theme';
+import defaultTheme, { Theme, ThemeFactory, ColorSchemeName } from './theme';
 
 function resolveTheme(theme: ThemeFactory, colorScheme: ColorSchemeName): Theme {
   if (theme instanceof Function) {
@@ -12,6 +12,10 @@ function resolveTheme(theme: ThemeFactory, colorScheme: ColorSchemeName): Theme 
   }
 
   return theme;
+}
+
+export interface ThemeProps<T> {
+  styles: T;
 }
 
 interface ThemeCache {
@@ -49,6 +53,4 @@ export function createThemeCache(
   };
 }
 
-const ThemeContext: React.Context<ThemeCache> = React.createContext(createThemeCache());
-
-export default ThemeContext;
+export const ThemeContext: React.Context<ThemeCache> = React.createContext(createThemeCache());

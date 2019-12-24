@@ -1,43 +1,29 @@
-import React from 'react';
+import React, { useContext } from 'react';
 
-import { Theme, ThemeProps } from './theme';
+import { Theme } from './theme';
+import { ThemeContext, ThemeProps } from './ThemeContext';
 
-import ThemeContext from './ThemeContext';
+export interface WithThemeProps {
+  themeKey?: string;
+}
 
-export default function withTheme<T, P extends ThemeProps<T>>(
+export function withTheme<T, P extends ThemeProps<T>>(
   WrappedComponent: React.ComponentType<P>,
   stylesFactory: (theme: Theme) => T,
   defaultThemeKey: string,
 ) {
-  const displayName = WrappedComponent.displayName || WrappedComponent.name || 'Component';
+  type Props = Omit<P, keyof ThemeProps<T>> & WithThemeProps;
 
-  // type WrappedComponentInstance = InstanceType<typeof WrappedComponent>;
+  const ThemedComponent = ({ themeKey = defaultThemeKey, ...props }: Props) => {
+    const context = useContext(ThemeContext);
+    const themeProps = context.getThemeProps(stylesFactory, themeKey);
 
-  type ThemedComponentProps = Omit<P, keyof ThemeProps<T>> & {
-    forwardedRef?: React.Ref<React.Component<P> /* WrappedComponentInstance */>;
-    themeKey?: string;
+    return <WrappedComponent {...themeProps} {...props as P} />;
   };
 
-  class ThemedComponent extends React.Component<ThemedComponentProps> {
-    public static displayName = `withTheme(${displayName})`;
+  const displayName = WrappedComponent.displayName || WrappedComponent.name || 'Component';
 
-    public render() {
-      return (
-        <ThemeContext.Consumer>
-          {context => {
-            const { forwardedRef, themeKey = defaultThemeKey, ...rest } = this.props;
-            const themeProps = context.getThemeProps(stylesFactory, themeKey);
-
-            if (WrappedComponent.prototype && WrappedComponent.prototype.isReactComponent) {
-              return <WrappedComponent ref={forwardedRef} {...themeProps} {...rest as P} />;
-            }
-
-            return <WrappedComponent {...themeProps} {...rest as P} />;
-          }}
-        </ThemeContext.Consumer>
-      );
-    }
-  }
+  ThemedComponent.displayName = `withTheme(${displayName})`;
 
   return ThemedComponent;
 }
