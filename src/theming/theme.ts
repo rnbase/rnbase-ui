@@ -77,7 +77,7 @@ const defaultTheme: ThemeFactory = ({ scheme }) => {
       root: {
         borderWidth: 2,
         borderColor: Colors.blue,
-        backgroundColor: 'transparent',
+        backgroundColor: null,
       },
       text: {
         color: Colors.blue,
@@ -87,7 +87,32 @@ const defaultTheme: ThemeFactory = ({ scheme }) => {
       },
       disabledRoot: {
         borderColor: Colors.gray3,
-        backgroundColor: 'transparent',
+        backgroundColor: null,
+      },
+      disabledText: {
+        color: Colors.gray2,
+      },
+      disabledImage: {
+        tintColor: Colors.gray2,
+      },
+    },
+  };
+
+  const TextButton = {
+    styles: {
+      root: {
+        height: null,
+        backgroundColor: null,
+        paddingHorizontal: null,
+      },
+      text: {
+        color: Colors.blue,
+      },
+      image: {
+        tintColor: Colors.blue,
+      },
+      disabledRoot: {
+        backgroundColor: null,
       },
       disabledText: {
         color: Colors.gray2,
@@ -102,6 +127,7 @@ const defaultTheme: ThemeFactory = ({ scheme }) => {
     Colors,
     Fonts,
     OutlineButton,
+    TextButton,
   };
 };
 
