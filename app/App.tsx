@@ -22,6 +22,11 @@ import {
 import theme from './theme';
 import { ThemeProvider, Avatar, ActivityButton, Button, Component } from '../';
 
+const avatars = {
+  none: { uri: 'https://randomuser.me/api/portraits/none.jpg' },
+  test: { uri: 'https://randomuser.me/api/portraits/women/68.jpg' },
+}
+
 const App = () => {
   // eslint-disable-next-line no-undef
   const usingHermes = typeof HermesInternal === 'object' && HermesInternal !== null;
@@ -45,29 +50,29 @@ const App = () => {
               <Avatar
                 size={50}
                 name="John Smith"
-                imageSource={{ uri: 'https://randomuser.me/api/portraits/none.jpg' }}
-                defaultImageSource={{ uri: 'https://randomuser.me/api/portraits/women/68.jpg' }}
+                imageSource={avatars.none}
+                defaultImageSource={avatars.test}
               />
               <Avatar
                 size={50}
                 email="jitewaboh@lagify.com"
-                defaultImageSource={{ uri: 'https://randomuser.me/api/portraits/women/68.jpg' }}
+                defaultImageSource={avatars.test}
               />
               <Avatar
                 size={50}
                 name="Elon Musk"
                 colorize={true}
-                imageSource={{ uri: 'https://randomuser.me/api/portraits/none.jpg' }}
+                imageSource={avatars.none}
               />
               <Avatar
                 size={50}
                 name="John Smith"
-                imageSource={{ uri: 'https://randomuser.me/api/portraits/women/68.jpg' }}
+                imageSource={avatars.test}
               />
               <Avatar
                 size={50}
                 email="user@email.com"
-                imageSource={{ uri: 'https://randomuser.me/api/portraits/none.jpg' }}
+                imageSource={avatars.none}
               />
             </View>
             <View style={styles.stack}>
