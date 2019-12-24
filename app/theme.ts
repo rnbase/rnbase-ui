@@ -55,10 +55,9 @@ const theme: ThemeFactory = ({ scheme }) => {
 
   const Button = {
     styles: {
-      root: {
-        backgroundColor: Colors.blue,
-        margin: 5,
-      },
+      root: {},
+      text: {},
+      image: {},
     },
     activeOpacity: 0.75,
   };
