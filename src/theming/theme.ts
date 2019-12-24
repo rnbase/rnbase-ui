@@ -94,15 +94,15 @@ const defaultTheme: ThemeFactory = ({ scheme }) => {
       },
       disabledImage: {
         tintColor: Colors.gray2,
-      },  
-    }
+      },
+    },
   };
 
   return {
     Colors,
     Fonts,
     OutlineButton,
-  }
+  };
 };
 
 export default defaultTheme;

@@ -25,7 +25,7 @@ import { ThemeProvider, Avatar, ActivityButton, Button, OutlineButton, Component
 const avatars = {
   none: { uri: 'https://randomuser.me/api/portraits/none.jpg' },
   test: { uri: 'https://randomuser.me/api/portraits/women/68.jpg' },
-}
+};
 
 const App = () => {
   // eslint-disable-next-line no-undef
@@ -53,27 +53,10 @@ const App = () => {
                 imageSource={avatars.none}
                 defaultImageSource={avatars.test}
               />
-              <Avatar
-                size={50}
-                email="jitewaboh@lagify.com"
-                defaultImageSource={avatars.test}
-              />
-              <Avatar
-                size={50}
-                name="Elon Musk"
-                colorize={true}
-                imageSource={avatars.none}
-              />
-              <Avatar
-                size={50}
-                name="John Smith"
-                imageSource={avatars.test}
-              />
-              <Avatar
-                size={50}
-                email="user@email.com"
-                imageSource={avatars.none}
-              />
+              <Avatar size={50} email="jitewaboh@lagify.com" defaultImageSource={avatars.test} />
+              <Avatar size={50} name="Elon Musk" colorize={true} imageSource={avatars.none} />
+              <Avatar size={50} name="John Smith" imageSource={avatars.test} />
+              <Avatar size={50} email="user@email.com" imageSource={avatars.none} />
             </View>
             <View style={styles.stack}>
               <Button
