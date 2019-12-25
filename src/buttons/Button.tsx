@@ -13,7 +13,7 @@ import {
   ViewStyle,
 } from 'react-native';
 
-import { Stylized, Theme, WithThemeProps, withTheme } from '../theming';
+import { Themed, Theme, WithThemeProps, withTheme } from '../theming';
 
 export interface ButtonProps extends TouchableOpacityProps {
   children?: React.ReactNode;
@@ -26,7 +26,7 @@ export interface ButtonProps extends TouchableOpacityProps {
   imageAlignment?: 'left' | 'right';
 }
 
-const Button: React.FC<Stylized<typeof createStyleSheet, ButtonProps>> = ({
+const Button: React.FC<Themed<typeof createStyleSheet, ButtonProps>> = ({
   styles,
   activeOpacity = 0.5,
   children,

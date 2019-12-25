@@ -3,7 +3,7 @@ import { ActivityIndicator, Animated, Easing, StyleSheet, View } from 'react-nat
 
 import Button, { ButtonProps } from './Button';
 
-import { Stylized, WithThemeProps, withTheme } from '../theming';
+import { Themed, WithThemeProps, withTheme } from '../theming';
 
 interface ActivityButtonProps extends ButtonProps {
   busy?: boolean;
@@ -12,7 +12,7 @@ interface ActivityButtonProps extends ButtonProps {
 
 const toValue = (value?: boolean) => (value ? 1 : 0);
 
-const ActivityButton: React.FC<Stylized<typeof createStyleSheet, ActivityButtonProps>> = ({
+const ActivityButton: React.FC<Themed<typeof createStyleSheet, ActivityButtonProps>> = ({
   styles,
   busy,
   indicatorColor,

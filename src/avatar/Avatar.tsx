@@ -14,7 +14,7 @@ import {
   ViewStyle,
 } from 'react-native';
 
-import { Stylized, Theme, WithThemeProps, withTheme } from '../theming';
+import { Themed, Theme, WithThemeProps, withTheme } from '../theming';
 
 const getColor = (string: string): string => {
   let hash = 0;
@@ -50,7 +50,7 @@ interface AvatarProps extends ViewProps {
   imageStyle?: StyleProp<ImageStyle>;
 }
 
-const Avatar: React.FC<Stylized<typeof createStyleSheet, AvatarProps>> = ({
+const Avatar: React.FC<Themed<typeof createStyleSheet, AvatarProps>> = ({
   styles,
   size,
   shape = 'circle',

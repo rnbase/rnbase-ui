@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleProp, StyleSheet, Text, TextStyle, View, ViewProps, ViewStyle } from 'react-native';
 
-import { Stylized, Theme, WithThemeProps, withTheme } from '../theming';
+import { Themed, Theme, WithThemeProps, withTheme } from '../theming';
 
 interface ComponentProps extends ViewProps {
   visible?: boolean;
@@ -10,7 +10,7 @@ interface ComponentProps extends ViewProps {
   textStyle?: StyleProp<TextStyle>;
 }
 
-class Component extends React.Component<Stylized<typeof createStyleSheet, ComponentProps>> {
+class Component extends React.Component<Themed<typeof createStyleSheet, ComponentProps>> {
   static defaultProps = {
     visible: true,
   };
