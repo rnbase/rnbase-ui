@@ -324,6 +324,7 @@ exports[`should render image as square 1`] = `
         "height": 50,
         "width": 50,
       },
+      undefined,
     ]
   }
 >
@@ -340,6 +341,7 @@ exports[`should render image as square 1`] = `
           "height": "100%",
           "width": "100%",
         },
+        undefined,
         undefined,
       ]
     }

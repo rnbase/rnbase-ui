@@ -38,14 +38,6 @@ const Button: React.FC<Stylized<typeof createStyleSheet, ButtonProps>> = ({
   imageAlignment = 'left',
   ...props
 }) => {
-  const setDisabledStyles = (stylesArray: Array<any>, disabledStyle: StyleProp<any>) => {
-    if (props.disabled) {
-      stylesArray.push(disabledStyle);
-    }
-
-    return stylesArray;
-  };
-
   let content;
 
   if (children) {
@@ -54,7 +46,7 @@ const Button: React.FC<Stylized<typeof createStyleSheet, ButtonProps>> = ({
     content = [];
 
     if (text) {
-      const textStyles = setDisabledStyles([styles.text, textStyle], styles.disabledText);
+      const textStyles = [styles.text, textStyle, props.disabled && styles.disabledText];
 
       content.push(
         <Text key="text" style={textStyles} numberOfLines={1}>
@@ -64,7 +56,7 @@ const Button: React.FC<Stylized<typeof createStyleSheet, ButtonProps>> = ({
     }
 
     if (imageSource) {
-      const imageStyles = setDisabledStyles([styles.image, imageStyle], styles.disabledImage);
+      const imageStyles = [styles.image, imageStyle, props.disabled && styles.disabledImage];
       const image = <Image key="image" style={imageStyles} source={imageSource} />;
 
       if (imageAlignment === 'left') {
@@ -75,7 +67,7 @@ const Button: React.FC<Stylized<typeof createStyleSheet, ButtonProps>> = ({
     }
   }
 
-  const rootStyles = setDisabledStyles([styles.root, style], styles.disabledRoot);
+  const rootStyles = [styles.root, style, props.disabled && styles.disabledRoot];
 
   return (
     <TouchableOpacity activeOpacity={activeOpacity} {...props}>

@@ -44,6 +44,7 @@ exports[`should render text only 1`] = `
           "paddingHorizontal": 15,
         },
         undefined,
+        undefined,
       ]
     }
   >
@@ -61,6 +62,7 @@ exports[`should render text only 1`] = `
             "marginHorizontal": 5,
             "textAlignVertical": "center",
           },
+          undefined,
           undefined,
         ]
       }
@@ -88,6 +90,7 @@ exports[`should render text with custom styles 1`] = `
           "paddingHorizontal": 15,
         },
         undefined,
+        undefined,
       ]
     }
   >
@@ -108,6 +111,7 @@ exports[`should render text with custom styles 1`] = `
           Object {
             "color": "#aaa",
           },
+          undefined,
         ]
       }
     >
@@ -133,6 +137,7 @@ exports[`should render with custom content 1`] = `
           "justifyContent": "center",
           "paddingHorizontal": 15,
         },
+        undefined,
         undefined,
       ]
     }
@@ -163,6 +168,7 @@ exports[`should render with custom styles 1`] = `
         Object {
           "backgroundColor": "#000000",
         },
+        undefined,
       ]
     }
   />
@@ -186,6 +192,7 @@ exports[`should render with image only 1`] = `
           "paddingHorizontal": 15,
         },
         undefined,
+        undefined,
       ]
     }
   >
@@ -203,6 +210,7 @@ exports[`should render with image only 1`] = `
             "tintColor": "#ffffff",
             "width": 20,
           },
+          undefined,
           undefined,
         ]
       }
@@ -228,6 +236,7 @@ exports[`should render with left image 1`] = `
           "paddingHorizontal": 15,
         },
         undefined,
+        undefined,
       ]
     }
   >
@@ -246,6 +255,7 @@ exports[`should render with left image 1`] = `
             "width": 20,
           },
           undefined,
+          undefined,
         ]
       }
     />
@@ -263,6 +273,7 @@ exports[`should render with left image 1`] = `
             "marginHorizontal": 5,
             "textAlignVertical": "center",
           },
+          undefined,
           undefined,
         ]
       }
@@ -290,6 +301,7 @@ exports[`should render with right image 1`] = `
           "paddingHorizontal": 15,
         },
         undefined,
+        undefined,
       ]
     }
   >
@@ -307,6 +319,7 @@ exports[`should render with right image 1`] = `
             "marginHorizontal": 5,
             "textAlignVertical": "center",
           },
+          undefined,
           undefined,
         ]
       }
@@ -327,6 +340,7 @@ exports[`should render with right image 1`] = `
             "tintColor": "#ffffff",
             "width": 20,
           },
+          undefined,
           undefined,
         ]
       }

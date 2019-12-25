@@ -70,10 +70,11 @@ const Avatar: React.FC<Stylized<typeof createStyleSheet, AvatarProps>> = ({
     } else if (email) {
       const emailHash = md5(email.toLowerCase().trim());
       const pixelSize = PixelRatio.getPixelSizeForLayoutSize(size);
+
       return { uri: `https://www.gravatar.com/avatar/${emailHash}?s=${pixelSize}&d=404` };
-    } else {
-      return defaultImageSource;
     }
+
+    return defaultImageSource;
   }, [imageSource, email, size, defaultImageSource]);
 
   const [avatarImageSource, setAvatarImageSource] = useState(getAvatarImageSource);
@@ -85,13 +86,7 @@ const Avatar: React.FC<Stylized<typeof createStyleSheet, AvatarProps>> = ({
 
   const onError = useCallback(() => setAvatarImageSource(defaultImageSource), [defaultImageSource]);
 
-  const shapeStyles = (stylesArray: Array<any>) => {
-    if (shape === 'circle') {
-      stylesArray.push({ borderRadius: size / 2 });
-    }
-
-    return stylesArray;
-  };
+  const shapeStyle = shape === 'circle' ? { borderRadius: size / 2 } : undefined;
 
   const initials = useMemo(
     () =>
@@ -103,14 +98,15 @@ const Avatar: React.FC<Stylized<typeof createStyleSheet, AvatarProps>> = ({
     [name, colorize, avatarImageSource, defaultImageSource],
   );
 
-  const rootStyles = shapeStyles([
+  const rootStyles = [
     styles.root,
     style,
     {
       width: size,
       height: size,
     },
-  ]);
+    shapeStyle,
+  ];
 
   let content;
 
@@ -133,9 +129,13 @@ const Avatar: React.FC<Stylized<typeof createStyleSheet, AvatarProps>> = ({
       </Text>
     );
   } else {
-    const imageStyles = shapeStyles([styles.image, imageStyle]);
-
-    content = <Image style={imageStyles} source={avatarImageSource} onError={onError} />;
+    content = (
+      <Image
+        style={[styles.image, imageStyle, shapeStyle]}
+        source={avatarImageSource}
+        onError={onError}
+      />
+    );
   }
 
   return (
