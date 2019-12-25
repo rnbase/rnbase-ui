@@ -10,7 +10,7 @@ import {
   ViewStyle,
 } from 'react-native';
 
-import { Stylized, Theme, WithThemeProps, withTheme } from '../theming';
+import { Themed, Theme, WithThemeProps, withTheme } from '../theming';
 
 interface BadgeProps extends ViewProps {
   size?: number;
@@ -23,7 +23,7 @@ interface BadgeProps extends ViewProps {
   themeKey?: string;
 }
 
-const Badge: React.FC<Stylized<typeof createStyleSheet, BadgeProps>> = ({
+const Badge: React.FC<Themed<typeof createStyleSheet, BadgeProps>> = ({
   styles,
   size = 12,
   color,
