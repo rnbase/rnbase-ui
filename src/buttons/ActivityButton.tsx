@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { ActivityIndicator, Animated, Easing, StyleSheet, View } from 'react-native';
 
-import Button, { ButtonProps } from './Button';
-
-import { Themed, WithThemeProps, withTheme } from '../theming';
+import { Button, ButtonProps, createStyleSheet as createButtonStyles } from './Button';
+import { Themed, Theme, WithThemeProps, withTheme } from '../theming';
 
 interface ActivityButtonProps extends ButtonProps {
   busy?: boolean;
@@ -88,14 +87,15 @@ const ActivityButton: React.FC<Themed<typeof createStyleSheet, ActivityButtonPro
         {busy && <ActivityIndicator size="small" color={indicatorColor} />}
       </Animated.View>
       <Animated.View style={buttonAnimation}>
-        <Button themeKey="ActivityButtonButton" {...props} />
+        <Button styles={styles} {...props} />
       </Animated.View>
     </View>
   );
 };
 
-const createStyleSheet = () =>
+const createStyleSheet = (theme: Theme) =>
   StyleSheet.create({
+    ...createButtonStyles(theme),
     indicator: {
       ...StyleSheet.absoluteFillObject,
       alignItems: 'center',

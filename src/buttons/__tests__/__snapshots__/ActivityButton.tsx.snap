@@ -53,7 +53,53 @@ exports[`should render as busy 1`] = `
     }
   >
     <Button
-      themeKey="ActivityButtonButton"
+      styles={
+        Object {
+          "disabledImage": Object {
+            "tintColor": "#aeaeb2",
+          },
+          "disabledRoot": Object {
+            "backgroundColor": "#e5e5ea",
+          },
+          "disabledText": Object {
+            "color": "#aeaeb2",
+          },
+          "image": Object {
+            "flexShrink": 0,
+            "height": 20,
+            "tintColor": "#ffffff",
+            "width": 20,
+          },
+          "indicator": Object {
+            "alignItems": "center",
+            "bottom": 0,
+            "justifyContent": "center",
+            "left": 0,
+            "position": "absolute",
+            "right": 0,
+            "top": 0,
+          },
+          "root": Object {
+            "alignItems": "center",
+            "backgroundColor": "#007aff",
+            "borderRadius": 8,
+            "flexDirection": "row",
+            "height": 50,
+            "justifyContent": "center",
+            "paddingHorizontal": 15,
+          },
+          "text": Object {
+            "backgroundColor": "transparent",
+            "color": "#ffffff",
+            "fontFamily": "System",
+            "fontSize": 17,
+            "fontWeight": "600",
+            "includeFontPadding": false,
+            "marginHorizontal": 5,
+            "textAlignVertical": "center",
+          },
+        }
+      }
     >
       <Text>
         TEXT
@@ -110,7 +156,53 @@ exports[`should render as disabled 1`] = `
   >
     <Button
       disabled={true}
-      themeKey="ActivityButtonButton"
+      styles={
+        Object {
+          "disabledImage": Object {
+            "tintColor": "#aeaeb2",
+          },
+          "disabledRoot": Object {
+            "backgroundColor": "#e5e5ea",
+          },
+          "disabledText": Object {
+            "color": "#aeaeb2",
+          },
+          "image": Object {
+            "flexShrink": 0,
+            "height": 20,
+            "tintColor": "#ffffff",
+            "width": 20,
+          },
+          "indicator": Object {
+            "alignItems": "center",
+            "bottom": 0,
+            "justifyContent": "center",
+            "left": 0,
+            "position": "absolute",
+            "right": 0,
+            "top": 0,
+          },
+          "root": Object {
+            "alignItems": "center",
+            "backgroundColor": "#007aff",
+            "borderRadius": 8,
+            "flexDirection": "row",
+            "height": 50,
+            "justifyContent": "center",
+            "paddingHorizontal": 15,
+          },
+          "text": Object {
+            "backgroundColor": "transparent",
+            "color": "#ffffff",
+            "fontFamily": "System",
+            "fontSize": 17,
+            "fontWeight": "600",
+            "includeFontPadding": false,
+            "marginHorizontal": 5,
+            "textAlignVertical": "center",
+          },
+        }
+      }
     >
       <Text>
         TEXT
@@ -166,7 +258,53 @@ exports[`should render normally 1`] = `
     }
   >
     <Button
-      themeKey="ActivityButtonButton"
+      styles={
+        Object {
+          "disabledImage": Object {
+            "tintColor": "#aeaeb2",
+          },
+          "disabledRoot": Object {
+            "backgroundColor": "#e5e5ea",
+          },
+          "disabledText": Object {
+            "color": "#aeaeb2",
+          },
+          "image": Object {
+            "flexShrink": 0,
+            "height": 20,
+            "tintColor": "#ffffff",
+            "width": 20,
+          },
+          "indicator": Object {
+            "alignItems": "center",
+            "bottom": 0,
+            "justifyContent": "center",
+            "left": 0,
+            "position": "absolute",
+            "right": 0,
+            "top": 0,
+          },
+          "root": Object {
+            "alignItems": "center",
+            "backgroundColor": "#007aff",
+            "borderRadius": 8,
+            "flexDirection": "row",
+            "height": 50,
+            "justifyContent": "center",
+            "paddingHorizontal": 15,
+          },
+          "text": Object {
+            "backgroundColor": "transparent",
+            "color": "#ffffff",
+            "fontFamily": "System",
+            "fontSize": 17,
+            "fontWeight": "600",
+            "includeFontPadding": false,
+            "marginHorizontal": 5,
+            "textAlignVertical": "center",
+          },
+        }
+      }
     >
       <Text>
         TEXT
@@ -227,12 +365,58 @@ exports[`should render with custom styles 1`] = `
           "backgroundColor": "#000000",
         }
       }
+      styles={
+        Object {
+          "disabledImage": Object {
+            "tintColor": "#aeaeb2",
+          },
+          "disabledRoot": Object {
+            "backgroundColor": "#e5e5ea",
+          },
+          "disabledText": Object {
+            "color": "#aeaeb2",
+          },
+          "image": Object {
+            "flexShrink": 0,
+            "height": 20,
+            "tintColor": "#ffffff",
+            "width": 20,
+          },
+          "indicator": Object {
+            "alignItems": "center",
+            "bottom": 0,
+            "justifyContent": "center",
+            "left": 0,
+            "position": "absolute",
+            "right": 0,
+            "top": 0,
+          },
+          "root": Object {
+            "alignItems": "center",
+            "backgroundColor": "#007aff",
+            "borderRadius": 8,
+            "flexDirection": "row",
+            "height": 50,
+            "justifyContent": "center",
+            "paddingHorizontal": 15,
+          },
+          "text": Object {
+            "backgroundColor": "transparent",
+            "color": "#ffffff",
+            "fontFamily": "System",
+            "fontSize": 17,
+            "fontWeight": "600",
+            "includeFontPadding": false,
+            "marginHorizontal": 5,
+            "textAlignVertical": "center",
+          },
+        }
+      }
       textStyle={
         Object {
           "color": "#ffffff",
         }
       }
-      themeKey="ActivityButtonButton"
     >
       <Text>
         TEXT

@@ -23,7 +23,10 @@ jest.doMock('react-native/Libraries/Animated/src/Animated', () => {
 
 const Button = (props: any) => React.createElement('Button', props);
 
-jest.doMock('../Button', () => Button);
+jest.doMock('../Button', () => ({
+  Button,
+  createStyleSheet: jest.requireActual('../Button').createStyleSheet,
+}));
 
 /**
  * Under test

@@ -35,18 +35,14 @@ const theme: ThemeFactory = ({ scheme }) => {
   };
 
   const ActivityButton = {
-    style: {
-      backgroundColor: Colors.red,
-    },
-    indicatorColor: Colors.black,
-  };
-
-  const ActivityButtonButton = {
     styles: {
-      root: {},
+      root: {
+        backgroundColor: Colors.red,
+      },
       text: {},
       image: {},
     },
+    indicatorColor: Colors.black,
   };
 
   const Button = {
@@ -73,7 +69,6 @@ const theme: ThemeFactory = ({ scheme }) => {
     Colors,
     Avatar,
     ActivityButton,
-    ActivityButtonButton,
     Button,
     Component,
   };

@@ -26,7 +26,7 @@ export interface ButtonProps extends TouchableOpacityProps {
   imageAlignment?: 'left' | 'right';
 }
 
-const Button: React.FC<Themed<typeof createStyleSheet, ButtonProps>> = ({
+export const Button: React.FC<Themed<typeof createStyleSheet, ButtonProps>> = ({
   styles,
   activeOpacity = 0.5,
   children,
@@ -76,7 +76,7 @@ const Button: React.FC<Themed<typeof createStyleSheet, ButtonProps>> = ({
   );
 };
 
-const createStyleSheet = ({ Colors, Fonts }: Theme) =>
+export const createStyleSheet = ({ Colors, Fonts }: Theme) =>
   StyleSheet.create({
     root: {
       height: 50,
