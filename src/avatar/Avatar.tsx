@@ -181,6 +181,7 @@ const Avatar: React.FC<Themed<typeof createStyleSheet, AvatarProps>> = ({
 const createStyleSheet = ({ Colors, Fonts }: Theme) =>
   StyleSheet.create({
     root: {
+      alignSelf: 'center',
       alignItems: 'center',
       justifyContent: 'center',
       backgroundColor: Colors.gray,

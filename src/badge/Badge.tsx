@@ -89,6 +89,7 @@ const createStyleSheet = ({ Colors, Fonts }: Theme) =>
     root: {
       height: 10,
       minWidth: 10,
+      alignSelf: 'center',
       alignItems: 'center',
       justifyContent: 'center',
       backgroundColor: Colors.blue,

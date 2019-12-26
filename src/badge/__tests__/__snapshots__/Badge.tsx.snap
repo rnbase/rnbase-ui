@@ -10,6 +10,7 @@ exports[`should render normally 1`] = `
     Array [
       Object {
         "alignItems": "center",
+        "alignSelf": "center",
         "backgroundColor": "#007aff",
         "height": 10,
         "justifyContent": "center",
@@ -57,6 +58,7 @@ exports[`should render when greather than limit 1`] = `
     Array [
       Object {
         "alignItems": "center",
+        "alignSelf": "center",
         "backgroundColor": "#007aff",
         "height": 10,
         "justifyContent": "center",
@@ -104,6 +106,7 @@ exports[`should render with custom props 1`] = `
     Array [
       Object {
         "alignItems": "center",
+        "alignSelf": "center",
         "backgroundColor": "#007aff",
         "height": 10,
         "justifyContent": "center",
@@ -151,6 +154,7 @@ exports[`should render without number 1`] = `
     Array [
       Object {
         "alignItems": "center",
+        "alignSelf": "center",
         "backgroundColor": "#007aff",
         "height": 10,
         "justifyContent": "center",

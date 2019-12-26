@@ -6,6 +6,7 @@ exports[`should fallback to initials 1`] = `
     Array [
       Object {
         "alignItems": "center",
+        "alignSelf": "center",
         "backgroundColor": "#8e8e93",
         "justifyContent": "center",
       },
@@ -50,6 +51,7 @@ exports[`should render as circle with badge 1`] = `
     Array [
       Object {
         "alignItems": "center",
+        "alignSelf": "center",
         "backgroundColor": "#8e8e93",
         "justifyContent": "center",
       },
@@ -89,6 +91,7 @@ exports[`should render as circle with badge 1`] = `
       Array [
         Object {
           "alignItems": "center",
+          "alignSelf": "center",
           "backgroundColor": "#007aff",
           "height": 10,
           "justifyContent": "center",
@@ -155,6 +158,7 @@ exports[`should render as square with badge 1`] = `
     Array [
       Object {
         "alignItems": "center",
+        "alignSelf": "center",
         "backgroundColor": "#8e8e93",
         "justifyContent": "center",
       },
@@ -190,6 +194,7 @@ exports[`should render as square with badge 1`] = `
       Array [
         Object {
           "alignItems": "center",
+          "alignSelf": "center",
           "backgroundColor": "#007aff",
           "height": 10,
           "justifyContent": "center",
@@ -229,6 +234,7 @@ exports[`should render default image 1`] = `
     Array [
       Object {
         "alignItems": "center",
+        "alignSelf": "center",
         "backgroundColor": "#8e8e93",
         "justifyContent": "center",
       },
@@ -272,6 +278,7 @@ exports[`should render default image if empty name 1`] = `
     Array [
       Object {
         "alignItems": "center",
+        "alignSelf": "center",
         "backgroundColor": "#8e8e93",
         "justifyContent": "center",
       },
@@ -315,6 +322,7 @@ exports[`should render default image if no gravatar 1`] = `
     Array [
       Object {
         "alignItems": "center",
+        "alignSelf": "center",
         "backgroundColor": "#8e8e93",
         "justifyContent": "center",
       },
@@ -358,6 +366,7 @@ exports[`should render default image if no image 1`] = `
     Array [
       Object {
         "alignItems": "center",
+        "alignSelf": "center",
         "backgroundColor": "#8e8e93",
         "justifyContent": "center",
       },
@@ -401,6 +410,7 @@ exports[`should render gravatar 1`] = `
     Array [
       Object {
         "alignItems": "center",
+        "alignSelf": "center",
         "backgroundColor": "#8e8e93",
         "justifyContent": "center",
       },
@@ -444,6 +454,7 @@ exports[`should render image 1`] = `
     Array [
       Object {
         "alignItems": "center",
+        "alignSelf": "center",
         "backgroundColor": "#8e8e93",
         "justifyContent": "center",
       },
@@ -487,6 +498,7 @@ exports[`should render image as square 1`] = `
     Array [
       Object {
         "alignItems": "center",
+        "alignSelf": "center",
         "backgroundColor": "#8e8e93",
         "justifyContent": "center",
       },
@@ -526,6 +538,7 @@ exports[`should render initials 1`] = `
     Array [
       Object {
         "alignItems": "center",
+        "alignSelf": "center",
         "backgroundColor": "#8e8e93",
         "justifyContent": "center",
       },
