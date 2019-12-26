@@ -15,6 +15,7 @@ import {
 } from 'react-native';
 
 import { Themed, Theme, WithThemeProps, withTheme } from '../theming';
+import Badge, { BadgeProps } from '../badge/Badge';
 
 const getColor = (string: string): string => {
   let hash = 0;
@@ -43,6 +44,7 @@ interface AvatarProps extends ViewProps {
   name?: string;
   email?: string;
   colorize?: boolean;
+  badge?: BadgeProps;
   imageSource?: ImageSourcePropType;
   defaultImageSource?: ImageSourcePropType;
   style?: StyleProp<ViewStyle>;
@@ -57,6 +59,7 @@ const Avatar: React.FC<Themed<typeof createStyleSheet, AvatarProps>> = ({
   name,
   email,
   colorize = false,
+  badge,
   imageSource,
   defaultImageSource = require('./default.png'),
   style,
@@ -108,7 +111,7 @@ const Avatar: React.FC<Themed<typeof createStyleSheet, AvatarProps>> = ({
     shapeStyle,
   ];
 
-  let content;
+  let content = [];
 
   if (initials) {
     const textStyles = [
@@ -123,19 +126,49 @@ const Avatar: React.FC<Themed<typeof createStyleSheet, AvatarProps>> = ({
       rootStyles.push({ backgroundColor: initials.color });
     }
 
-    content = (
-      <Text style={textStyles} numberOfLines={1}>
+    content.push(
+      <Text key="text" style={textStyles} numberOfLines={1}>
         {initials.text}
-      </Text>
+      </Text>,
     );
   } else {
-    content = (
+    content.push(
       <Image
+        key="image"
         style={[styles.image, imageStyle, shapeStyle]}
         source={avatarImageSource}
         onError={onError}
-      />
+      />,
     );
+  }
+
+  if (badge && badge.value) {
+    // We need to know the badge's height to shift it slightly to the right and above
+    // And because we don't want to calculate the real height, we'll use default values
+    const badgeHeight = typeof badge.value === 'number' ? 20 : 10;
+    let badgeShift;
+
+    if (shape === 'circle') {
+      // We want to place the badge at the point with polar coordinates (r,45°)
+      // thus we need to find the distance from the containing square top right corner
+      // which can be calculated as x = r - r × sin(45°)
+      const edgePoint = (size / 2) * (1 - Math.sin((45 * Math.PI) / 180));
+
+      badgeShift = PixelRatio.roundToNearestPixel(edgePoint - badgeHeight / 2);
+    } else {
+      badgeShift = PixelRatio.roundToNearestPixel(-badgeHeight / 4);
+    }
+
+    const badgeStyles = [
+      badge.style,
+      {
+        top: badgeShift,
+        right: badgeShift,
+      },
+      styles.badge,
+    ];
+
+    content.push(<Badge key="badge" {...badge} style={badgeStyles} />);
   }
 
   return (
@@ -148,7 +181,6 @@ const Avatar: React.FC<Themed<typeof createStyleSheet, AvatarProps>> = ({
 const createStyleSheet = ({ Colors, Fonts }: Theme) =>
   StyleSheet.create({
     root: {
-      overflow: 'hidden',
       alignItems: 'center',
       justifyContent: 'center',
       backgroundColor: Colors.gray,
@@ -160,6 +192,18 @@ const createStyleSheet = ({ Colors, Fonts }: Theme) =>
     text: {
       ...Fonts.bold,
       color: Colors.white,
+    },
+    badge: {
+      zIndex: 1,
+      position: 'absolute',
+      shadowColor: Colors.black,
+      shadowOffset: {
+        width: 0,
+        height: 1,
+      },
+      shadowOpacity: 0.3,
+      shadowRadius: 1,
+      elevation: 1,
     },
   });
 
