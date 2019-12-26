@@ -114,3 +114,11 @@ it('should render default image if empty name', () => {
 
   expect(tree).toMatchSnapshot();
 });
+
+it('should render as circle with badge', () => {
+  expect(createRenderer({ size, badge: { value: 1 } })).toMatchSnapshot();
+});
+
+it('should render as square with badge', () => {
+  expect(createRenderer({ size, shape: 'square', badge: { value: true } })).toMatchSnapshot();
+});

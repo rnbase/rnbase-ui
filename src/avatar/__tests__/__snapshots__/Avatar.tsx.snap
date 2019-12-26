@@ -8,7 +8,6 @@ exports[`should fallback to initials 1`] = `
         "alignItems": "center",
         "backgroundColor": "#8e8e93",
         "justifyContent": "center",
-        "overflow": "hidden",
       },
       undefined,
       Object {
@@ -45,6 +44,185 @@ exports[`should fallback to initials 1`] = `
 </View>
 `;
 
+exports[`should render as circle with badge 1`] = `
+<View
+  style={
+    Array [
+      Object {
+        "alignItems": "center",
+        "backgroundColor": "#8e8e93",
+        "justifyContent": "center",
+      },
+      undefined,
+      Object {
+        "height": 50,
+        "width": 50,
+      },
+      Object {
+        "borderRadius": 25,
+      },
+    ]
+  }
+>
+  <Image
+    onError={[Function]}
+    source={
+      Object {
+        "testUri": "../../../src/avatar/default.png",
+      }
+    }
+    style={
+      Array [
+        Object {
+          "height": "100%",
+          "width": "100%",
+        },
+        undefined,
+        Object {
+          "borderRadius": 25,
+        },
+      ]
+    }
+  />
+  <View
+    style={
+      Array [
+        Object {
+          "alignItems": "center",
+          "backgroundColor": "#007aff",
+          "height": 10,
+          "justifyContent": "center",
+          "minWidth": 10,
+        },
+        Array [
+          undefined,
+          Object {
+            "right": -2.5,
+            "top": -2.5,
+          },
+          Object {
+            "elevation": 1,
+            "position": "absolute",
+            "shadowColor": "#000000",
+            "shadowOffset": Object {
+              "height": 1,
+              "width": 0,
+            },
+            "shadowOpacity": 0.2,
+            "shadowRadius": 1,
+            "zIndex": 1,
+          },
+        ],
+        Object {
+          "height": 20,
+          "minWidth": 20,
+          "paddingHorizontal": 6,
+        },
+        Object {
+          "borderRadius": 10,
+        },
+      ]
+    }
+  >
+    <Text
+      numberOfLines={1}
+      style={
+        Array [
+          Object {
+            "backgroundColor": "transparent",
+            "color": "#ffffff",
+            "fontFamily": "System",
+            "fontWeight": "400",
+            "includeFontPadding": false,
+            "textAlignVertical": "center",
+          },
+          undefined,
+          Object {
+            "fontSize": 12,
+          },
+        ]
+      }
+    >
+      1
+    </Text>
+  </View>
+</View>
+`;
+
+exports[`should render as square with badge 1`] = `
+<View
+  style={
+    Array [
+      Object {
+        "alignItems": "center",
+        "backgroundColor": "#8e8e93",
+        "justifyContent": "center",
+      },
+      undefined,
+      Object {
+        "height": 50,
+        "width": 50,
+      },
+      undefined,
+    ]
+  }
+>
+  <Image
+    onError={[Function]}
+    source={
+      Object {
+        "testUri": "../../../src/avatar/default.png",
+      }
+    }
+    style={
+      Array [
+        Object {
+          "height": "100%",
+          "width": "100%",
+        },
+        undefined,
+        undefined,
+      ]
+    }
+  />
+  <View
+    style={
+      Array [
+        Object {
+          "alignItems": "center",
+          "backgroundColor": "#007aff",
+          "height": 10,
+          "justifyContent": "center",
+          "minWidth": 10,
+        },
+        Array [
+          undefined,
+          Object {
+            "right": -2.5,
+            "top": -2.5,
+          },
+          Object {
+            "elevation": 1,
+            "position": "absolute",
+            "shadowColor": "#000000",
+            "shadowOffset": Object {
+              "height": 1,
+              "width": 0,
+            },
+            "shadowOpacity": 0.2,
+            "shadowRadius": 1,
+            "zIndex": 1,
+          },
+        ],
+        Object {
+          "borderRadius": 5,
+        },
+      ]
+    }
+  />
+</View>
+`;
+
 exports[`should render default image 1`] = `
 <View
   style={
@@ -53,7 +231,6 @@ exports[`should render default image 1`] = `
         "alignItems": "center",
         "backgroundColor": "#8e8e93",
         "justifyContent": "center",
-        "overflow": "hidden",
       },
       undefined,
       Object {
@@ -97,7 +274,6 @@ exports[`should render default image if empty name 1`] = `
         "alignItems": "center",
         "backgroundColor": "#8e8e93",
         "justifyContent": "center",
-        "overflow": "hidden",
       },
       undefined,
       Object {
@@ -141,7 +317,6 @@ exports[`should render default image if no gravatar 1`] = `
         "alignItems": "center",
         "backgroundColor": "#8e8e93",
         "justifyContent": "center",
-        "overflow": "hidden",
       },
       undefined,
       Object {
@@ -185,7 +360,6 @@ exports[`should render default image if no image 1`] = `
         "alignItems": "center",
         "backgroundColor": "#8e8e93",
         "justifyContent": "center",
-        "overflow": "hidden",
       },
       undefined,
       Object {
@@ -229,7 +403,6 @@ exports[`should render gravatar 1`] = `
         "alignItems": "center",
         "backgroundColor": "#8e8e93",
         "justifyContent": "center",
-        "overflow": "hidden",
       },
       undefined,
       Object {
@@ -273,7 +446,6 @@ exports[`should render image 1`] = `
         "alignItems": "center",
         "backgroundColor": "#8e8e93",
         "justifyContent": "center",
-        "overflow": "hidden",
       },
       undefined,
       Object {
@@ -317,7 +489,6 @@ exports[`should render image as square 1`] = `
         "alignItems": "center",
         "backgroundColor": "#8e8e93",
         "justifyContent": "center",
-        "overflow": "hidden",
       },
       undefined,
       Object {
@@ -357,7 +528,6 @@ exports[`should render initials 1`] = `
         "alignItems": "center",
         "backgroundColor": "#8e8e93",
         "justifyContent": "center",
-        "overflow": "hidden",
       },
       undefined,
       Object {
