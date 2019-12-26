@@ -90,6 +90,7 @@ const Avatar: React.FC<Themed<typeof createStyleSheet, AvatarProps>> = ({
   const onError = useCallback(() => setAvatarImageSource(defaultImageSource), [defaultImageSource]);
 
   const shapeStyle = shape === 'circle' ? { borderRadius: size / 2 } : undefined;
+  const badgeValue = badge && badge.value ? badge.value : undefined;
 
   const initials = useMemo(
     () =>
@@ -100,6 +101,25 @@ const Avatar: React.FC<Themed<typeof createStyleSheet, AvatarProps>> = ({
       },
     [name, colorize, avatarImageSource, defaultImageSource],
   );
+
+  const badgeOffset = useMemo(() => {
+    if (badgeValue) {
+      // We need to know the badge's height to slightly shift it to the right and above
+      // And because we don't want to calculate the real height, we'll use default values
+      const badgeHeight = typeof badgeValue === 'number' ? 20 : 10;
+
+      if (shape === 'circle') {
+        // We want to place the badge at the point with polar coordinates (r,45°)
+        // thus we need to find the distance from the containing square top right corner
+        // which can be calculated as x = r - r × sin(45°)
+        const edgePoint = (size / 2) * (1 - Math.sin((45 * Math.PI) / 180));
+
+        return PixelRatio.roundToNearestPixel(edgePoint - badgeHeight / 2);
+      } else {
+        return PixelRatio.roundToNearestPixel(-badgeHeight / 4);
+      }
+    }
+  }, [badgeValue, shape, size]);
 
   const rootStyles = [
     styles.root,
@@ -143,29 +163,13 @@ const Avatar: React.FC<Themed<typeof createStyleSheet, AvatarProps>> = ({
   }
 
   if (badge && badge.value) {
-    // We need to know the badge's height to shift it slightly to the right and above
-    // And because we don't want to calculate the real height, we'll use default values
-    const badgeHeight = typeof badge.value === 'number' ? 20 : 10;
-    let badgeShift;
-
-    if (shape === 'circle') {
-      // We want to place the badge at the point with polar coordinates (r,45°)
-      // thus we need to find the distance from the containing square top right corner
-      // which can be calculated as x = r - r × sin(45°)
-      const edgePoint = (size / 2) * (1 - Math.sin((45 * Math.PI) / 180));
-
-      badgeShift = PixelRatio.roundToNearestPixel(edgePoint - badgeHeight / 2);
-    } else {
-      badgeShift = PixelRatio.roundToNearestPixel(-badgeHeight / 4);
-    }
-
     const badgeStyles = [
-      badge.style,
       {
-        top: badgeShift,
-        right: badgeShift,
+        top: badgeOffset,
+        right: badgeOffset,
       },
       styles.badge,
+      badge.style,
     ];
 
     content.push(<Badge key="badge" {...badge} style={badgeStyles} />);

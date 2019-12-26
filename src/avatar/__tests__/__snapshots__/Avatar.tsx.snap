@@ -98,7 +98,6 @@ exports[`should render as circle with badge 1`] = `
           "minWidth": 10,
         },
         Array [
-          undefined,
           Object {
             "right": -2.5,
             "top": -2.5,
@@ -115,6 +114,7 @@ exports[`should render as circle with badge 1`] = `
             "shadowRadius": 1,
             "zIndex": 1,
           },
+          undefined,
         ],
         Object {
           "height": 20,
@@ -201,7 +201,6 @@ exports[`should render as square with badge 1`] = `
           "minWidth": 10,
         },
         Array [
-          undefined,
           Object {
             "right": -2.5,
             "top": -2.5,
@@ -218,6 +217,7 @@ exports[`should render as square with badge 1`] = `
             "shadowRadius": 1,
             "zIndex": 1,
           },
+          undefined,
         ],
         Object {
           "borderRadius": 5,
