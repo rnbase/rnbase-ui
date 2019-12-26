@@ -27,7 +27,7 @@ const theme: ThemeFactory = ({ scheme }) => {
   const Avatar = {
     styles: {
       root: {
-        padding: 3,
+        padding: 2,
       },
       image: {},
       text: {},
@@ -36,19 +36,16 @@ const theme: ThemeFactory = ({ scheme }) => {
 
   const ActivityButton = {
     style: {
-      backgroundColor: Colors.green,
+      backgroundColor: Colors.red,
     },
-    indicatorColor: Colors.red,
+    indicatorColor: Colors.black,
   };
 
   const ActivityButtonButton = {
     styles: {
-      root: {
-        margin: 5,
-      },
-      image: {
-        tintColor: Colors.blue,
-      },
+      root: {},
+      text: {},
+      image: {},
     },
   };
 

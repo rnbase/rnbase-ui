@@ -53,8 +53,8 @@ const App = () => {
               <Text style={styles.footer}>Engine: Hermes</Text>
             </View>
           )}
+          <Component>Themed Component</Component>
           <View style={styles.body}>
-            <Component>Themed Component</Component>
             <View style={styles.stack}>
               <Avatar
                 size={50}
@@ -97,32 +97,30 @@ const App = () => {
             <View style={styles.stack}>
               <Button
                 text="Button"
-                imageSource={require('./src/assets/Search.png')}
-                onPress={() => Alert.alert('Pressed', 'Button')}
-              />
-              <TextButton
-                text="Button"
-                imageSource={require('./src/assets/Search.png')}
+                imageSource={require('./src/assets/star.png')}
                 onPress={() => Alert.alert('Pressed', 'Button')}
               />
               <OutlineButton
                 text="Button"
-                imageSource={require('./src/assets/Search.png')}
+                imageSource={require('./src/assets/heart.png')}
+                onPress={() => Alert.alert('Pressed', 'Button')}
+              />
+              <TextButton
+                text="Button"
+                imageAlignment="right"
+                imageSource={require('./src/assets/chevron-right.png')}
                 onPress={() => Alert.alert('Pressed', 'Button')}
               />
             </View>
-            <View style={styles.stack}>
-              <ActivityButton
-                busy={busy}
-                text="Activity Button"
-                imageSource={require('./src/assets/Check.png')}
-                imageAlignment="right"
-                onPress={() => {
-                  setBusy(true);
-                  setTimeout(() => setBusy(false), 3000);
-                }}
-              />
-            </View>
+            <ActivityButton
+              busy={busy}
+              text="Activity Button"
+              imageSource={require('./src/assets/check-circle.png')}
+              onPress={() => {
+                setBusy(true);
+                setTimeout(() => setBusy(false), 3000);
+              }}
+            />
             <View style={styles.sectionContainer}>
               <Text style={styles.sectionTitle}>Step One</Text>
               <Text style={styles.sectionDescription}>
@@ -165,11 +163,12 @@ const styles = StyleSheet.create({
     right: 0,
   },
   body: {
+    padding: 20,
     backgroundColor: Colors.white,
   },
   sectionContainer: {
     marginTop: 32,
-    paddingHorizontal: 24,
+    paddingHorizontal: 5,
   },
   sectionTitle: {
     fontSize: 24,
@@ -197,7 +196,7 @@ const styles = StyleSheet.create({
     marginVertical: 10,
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'space-around',
+    justifyContent: 'space-between',
   },
 });
 
