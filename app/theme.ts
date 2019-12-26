@@ -27,8 +27,7 @@ const theme: ThemeFactory = ({ scheme }) => {
   const Avatar = {
     styles: {
       root: {
-        borderWidth: 3,
-        borderColor: 'transparent',
+        padding: 3,
       },
       image: {},
       text: {},

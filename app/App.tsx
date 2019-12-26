@@ -61,11 +61,38 @@ const App = () => {
                 name="John Smith"
                 imageSource={avatars.none}
                 defaultImageSource={avatars.test}
+                badge={{
+                  value: 3,
+                }}
               />
               <Avatar size={50} email="jitewaboh@lagify.com" defaultImageSource={avatars.test} />
-              <Avatar size={50} name="Elon Musk" colorize={true} imageSource={avatars.none} />
-              <Avatar size={50} name="John Smith" imageSource={avatars.test} />
+              <Avatar
+                size={50}
+                name="Elon Musk"
+                colorize={true}
+                imageSource={avatars.none}
+                badge={{
+                  value: true,
+                  color: '#3B0',
+                }}
+              />
+              <Avatar
+                size={50}
+                name="John Smith"
+                imageSource={avatars.test}
+                shape="square"
+                style={{ borderRadius: 10 }}
+                imageStyle={{ borderRadius: 7 }}
+              />
               <Avatar size={50} email="user@email.com" imageSource={avatars.none} />
+            </View>
+            <View style={styles.stack}>
+              <Badge value={true} color="#3B0" />
+              <Badge value={true} color="#FC0" rounded={false} />
+              <Badge value={3} />
+              <Badge value={35} color="#F20" />
+              <Badge value={350} size={16} />
+              <Badge value={355} limit={false} rounded={false} style={{ borderRadius: 3 }} />
             </View>
             <View style={styles.stack}>
               <Button
@@ -95,14 +122,6 @@ const App = () => {
                   setTimeout(() => setBusy(false), 3000);
                 }}
               />
-            </View>
-            <View style={styles.stack}>
-              <Badge value={true} color="#3B0" />
-              <Badge value={true} color="#FC0" rounded={false} />
-              <Badge value={3} />
-              <Badge value={35} color="#F20" />
-              <Badge value={350} size={16} />
-              <Badge value={355} limit={false} rounded={false} style={{ borderRadius: 3 }} />
             </View>
             <View style={styles.sectionContainer}>
               <Text style={styles.sectionTitle}>Step One</Text>
