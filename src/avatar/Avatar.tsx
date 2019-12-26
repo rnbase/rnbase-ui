@@ -188,7 +188,7 @@ const createStyleSheet = ({ Colors, Fonts }: Theme) =>
       alignSelf: 'center',
       alignItems: 'center',
       justifyContent: 'center',
-      backgroundColor: Colors.gray,
+      backgroundColor: Colors.gray2,
     },
     image: {
       width: '100%',
