@@ -12,7 +12,7 @@ import {
 
 import { Themed, Theme, WithThemeProps, withTheme } from '../theming';
 
-interface BadgeProps extends ViewProps {
+export interface BadgeProps extends ViewProps {
   size?: number;
   color?: string;
   value?: number | boolean;
@@ -47,7 +47,7 @@ const Badge: React.FC<Themed<typeof createStyleSheet, BadgeProps>> = ({
   let content;
   let height = styles.root.height;
 
-  if (typeof value === 'number' && value > 0) {
+  if (typeof value === 'number' && value !== 0) {
     const displayValue = limit && value > limit ? `${limit}+` : value;
 
     height = PixelRatio.roundToNearestPixel(size / 0.6);
