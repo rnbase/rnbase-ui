@@ -3,35 +3,34 @@
   "localized-strings": {
     "next": "Next",
     "previous": "Previous",
-    "tagline": "A website for testing",
+    "tagline": "React Native UI component library",
     "docs": {
-      "doc1": {
-        "title": "Latin-ish",
-        "sidebar_label": "Example Page"
+      "avatar": {
+        "title": "Avatar"
       },
-      "doc2": {
-        "title": "document number 2"
+      "button": {
+        "title": "Button"
       },
-      "doc3": {
-        "title": "This is document number 3"
+      "installation": {
+        "title": "Installation"
       },
-      "doc4": {
-        "title": "Other Document"
+      "overview": {
+        "title": "Overview"
       },
-      "doc5": {
-        "title": "Fifth Document"
+      "theming": {
+        "title": "Theming"
       }
     },
     "links": {
       "Docs": "Docs",
-      "API": "API",
+      "Components": "Components",
       "Help": "Help",
+      "GitHub": "GitHub",
       "Blog": "Blog"
     },
     "categories": {
-      "Docusaurus": "Docusaurus",
-      "First Category": "First Category",
-      "Second Category": "Second Category"
+      "Getting Started": "Getting Started",
+      "Components": "Components"
     }
   },
   "pages-strings": {
