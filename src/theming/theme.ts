@@ -99,6 +99,12 @@ const defaultTheme: ThemeFactory = ({ scheme }) => {
   };
 
   const TextButton = {
+    hitSlop: {
+      top: 5,
+      left: 5,
+      bottom: 5,
+      right: 5,
+    },
     styles: {
       root: {
         height: null,
