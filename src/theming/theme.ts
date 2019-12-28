@@ -108,6 +108,7 @@ const defaultTheme: ThemeFactory = ({ scheme }) => {
     styles: {
       root: {
         height: null,
+        overflow: null,
         backgroundColor: null,
         paddingHorizontal: null,
       },
