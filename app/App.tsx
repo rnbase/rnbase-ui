@@ -26,6 +26,7 @@ import {
   ActivityButton,
   Badge,
   Button,
+  ButtonGroup,
   OutlineButton,
   TextButton,
   Component,
@@ -41,6 +42,9 @@ const App = () => {
   const usingHermes = typeof HermesInternal === 'object' && HermesInternal !== null;
 
   const [busy, setBusy] = useState(false);
+  const [selectedButton, setSelectedButton] = useState(0);
+
+  const onSelectButton = (index: number) => setSelectedButton(index);
 
   return (
     <ThemeProvider colorScheme="no-preference" theme={theme}>
@@ -114,6 +118,7 @@ const App = () => {
             </View>
             <ActivityButton
               busy={busy}
+              style={{ marginVertical: 10 }}
               text="Activity Button"
               imageSource={require('./src/assets/check-circle.png')}
               onPress={() => {
@@ -121,25 +126,48 @@ const App = () => {
                 setTimeout(() => setBusy(false), 3000);
               }}
             />
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Step One</Text>
-              <Text style={styles.sectionDescription}>
-                Edit <Text style={styles.highlight}>App.tsx</Text> to change this screen and then
-                come back to see your edits.
-              </Text>
-            </View>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>See Your Changes</Text>
-              <Text style={styles.sectionDescription}>
-                <ReloadInstructions />
-              </Text>
-            </View>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Debug</Text>
-              <Text style={styles.sectionDescription}>
-                <DebugInstructions />
-              </Text>
-            </View>
+            <ButtonGroup
+              selected={selectedButton}
+              onSelect={onSelectButton}
+              buttons={[
+                {
+                  text: 'One',
+                  iconSource: require('./src/assets/star.png'),
+                },
+                {
+                  text: 'Two',
+                  iconSource: require('./src/assets/heart.png'),
+                },
+                {
+                  text: 'Three',
+                },
+              ]}
+            />
+            {selectedButton === 0 && (
+              <View style={styles.sectionContainer}>
+                <Text style={styles.sectionTitle}>Step One</Text>
+                <Text style={styles.sectionDescription}>
+                  Edit <Text style={styles.highlight}>App.tsx</Text> to change this screen and then
+                  come back to see your edits.
+                </Text>
+              </View>
+            )}
+            {selectedButton === 1 && (
+              <View style={styles.sectionContainer}>
+                <Text style={styles.sectionTitle}>See Your Changes</Text>
+                <Text style={styles.sectionDescription}>
+                  <ReloadInstructions />
+                </Text>
+              </View>
+            )}
+            {selectedButton === 2 && (
+              <View style={styles.sectionContainer}>
+                <Text style={styles.sectionTitle}>Debug</Text>
+                <Text style={styles.sectionDescription}>
+                  <DebugInstructions />
+                </Text>
+              </View>
+            )}
             <View style={styles.sectionContainer}>
               <Text style={styles.sectionTitle}>Learn More</Text>
               <Text style={styles.sectionDescription}>
