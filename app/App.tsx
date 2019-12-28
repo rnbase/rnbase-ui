@@ -20,16 +20,7 @@ import {
 } from 'react-native/Libraries/NewAppScreen';
 
 import theme from './theme';
-import {
-  ThemeProvider,
-  Avatar,
-  ActivityButton,
-  Badge,
-  Button,
-  OutlineButton,
-  TextButton,
-  Component,
-} from '../';
+import { ThemeProvider, Avatar, Badge, Button, OutlineButton, TextButton, Component } from '../';
 
 const avatars = {
   none: { uri: 'https://randomuser.me/api/portraits/none.jpg' },
@@ -107,14 +98,20 @@ const App = () => {
               />
               <TextButton
                 text="Button"
+                busy={busy}
                 imageAlignment="right"
                 imageSource={require('./src/assets/chevron-right.png')}
-                onPress={() => Alert.alert('Pressed', 'Button')}
+                onPress={() => {
+                  setBusy(true);
+                  setTimeout(() => setBusy(false), 3000);
+                }}
               />
             </View>
-            <ActivityButton
+            <Button
               busy={busy}
+              //style={{ width: 200 }}
               text="Activity Button"
+              busyAnimationType="slide"
               imageSource={require('./src/assets/check-circle.png')}
               onPress={() => {
                 setBusy(true);
