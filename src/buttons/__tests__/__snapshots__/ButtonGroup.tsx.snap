@@ -1,0 +1,335 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render components 1`] = `
+<View
+  style={
+    Array [
+      Object {
+        "backgroundColor": "#e5e5ea",
+        "borderColor": "#e5e5ea",
+        "borderRadius": 8,
+        "borderWidth": 3,
+        "height": 40,
+      },
+      undefined,
+    ]
+  }
+>
+  <View
+    style={
+      Object {
+        "backgroundColor": "#ffffff",
+        "borderRadius": 5,
+        "bottom": 0,
+        "left": 0,
+        "position": "absolute",
+        "right": 0,
+        "top": 0,
+        "transform": Array [
+          Object {
+            "translateX": 0,
+          },
+        ],
+        "width": 0,
+      }
+    }
+  />
+  <View
+    onLayout={[Function]}
+    style={
+      Object {
+        "flexDirection": "row",
+        "flexGrow": 1,
+      }
+    }
+    testID="container"
+  >
+    <TouchableOpacity
+      activeOpacity={0.5}
+      onPress={[Function]}
+      style={
+        Array [
+          Object {
+            "alignItems": "center",
+            "flex": 1,
+            "flexDirection": "row",
+            "justifyContent": "center",
+            "paddingHorizontal": 5,
+          },
+          undefined,
+        ]
+      }
+    >
+      <Text>
+        ONE
+      </Text>
+    </TouchableOpacity>
+    <TouchableOpacity
+      activeOpacity={0.5}
+      onPress={[Function]}
+      style={
+        Array [
+          Object {
+            "alignItems": "center",
+            "flex": 1,
+            "flexDirection": "row",
+            "justifyContent": "center",
+            "paddingHorizontal": 5,
+          },
+          undefined,
+        ]
+      }
+    >
+      <Text>
+        TWO
+      </Text>
+    </TouchableOpacity>
+  </View>
+</View>
+`;
+
+exports[`should render icons 1`] = `
+<View
+  style={
+    Array [
+      Object {
+        "backgroundColor": "#e5e5ea",
+        "borderColor": "#e5e5ea",
+        "borderRadius": 8,
+        "borderWidth": 3,
+        "height": 40,
+      },
+      undefined,
+    ]
+  }
+>
+  <View
+    style={
+      Object {
+        "backgroundColor": "#ffffff",
+        "borderRadius": 5,
+        "bottom": 0,
+        "left": 0,
+        "position": "absolute",
+        "right": 0,
+        "top": 0,
+        "transform": Array [
+          Object {
+            "translateX": 0,
+          },
+        ],
+        "width": 0,
+      }
+    }
+  />
+  <View
+    onLayout={[Function]}
+    style={
+      Object {
+        "flexDirection": "row",
+        "flexGrow": 1,
+      }
+    }
+    testID="container"
+  >
+    <TouchableOpacity
+      activeOpacity={0.5}
+      onPress={[Function]}
+      style={
+        Array [
+          Object {
+            "alignItems": "center",
+            "flex": 1,
+            "flexDirection": "row",
+            "justifyContent": "center",
+            "paddingHorizontal": 5,
+          },
+          undefined,
+        ]
+      }
+    >
+      <Image
+        source={
+          Object {
+            "uri": "icon-one.png",
+          }
+        }
+        style={
+          Array [
+            Object {
+              "height": 18,
+              "tintColor": "#838387",
+              "width": 18,
+            },
+            undefined,
+            Object {
+              "tintColor": "#007aff",
+            },
+          ]
+        }
+      />
+    </TouchableOpacity>
+    <TouchableOpacity
+      activeOpacity={0.5}
+      onPress={[Function]}
+      style={
+        Array [
+          Object {
+            "alignItems": "center",
+            "flex": 1,
+            "flexDirection": "row",
+            "justifyContent": "center",
+            "paddingHorizontal": 5,
+          },
+          undefined,
+        ]
+      }
+    >
+      <Image
+        source={
+          Object {
+            "uri": "icon-two.png",
+          }
+        }
+        style={
+          Array [
+            Object {
+              "height": 18,
+              "tintColor": "#838387",
+              "width": 18,
+            },
+            undefined,
+            false,
+          ]
+        }
+      />
+    </TouchableOpacity>
+  </View>
+</View>
+`;
+
+exports[`should render normally 1`] = `
+<View
+  style={
+    Array [
+      Object {
+        "backgroundColor": "#e5e5ea",
+        "borderColor": "#e5e5ea",
+        "borderRadius": 8,
+        "borderWidth": 3,
+        "height": 40,
+      },
+      undefined,
+    ]
+  }
+>
+  <View
+    style={
+      Object {
+        "backgroundColor": "#ffffff",
+        "borderRadius": 5,
+        "bottom": 0,
+        "left": 0,
+        "position": "absolute",
+        "right": 0,
+        "top": 0,
+        "transform": Array [
+          Object {
+            "translateX": 0,
+          },
+        ],
+        "width": 0,
+      }
+    }
+  />
+  <View
+    onLayout={[Function]}
+    style={
+      Object {
+        "flexDirection": "row",
+        "flexGrow": 1,
+      }
+    }
+    testID="container"
+  >
+    <TouchableOpacity
+      activeOpacity={0.5}
+      onPress={[Function]}
+      style={
+        Array [
+          Object {
+            "alignItems": "center",
+            "flex": 1,
+            "flexDirection": "row",
+            "justifyContent": "center",
+            "paddingHorizontal": 5,
+          },
+          undefined,
+        ]
+      }
+    >
+      <Text
+        numberOfLines={1}
+        style={
+          Array [
+            Object {
+              "backgroundColor": "transparent",
+              "color": "#838387",
+              "fontFamily": "System",
+              "fontSize": 15,
+              "fontWeight": "600",
+              "includeFontPadding": false,
+              "marginHorizontal": 5,
+              "textAlignVertical": "center",
+            },
+            undefined,
+            Object {
+              "color": "#007aff",
+            },
+          ]
+        }
+      >
+        one
+      </Text>
+    </TouchableOpacity>
+    <TouchableOpacity
+      activeOpacity={0.5}
+      onPress={[Function]}
+      style={
+        Array [
+          Object {
+            "alignItems": "center",
+            "flex": 1,
+            "flexDirection": "row",
+            "justifyContent": "center",
+            "paddingHorizontal": 5,
+          },
+          undefined,
+        ]
+      }
+    >
+      <Text
+        numberOfLines={1}
+        style={
+          Array [
+            Object {
+              "backgroundColor": "transparent",
+              "color": "#838387",
+              "fontFamily": "System",
+              "fontSize": 15,
+              "fontWeight": "600",
+              "includeFontPadding": false,
+              "marginHorizontal": 5,
+              "textAlignVertical": "center",
+            },
+            undefined,
+            false,
+          ]
+        }
+      >
+        two
+      </Text>
+    </TouchableOpacity>
+  </View>
+</View>
+`;

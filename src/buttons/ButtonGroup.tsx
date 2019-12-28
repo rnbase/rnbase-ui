@@ -101,7 +101,7 @@ const ButtonGroup: React.FC<Themed<typeof createStyleSheet, ButtonGroupProps>> =
   return (
     <View style={[styles.root, style]}>
       <Animated.View style={selectorStyles} />
-      <View style={styles.content} onLayout={onLayout}>
+      <View testID="container" style={styles.content} onLayout={onLayout}>
         {buttons.map((button, index) => (
           <TouchableOpacity
             key={index}
