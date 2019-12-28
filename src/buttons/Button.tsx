@@ -19,7 +19,7 @@ import { Themed, Theme, WithThemeProps, withTheme } from '../theming';
 
 const toValue = (value?: boolean) => (value ? 1 : 0);
 
-export interface ButtonProps extends TouchableOpacityProps {
+interface ButtonProps extends TouchableOpacityProps {
   children?: React.ReactNode;
   disabled?: boolean;
   busy?: boolean;
@@ -34,7 +34,7 @@ export interface ButtonProps extends TouchableOpacityProps {
   imageAlignment?: 'left' | 'right';
 }
 
-export const Button: React.FC<Themed<typeof createStyleSheet, ButtonProps>> = ({
+const Button: React.FC<Themed<typeof createStyleSheet, ButtonProps>> = ({
   styles,
   busy,
   busyIndicatorColor,
@@ -115,7 +115,7 @@ export const Button: React.FC<Themed<typeof createStyleSheet, ButtonProps>> = ({
   );
 };
 
-export const createStyleSheet = ({ Colors, Fonts }: Theme) =>
+const createStyleSheet = ({ Colors, Fonts }: Theme) =>
   StyleSheet.create({
     root: {
       height: 50,
