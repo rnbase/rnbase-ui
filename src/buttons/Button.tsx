@@ -1,5 +1,8 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import {
+  ActivityIndicator,
+  Animated,
+  Easing,
   Image,
   ImageStyle,
   StyleProp,
@@ -9,15 +12,20 @@ import {
   TouchableOpacity,
   TouchableOpacityProps,
   ImageSourcePropType,
-  View,
   ViewStyle,
 } from 'react-native';
 
 import { Themed, Theme, WithThemeProps, withTheme } from '../theming';
 
+const toValue = (value?: boolean) => (value ? 1 : 0);
+
 export interface ButtonProps extends TouchableOpacityProps {
   children?: React.ReactNode;
   disabled?: boolean;
+  busy?: boolean;
+  busyIndicatorColor?: string;
+  busyAnimationType?: 'fade' | 'zoom' | 'slide';
+  busyAnimationDuration?: number;
   style?: StyleProp<ViewStyle>;
   text?: React.ReactNode;
   textStyle?: StyleProp<TextStyle>;
@@ -28,6 +36,10 @@ export interface ButtonProps extends TouchableOpacityProps {
 
 export const Button: React.FC<Themed<typeof createStyleSheet, ButtonProps>> = ({
   styles,
+  busy,
+  busyIndicatorColor,
+  busyAnimationType = 'fade',
+  busyAnimationDuration = 500,
   activeOpacity = 0.5,
   children,
   style,
@@ -38,6 +50,29 @@ export const Button: React.FC<Themed<typeof createStyleSheet, ButtonProps>> = ({
   imageAlignment = 'left',
   ...props
 }) => {
+  const [animatedValue] = useState(() => new Animated.Value(toValue(busy)));
+
+  useEffect(() => {
+    Animated.timing(animatedValue, {
+      duration: busyAnimationDuration,
+      toValue: toValue(busy),
+      useNativeDriver: true,
+      easing: Easing.out(Easing.exp),
+    }).start();
+  }, [animatedValue, busy, busyAnimationDuration]);
+
+  const interpolate = (outputRange: number[]) =>
+    animatedValue.interpolate({ inputRange: [0, 1], outputRange });
+
+  const animation = (direction: 'in' | 'out') => ({
+    opacity: interpolate(direction === 'in' ? [0, 1] : [1, 0]),
+    transform: {
+      fade: null,
+      zoom: [{ scale: interpolate(direction === 'in' ? [2, 1] : [1, 0.5]) }],
+      slide: [{ translateY: interpolate(direction === 'in' ? [-25, 0] : [0, 25]) }],
+    }[busyAnimationType],
+  });
+
   let content;
 
   if (children) {
@@ -68,10 +103,14 @@ export const Button: React.FC<Themed<typeof createStyleSheet, ButtonProps>> = ({
   }
 
   const rootStyles = [styles.root, style, props.disabled && styles.disabledRoot];
+  const indicatorColor = busyIndicatorColor || styles.text.color;
 
   return (
-    <TouchableOpacity activeOpacity={activeOpacity} {...props}>
-      <View style={rootStyles}>{content}</View>
+    <TouchableOpacity disabled={busy} activeOpacity={activeOpacity} style={rootStyles} {...props}>
+      <Animated.View style={[styles.busy, animation('in')]} pointerEvents="none">
+        <ActivityIndicator animating={busy} size="small" color={indicatorColor} />
+      </Animated.View>
+      <Animated.View style={[styles.content, animation('out')]}>{content}</Animated.View>
     </TouchableOpacity>
   );
 };
@@ -81,11 +120,15 @@ export const createStyleSheet = ({ Colors, Fonts }: Theme) =>
     root: {
       height: 50,
       borderRadius: 8,
-      alignItems: 'center',
-      flexDirection: 'row',
+      overflow: 'hidden',
       paddingHorizontal: 15,
       justifyContent: 'center',
       backgroundColor: Colors.blue,
+    },
+    content: {
+      alignItems: 'center',
+      flexDirection: 'row',
+      justifyContent: 'center',
     },
     text: {
       ...Fonts.semibold,
@@ -98,6 +141,11 @@ export const createStyleSheet = ({ Colors, Fonts }: Theme) =>
       height: 20,
       flexShrink: 0,
       tintColor: Colors.white,
+    },
+    busy: {
+      ...StyleSheet.absoluteFillObject,
+      alignItems: 'center',
+      justifyContent: 'center',
     },
     disabledRoot: {
       backgroundColor: Colors.gray5,
