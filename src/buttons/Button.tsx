@@ -4,6 +4,7 @@ import {
   Animated,
   Easing,
   Image,
+  ImageSourcePropType,
   ImageStyle,
   StyleProp,
   StyleSheet,
@@ -11,7 +12,6 @@ import {
   TextStyle,
   TouchableOpacity,
   TouchableOpacityProps,
-  ImageSourcePropType,
   ViewStyle,
 } from 'react-native';
 
