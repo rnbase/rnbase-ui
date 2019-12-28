@@ -4,196 +4,55 @@ exports[`should render as disabled 1`] = `
 <TouchableOpacity
   activeOpacity={0.5}
   disabled={true}
+  style={
+    Array [
+      Object {
+        "backgroundColor": "#007aff",
+        "borderRadius": 8,
+        "height": 50,
+        "justifyContent": "center",
+        "overflow": "hidden",
+        "paddingHorizontal": 15,
+      },
+      undefined,
+      Object {
+        "backgroundColor": "#e5e5ea",
+      },
+    ]
+  }
 >
   <View
+    pointerEvents="none"
     style={
-      Array [
-        Object {
-          "alignItems": "center",
-          "backgroundColor": "#007aff",
-          "borderRadius": 8,
-          "flexDirection": "row",
-          "height": 50,
-          "justifyContent": "center",
-          "paddingHorizontal": 15,
-        },
-        undefined,
-        Object {
-          "backgroundColor": "#e5e5ea",
-        },
-      ]
-    }
-  />
-</TouchableOpacity>
-`;
-
-exports[`should render text only 1`] = `
-<TouchableOpacity
-  activeOpacity={0.5}
->
-  <View
-    style={
-      Array [
-        Object {
-          "alignItems": "center",
-          "backgroundColor": "#007aff",
-          "borderRadius": 8,
-          "flexDirection": "row",
-          "height": 50,
-          "justifyContent": "center",
-          "paddingHorizontal": 15,
-        },
-        undefined,
-        undefined,
-      ]
-    }
-  >
-    <Text
-      numberOfLines={1}
-      style={
-        Array [
-          Object {
-            "backgroundColor": "transparent",
-            "color": "#ffffff",
-            "fontFamily": "System",
-            "fontSize": 17,
-            "fontWeight": "600",
-            "includeFontPadding": false,
-            "marginHorizontal": 5,
-            "textAlignVertical": "center",
-          },
-          undefined,
-          undefined,
-        ]
+      Object {
+        "alignItems": "center",
+        "bottom": 0,
+        "justifyContent": "center",
+        "left": 0,
+        "opacity": 0,
+        "position": "absolute",
+        "right": 0,
+        "top": 0,
+        "transform": null,
       }
-    >
-      Button
-    </Text>
-  </View>
-</TouchableOpacity>
-`;
-
-exports[`should render text with custom styles 1`] = `
-<TouchableOpacity
-  activeOpacity={0.5}
->
-  <View
-    style={
-      Array [
-        Object {
-          "alignItems": "center",
-          "backgroundColor": "#007aff",
-          "borderRadius": 8,
-          "flexDirection": "row",
-          "height": 50,
-          "justifyContent": "center",
-          "paddingHorizontal": 15,
-        },
-        undefined,
-        undefined,
-      ]
     }
   >
-    <Text
-      numberOfLines={1}
-      style={
-        Array [
-          Object {
-            "backgroundColor": "transparent",
-            "color": "#ffffff",
-            "fontFamily": "System",
-            "fontSize": 17,
-            "fontWeight": "600",
-            "includeFontPadding": false,
-            "marginHorizontal": 5,
-            "textAlignVertical": "center",
-          },
-          Object {
-            "color": "#aaa",
-          },
-          undefined,
-        ]
+    <ActivityIndicator
+      animating={true}
+      color="#ffffff"
+      hidesWhenStopped={true}
+      size="small"
+    />
+  </View>
+  <View
+    style={
+      Object {
+        "alignItems": "center",
+        "flexDirection": "row",
+        "justifyContent": "center",
+        "opacity": 1,
+        "transform": null,
       }
-    >
-      Button
-    </Text>
-  </View>
-</TouchableOpacity>
-`;
-
-exports[`should render with custom content 1`] = `
-<TouchableOpacity
-  activeOpacity={0.5}
->
-  <View
-    style={
-      Array [
-        Object {
-          "alignItems": "center",
-          "backgroundColor": "#007aff",
-          "borderRadius": 8,
-          "flexDirection": "row",
-          "height": 50,
-          "justifyContent": "center",
-          "paddingHorizontal": 15,
-        },
-        undefined,
-        undefined,
-      ]
-    }
-  >
-    <Text>
-      CUSTOM CONTENT
-    </Text>
-  </View>
-</TouchableOpacity>
-`;
-
-exports[`should render with custom styles 1`] = `
-<TouchableOpacity
-  activeOpacity={0.5}
->
-  <View
-    style={
-      Array [
-        Object {
-          "alignItems": "center",
-          "backgroundColor": "#007aff",
-          "borderRadius": 8,
-          "flexDirection": "row",
-          "height": 50,
-          "justifyContent": "center",
-          "paddingHorizontal": 15,
-        },
-        Object {
-          "backgroundColor": "#000000",
-        },
-        undefined,
-      ]
-    }
-  />
-</TouchableOpacity>
-`;
-
-exports[`should render with image only 1`] = `
-<TouchableOpacity
-  activeOpacity={0.5}
->
-  <View
-    style={
-      Array [
-        Object {
-          "alignItems": "center",
-          "backgroundColor": "#007aff",
-          "borderRadius": 8,
-          "flexDirection": "row",
-          "height": 50,
-          "justifyContent": "center",
-          "paddingHorizontal": 15,
-        },
-        undefined,
-        undefined,
-      ]
     }
   >
     <Image
@@ -211,33 +70,89 @@ exports[`should render with image only 1`] = `
             "width": 20,
           },
           undefined,
-          undefined,
+          Object {
+            "tintColor": "#aeaeb2",
+          },
         ]
       }
     />
+    <Text
+      numberOfLines={1}
+      style={
+        Array [
+          Object {
+            "backgroundColor": "transparent",
+            "color": "#ffffff",
+            "fontFamily": "System",
+            "fontSize": 17,
+            "fontWeight": "600",
+            "includeFontPadding": false,
+            "marginHorizontal": 5,
+            "textAlignVertical": "center",
+          },
+          undefined,
+          Object {
+            "color": "#aeaeb2",
+          },
+        ]
+      }
+    >
+      Button
+    </Text>
   </View>
 </TouchableOpacity>
 `;
 
-exports[`should render with left image 1`] = `
+exports[`should render image at the left 1`] = `
 <TouchableOpacity
   activeOpacity={0.5}
+  style={
+    Array [
+      Object {
+        "backgroundColor": "#007aff",
+        "borderRadius": 8,
+        "height": 50,
+        "justifyContent": "center",
+        "overflow": "hidden",
+        "paddingHorizontal": 15,
+      },
+      undefined,
+      undefined,
+    ]
+  }
 >
   <View
+    pointerEvents="none"
     style={
-      Array [
-        Object {
-          "alignItems": "center",
-          "backgroundColor": "#007aff",
-          "borderRadius": 8,
-          "flexDirection": "row",
-          "height": 50,
-          "justifyContent": "center",
-          "paddingHorizontal": 15,
-        },
-        undefined,
-        undefined,
-      ]
+      Object {
+        "alignItems": "center",
+        "bottom": 0,
+        "justifyContent": "center",
+        "left": 0,
+        "opacity": 0,
+        "position": "absolute",
+        "right": 0,
+        "top": 0,
+        "transform": null,
+      }
+    }
+  >
+    <ActivityIndicator
+      animating={true}
+      color="#ffffff"
+      hidesWhenStopped={true}
+      size="small"
+    />
+  </View>
+  <View
+    style={
+      Object {
+        "alignItems": "center",
+        "flexDirection": "row",
+        "justifyContent": "center",
+        "opacity": 1,
+        "transform": null,
+      }
     }
   >
     <Image
@@ -284,25 +199,56 @@ exports[`should render with left image 1`] = `
 </TouchableOpacity>
 `;
 
-exports[`should render with right image 1`] = `
+exports[`should render image at the right 1`] = `
 <TouchableOpacity
   activeOpacity={0.5}
+  style={
+    Array [
+      Object {
+        "backgroundColor": "#007aff",
+        "borderRadius": 8,
+        "height": 50,
+        "justifyContent": "center",
+        "overflow": "hidden",
+        "paddingHorizontal": 15,
+      },
+      undefined,
+      undefined,
+    ]
+  }
 >
   <View
+    pointerEvents="none"
     style={
-      Array [
-        Object {
-          "alignItems": "center",
-          "backgroundColor": "#007aff",
-          "borderRadius": 8,
-          "flexDirection": "row",
-          "height": 50,
-          "justifyContent": "center",
-          "paddingHorizontal": 15,
-        },
-        undefined,
-        undefined,
-      ]
+      Object {
+        "alignItems": "center",
+        "bottom": 0,
+        "justifyContent": "center",
+        "left": 0,
+        "opacity": 0,
+        "position": "absolute",
+        "right": 0,
+        "top": 0,
+        "transform": null,
+      }
+    }
+  >
+    <ActivityIndicator
+      animating={true}
+      color="#ffffff"
+      hidesWhenStopped={true}
+      size="small"
+    />
+  </View>
+  <View
+    style={
+      Object {
+        "alignItems": "center",
+        "flexDirection": "row",
+        "justifyContent": "center",
+        "opacity": 1,
+        "transform": null,
+      }
     }
   >
     <Text
@@ -345,6 +291,319 @@ exports[`should render with right image 1`] = `
         ]
       }
     />
+  </View>
+</TouchableOpacity>
+`;
+
+exports[`should render image only 1`] = `
+<TouchableOpacity
+  activeOpacity={0.5}
+  style={
+    Array [
+      Object {
+        "backgroundColor": "#007aff",
+        "borderRadius": 8,
+        "height": 50,
+        "justifyContent": "center",
+        "overflow": "hidden",
+        "paddingHorizontal": 15,
+      },
+      undefined,
+      undefined,
+    ]
+  }
+>
+  <View
+    pointerEvents="none"
+    style={
+      Object {
+        "alignItems": "center",
+        "bottom": 0,
+        "justifyContent": "center",
+        "left": 0,
+        "opacity": 0,
+        "position": "absolute",
+        "right": 0,
+        "top": 0,
+        "transform": null,
+      }
+    }
+  >
+    <ActivityIndicator
+      animating={true}
+      color="#ffffff"
+      hidesWhenStopped={true}
+      size="small"
+    />
+  </View>
+  <View
+    style={
+      Object {
+        "alignItems": "center",
+        "flexDirection": "row",
+        "justifyContent": "center",
+        "opacity": 1,
+        "transform": null,
+      }
+    }
+  >
+    <Image
+      source={
+        Object {
+          "uri": "image.png",
+        }
+      }
+      style={
+        Array [
+          Object {
+            "flexShrink": 0,
+            "height": 20,
+            "tintColor": "#ffffff",
+            "width": 20,
+          },
+          undefined,
+          undefined,
+        ]
+      }
+    />
+  </View>
+</TouchableOpacity>
+`;
+
+exports[`should render text only 1`] = `
+<TouchableOpacity
+  activeOpacity={0.5}
+  style={
+    Array [
+      Object {
+        "backgroundColor": "#007aff",
+        "borderRadius": 8,
+        "height": 50,
+        "justifyContent": "center",
+        "overflow": "hidden",
+        "paddingHorizontal": 15,
+      },
+      undefined,
+      undefined,
+    ]
+  }
+>
+  <View
+    pointerEvents="none"
+    style={
+      Object {
+        "alignItems": "center",
+        "bottom": 0,
+        "justifyContent": "center",
+        "left": 0,
+        "opacity": 0,
+        "position": "absolute",
+        "right": 0,
+        "top": 0,
+        "transform": null,
+      }
+    }
+  >
+    <ActivityIndicator
+      animating={true}
+      color="#ffffff"
+      hidesWhenStopped={true}
+      size="small"
+    />
+  </View>
+  <View
+    style={
+      Object {
+        "alignItems": "center",
+        "flexDirection": "row",
+        "justifyContent": "center",
+        "opacity": 1,
+        "transform": null,
+      }
+    }
+  >
+    <Text
+      numberOfLines={1}
+      style={
+        Array [
+          Object {
+            "backgroundColor": "transparent",
+            "color": "#ffffff",
+            "fontFamily": "System",
+            "fontSize": 17,
+            "fontWeight": "600",
+            "includeFontPadding": false,
+            "marginHorizontal": 5,
+            "textAlignVertical": "center",
+          },
+          undefined,
+          undefined,
+        ]
+      }
+    >
+      Button
+    </Text>
+  </View>
+</TouchableOpacity>
+`;
+
+exports[`should render with custom content 1`] = `
+<TouchableOpacity
+  activeOpacity={0.5}
+  style={
+    Array [
+      Object {
+        "backgroundColor": "#007aff",
+        "borderRadius": 8,
+        "height": 50,
+        "justifyContent": "center",
+        "overflow": "hidden",
+        "paddingHorizontal": 15,
+      },
+      undefined,
+      undefined,
+    ]
+  }
+>
+  <View
+    pointerEvents="none"
+    style={
+      Object {
+        "alignItems": "center",
+        "bottom": 0,
+        "justifyContent": "center",
+        "left": 0,
+        "opacity": 0,
+        "position": "absolute",
+        "right": 0,
+        "top": 0,
+        "transform": null,
+      }
+    }
+  >
+    <ActivityIndicator
+      animating={true}
+      color="#ffffff"
+      hidesWhenStopped={true}
+      size="small"
+    />
+  </View>
+  <View
+    style={
+      Object {
+        "alignItems": "center",
+        "flexDirection": "row",
+        "justifyContent": "center",
+        "opacity": 1,
+        "transform": null,
+      }
+    }
+  >
+    <Text>
+      CUSTOM CONTENT
+    </Text>
+  </View>
+</TouchableOpacity>
+`;
+
+exports[`should render with custom styles 1`] = `
+<TouchableOpacity
+  activeOpacity={0.5}
+  style={
+    Array [
+      Object {
+        "backgroundColor": "#007aff",
+        "borderRadius": 8,
+        "height": 50,
+        "justifyContent": "center",
+        "overflow": "hidden",
+        "paddingHorizontal": 15,
+      },
+      Object {
+        "backgroundColor": "red",
+      },
+      undefined,
+    ]
+  }
+>
+  <View
+    pointerEvents="none"
+    style={
+      Object {
+        "alignItems": "center",
+        "bottom": 0,
+        "justifyContent": "center",
+        "left": 0,
+        "opacity": 0,
+        "position": "absolute",
+        "right": 0,
+        "top": 0,
+        "transform": null,
+      }
+    }
+  >
+    <ActivityIndicator
+      animating={true}
+      color="#ffffff"
+      hidesWhenStopped={true}
+      size="small"
+    />
+  </View>
+  <View
+    style={
+      Object {
+        "alignItems": "center",
+        "flexDirection": "row",
+        "justifyContent": "center",
+        "opacity": 1,
+        "transform": null,
+      }
+    }
+  >
+    <Image
+      source={
+        Object {
+          "uri": "image.png",
+        }
+      }
+      style={
+        Array [
+          Object {
+            "flexShrink": 0,
+            "height": 20,
+            "tintColor": "#ffffff",
+            "width": 20,
+          },
+          Object {
+            "tintColor": "blue",
+          },
+          undefined,
+        ]
+      }
+    />
+    <Text
+      numberOfLines={1}
+      style={
+        Array [
+          Object {
+            "backgroundColor": "transparent",
+            "color": "#ffffff",
+            "fontFamily": "System",
+            "fontSize": 17,
+            "fontWeight": "600",
+            "includeFontPadding": false,
+            "marginHorizontal": 5,
+            "textAlignVertical": "center",
+          },
+          Object {
+            "color": "green",
+          },
+          undefined,
+        ]
+      }
+    >
+      Button
+    </Text>
   </View>
 </TouchableOpacity>
 `;
