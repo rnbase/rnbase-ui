@@ -40,7 +40,7 @@ jest.mock('../Button', () => 'Button');
 
 const Animated: any = AnimatedObj;
 
-const onSelect = jest.fn();
+const onChange = jest.fn();
 const buttons = [
   {
     text: 'one',
@@ -55,7 +55,7 @@ const createElement = (props: Props) => <ButtonGroup {...props} />;
 const createRenderer = (props: Props) => TestRenderer.create(createElement(props));
 
 it('should render normally', () => {
-  expect(createRenderer({ buttons, onSelect })).toMatchSnapshot();
+  expect(createRenderer({ buttons, onChange })).toMatchSnapshot();
 });
 
 it('should render icons', () => {
@@ -69,7 +69,7 @@ it('should render icons', () => {
           iconSource: { uri: 'icon-two.png' },
         },
       ],
-      onSelect,
+      onChange,
     }),
   ).toMatchSnapshot();
 });
@@ -85,19 +85,38 @@ it('should render components', () => {
           component: <Text>TWO</Text>,
         },
       ],
-      onSelect,
+      onChange,
     }),
   ).toMatchSnapshot();
 });
 
-it('should call onSelect', () => {
-  const tree = createRenderer({ buttons, onSelect });
+it('should render as disabled', () => {
+  expect(
+    createRenderer({
+      buttons: [
+        {
+          text: 'one',
+          iconSource: { uri: 'icon-one.png' },
+        },
+        {
+          text: 'two',
+          iconSource: { uri: 'icon-two.png' },
+        },
+      ],
+      onChange,
+      disabled: true,
+    }),
+  ).toMatchSnapshot();
+});
+
+it('should call onChange', () => {
+  const tree = createRenderer({ buttons, onChange });
 
   const button = tree.root.findAllByType(TouchableOpacity)[0];
 
   button.props.onPress();
 
-  expect(onSelect).toBeCalled();
+  expect(onChange).toBeCalled();
 });
 
 describe('selected button animation', () => {
@@ -110,21 +129,21 @@ describe('selected button animation', () => {
   });
 
   it('should not animate', () => {
-    const tree = createRenderer({ buttons, onSelect });
+    const tree = createRenderer({ buttons, onChange });
 
     act(() => {});
 
     Animated.timing.mockClear();
 
     act(() => {
-      tree.update(createElement({ buttons, onSelect, selected: 0 }));
+      tree.update(createElement({ buttons, onChange, selected: 0 }));
     });
 
     expect(Animated.timing).not.toBeCalled();
   });
 
   it('should animate to second button', () => {
-    const tree = createRenderer({ buttons, onSelect });
+    const tree = createRenderer({ buttons, onChange });
 
     act(() => {});
 
@@ -138,7 +157,7 @@ describe('selected button animation', () => {
     Animated.timing.mockClear();
 
     act(() => {
-      tree.update(createElement({ buttons, onSelect, selected: 1 }));
+      tree.update(createElement({ buttons, onChange, selected: 1 }));
     });
 
     expect(Animated.timing).toBeCalledWith(expect.objectContaining({ _value: 0 }), {

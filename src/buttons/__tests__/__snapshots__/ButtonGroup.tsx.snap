@@ -1,39 +1,22 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`should render components 1`] = `
+exports[`should render as disabled 1`] = `
 <View
   style={
     Array [
       Object {
         "backgroundColor": "#e5e5ea",
-        "borderColor": "#e5e5ea",
         "borderRadius": 8,
-        "borderWidth": 3,
         "height": 40,
+        "padding": 3,
       },
       undefined,
+      Object {
+        "backgroundColor": "#f2f2f7",
+      },
     ]
   }
 >
-  <View
-    style={
-      Object {
-        "backgroundColor": "#ffffff",
-        "borderRadius": 5,
-        "bottom": 0,
-        "left": 0,
-        "position": "absolute",
-        "right": 0,
-        "top": 0,
-        "transform": Array [
-          Object {
-            "translateX": 0,
-          },
-        ],
-        "width": 0,
-      }
-    }
-  />
   <View
     onLayout={[Function]}
     style={
@@ -44,6 +27,204 @@ exports[`should render components 1`] = `
     }
     testID="container"
   >
+    <View
+      style={
+        Object {
+          "backgroundColor": "#ffffff",
+          "borderRadius": 5,
+          "bottom": 0,
+          "left": 0,
+          "opacity": 0.6,
+          "position": "absolute",
+          "right": 0,
+          "top": 0,
+          "transform": Array [
+            Object {
+              "translateX": 0,
+            },
+          ],
+          "width": 0,
+        }
+      }
+    />
+    <TouchableOpacity
+      activeOpacity={0.5}
+      disabled={true}
+      onPress={[Function]}
+      style={
+        Array [
+          Object {
+            "alignItems": "center",
+            "flex": 1,
+            "flexDirection": "row",
+            "justifyContent": "center",
+            "paddingHorizontal": 5,
+          },
+          undefined,
+        ]
+      }
+    >
+      <Image
+        source={
+          Object {
+            "uri": "icon-one.png",
+          }
+        }
+        style={
+          Array [
+            Object {
+              "height": 18,
+              "tintColor": "#838387",
+              "width": 18,
+            },
+            undefined,
+            Object {
+              "tintColor": "#007aff",
+            },
+            Object {
+              "tintColor": "#aeaeb2",
+            },
+          ]
+        }
+      />
+      <Text
+        numberOfLines={1}
+        style={
+          Array [
+            Object {
+              "backgroundColor": "transparent",
+              "color": "#838387",
+              "fontFamily": "System",
+              "fontSize": 15,
+              "fontWeight": "600",
+              "includeFontPadding": false,
+              "marginHorizontal": 5,
+              "textAlignVertical": "center",
+            },
+            undefined,
+            Object {
+              "color": "#007aff",
+            },
+            Object {
+              "color": "#aeaeb2",
+            },
+          ]
+        }
+      >
+        one
+      </Text>
+    </TouchableOpacity>
+    <TouchableOpacity
+      activeOpacity={0.5}
+      disabled={true}
+      onPress={[Function]}
+      style={
+        Array [
+          Object {
+            "alignItems": "center",
+            "flex": 1,
+            "flexDirection": "row",
+            "justifyContent": "center",
+            "paddingHorizontal": 5,
+          },
+          undefined,
+        ]
+      }
+    >
+      <Image
+        source={
+          Object {
+            "uri": "icon-two.png",
+          }
+        }
+        style={
+          Array [
+            Object {
+              "height": 18,
+              "tintColor": "#838387",
+              "width": 18,
+            },
+            undefined,
+            false,
+            Object {
+              "tintColor": "#aeaeb2",
+            },
+          ]
+        }
+      />
+      <Text
+        numberOfLines={1}
+        style={
+          Array [
+            Object {
+              "backgroundColor": "transparent",
+              "color": "#838387",
+              "fontFamily": "System",
+              "fontSize": 15,
+              "fontWeight": "600",
+              "includeFontPadding": false,
+              "marginHorizontal": 5,
+              "textAlignVertical": "center",
+            },
+            undefined,
+            false,
+            Object {
+              "color": "#aeaeb2",
+            },
+          ]
+        }
+      >
+        two
+      </Text>
+    </TouchableOpacity>
+  </View>
+</View>
+`;
+
+exports[`should render components 1`] = `
+<View
+  style={
+    Array [
+      Object {
+        "backgroundColor": "#e5e5ea",
+        "borderRadius": 8,
+        "height": 40,
+        "padding": 3,
+      },
+      undefined,
+      undefined,
+    ]
+  }
+>
+  <View
+    onLayout={[Function]}
+    style={
+      Object {
+        "flexDirection": "row",
+        "flexGrow": 1,
+      }
+    }
+    testID="container"
+  >
+    <View
+      style={
+        Object {
+          "backgroundColor": "#ffffff",
+          "borderRadius": 5,
+          "bottom": 0,
+          "left": 0,
+          "position": "absolute",
+          "right": 0,
+          "top": 0,
+          "transform": Array [
+            Object {
+              "translateX": 0,
+            },
+          ],
+          "width": 0,
+        }
+      }
+    />
     <TouchableOpacity
       activeOpacity={0.5}
       onPress={[Function]}
@@ -94,34 +275,15 @@ exports[`should render icons 1`] = `
     Array [
       Object {
         "backgroundColor": "#e5e5ea",
-        "borderColor": "#e5e5ea",
         "borderRadius": 8,
-        "borderWidth": 3,
         "height": 40,
+        "padding": 3,
       },
+      undefined,
       undefined,
     ]
   }
 >
-  <View
-    style={
-      Object {
-        "backgroundColor": "#ffffff",
-        "borderRadius": 5,
-        "bottom": 0,
-        "left": 0,
-        "position": "absolute",
-        "right": 0,
-        "top": 0,
-        "transform": Array [
-          Object {
-            "translateX": 0,
-          },
-        ],
-        "width": 0,
-      }
-    }
-  />
   <View
     onLayout={[Function]}
     style={
@@ -132,6 +294,25 @@ exports[`should render icons 1`] = `
     }
     testID="container"
   >
+    <View
+      style={
+        Object {
+          "backgroundColor": "#ffffff",
+          "borderRadius": 5,
+          "bottom": 0,
+          "left": 0,
+          "position": "absolute",
+          "right": 0,
+          "top": 0,
+          "transform": Array [
+            Object {
+              "translateX": 0,
+            },
+          ],
+          "width": 0,
+        }
+      }
+    />
     <TouchableOpacity
       activeOpacity={0.5}
       onPress={[Function]}
@@ -165,6 +346,7 @@ exports[`should render icons 1`] = `
             Object {
               "tintColor": "#007aff",
             },
+            undefined,
           ]
         }
       />
@@ -200,6 +382,7 @@ exports[`should render icons 1`] = `
             },
             undefined,
             false,
+            undefined,
           ]
         }
       />
@@ -214,34 +397,15 @@ exports[`should render normally 1`] = `
     Array [
       Object {
         "backgroundColor": "#e5e5ea",
-        "borderColor": "#e5e5ea",
         "borderRadius": 8,
-        "borderWidth": 3,
         "height": 40,
+        "padding": 3,
       },
+      undefined,
       undefined,
     ]
   }
 >
-  <View
-    style={
-      Object {
-        "backgroundColor": "#ffffff",
-        "borderRadius": 5,
-        "bottom": 0,
-        "left": 0,
-        "position": "absolute",
-        "right": 0,
-        "top": 0,
-        "transform": Array [
-          Object {
-            "translateX": 0,
-          },
-        ],
-        "width": 0,
-      }
-    }
-  />
   <View
     onLayout={[Function]}
     style={
@@ -252,6 +416,25 @@ exports[`should render normally 1`] = `
     }
     testID="container"
   >
+    <View
+      style={
+        Object {
+          "backgroundColor": "#ffffff",
+          "borderRadius": 5,
+          "bottom": 0,
+          "left": 0,
+          "position": "absolute",
+          "right": 0,
+          "top": 0,
+          "transform": Array [
+            Object {
+              "translateX": 0,
+            },
+          ],
+          "width": 0,
+        }
+      }
+    />
     <TouchableOpacity
       activeOpacity={0.5}
       onPress={[Function]}
@@ -286,6 +469,7 @@ exports[`should render normally 1`] = `
             Object {
               "color": "#007aff",
             },
+            undefined,
           ]
         }
       >
@@ -324,6 +508,7 @@ exports[`should render normally 1`] = `
             },
             undefined,
             false,
+            undefined,
           ]
         }
       >
