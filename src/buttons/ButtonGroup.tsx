@@ -31,23 +31,24 @@ interface ButtonGroupProps extends TouchableOpacityProps {
   style?: StyleProp<ViewStyle>;
   buttonStyle?: StyleProp<ViewStyle>;
   textStyle?: StyleProp<TextStyle>;
-  imageStyle?: StyleProp<ImageStyle>;
-  selectorStyle?: StyleProp<ViewStyle>;
-  onSelect: Function;
+  iconStyle?: StyleProp<ImageStyle>;
+  indicatorStyle?: StyleProp<ViewStyle>;
+  onChange: Function;
 }
 
 const ButtonGroup: React.FC<Themed<typeof createStyleSheet, ButtonGroupProps>> = ({
   styles,
   buttons,
+  disabled,
   selected = 0,
-  animationDuration = 500,
   activeOpacity = 0.5,
-  onSelect,
+  animationDuration = 500,
+  onChange,
   style,
   buttonStyle,
   textStyle,
-  imageStyle,
-  selectorStyle,
+  iconStyle,
+  indicatorStyle,
 }) => {
   const [buttonWidth, setButtonWidth] = useState(0);
   const [animatedValue] = useState(() => new Animated.Value(selected));
@@ -65,13 +66,14 @@ const ButtonGroup: React.FC<Themed<typeof createStyleSheet, ButtonGroupProps>> =
     setButtonWidth(event.nativeEvent.layout.width / buttons.length);
   };
 
-  const selectorStyles = [
-    styles.selector,
-    selectorStyle,
+  const indicatorStyles = [
+    styles.indicator,
+    indicatorStyle,
     {
       width: buttonWidth,
       transform: [{ translateX: animatedValue }],
     },
+    disabled && styles.disabledIndicator,
   ];
 
   const renderButton = (button: ButtonProps, index: number) => {
@@ -80,14 +82,25 @@ const ButtonGroup: React.FC<Themed<typeof createStyleSheet, ButtonGroupProps>> =
     }
 
     let content = [];
+    const isSelected = index === selected;
 
     if (button.iconSource) {
-      const imageStyles = [styles.image, imageStyle, index === selected && styles.selectedImage];
-      content.push(<Image key="image" style={imageStyles} source={button.iconSource} />);
+      const iconStyles = [
+        styles.icon,
+        iconStyle,
+        isSelected && styles.selectedIcon,
+        disabled && styles.disabledIcon,
+      ];
+      content.push(<Image key="image" style={iconStyles} source={button.iconSource} />);
     }
 
     if (button.text) {
-      const textStyles = [styles.text, textStyle, index === selected && styles.selectedText];
+      const textStyles = [
+        styles.text,
+        textStyle,
+        isSelected && styles.selectedText,
+        disabled && styles.disabledText,
+      ];
       content.push(
         <Text key="text" style={textStyles} numberOfLines={1}>
           {button.text}
@@ -99,15 +112,16 @@ const ButtonGroup: React.FC<Themed<typeof createStyleSheet, ButtonGroupProps>> =
   };
 
   return (
-    <View style={[styles.root, style]}>
-      <Animated.View style={selectorStyles} />
+    <View style={[styles.root, style, disabled && styles.disabledRoot]}>
       <View testID="container" style={styles.content} onLayout={onLayout}>
+        <Animated.View style={indicatorStyles} />
         {buttons.map((button, index) => (
           <TouchableOpacity
             key={index}
+            disabled={disabled}
             activeOpacity={activeOpacity}
             style={[styles.button, buttonStyle]}
-            onPress={() => onSelect(index)}
+            onPress={() => onChange(index)}
           >
             {renderButton(button, index)}
           </TouchableOpacity>
@@ -121,16 +135,15 @@ const createStyleSheet = ({ Colors, Fonts }: Theme) =>
   StyleSheet.create({
     root: {
       height: 40,
-      borderWidth: 3,
+      padding: 3,
       borderRadius: 8,
-      borderColor: Colors.gray5,
       backgroundColor: Colors.gray5,
     },
     content: {
       flexGrow: 1,
       flexDirection: 'row',
     },
-    selector: {
+    indicator: {
       ...StyleSheet.absoluteFillObject,
       borderRadius: 5,
       backgroundColor: Colors.white,
@@ -148,7 +161,7 @@ const createStyleSheet = ({ Colors, Fonts }: Theme) =>
       marginHorizontal: 5,
       color: Colors.gray,
     },
-    image: {
+    icon: {
       width: 18,
       height: 18,
       tintColor: Colors.gray,
@@ -156,8 +169,20 @@ const createStyleSheet = ({ Colors, Fonts }: Theme) =>
     selectedText: {
       color: Colors.blue,
     },
-    selectedImage: {
+    selectedIcon: {
       tintColor: Colors.blue,
+    },
+    disabledRoot: {
+      backgroundColor: Colors.gray6,
+    },
+    disabledText: {
+      color: Colors.gray2,
+    },
+    disabledIcon: {
+      tintColor: Colors.gray2,
+    },
+    disabledIndicator: {
+      opacity: 0.6,
     },
   });
 

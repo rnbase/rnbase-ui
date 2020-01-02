@@ -128,7 +128,7 @@ const App = () => {
             />
             <ButtonGroup
               selected={selectedButton}
-              onSelect={onSelectButton}
+              onChange={onSelectButton}
               buttons={[
                 {
                   text: 'One',
