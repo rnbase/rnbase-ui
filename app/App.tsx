@@ -26,9 +26,9 @@ import {
   ActivityButton,
   Badge,
   Button,
-  ButtonGroup,
   OutlineButton,
   TextButton,
+  Segmented,
   Component,
 } from '../';
 
@@ -126,7 +126,7 @@ const App = () => {
                 setTimeout(() => setBusy(false), 3000);
               }}
             />
-            <ButtonGroup
+            <Segmented
               selected={selectedButton}
               onChange={onSelectButton}
               buttons={[

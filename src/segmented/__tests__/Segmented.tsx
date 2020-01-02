@@ -4,7 +4,7 @@ import { Animated as AnimatedObj, Text } from 'react-native';
 // Note: test renderer must be required after react-native.
 import TestRenderer, { act } from 'react-test-renderer';
 
-import { Props } from '../ButtonGroup';
+import { Props } from '../Segmented';
 
 jest.doMock('react-native/Libraries/Animated/src/Animated', () => {
   const Animated = jest.requireActual('react-native/Libraries/Animated/src/Animated');
@@ -28,15 +28,13 @@ jest.doMock('react-native/Libraries/Components/Touchable/TouchableOpacity', () =
 /**
  * Under test
  */
-const { default: ButtonGroup } = jest.requireActual('../ButtonGroup');
+const { default: Segmented } = jest.requireActual('../Segmented');
 
 jest.mock('react-native/Libraries/Animated/src/Easing', () => ({
   in: (v: any) => `Easing.in(${v})`,
   out: (v: any) => `Easing.out(${v})`,
   exp: 'Easing.exp',
 }));
-
-jest.mock('../Button', () => 'Button');
 
 const Animated: any = AnimatedObj;
 
@@ -50,7 +48,7 @@ const buttons = [
   },
 ];
 
-const createElement = (props: Props) => <ButtonGroup {...props} />;
+const createElement = (props: Props) => <Segmented {...props} />;
 
 const createRenderer = (props: Props) => TestRenderer.create(createElement(props));
 

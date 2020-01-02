@@ -24,7 +24,7 @@ interface ButtonProps {
   component?: React.ReactNode;
 }
 
-interface ButtonGroupProps extends TouchableOpacityProps {
+interface SegmentedProps extends TouchableOpacityProps {
   buttons: ButtonProps[];
   selected?: number;
   animationDuration?: number;
@@ -36,7 +36,7 @@ interface ButtonGroupProps extends TouchableOpacityProps {
   onChange: Function;
 }
 
-const ButtonGroup: React.FC<Themed<typeof createStyleSheet, ButtonGroupProps>> = ({
+const Segmented: React.FC<Themed<typeof createStyleSheet, SegmentedProps>> = ({
   styles,
   buttons,
   disabled,
@@ -186,6 +186,6 @@ const createStyleSheet = ({ Colors, Fonts }: Theme) =>
     },
   });
 
-export type Props = ButtonGroupProps & WithThemeProps;
+export type Props = SegmentedProps & WithThemeProps;
 
-export default withTheme(ButtonGroup, createStyleSheet, 'ButtonGroup');
+export default withTheme(Segmented, createStyleSheet, 'Segmented');
