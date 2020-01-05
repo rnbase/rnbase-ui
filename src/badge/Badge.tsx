@@ -1,11 +1,12 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import {
+  Animated,
+  Easing,
   PixelRatio,
   StyleProp,
   StyleSheet,
   Text,
   TextStyle,
-  View,
   ViewProps,
   ViewStyle,
 } from 'react-native';
@@ -18,6 +19,7 @@ export interface BadgeProps extends ViewProps {
   value?: number | boolean;
   limit?: number | boolean;
   rounded?: boolean;
+  animate?: boolean;
   style?: StyleProp<ViewStyle>;
   textStyle?: StyleProp<TextStyle>;
   themeKey?: string;
@@ -30,15 +32,34 @@ const Badge: React.FC<Themed<typeof createStyleSheet, BadgeProps>> = ({
   value,
   limit = 99,
   rounded = true,
+  animate = true,
   style,
   textStyle,
   ...props
 }) => {
+  const toValue = value ? 1 : 0;
+  const [animatedValue] = useState(() => new Animated.Value(toValue));
+
+  useEffect(() => {
+    Animated.timing(animatedValue, {
+      duration: 300,
+      toValue: toValue,
+      useNativeDriver: true,
+      easing: Easing.in(Easing.elastic(1)),
+    }).start();
+  }, [animatedValue, toValue]);
+
   if (!value) {
     return null;
   }
 
-  const rootStyles = [styles.root, style];
+  const rootStyles = [
+    styles.root,
+    style,
+    animate && {
+      transform: [{ scale: animatedValue }],
+    },
+  ];
 
   if (color) {
     rootStyles.push({ backgroundColor: color });
@@ -78,9 +99,9 @@ const Badge: React.FC<Themed<typeof createStyleSheet, BadgeProps>> = ({
   }
 
   return (
-    <View {...props} style={rootStyles}>
+    <Animated.View {...props} style={rootStyles}>
       {content}
-    </View>
+    </Animated.View>
   );
 };
 
