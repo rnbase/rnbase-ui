@@ -7,25 +7,21 @@ exports[`should not render when value = undefined 1`] = `null`;
 exports[`should render normally 1`] = `
 <View
   style={
-    Array [
-      Object {
-        "alignItems": "center",
-        "alignSelf": "center",
-        "backgroundColor": "#007aff",
-        "height": 10,
-        "justifyContent": "center",
-        "minWidth": 10,
-      },
-      undefined,
-      Object {
-        "height": 20,
-        "minWidth": 20,
-        "paddingHorizontal": 6,
-      },
-      Object {
-        "borderRadius": 10,
-      },
-    ]
+    Object {
+      "alignItems": "center",
+      "alignSelf": "center",
+      "backgroundColor": "#007aff",
+      "borderRadius": 10,
+      "height": 20,
+      "justifyContent": "center",
+      "minWidth": 20,
+      "paddingHorizontal": 6,
+      "transform": Array [
+        Object {
+          "scale": 1,
+        },
+      ],
+    }
   }
 >
   <Text
@@ -55,25 +51,21 @@ exports[`should render normally 1`] = `
 exports[`should render when greather than limit 1`] = `
 <View
   style={
-    Array [
-      Object {
-        "alignItems": "center",
-        "alignSelf": "center",
-        "backgroundColor": "#007aff",
-        "height": 10,
-        "justifyContent": "center",
-        "minWidth": 10,
-      },
-      undefined,
-      Object {
-        "height": 20,
-        "minWidth": 20,
-        "paddingHorizontal": 6,
-      },
-      Object {
-        "borderRadius": 10,
-      },
-    ]
+    Object {
+      "alignItems": "center",
+      "alignSelf": "center",
+      "backgroundColor": "#007aff",
+      "borderRadius": 10,
+      "height": 20,
+      "justifyContent": "center",
+      "minWidth": 20,
+      "paddingHorizontal": 6,
+      "transform": Array [
+        Object {
+          "scale": 1,
+        },
+      ],
+    }
   }
 >
   <Text
@@ -103,25 +95,20 @@ exports[`should render when greather than limit 1`] = `
 exports[`should render with custom props 1`] = `
 <View
   style={
-    Array [
-      Object {
-        "alignItems": "center",
-        "alignSelf": "center",
-        "backgroundColor": "#007aff",
-        "height": 10,
-        "justifyContent": "center",
-        "minWidth": 10,
-      },
-      undefined,
-      Object {
-        "backgroundColor": "red",
-      },
-      Object {
-        "height": 26.5,
-        "minWidth": 26.5,
-        "paddingHorizontal": 8,
-      },
-    ]
+    Object {
+      "alignItems": "center",
+      "alignSelf": "center",
+      "backgroundColor": "red",
+      "height": 26.5,
+      "justifyContent": "center",
+      "minWidth": 26.5,
+      "paddingHorizontal": 8,
+      "transform": Array [
+        Object {
+          "scale": 1,
+        },
+      ],
+    }
   }
 >
   <Text
@@ -151,20 +138,20 @@ exports[`should render with custom props 1`] = `
 exports[`should render without number 1`] = `
 <View
   style={
-    Array [
-      Object {
-        "alignItems": "center",
-        "alignSelf": "center",
-        "backgroundColor": "#007aff",
-        "height": 10,
-        "justifyContent": "center",
-        "minWidth": 10,
-      },
-      undefined,
-      Object {
-        "borderRadius": 5,
-      },
-    ]
+    Object {
+      "alignItems": "center",
+      "alignSelf": "center",
+      "backgroundColor": "#007aff",
+      "borderRadius": 5,
+      "height": 10,
+      "justifyContent": "center",
+      "minWidth": 10,
+      "transform": Array [
+        Object {
+          "scale": 1,
+        },
+      ],
+    }
   }
 />
 `;
