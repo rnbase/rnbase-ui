@@ -90,7 +90,6 @@ const Avatar: React.FC<Themed<typeof createStyleSheet, AvatarProps>> = ({
   const onError = useCallback(() => setAvatarImageSource(defaultImageSource), [defaultImageSource]);
 
   const shapeStyle = shape === 'circle' ? { borderRadius: size / 2 } : undefined;
-  const badgeValue = badge && badge.value ? badge.value : undefined;
 
   const initials = useMemo(
     () =>
@@ -103,10 +102,10 @@ const Avatar: React.FC<Themed<typeof createStyleSheet, AvatarProps>> = ({
   );
 
   const badgeOffset = useMemo(() => {
-    if (badgeValue) {
+    if (badge) {
       // We need to know the badge's height to slightly shift it to the right and above
       // And because we don't want to calculate the real height, we'll use default values
-      const badgeHeight = typeof badgeValue === 'number' ? 20 : 10;
+      const badgeHeight = typeof badge.value === 'number' ? 20 : 10;
 
       if (shape === 'circle') {
         // We want to place the badge at the point with polar coordinates (r,45°)
@@ -119,7 +118,7 @@ const Avatar: React.FC<Themed<typeof createStyleSheet, AvatarProps>> = ({
         return PixelRatio.roundToNearestPixel(-badgeHeight / 4);
       }
     }
-  }, [badgeValue, shape, size]);
+  }, [badge, shape, size]);
 
   const rootStyles = [
     styles.root,
@@ -162,7 +161,7 @@ const Avatar: React.FC<Themed<typeof createStyleSheet, AvatarProps>> = ({
     );
   }
 
-  if (badge && badge.value) {
+  if (badge) {
     const badgeStyles = [
       {
         top: badgeOffset,

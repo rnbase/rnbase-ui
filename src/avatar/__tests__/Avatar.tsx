@@ -9,6 +9,8 @@ import TestRenderer, { act } from 'react-test-renderer';
  */
 import Avatar, { Props } from '../Avatar';
 
+jest.mock('../../badge/Badge', () => 'Badge');
+
 const size = 50;
 
 const createElement = (props: Props) => <Avatar {...props} />;
