@@ -87,11 +87,12 @@ exports[`should render as circle with badge 1`] = `
     }
   />
   <Badge
+    onLayout={[Function]}
     style={
       Array [
         Object {
-          "right": -2.5,
-          "top": -2.5,
+          "right": -7.5,
+          "top": -7.5,
         },
         Object {
           "elevation": 1,
@@ -151,6 +152,7 @@ exports[`should render as square with badge 1`] = `
     }
   />
   <Badge
+    onLayout={[Function]}
     style={
       Array [
         Object {
