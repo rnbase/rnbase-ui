@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import {
   Animated,
   Easing,
@@ -62,9 +62,12 @@ const Segmented: React.FC<Themed<typeof createStyleSheet, SegmentedProps>> = ({
     }).start();
   }, [animatedValue, selected, buttonWidth, animationDuration]);
 
-  const onLayout = (event: LayoutChangeEvent) => {
-    setButtonWidth(event.nativeEvent.layout.width / buttons.length);
-  };
+  const onLayout = useCallback(
+    (event: LayoutChangeEvent) => {
+      setButtonWidth(event.nativeEvent.layout.width / buttons.length);
+    },
+    [buttons.length],
+  );
 
   const indicatorStyles = [
     styles.indicator,
