@@ -4,6 +4,7 @@ import {
   Image,
   ImageStyle,
   ImageSourcePropType,
+  LayoutChangeEvent,
   PixelRatio,
   StyleSheet,
   StyleProp,
@@ -80,6 +81,7 @@ const Avatar: React.FC<Themed<typeof createStyleSheet, AvatarProps>> = ({
     return defaultImageSource;
   }, [imageSource, email, size, defaultImageSource]);
 
+  const [badgeHeight, setBadgeHeight] = useState(10);
   const [avatarImageSource, setAvatarImageSource] = useState(getAvatarImageSource);
 
   useEffect(() => setAvatarImageSource(getAvatarImageSource()), [
@@ -89,8 +91,11 @@ const Avatar: React.FC<Themed<typeof createStyleSheet, AvatarProps>> = ({
 
   const onError = useCallback(() => setAvatarImageSource(defaultImageSource), [defaultImageSource]);
 
+  const onLayout = useCallback((event: LayoutChangeEvent) => {
+    setBadgeHeight(event.nativeEvent.layout.height);
+  }, []);
+
   const shapeStyle = shape === 'circle' ? { borderRadius: size / 2 } : undefined;
-  const badgeValue = badge && badge.value ? badge.value : undefined;
 
   const initials = useMemo(
     () =>
@@ -103,23 +108,17 @@ const Avatar: React.FC<Themed<typeof createStyleSheet, AvatarProps>> = ({
   );
 
   const badgeOffset = useMemo(() => {
-    if (badgeValue) {
-      // We need to know the badge's height to slightly shift it to the right and above
-      // And because we don't want to calculate the real height, we'll use default values
-      const badgeHeight = typeof badgeValue === 'number' ? 20 : 10;
+    if (shape === 'circle') {
+      // We want to place the badge at the point with polar coordinates (r,45°)
+      // thus we need to find the distance from the containing square top right corner
+      // which can be calculated as x = r - r × sin(45°)
+      const edgePoint = (size / 2) * (1 - Math.sin((45 * Math.PI) / 180));
 
-      if (shape === 'circle') {
-        // We want to place the badge at the point with polar coordinates (r,45°)
-        // thus we need to find the distance from the containing square top right corner
-        // which can be calculated as x = r - r × sin(45°)
-        const edgePoint = (size / 2) * (1 - Math.sin((45 * Math.PI) / 180));
-
-        return PixelRatio.roundToNearestPixel(edgePoint - badgeHeight / 2);
-      } else {
-        return PixelRatio.roundToNearestPixel(-badgeHeight / 4);
-      }
+      return PixelRatio.roundToNearestPixel(edgePoint - badgeHeight / 2);
+    } else {
+      return PixelRatio.roundToNearestPixel(-badgeHeight / 4);
     }
-  }, [badgeValue, shape, size]);
+  }, [badgeHeight, shape, size]);
 
   const rootStyles = [
     styles.root,
@@ -162,7 +161,7 @@ const Avatar: React.FC<Themed<typeof createStyleSheet, AvatarProps>> = ({
     );
   }
 
-  if (badge && badge.value) {
+  if (badge) {
     const badgeStyles = [
       {
         top: badgeOffset,
@@ -172,7 +171,7 @@ const Avatar: React.FC<Themed<typeof createStyleSheet, AvatarProps>> = ({
       badge.style,
     ];
 
-    content.push(<Badge key="badge" {...badge} style={badgeStyles} />);
+    content.push(<Badge key="badge" {...badge} style={badgeStyles} onLayout={onLayout} />);
   }
 
   return (

@@ -32,6 +32,7 @@ const App = () => {
   const usingHermes = typeof HermesInternal === 'object' && HermesInternal !== null;
 
   const [busy, setBusy] = useState(false);
+  const [badge, setBadge] = useState(0);
 
   return (
     <ThemeProvider colorScheme="no-preference" theme={theme}>
@@ -53,7 +54,7 @@ const App = () => {
                 imageSource={avatars.none}
                 defaultImageSource={avatars.test}
                 badge={{
-                  value: 3,
+                  value: badge,
                 }}
               />
               <Avatar size={50} email="jitewaboh@lagify.com" defaultImageSource={avatars.test} />
@@ -63,7 +64,7 @@ const App = () => {
                 colorize={true}
                 imageSource={avatars.none}
                 badge={{
-                  value: true,
+                  value: !!badge,
                   color: '#3B0',
                 }}
               />
@@ -80,7 +81,7 @@ const App = () => {
             <View style={styles.stack}>
               <Badge value={true} color="#3B0" />
               <Badge value={true} color="#FC0" rounded={false} />
-              <Badge value={3} />
+              <Badge value={badge} />
               <Badge value={35} color="#F20" />
               <Badge value={350} size={16} />
               <Badge value={355} limit={false} rounded={false} style={{ borderRadius: 3 }} />
@@ -89,12 +90,12 @@ const App = () => {
               <Button
                 text="Button"
                 imageSource={require('./src/assets/star.png')}
-                onPress={() => Alert.alert('Pressed', 'Button')}
+                onPress={() => setBadge(badge + 1)}
               />
               <OutlineButton
                 text="Button"
                 imageSource={require('./src/assets/heart.png')}
-                onPress={() => Alert.alert('Pressed', 'Button')}
+                onPress={() => setBadge(0)}
               />
               <TextButton
                 text="Button"

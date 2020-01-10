@@ -86,69 +86,31 @@ exports[`should render as circle with badge 1`] = `
       ]
     }
   />
-  <View
+  <Badge
+    onLayout={[Function]}
     style={
       Array [
         Object {
-          "alignItems": "center",
-          "alignSelf": "center",
-          "backgroundColor": "#007aff",
-          "height": 10,
-          "justifyContent": "center",
-          "minWidth": 10,
-        },
-        Array [
-          Object {
-            "right": -2.5,
-            "top": -2.5,
-          },
-          Object {
-            "elevation": 1,
-            "position": "absolute",
-            "shadowColor": "#000000",
-            "shadowOffset": Object {
-              "height": 1,
-              "width": 0,
-            },
-            "shadowOpacity": 0.2,
-            "shadowRadius": 1,
-            "zIndex": 1,
-          },
-          undefined,
-        ],
-        Object {
-          "height": 20,
-          "minWidth": 20,
-          "paddingHorizontal": 6,
+          "right": -7.5,
+          "top": -7.5,
         },
         Object {
-          "borderRadius": 10,
+          "elevation": 1,
+          "position": "absolute",
+          "shadowColor": "#000000",
+          "shadowOffset": Object {
+            "height": 1,
+            "width": 0,
+          },
+          "shadowOpacity": 0.2,
+          "shadowRadius": 1,
+          "zIndex": 1,
         },
+        undefined,
       ]
     }
-  >
-    <Text
-      numberOfLines={1}
-      style={
-        Array [
-          Object {
-            "backgroundColor": "transparent",
-            "color": "#ffffff",
-            "fontFamily": "System",
-            "fontWeight": "400",
-            "includeFontPadding": false,
-            "textAlignVertical": "center",
-          },
-          undefined,
-          Object {
-            "fontSize": 12,
-          },
-        ]
-      }
-    >
-      1
-    </Text>
-  </View>
+    value={1}
+  />
 </View>
 `;
 
@@ -189,41 +151,30 @@ exports[`should render as square with badge 1`] = `
       ]
     }
   />
-  <View
+  <Badge
+    onLayout={[Function]}
     style={
       Array [
         Object {
-          "alignItems": "center",
-          "alignSelf": "center",
-          "backgroundColor": "#007aff",
-          "height": 10,
-          "justifyContent": "center",
-          "minWidth": 10,
+          "right": -2.5,
+          "top": -2.5,
         },
-        Array [
-          Object {
-            "right": -2.5,
-            "top": -2.5,
-          },
-          Object {
-            "elevation": 1,
-            "position": "absolute",
-            "shadowColor": "#000000",
-            "shadowOffset": Object {
-              "height": 1,
-              "width": 0,
-            },
-            "shadowOpacity": 0.2,
-            "shadowRadius": 1,
-            "zIndex": 1,
-          },
-          undefined,
-        ],
         Object {
-          "borderRadius": 5,
+          "elevation": 1,
+          "position": "absolute",
+          "shadowColor": "#000000",
+          "shadowOffset": Object {
+            "height": 1,
+            "width": 0,
+          },
+          "shadowOpacity": 0.2,
+          "shadowRadius": 1,
+          "zIndex": 1,
         },
+        undefined,
       ]
     }
+    value={true}
   />
 </View>
 `;

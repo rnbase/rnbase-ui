@@ -8,6 +8,9 @@ import TestRenderer, { act } from 'react-test-renderer';
  * Under test
  */
 import Avatar, { Props } from '../Avatar';
+import Badge from '../../badge/Badge';
+
+jest.mock('../../badge/Badge', () => 'Badge');
 
 const size = 50;
 
@@ -116,7 +119,18 @@ it('should render default image if empty name', () => {
 });
 
 it('should render as circle with badge', () => {
-  expect(createRenderer({ size, badge: { value: 1 } })).toMatchSnapshot();
+  const tree = createRenderer({ size, badge: { value: 1 } });
+
+  act(() => {});
+
+  const height = 30;
+  const { onLayout } = tree.root.findByType(Badge).props;
+
+  act(() => {
+    onLayout({ nativeEvent: { layout: { height } } });
+  });
+
+  expect(tree).toMatchSnapshot();
 });
 
 it('should render as square with badge', () => {
