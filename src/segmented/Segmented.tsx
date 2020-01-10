@@ -84,7 +84,7 @@ const Segmented: React.FC<Themed<typeof createStyleSheet, SegmentedProps>> = ({
       return item.component;
     }
 
-    let content = [];
+    const content = [];
     const isSelected = index === selected;
 
     if (item.iconSource) {
@@ -94,6 +94,7 @@ const Segmented: React.FC<Themed<typeof createStyleSheet, SegmentedProps>> = ({
         isSelected && styles.selectedIcon,
         disabled && styles.disabledIcon,
       ];
+
       content.push(<Image key="image" style={iconStyles} source={item.iconSource} />);
     }
 
@@ -104,6 +105,7 @@ const Segmented: React.FC<Themed<typeof createStyleSheet, SegmentedProps>> = ({
         isSelected && styles.selectedText,
         disabled && styles.disabledText,
       ];
+
       content.push(
         <Text key="text" style={textStyles} numberOfLines={1}>
           {item.text}
