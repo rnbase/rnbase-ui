@@ -26,7 +26,7 @@ const defaultTheme: ThemeFactory = ({ scheme }) => {
     red: scheme({ default: '#ff3b30', dark: '#ff453a' }),
     teal: scheme({ default: '#5ac8fa', dark: '#64d2ff' }),
     yellow: scheme({ default: '#ffcc00', dark: '#ffd60a' }),
-    gray: '#8e8e93',
+    gray: scheme({ default: '#838387', dark: '#8e8e93' }),
     gray2: scheme({ default: '#aeaeb2', dark: '#636366' }),
     gray3: scheme({ default: '#c7c7cc', dark: '#48484a' }),
     gray4: scheme({ default: '#d1d1d6', dark: '#3a3a3c' }),

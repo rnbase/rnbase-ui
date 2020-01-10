@@ -20,7 +20,16 @@ import {
 } from 'react-native/Libraries/NewAppScreen';
 
 import theme from './theme';
-import { ThemeProvider, Avatar, Badge, Button, OutlineButton, TextButton, Component } from '../';
+import {
+  ThemeProvider,
+  Avatar,
+  Badge,
+  Button,
+  OutlineButton,
+  TextButton,
+  Segmented,
+  Component,
+} from '../';
 
 const avatars = {
   none: { uri: 'https://randomuser.me/api/portraits/none.jpg' },
@@ -33,6 +42,9 @@ const App = () => {
 
   const [busy, setBusy] = useState(false);
   const [badge, setBadge] = useState(0);
+  const [selectedButton, setSelectedButton] = useState(0);
+
+  const onSelectButton = (index: number) => setSelectedButton(index);
 
   return (
     <ThemeProvider colorScheme="no-preference" theme={theme}>
@@ -110,7 +122,7 @@ const App = () => {
             </View>
             <Button
               busy={busy}
-              //style={{ width: 200 }}
+              style={{ marginVertical: 10 }}
               text="Activity Button"
               busyAnimationType="slide"
               imageSource={require('./src/assets/check-circle.png')}
@@ -119,25 +131,48 @@ const App = () => {
                 setTimeout(() => setBusy(false), 3000);
               }}
             />
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Step One</Text>
-              <Text style={styles.sectionDescription}>
-                Edit <Text style={styles.highlight}>App.tsx</Text> to change this screen and then
-                come back to see your edits.
-              </Text>
-            </View>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>See Your Changes</Text>
-              <Text style={styles.sectionDescription}>
-                <ReloadInstructions />
-              </Text>
-            </View>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Debug</Text>
-              <Text style={styles.sectionDescription}>
-                <DebugInstructions />
-              </Text>
-            </View>
+            <Segmented
+              selected={selectedButton}
+              onChange={onSelectButton}
+              items={[
+                {
+                  text: 'One',
+                  iconSource: require('./src/assets/star.png'),
+                },
+                {
+                  text: 'Two',
+                  iconSource: require('./src/assets/heart.png'),
+                },
+                {
+                  text: 'Three',
+                },
+              ]}
+            />
+            {selectedButton === 0 && (
+              <View style={styles.sectionContainer}>
+                <Text style={styles.sectionTitle}>Step One</Text>
+                <Text style={styles.sectionDescription}>
+                  Edit <Text style={styles.highlight}>App.tsx</Text> to change this screen and then
+                  come back to see your edits.
+                </Text>
+              </View>
+            )}
+            {selectedButton === 1 && (
+              <View style={styles.sectionContainer}>
+                <Text style={styles.sectionTitle}>See Your Changes</Text>
+                <Text style={styles.sectionDescription}>
+                  <ReloadInstructions />
+                </Text>
+              </View>
+            )}
+            {selectedButton === 2 && (
+              <View style={styles.sectionContainer}>
+                <Text style={styles.sectionTitle}>Debug</Text>
+                <Text style={styles.sectionDescription}>
+                  <DebugInstructions />
+                </Text>
+              </View>
+            )}
             <View style={styles.sectionContainer}>
               <Text style={styles.sectionTitle}>Learn More</Text>
               <Text style={styles.sectionDescription}>
