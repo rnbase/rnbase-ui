@@ -18,18 +18,18 @@ import {
 
 import { Themed, Theme, WithThemeProps, withTheme } from '../theming';
 
-interface ButtonProps {
+interface ItemProps {
   text?: React.ReactNode;
   iconSource?: ImageSourcePropType;
   component?: React.ReactNode;
 }
 
 interface SegmentedProps extends TouchableOpacityProps {
-  buttons: ButtonProps[];
+  items: ItemProps[];
   selected?: number;
   animationDuration?: number;
   style?: StyleProp<ViewStyle>;
-  buttonStyle?: StyleProp<ViewStyle>;
+  itemStyle?: StyleProp<ViewStyle>;
   textStyle?: StyleProp<TextStyle>;
   iconStyle?: StyleProp<ImageStyle>;
   indicatorStyle?: StyleProp<ViewStyle>;
@@ -38,66 +38,66 @@ interface SegmentedProps extends TouchableOpacityProps {
 
 const Segmented: React.FC<Themed<typeof createStyleSheet, SegmentedProps>> = ({
   styles,
-  buttons,
+  items,
   disabled,
   selected = 0,
   activeOpacity = 0.5,
   animationDuration = 500,
   onChange,
   style,
-  buttonStyle,
+  itemStyle,
   textStyle,
   iconStyle,
   indicatorStyle,
 }) => {
-  const [buttonWidth, setButtonWidth] = useState(0);
+  const [itemWidth, setItemWidth] = useState(0);
   const [animatedValue] = useState(() => new Animated.Value(selected));
 
   useEffect(() => {
     Animated.timing(animatedValue, {
       duration: animationDuration,
-      toValue: selected * buttonWidth,
+      toValue: selected * itemWidth,
       useNativeDriver: true,
       easing: Easing.out(Easing.exp),
     }).start();
-  }, [animatedValue, selected, buttonWidth, animationDuration]);
+  }, [animatedValue, selected, itemWidth, animationDuration]);
 
   const onLayout = useCallback(
     (event: LayoutChangeEvent) => {
-      setButtonWidth(event.nativeEvent.layout.width / buttons.length);
+      setItemWidth(event.nativeEvent.layout.width / items.length);
     },
-    [buttons.length],
+    [items.length],
   );
 
   const indicatorStyles = [
     styles.indicator,
     indicatorStyle,
     {
-      width: buttonWidth,
+      width: itemWidth,
       transform: [{ translateX: animatedValue }],
     },
     disabled && styles.disabledIndicator,
   ];
 
-  const renderButton = (button: ButtonProps, index: number) => {
-    if (button.component) {
-      return button.component;
+  const renderItem = (item: ItemProps, index: number) => {
+    if (item.component) {
+      return item.component;
     }
 
     let content = [];
     const isSelected = index === selected;
 
-    if (button.iconSource) {
+    if (item.iconSource) {
       const iconStyles = [
         styles.icon,
         iconStyle,
         isSelected && styles.selectedIcon,
         disabled && styles.disabledIcon,
       ];
-      content.push(<Image key="image" style={iconStyles} source={button.iconSource} />);
+      content.push(<Image key="image" style={iconStyles} source={item.iconSource} />);
     }
 
-    if (button.text) {
+    if (item.text) {
       const textStyles = [
         styles.text,
         textStyle,
@@ -106,7 +106,7 @@ const Segmented: React.FC<Themed<typeof createStyleSheet, SegmentedProps>> = ({
       ];
       content.push(
         <Text key="text" style={textStyles} numberOfLines={1}>
-          {button.text}
+          {item.text}
         </Text>,
       );
     }
@@ -118,15 +118,15 @@ const Segmented: React.FC<Themed<typeof createStyleSheet, SegmentedProps>> = ({
     <View style={[styles.root, style, disabled && styles.disabledRoot]}>
       <View testID="container" style={styles.content} onLayout={onLayout}>
         <Animated.View style={indicatorStyles} />
-        {buttons.map((button, index) => (
+        {items.map((item, index) => (
           <TouchableOpacity
             key={index}
             disabled={disabled}
             activeOpacity={activeOpacity}
-            style={[styles.button, buttonStyle]}
+            style={[styles.item, itemStyle]}
             onPress={() => onChange(index)}
           >
-            {renderButton(button, index)}
+            {renderItem(item, index)}
           </TouchableOpacity>
         ))}
       </View>
@@ -151,7 +151,7 @@ const createStyleSheet = ({ Colors, Fonts }: Theme) =>
       borderRadius: 5,
       backgroundColor: Colors.white,
     },
-    button: {
+    item: {
       flex: 1,
       paddingHorizontal: 5,
       alignItems: 'center',

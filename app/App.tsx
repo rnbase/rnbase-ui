@@ -129,7 +129,7 @@ const App = () => {
             <Segmented
               selected={selectedButton}
               onChange={onSelectButton}
-              buttons={[
+              items={[
                 {
                   text: 'One',
                   iconSource: require('./src/assets/star.png'),

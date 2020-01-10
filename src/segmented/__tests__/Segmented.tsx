@@ -39,7 +39,7 @@ jest.mock('react-native/Libraries/Animated/src/Easing', () => ({
 const Animated: any = AnimatedObj;
 
 const onChange = jest.fn();
-const buttons = [
+const items = [
   {
     text: 'one',
   },
@@ -53,13 +53,13 @@ const createElement = (props: Props) => <Segmented {...props} />;
 const createRenderer = (props: Props) => TestRenderer.create(createElement(props));
 
 it('should render normally', () => {
-  expect(createRenderer({ buttons, onChange })).toMatchSnapshot();
+  expect(createRenderer({ items, onChange })).toMatchSnapshot();
 });
 
 it('should render icons', () => {
   expect(
     createRenderer({
-      buttons: [
+      items: [
         {
           iconSource: { uri: 'icon-one.png' },
         },
@@ -75,7 +75,7 @@ it('should render icons', () => {
 it('should render components', () => {
   expect(
     createRenderer({
-      buttons: [
+      items: [
         {
           component: <Text>ONE</Text>,
         },
@@ -91,7 +91,7 @@ it('should render components', () => {
 it('should render as disabled', () => {
   expect(
     createRenderer({
-      buttons: [
+      items: [
         {
           text: 'one',
           iconSource: { uri: 'icon-one.png' },
@@ -108,7 +108,7 @@ it('should render as disabled', () => {
 });
 
 it('should call onChange', () => {
-  const tree = createRenderer({ buttons, onChange });
+  const tree = createRenderer({ items, onChange });
 
   const button = tree.root.findAllByType(TouchableOpacity)[0];
 
@@ -127,21 +127,21 @@ describe('selected button animation', () => {
   });
 
   it('should not animate', () => {
-    const tree = createRenderer({ buttons, onChange });
+    const tree = createRenderer({ items, onChange });
 
     act(() => {});
 
     Animated.timing.mockClear();
 
     act(() => {
-      tree.update(createElement({ buttons, onChange, selected: 0 }));
+      tree.update(createElement({ items, onChange, selected: 0 }));
     });
 
     expect(Animated.timing).not.toBeCalled();
   });
 
   it('should animate to second button', () => {
-    const tree = createRenderer({ buttons, onChange });
+    const tree = createRenderer({ items, onChange });
 
     act(() => {});
 
@@ -155,11 +155,11 @@ describe('selected button animation', () => {
     Animated.timing.mockClear();
 
     act(() => {
-      tree.update(createElement({ buttons, onChange, selected: 1 }));
+      tree.update(createElement({ items, onChange, selected: 1 }));
     });
 
     expect(Animated.timing).toBeCalledWith(expect.objectContaining({ _value: 0 }), {
-      toValue: width / buttons.length,
+      toValue: width / items.length,
       duration: 500,
       useNativeDriver: true,
       easing: 'Easing.out(Easing.exp)',
