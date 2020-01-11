@@ -73,16 +73,18 @@ const Rating: React.FC<Themed<typeof createStyleSheet, RatingProps>> = ({
     }
   }, [onFinish, rating]);
 
-  const panResponder = useMemo(
-    () =>
-      PanResponder.create({
-        onStartShouldSetPanResponder: () => true,
-        onPanResponderGrant: onMove,
-        onPanResponderMove: onMove,
-        onPanResponderRelease: onRelease,
-      }),
-    [onMove, onRelease],
-  );
+  const panResponder = useMemo(() => {
+    if (!onChange && !onFinish) {
+      return false;
+    }
+
+    return PanResponder.create({
+      onStartShouldSetPanResponder: () => true,
+      onPanResponderGrant: onMove,
+      onPanResponderMove: onMove,
+      onPanResponderRelease: onRelease,
+    });
+  }, [onChange, onFinish, onMove, onRelease]);
 
   const symbols = {
     solid: '\u2605',
@@ -139,7 +141,7 @@ const Rating: React.FC<Themed<typeof createStyleSheet, RatingProps>> = ({
       ));
 
   return (
-    <View {...panResponder.panHandlers} pointerEvents="box-only" style={rootStyles}>
+    <View {...panResponder && panResponder.panHandlers} pointerEvents="box-only" style={rootStyles}>
       {renderSymbols(symbols[type], underlaySymbolStyles)}
       <Animated.View style={overlayStyles}>
         {renderSymbols(symbols.solid, overlaySymbolStyles)}
