@@ -67,10 +67,8 @@ const Rating: React.FC<Themed<typeof createStyleSheet, RatingProps>> = ({
   );
 
   const onRelease = useCallback(() => {
-    if (onFinish) {
-      onFinish(rating);
-      setRating(undefined);
-    }
+    onFinish && onFinish(rating);
+    setRating(undefined);
   }, [onFinish, rating]);
 
   const panResponder = useMemo(() => {
