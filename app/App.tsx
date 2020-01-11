@@ -27,6 +27,7 @@ import {
   Button,
   OutlineButton,
   ProgressBar,
+  Rating,
   TextButton,
   Segmented,
   Component,
@@ -43,6 +44,7 @@ const App = () => {
 
   const [busy, setBusy] = useState(false);
   const [badge, setBadge] = useState(0);
+  const [rating, setRating] = useState(3.5);
   const [selectedButton, setSelectedButton] = useState(0);
 
   const onSelectButton = (index: number) => setSelectedButton(index);
@@ -174,7 +176,16 @@ const App = () => {
                 </Text>
               </View>
             )}
-            <ProgressBar value={badge ? badge * 10 : undefined} style={{ marginTop: 10 }} />
+            <View style={styles.stack}>
+              <Rating
+                size={30}
+                value={rating}
+                onChange={setRating}
+                onFinish={(value: number) => setRating((value + 3) / 2)}
+              />
+              <Text>Rating: {rating} out of 5</Text>
+            </View>
+            <ProgressBar value={badge ? badge * 10 : undefined} />
             <View style={styles.sectionContainer}>
               <Text style={styles.sectionTitle}>Learn More</Text>
               <Text style={styles.sectionDescription}>
