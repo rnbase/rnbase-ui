@@ -18,8 +18,8 @@ exports[`should render normally 1`] = `
     ]
   }
 >
-  <Text
-    allowFontScaling={false}
+  <RatingSymbol
+    selected={false}
     style={
       Array [
         Object {
@@ -44,9 +44,9 @@ exports[`should render normally 1`] = `
     }
   >
     ☆
-  </Text>
-  <Text
-    allowFontScaling={false}
+  </RatingSymbol>
+  <RatingSymbol
+    selected={false}
     style={
       Array [
         Object {
@@ -71,9 +71,9 @@ exports[`should render normally 1`] = `
     }
   >
     ☆
-  </Text>
-  <Text
-    allowFontScaling={false}
+  </RatingSymbol>
+  <RatingSymbol
+    selected={false}
     style={
       Array [
         Object {
@@ -98,9 +98,9 @@ exports[`should render normally 1`] = `
     }
   >
     ☆
-  </Text>
-  <Text
-    allowFontScaling={false}
+  </RatingSymbol>
+  <RatingSymbol
+    selected={false}
     style={
       Array [
         Object {
@@ -125,9 +125,9 @@ exports[`should render normally 1`] = `
     }
   >
     ☆
-  </Text>
-  <Text
-    allowFontScaling={false}
+  </RatingSymbol>
+  <RatingSymbol
+    selected={false}
     style={
       Array [
         Object {
@@ -152,7 +152,7 @@ exports[`should render normally 1`] = `
     }
   >
     ☆
-  </Text>
+  </RatingSymbol>
   <View
     style={
       Object {
@@ -168,8 +168,8 @@ exports[`should render normally 1`] = `
       }
     }
   >
-    <Text
-      allowFontScaling={false}
+    <RatingSymbol
+      selected={false}
       style={
         Array [
           Object {
@@ -194,9 +194,9 @@ exports[`should render normally 1`] = `
       }
     >
       ★
-    </Text>
-    <Text
-      allowFontScaling={false}
+    </RatingSymbol>
+    <RatingSymbol
+      selected={false}
       style={
         Array [
           Object {
@@ -221,9 +221,9 @@ exports[`should render normally 1`] = `
       }
     >
       ★
-    </Text>
-    <Text
-      allowFontScaling={false}
+    </RatingSymbol>
+    <RatingSymbol
+      selected={false}
       style={
         Array [
           Object {
@@ -248,9 +248,9 @@ exports[`should render normally 1`] = `
       }
     >
       ★
-    </Text>
-    <Text
-      allowFontScaling={false}
+    </RatingSymbol>
+    <RatingSymbol
+      selected={false}
       style={
         Array [
           Object {
@@ -275,9 +275,9 @@ exports[`should render normally 1`] = `
       }
     >
       ★
-    </Text>
-    <Text
-      allowFontScaling={false}
+    </RatingSymbol>
+    <RatingSymbol
+      selected={false}
       style={
         Array [
           Object {
@@ -302,7 +302,7 @@ exports[`should render normally 1`] = `
       }
     >
       ★
-    </Text>
+    </RatingSymbol>
   </View>
 </View>
 `;
@@ -325,8 +325,8 @@ exports[`should render with custom colors 1`] = `
     ]
   }
 >
-  <Text
-    allowFontScaling={false}
+  <RatingSymbol
+    selected={false}
     style={
       Array [
         Object {
@@ -354,9 +354,9 @@ exports[`should render with custom colors 1`] = `
     }
   >
     ☆
-  </Text>
-  <Text
-    allowFontScaling={false}
+  </RatingSymbol>
+  <RatingSymbol
+    selected={false}
     style={
       Array [
         Object {
@@ -384,9 +384,9 @@ exports[`should render with custom colors 1`] = `
     }
   >
     ☆
-  </Text>
-  <Text
-    allowFontScaling={false}
+  </RatingSymbol>
+  <RatingSymbol
+    selected={false}
     style={
       Array [
         Object {
@@ -414,9 +414,9 @@ exports[`should render with custom colors 1`] = `
     }
   >
     ☆
-  </Text>
-  <Text
-    allowFontScaling={false}
+  </RatingSymbol>
+  <RatingSymbol
+    selected={false}
     style={
       Array [
         Object {
@@ -444,9 +444,9 @@ exports[`should render with custom colors 1`] = `
     }
   >
     ☆
-  </Text>
-  <Text
-    allowFontScaling={false}
+  </RatingSymbol>
+  <RatingSymbol
+    selected={false}
     style={
       Array [
         Object {
@@ -474,7 +474,7 @@ exports[`should render with custom colors 1`] = `
     }
   >
     ☆
-  </Text>
+  </RatingSymbol>
   <View
     style={
       Object {
@@ -490,8 +490,8 @@ exports[`should render with custom colors 1`] = `
       }
     }
   >
-    <Text
-      allowFontScaling={false}
+    <RatingSymbol
+      selected={false}
       style={
         Array [
           Object {
@@ -519,9 +519,9 @@ exports[`should render with custom colors 1`] = `
       }
     >
       ★
-    </Text>
-    <Text
-      allowFontScaling={false}
+    </RatingSymbol>
+    <RatingSymbol
+      selected={false}
       style={
         Array [
           Object {
@@ -549,9 +549,9 @@ exports[`should render with custom colors 1`] = `
       }
     >
       ★
-    </Text>
-    <Text
-      allowFontScaling={false}
+    </RatingSymbol>
+    <RatingSymbol
+      selected={false}
       style={
         Array [
           Object {
@@ -579,9 +579,9 @@ exports[`should render with custom colors 1`] = `
       }
     >
       ★
-    </Text>
-    <Text
-      allowFontScaling={false}
+    </RatingSymbol>
+    <RatingSymbol
+      selected={false}
       style={
         Array [
           Object {
@@ -609,9 +609,9 @@ exports[`should render with custom colors 1`] = `
       }
     >
       ★
-    </Text>
-    <Text
-      allowFontScaling={false}
+    </RatingSymbol>
+    <RatingSymbol
+      selected={false}
       style={
         Array [
           Object {
@@ -639,7 +639,7 @@ exports[`should render with custom colors 1`] = `
       }
     >
       ★
-    </Text>
+    </RatingSymbol>
   </View>
 </View>
 `;
@@ -662,8 +662,8 @@ exports[`should render with custom props 1`] = `
     ]
   }
 >
-  <Text
-    allowFontScaling={false}
+  <RatingSymbol
+    selected={false}
     style={
       Array [
         Object {
@@ -688,9 +688,9 @@ exports[`should render with custom props 1`] = `
     }
   >
     ★
-  </Text>
-  <Text
-    allowFontScaling={false}
+  </RatingSymbol>
+  <RatingSymbol
+    selected={false}
     style={
       Array [
         Object {
@@ -715,9 +715,9 @@ exports[`should render with custom props 1`] = `
     }
   >
     ★
-  </Text>
-  <Text
-    allowFontScaling={false}
+  </RatingSymbol>
+  <RatingSymbol
+    selected={false}
     style={
       Array [
         Object {
@@ -742,9 +742,9 @@ exports[`should render with custom props 1`] = `
     }
   >
     ★
-  </Text>
-  <Text
-    allowFontScaling={false}
+  </RatingSymbol>
+  <RatingSymbol
+    selected={false}
     style={
       Array [
         Object {
@@ -769,9 +769,9 @@ exports[`should render with custom props 1`] = `
     }
   >
     ★
-  </Text>
-  <Text
-    allowFontScaling={false}
+  </RatingSymbol>
+  <RatingSymbol
+    selected={false}
     style={
       Array [
         Object {
@@ -796,9 +796,9 @@ exports[`should render with custom props 1`] = `
     }
   >
     ★
-  </Text>
-  <Text
-    allowFontScaling={false}
+  </RatingSymbol>
+  <RatingSymbol
+    selected={false}
     style={
       Array [
         Object {
@@ -823,9 +823,9 @@ exports[`should render with custom props 1`] = `
     }
   >
     ★
-  </Text>
-  <Text
-    allowFontScaling={false}
+  </RatingSymbol>
+  <RatingSymbol
+    selected={false}
     style={
       Array [
         Object {
@@ -850,9 +850,9 @@ exports[`should render with custom props 1`] = `
     }
   >
     ★
-  </Text>
-  <Text
-    allowFontScaling={false}
+  </RatingSymbol>
+  <RatingSymbol
+    selected={false}
     style={
       Array [
         Object {
@@ -877,9 +877,9 @@ exports[`should render with custom props 1`] = `
     }
   >
     ★
-  </Text>
-  <Text
-    allowFontScaling={false}
+  </RatingSymbol>
+  <RatingSymbol
+    selected={false}
     style={
       Array [
         Object {
@@ -904,9 +904,9 @@ exports[`should render with custom props 1`] = `
     }
   >
     ★
-  </Text>
-  <Text
-    allowFontScaling={false}
+  </RatingSymbol>
+  <RatingSymbol
+    selected={false}
     style={
       Array [
         Object {
@@ -931,7 +931,7 @@ exports[`should render with custom props 1`] = `
     }
   >
     ★
-  </Text>
+  </RatingSymbol>
   <View
     style={
       Object {
@@ -947,8 +947,8 @@ exports[`should render with custom props 1`] = `
       }
     }
   >
-    <Text
-      allowFontScaling={false}
+    <RatingSymbol
+      selected={false}
       style={
         Array [
           Object {
@@ -973,9 +973,9 @@ exports[`should render with custom props 1`] = `
       }
     >
       ★
-    </Text>
-    <Text
-      allowFontScaling={false}
+    </RatingSymbol>
+    <RatingSymbol
+      selected={false}
       style={
         Array [
           Object {
@@ -1000,9 +1000,9 @@ exports[`should render with custom props 1`] = `
       }
     >
       ★
-    </Text>
-    <Text
-      allowFontScaling={false}
+    </RatingSymbol>
+    <RatingSymbol
+      selected={false}
       style={
         Array [
           Object {
@@ -1027,9 +1027,9 @@ exports[`should render with custom props 1`] = `
       }
     >
       ★
-    </Text>
-    <Text
-      allowFontScaling={false}
+    </RatingSymbol>
+    <RatingSymbol
+      selected={false}
       style={
         Array [
           Object {
@@ -1054,9 +1054,9 @@ exports[`should render with custom props 1`] = `
       }
     >
       ★
-    </Text>
-    <Text
-      allowFontScaling={false}
+    </RatingSymbol>
+    <RatingSymbol
+      selected={false}
       style={
         Array [
           Object {
@@ -1081,9 +1081,9 @@ exports[`should render with custom props 1`] = `
       }
     >
       ★
-    </Text>
-    <Text
-      allowFontScaling={false}
+    </RatingSymbol>
+    <RatingSymbol
+      selected={false}
       style={
         Array [
           Object {
@@ -1108,9 +1108,9 @@ exports[`should render with custom props 1`] = `
       }
     >
       ★
-    </Text>
-    <Text
-      allowFontScaling={false}
+    </RatingSymbol>
+    <RatingSymbol
+      selected={false}
       style={
         Array [
           Object {
@@ -1135,9 +1135,9 @@ exports[`should render with custom props 1`] = `
       }
     >
       ★
-    </Text>
-    <Text
-      allowFontScaling={false}
+    </RatingSymbol>
+    <RatingSymbol
+      selected={false}
       style={
         Array [
           Object {
@@ -1162,9 +1162,9 @@ exports[`should render with custom props 1`] = `
       }
     >
       ★
-    </Text>
-    <Text
-      allowFontScaling={false}
+    </RatingSymbol>
+    <RatingSymbol
+      selected={false}
       style={
         Array [
           Object {
@@ -1189,9 +1189,9 @@ exports[`should render with custom props 1`] = `
       }
     >
       ★
-    </Text>
-    <Text
-      allowFontScaling={false}
+    </RatingSymbol>
+    <RatingSymbol
+      selected={false}
       style={
         Array [
           Object {
@@ -1216,7 +1216,7 @@ exports[`should render with custom props 1`] = `
       }
     >
       ★
-    </Text>
+    </RatingSymbol>
   </View>
 </View>
 `;

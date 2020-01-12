@@ -8,6 +8,8 @@ import TestRenderer, { act } from 'react-test-renderer';
  */
 import Rating, { Props } from '../Rating';
 
+jest.mock('../RatingSymbol', () => 'RatingSymbol');
+
 const createElement = (props: Props) => <Rating {...props} />;
 
 const createRenderer = (props: Props) => TestRenderer.create(createElement(props));
