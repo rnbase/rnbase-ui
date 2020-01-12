@@ -4,7 +4,6 @@ import {
   PanResponder,
   StyleProp,
   StyleSheet,
-  Text,
   TextStyle,
   View,
   ViewProps,
@@ -12,6 +11,7 @@ import {
 } from 'react-native';
 
 import { Themed, Theme, WithThemeProps, withTheme } from '../theming';
+import RatingSymbol from './RatingSymbol';
 
 const inRange = (value: number, maxValue: number) => Math.max(0, Math.min(value, maxValue));
 
@@ -19,6 +19,7 @@ interface RatingProps extends ViewProps {
   size?: number;
   type?: 'solid' | 'outline';
   value?: number;
+  animate?: boolean;
   maxValue?: number;
   activeColor?: string;
   ratingColor?: string;
@@ -34,6 +35,7 @@ const Rating: React.FC<Themed<typeof createStyleSheet, RatingProps>> = ({
   size = 20,
   type = 'outline',
   value = 0,
+  animate = true,
   maxValue = 5,
   activeColor,
   ratingColor,
@@ -84,11 +86,6 @@ const Rating: React.FC<Themed<typeof createStyleSheet, RatingProps>> = ({
     });
   }, [onChange, onFinish, onMove, onRelease]);
 
-  const symbols = {
-    solid: '\u2605',
-    outline: '\u2606',
-  };
-
   const rootStyles = [
     styles.root,
     style,
@@ -129,20 +126,27 @@ const Rating: React.FC<Themed<typeof createStyleSheet, RatingProps>> = ({
     overlaySymbolStyles.push(activeColor ? { color: activeColor } : styles.symbolActive);
   }
 
-  const renderSymbols = (symbol: string, symbolStyle: StyleProp<TextStyle>) =>
-    Array(maxValue)
-      .fill(symbol)
-      .map((item, index) => (
-        <Text key={index} allowFontScaling={false} style={symbolStyle}>
-          {item}
-        </Text>
-      ));
+  const getSymbols = useCallback(
+    layer => Array(maxValue).fill(layer === 'overlay' || type === 'solid' ? '\u2605' : '\u2606'),
+    [maxValue, type],
+  );
+
+  const renderSymbols = (layer: 'underlay' | 'overlay', symbolStyle: StyleProp<TextStyle>) =>
+    getSymbols(layer).map((symbol, index) => (
+      <RatingSymbol
+        key={index}
+        selected={animate && Math.ceil(rating) === index + 1}
+        style={symbolStyle}
+      >
+        {symbol}
+      </RatingSymbol>
+    ));
 
   return (
     <View {...panResponder && panResponder.panHandlers} pointerEvents="box-only" style={rootStyles}>
-      {renderSymbols(symbols[type], underlaySymbolStyles)}
+      {renderSymbols('underlay', underlaySymbolStyles)}
       <Animated.View style={overlayStyles}>
-        {renderSymbols(symbols.solid, overlaySymbolStyles)}
+        {renderSymbols('overlay', overlaySymbolStyles)}
       </Animated.View>
     </View>
   );
