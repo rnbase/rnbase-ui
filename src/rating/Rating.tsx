@@ -63,13 +63,19 @@ const Rating: React.FC<Themed<typeof createStyleSheet, RatingProps>> = ({
 
       setRating(ratingValue);
       setOverlayWidth(ratingValue);
-      onChange && onChange(ratingValue);
+
+      if (onChange) {
+        onChange(ratingValue);
+      }
     },
     [allowDecimals, size, maxValue, setOverlayWidth, onChange],
   );
 
   const onRelease = useCallback(() => {
-    onFinish && onFinish(rating);
+    if (onFinish) {
+      onFinish(rating);
+    }
+
     setRating(undefined);
   }, [onFinish, rating]);
 
@@ -80,6 +86,7 @@ const Rating: React.FC<Themed<typeof createStyleSheet, RatingProps>> = ({
 
     return PanResponder.create({
       onStartShouldSetPanResponder: () => true,
+      onPanResponderTerminationRequest: () => false,
       onPanResponderGrant: onMove,
       onPanResponderMove: onMove,
       onPanResponderRelease: onRelease,
