@@ -1,0 +1,85 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render normally 1`] = `
+<View
+  onLayout={[Function]}
+  style={
+    Array [
+      Object {
+        "backgroundColor": "#e5e5ea",
+        "flexDirection": "row",
+        "justifyContent": "flex-start",
+        "overflow": "hidden",
+      },
+      undefined,
+      Object {
+        "height": 6,
+      },
+      Object {
+        "borderRadius": 3,
+      },
+    ]
+  }
+  testID="root"
+>
+  <View
+    style={
+      Object {
+        "backgroundColor": "#007aff",
+        "height": "100%",
+        "transform": Array [
+          Object {
+            "translateX": -0,
+          },
+          Object {
+            "scaleX": 0.35,
+          },
+        ],
+        "width": "100%",
+      }
+    }
+  />
+</View>
+`;
+
+exports[`should render with custom props 1`] = `
+<View
+  onLayout={[Function]}
+  style={
+    Array [
+      Object {
+        "backgroundColor": "#e5e5ea",
+        "flexDirection": "row",
+        "justifyContent": "flex-start",
+        "overflow": "hidden",
+      },
+      undefined,
+      Object {
+        "height": 10,
+      },
+      Object {
+        "backgroundColor": "green",
+      },
+    ]
+  }
+  testID="root"
+>
+  <View
+    style={
+      Object {
+        "backgroundColor": "red",
+        "height": "100%",
+        "transform": Array [
+          Object {
+            "translateX": -0,
+          },
+          Object {
+            "scaleX": 0.35,
+          },
+        ],
+        "width": "100%",
+      }
+    }
+  />
+</View>
+`;
