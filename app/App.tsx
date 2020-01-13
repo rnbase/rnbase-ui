@@ -26,6 +26,7 @@ import {
   Badge,
   Button,
   OutlineButton,
+  ProgressBar,
   TextButton,
   Segmented,
   Component,
@@ -173,6 +174,7 @@ const App = () => {
                 </Text>
               </View>
             )}
+            <ProgressBar value={badge ? badge * 10 : undefined} style={{ marginTop: 10 }} />
             <View style={styles.sectionContainer}>
               <Text style={styles.sectionTitle}>Learn More</Text>
               <Text style={styles.sectionDescription}>
