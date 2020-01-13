@@ -9,7 +9,7 @@
  */
 
 import React, { useState } from 'react';
-import { SafeAreaView, StyleSheet, ScrollView, View, Text, StatusBar } from 'react-native';
+import { StyleSheet, View, Text, StatusBar } from 'react-native';
 
 import {
   Header,
@@ -29,6 +29,7 @@ import {
   ProgressBar,
   TextButton,
   Segmented,
+  StretchyHeader,
   Component,
 } from '../';
 
@@ -50,141 +51,146 @@ const App = () => {
   return (
     <ThemeProvider colorScheme="no-preference" theme={theme}>
       <StatusBar barStyle="dark-content" />
-      <SafeAreaView>
-        <ScrollView contentInsetAdjustmentBehavior="automatic" style={styles.scrollView}>
-          <Header />
-          {!usingHermes ? null : (
-            <View style={styles.engine}>
-              <Text style={styles.footer}>Engine: Hermes</Text>
-            </View>
-          )}
-          <Component>Themed Component</Component>
-          <View style={styles.body}>
-            <View style={styles.stack}>
-              <Avatar
-                size={50}
-                name="John Smith"
-                imageSource={avatars.none}
-                defaultImageSource={avatars.test}
-                badge={{
-                  value: badge,
-                }}
-              />
-              <Avatar size={50} email="jitewaboh@lagify.com" defaultImageSource={avatars.test} />
-              <Avatar
-                size={50}
-                name="Elon Musk"
-                colorize={true}
-                imageSource={avatars.none}
-                badge={{
-                  value: !!badge,
-                  color: '#3B0',
-                }}
-              />
-              <Avatar
-                size={50}
-                name="John Smith"
-                imageSource={avatars.test}
-                shape="square"
-                style={{ borderRadius: 10 }}
-                imageStyle={{ borderRadius: 7 }}
-              />
-              <Avatar size={50} email="user@email.com" imageSource={avatars.none} />
-            </View>
-            <View style={styles.stack}>
-              <Badge value={true} color="#3B0" />
-              <Badge value={true} color="#FC0" rounded={false} />
-              <Badge value={badge} />
-              <Badge value={35} color="#F20" />
-              <Badge value={350} size={16} />
-              <Badge value={355} limit={false} rounded={false} style={{ borderRadius: 3 }} />
-            </View>
-            <View style={styles.stack}>
-              <Button
-                text="Button"
-                imageSource={require('./src/assets/star.png')}
-                onPress={() => setBadge(badge + 1)}
-              />
-              <OutlineButton
-                text="Button"
-                imageSource={require('./src/assets/heart.png')}
-                onPress={() => setBadge(0)}
-              />
-              <TextButton
-                text="Button"
-                busy={busy}
-                imageAlignment="right"
-                imageSource={require('./src/assets/chevron-right.png')}
-                onPress={() => {
-                  setBusy(true);
-                  setTimeout(() => setBusy(false), 3000);
-                }}
-              />
-            </View>
+      <StretchyHeader
+        images={[
+          'https://s3.eu-central-1.amazonaws.com/com.hammer-corp.dev.inventory/preview/2015_mercedes-benz_s500.jpg',
+          'https://s3.eu-central-1.amazonaws.com/com.hammer-corp.dev.inventory/preview/2015_bmw_5.jpg',
+          'https://s3.eu-central-1.amazonaws.com/com.hammer-corp.dev.inventory/preview/2015_audi_a7.jpg',
+        ]}
+        imageHeight={300}
+      >
+        <Header />
+        {!usingHermes ? null : (
+          <View style={styles.engine}>
+            <Text style={styles.footer}>Engine: Hermes</Text>
+          </View>
+        )}
+        <Component>Themed Component</Component>
+        <View style={styles.body}>
+          <View style={styles.stack}>
+            <Avatar
+              size={50}
+              name="John Smith"
+              imageSource={avatars.none}
+              defaultImageSource={avatars.test}
+              badge={{
+                value: badge,
+              }}
+            />
+            <Avatar size={50} email="jitewaboh@lagify.com" defaultImageSource={avatars.test} />
+            <Avatar
+              size={50}
+              name="Elon Musk"
+              colorize={true}
+              imageSource={avatars.none}
+              badge={{
+                value: !!badge,
+                color: '#3B0',
+              }}
+            />
+            <Avatar
+              size={50}
+              name="John Smith"
+              imageSource={avatars.test}
+              shape="square"
+              style={{ borderRadius: 10 }}
+              imageStyle={{ borderRadius: 7 }}
+            />
+            <Avatar size={50} email="user@email.com" imageSource={avatars.none} />
+          </View>
+          <View style={styles.stack}>
+            <Badge value={true} color="#3B0" />
+            <Badge value={true} color="#FC0" rounded={false} />
+            <Badge value={badge} />
+            <Badge value={35} color="#F20" />
+            <Badge value={350} size={16} />
+            <Badge value={355} limit={false} rounded={false} style={{ borderRadius: 3 }} />
+          </View>
+          <View style={styles.stack}>
             <Button
+              text="Button"
+              imageSource={require('./src/assets/star.png')}
+              onPress={() => setBadge(badge + 1)}
+            />
+            <OutlineButton
+              text="Button"
+              imageSource={require('./src/assets/heart.png')}
+              onPress={() => setBadge(0)}
+            />
+            <TextButton
+              text="Button"
               busy={busy}
-              style={{ marginVertical: 10 }}
-              text="Activity Button"
-              busyAnimationType="slide"
-              imageSource={require('./src/assets/check-circle.png')}
+              imageAlignment="right"
+              imageSource={require('./src/assets/chevron-right.png')}
               onPress={() => {
                 setBusy(true);
                 setTimeout(() => setBusy(false), 3000);
               }}
             />
-            <Segmented
-              selected={selectedButton}
-              onChange={onSelectButton}
-              items={[
-                {
-                  text: 'One',
-                  iconSource: require('./src/assets/star.png'),
-                },
-                {
-                  text: 'Two',
-                  iconSource: require('./src/assets/heart.png'),
-                },
-                {
-                  text: 'Three',
-                },
-              ]}
-            />
-            {selectedButton === 0 && (
-              <View style={styles.sectionContainer}>
-                <Text style={styles.sectionTitle}>Step One</Text>
-                <Text style={styles.sectionDescription}>
-                  Edit <Text style={styles.highlight}>App.tsx</Text> to change this screen and then
-                  come back to see your edits.
-                </Text>
-              </View>
-            )}
-            {selectedButton === 1 && (
-              <View style={styles.sectionContainer}>
-                <Text style={styles.sectionTitle}>See Your Changes</Text>
-                <Text style={styles.sectionDescription}>
-                  <ReloadInstructions />
-                </Text>
-              </View>
-            )}
-            {selectedButton === 2 && (
-              <View style={styles.sectionContainer}>
-                <Text style={styles.sectionTitle}>Debug</Text>
-                <Text style={styles.sectionDescription}>
-                  <DebugInstructions />
-                </Text>
-              </View>
-            )}
-            <ProgressBar value={badge ? badge * 10 : undefined} style={{ marginTop: 10 }} />
+          </View>
+          <Button
+            busy={busy}
+            style={{ marginVertical: 10 }}
+            text="Activity Button"
+            busyAnimationType="slide"
+            imageSource={require('./src/assets/check-circle.png')}
+            onPress={() => {
+              setBusy(true);
+              setTimeout(() => setBusy(false), 3000);
+            }}
+          />
+          <Segmented
+            selected={selectedButton}
+            onChange={onSelectButton}
+            items={[
+              {
+                text: 'One',
+                iconSource: require('./src/assets/star.png'),
+              },
+              {
+                text: 'Two',
+                iconSource: require('./src/assets/heart.png'),
+              },
+              {
+                text: 'Three',
+              },
+            ]}
+          />
+          {selectedButton === 0 && (
             <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Learn More</Text>
+              <Text style={styles.sectionTitle}>Step One</Text>
               <Text style={styles.sectionDescription}>
-                Read the docs to discover what to do next:
+                Edit <Text style={styles.highlight}>App.tsx</Text> to change this screen and then
+                come back to see your edits.
               </Text>
             </View>
-            <LearnMoreLinks />
+          )}
+          {selectedButton === 1 && (
+            <View style={styles.sectionContainer}>
+              <Text style={styles.sectionTitle}>See Your Changes</Text>
+              <Text style={styles.sectionDescription}>
+                <ReloadInstructions />
+              </Text>
+            </View>
+          )}
+          {selectedButton === 2 && (
+            <View style={styles.sectionContainer}>
+              <Text style={styles.sectionTitle}>Debug</Text>
+              <Text style={styles.sectionDescription}>
+                <DebugInstructions />
+              </Text>
+            </View>
+          )}
+          <ProgressBar value={badge ? badge * 10 : undefined} style={{ marginTop: 10 }} />
+          <View style={styles.sectionContainer}>
+            <Text style={styles.sectionTitle}>Learn More</Text>
+            <Text style={styles.sectionDescription}>
+              Read the docs to discover what to do next:
+            </Text>
           </View>
-        </ScrollView>
-      </SafeAreaView>
+          <LearnMoreLinks />
+        </View>
+      </StretchyHeader>
     </ThemeProvider>
   );
 };
