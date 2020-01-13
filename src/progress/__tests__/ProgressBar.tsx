@@ -113,7 +113,7 @@ describe('animation', () => {
     expect(animated.start).toBeCalled();
   });
 
-  it('should animate change to inifinite progress', () => {
+  it('should animate to indeterminate', () => {
     const tree = createRenderer({ value: 50 });
 
     act(() => {});
