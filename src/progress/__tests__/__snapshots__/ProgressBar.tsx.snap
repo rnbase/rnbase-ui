@@ -1,5 +1,44 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`should render as infinite progress 1`] = `
+<View
+  onLayout={[Function]}
+  style={
+    Array [
+      Object {
+        "backgroundColor": "#e5e5ea",
+        "flexDirection": "row",
+        "justifyContent": "flex-start",
+        "overflow": "hidden",
+      },
+      undefined,
+      Object {
+        "height": 6,
+      },
+      Object {
+        "borderRadius": 3,
+      },
+    ]
+  }
+  testID="root"
+>
+  <View
+    style={
+      Object {
+        "backgroundColor": "#007aff",
+        "height": "100%",
+        "transform": Array [
+          Object {
+            "translateX": -100,
+          },
+        ],
+        "width": "100%",
+      }
+    }
+  />
+</View>
+`;
+
 exports[`should render normally 1`] = `
 <View
   onLayout={[Function]}
@@ -29,7 +68,7 @@ exports[`should render normally 1`] = `
         "height": "100%",
         "transform": Array [
           Object {
-            "translateX": -0,
+            "translateX": -32.5,
           },
           Object {
             "scaleX": 0.35,

@@ -46,6 +46,7 @@ const ProgressBar: React.FC<Themed<typeof createStyleSheet, ProgressBarProps>> =
       }).start();
     } else {
       animatedValue.setValue(0);
+
       Animated.loop(
         Animated.timing(animatedValue, {
           duration: 2000,
@@ -73,6 +74,7 @@ const ProgressBar: React.FC<Themed<typeof createStyleSheet, ProgressBarProps>> =
         extrapolate: 'clamp',
       }),
     });
+
     transform.push({
       scaleX: animatedValue.interpolate({
         inputRange: [0, 100],
