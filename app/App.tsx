@@ -12,7 +12,6 @@ import React, { useState } from 'react';
 import { StyleSheet, View, Text, StatusBar } from 'react-native';
 
 import {
-  Header,
   LearnMoreLinks,
   Colors,
   DebugInstructions,
@@ -58,8 +57,12 @@ const App = () => {
           'https://s3.eu-central-1.amazonaws.com/com.hammer-corp.dev.inventory/preview/2015_audi_a7.jpg',
         ]}
         imageHeight={300}
+        foreground={
+          <View style={styles.header}>
+            <Text style={styles.headerTitle}>Welcome to React</Text>
+          </View>
+        }
       >
-        <Header />
         {!usingHermes ? null : (
           <View style={styles.engine}>
             <Text style={styles.footer}>Engine: Hermes</Text>
@@ -196,6 +199,18 @@ const App = () => {
 };
 
 const styles = StyleSheet.create({
+  header: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  headerTitle: {
+    fontSize: 32,
+    fontWeight: '600',
+    padding: 5,
+    backgroundColor: Colors.white,
+    borderWidth: 1,
+  },
   scrollView: {
     backgroundColor: Colors.lighter,
   },

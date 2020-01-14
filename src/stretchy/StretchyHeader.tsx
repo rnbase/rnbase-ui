@@ -20,6 +20,7 @@ interface StretchyHeaderProps {
   children: React.ReactNode;
   images: string[];
   imageHeight: number;
+  foreground?: React.ReactNode;
   onImageChanged?: (event: { index: number }) => void;
 }
 
@@ -220,7 +221,7 @@ class StretchyHeader extends React.Component<StretchyHeaderProps, StretchyHeader
   // Render stretchy image header
   _renderHeader() {
     const { scrollX, scrollY, imageWidth } = this.state;
-    const { images, imageHeight } = this.props;
+    const { images, imageHeight, foreground } = this.props;
     const width = imageWidth * images.length;
     const scale = scrollY.interpolate({
       inputRange: [-imageHeight, 0, imageHeight],
@@ -240,31 +241,47 @@ class StretchyHeader extends React.Component<StretchyHeaderProps, StretchyHeader
     });
 
     return (
-      <Animated.View
-        onLayout={this._onHeaderLayout}
-        style={[
-          styles.imageView,
-          {
-            height: imageHeight,
-            transform: [{ translateY }, { scale }],
-          },
-        ]}
-      >
+      <>
         <Animated.View
+          onLayout={this._onHeaderLayout}
           style={[
-            styles.imageContainer,
+            styles.imageView,
             {
-              width,
-              opacity,
-              transform: [{ translateX }],
+              height: imageHeight,
+              transform: [{ translateY }, { scale }],
             },
           ]}
         >
-          {images.map((uri, index) => (
-            <Image key={index} style={styles.image} source={{ uri }} />
-          ))}
+          <Animated.View
+            style={[
+              styles.imageContainer,
+              {
+                width,
+                opacity,
+                transform: [{ translateX }],
+              },
+            ]}
+          >
+            {images.map((uri, index) => (
+              <Image key={index} style={styles.image} source={{ uri }} />
+            ))}
+          </Animated.View>
         </Animated.View>
-      </Animated.View>
+        {foreground && (
+          <Animated.View
+            style={[
+              styles.foregroundContainer,
+              {
+                height: imageHeight,
+                opacity,
+                transform: [{ translateY }],
+              },
+            ]}
+          >
+            {foreground}
+          </Animated.View>
+        )}
+      </>
     );
   }
 
@@ -286,6 +303,11 @@ const styles = StyleSheet.create({
     ...StyleSheet.absoluteFillObject,
     overflow: 'hidden',
     backgroundColor: '#30303C',
+  },
+  foregroundContainer: {
+    ...StyleSheet.absoluteFillObject,
+    flex: 1,
+    flexDirection: 'row',
   },
   imageContainer: {
     flex: 1,
