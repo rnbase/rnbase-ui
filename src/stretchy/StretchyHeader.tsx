@@ -9,9 +9,6 @@ import {
   PanResponderGestureState,
   LayoutChangeEvent,
   GestureResponderEvent,
-  NativeSyntheticEvent,
-  NativeScrollEvent,
-  ScrollView,
   StyleSheet,
   View,
 } from 'react-native';
@@ -26,7 +23,6 @@ interface StretchyHeaderProps {
 
 interface StretchyHeaderState {
   imageWidth: number;
-  scrollViewHeight: number;
   scrollX: Animated.Value;
   scrollY: Animated.Value;
 }
@@ -46,25 +42,20 @@ class StretchyHeader extends React.Component<StretchyHeaderProps, StretchyHeader
 
   private _index: number;
   private _scrollEnabled: boolean;
-  private _scrollContentHeight: number;
   private _panResponder: PanResponderInstance;
   private _scrollView: React.RefObject<any>;
-
-  scrollYValue = new Animated.Value(0);
 
   constructor(props: StretchyHeaderProps) {
     super(props);
 
     this.state = {
       imageWidth: 0,
-      scrollViewHeight: 0,
       scrollX: new Animated.Value(0),
       scrollY: new Animated.Value(0),
     };
 
     this._index = 0;
     this._scrollEnabled = true;
-    this._scrollContentHeight = 0;
     this._scrollView = React.createRef<any>();
     this._panResponder = PanResponder.create({
       onMoveShouldSetPanResponderCapture: this._onMoveShouldSetPanResponderCapture,
@@ -91,11 +82,9 @@ class StretchyHeader extends React.Component<StretchyHeaderProps, StretchyHeader
           keyboardShouldPersistTaps="handled"
           automaticallyAdjustContentInsets={false}
           onScroll={Animated.event(
-            [{ nativeEvent: { contentOffset: { y: this.scrollYValue } } }],
+            [{ nativeEvent: { contentOffset: { y: this.state.scrollY } } }],
             { useNativeDriver: true },
           )}
-          onLayout={this._onScrollViewLayout}
-          onContentSizeChange={this._onContentSizeChange}
           scrollEventThrottle={16}
         >
           <View {...this._panResponder.panHandlers} style={[styles.view, { height: imageHeight }]}>
@@ -182,22 +171,6 @@ class StretchyHeader extends React.Component<StretchyHeaderProps, StretchyHeader
     });
   };
 
-  // Optimizes state.scrollY update since we don't need
-  // to update the value when user has scrolled below the image
-  _onScroll = (event: NativeSyntheticEvent<NativeScrollEvent>) => {
-    const { scrollY } = this.state;
-    const { imageHeight } = this.props;
-    const {
-      nativeEvent: {
-        contentOffset: { y: offsetY },
-      },
-    } = event;
-
-    if (offsetY <= imageHeight /* || scrollY._value <= imageHeight * 2 */) {
-      scrollY.setValue(offsetY);
-    }
-  };
-
   // Spring animation to the given view
   _setView(index: number) {
     const { images } = this.props;
@@ -211,22 +184,12 @@ class StretchyHeader extends React.Component<StretchyHeaderProps, StretchyHeader
     }).start(this._raiseImageChanged);
   }
 
-  // Determine scroll view height
-  _onScrollViewLayout = (event: LayoutChangeEvent) => {
-    this.setState({ scrollViewHeight: event.nativeEvent.layout.height });
-  };
-
-  // Determine content height
-  _onContentSizeChange = (_width: number, height: number) => {
-    this._scrollContentHeight = height;
-  };
-
   // Render stretchy image header
   _renderHeader() {
     const { scrollX, scrollY, imageWidth } = this.state;
     const { images, imageHeight, foreground } = this.props;
     const width = imageWidth * images.length;
-    const scale = this.scrollYValue.interpolate({
+    const scale = scrollY.interpolate({
       inputRange: [-imageHeight, 0, imageHeight],
       outputRange: [2, 1, 1],
     });
@@ -234,11 +197,11 @@ class StretchyHeader extends React.Component<StretchyHeaderProps, StretchyHeader
       inputRange: [0, 1],
       outputRange: [0, -imageWidth],
     });
-    const translateY = this.scrollYValue.interpolate({
+    const translateY = scrollY.interpolate({
       inputRange: [-imageHeight, 0, imageHeight],
       outputRange: [-imageHeight / 2, 0, imageHeight / 2],
     });
-    const opacity = this.scrollYValue.interpolate({
+    const opacity = scrollY.interpolate({
       inputRange: [-imageHeight, 0, imageHeight],
       outputRange: [1, 1, 0],
     });
