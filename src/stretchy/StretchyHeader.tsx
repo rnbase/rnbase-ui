@@ -16,19 +16,10 @@ import {
   View,
 } from 'react-native';
 
-const FooterShape = {
-  height: PropTypes.number.isRequired,
-  renderChildren: PropTypes.func.isRequired,
-};
-
 interface StretchyHeaderProps {
   children: React.ReactNode;
   images: string[];
   imageHeight: number;
-  footer?: {
-    height: number;
-    renderChildren: () => React.ReactNode;
-  };
   onImageChanged?: (event: { index: number }) => void;
 }
 
@@ -37,7 +28,6 @@ interface StretchyHeaderState {
   scrollViewHeight: number;
   scrollX: Animated.Value;
   scrollY: Animated.Value;
-  footerY: Animated.Value;
 }
 
 class StretchyHeader extends React.Component<StretchyHeaderProps, StretchyHeaderState> {
@@ -45,7 +35,6 @@ class StretchyHeader extends React.Component<StretchyHeaderProps, StretchyHeader
     children: PropTypes.any.isRequired,
     images: PropTypes.arrayOf(PropTypes.string).isRequired,
     imageHeight: PropTypes.number.isRequired,
-    footer: PropTypes.shape(FooterShape),
     onImageChanged: PropTypes.func,
   };
 
@@ -68,7 +57,6 @@ class StretchyHeader extends React.Component<StretchyHeaderProps, StretchyHeader
       scrollViewHeight: 0,
       scrollX: new Animated.Value(0),
       scrollY: new Animated.Value(0),
-      footerY: new Animated.Value(0),
     };
 
     this._index = 0;
@@ -89,15 +77,13 @@ class StretchyHeader extends React.Component<StretchyHeaderProps, StretchyHeader
   }
 
   render() {
-    const { children, footer, imageHeight } = this.props;
+    const { children, imageHeight } = this.props;
 
     return (
       <View style={styles.wrapper}>
-        {footer && this._renderFooter(footer.renderChildren())}
         {this._renderHeader()}
         <ScrollView
           style={styles.scrollView}
-          contentContainerStyle={footer && { paddingBottom: footer.height }}
           ref={this._scrollView}
           automaticallyAdjustContentInsets={false}
           keyboardDismissMode="interactive"
@@ -207,8 +193,6 @@ class StretchyHeader extends React.Component<StretchyHeaderProps, StretchyHeader
     if (offsetY <= imageHeight /* || scrollY._value <= imageHeight * 2 */) {
       scrollY.setValue(offsetY);
     }
-
-    this._moveFooter(offsetY);
   };
 
   // Spring animation to the given view
@@ -226,27 +210,12 @@ class StretchyHeader extends React.Component<StretchyHeaderProps, StretchyHeader
   // Determine scroll view height
   _onScrollViewLayout = (event: LayoutChangeEvent) => {
     this.setState({ scrollViewHeight: event.nativeEvent.layout.height });
-    this._moveFooter();
   };
 
   // Determine content height
   _onContentSizeChange = (_width: number, height: number) => {
     this._scrollContentHeight = height;
-    this._moveFooter();
   };
-
-  _moveFooter(offsetY = 0) {
-    const { footer } = this.props;
-
-    if (footer) {
-      const { scrollViewHeight, footerY } = this.state;
-      const offset = this._scrollContentHeight - scrollViewHeight - footer.height - offsetY;
-
-      if (offset < 0 && offset > -scrollViewHeight) {
-        footerY.setValue(offset / 2);
-      }
-    }
-  }
 
   // Render stretchy image header
   _renderHeader() {
@@ -299,25 +268,6 @@ class StretchyHeader extends React.Component<StretchyHeaderProps, StretchyHeader
     );
   }
 
-  _renderFooter(children: React.ReactNode) {
-    const { scrollViewHeight, footerY } = this.state;
-
-    return (
-      <Animated.View
-        style={[
-          styles.footer,
-          {
-            height: scrollViewHeight,
-            bottom: -scrollViewHeight / 2,
-            transform: [{ translateY: footerY }],
-          },
-        ]}
-      >
-        {children}
-      </Animated.View>
-    );
-  }
-
   _raiseImageChanged = () => {
     this.props.onImageChanged && this.props.onImageChanged({ index: this._index });
   };
@@ -333,11 +283,8 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   imageView: {
-    top: 0,
-    left: 0,
-    right: 0,
+    ...StyleSheet.absoluteFillObject,
     overflow: 'hidden',
-    position: 'absolute',
     backgroundColor: '#30303C',
   },
   imageContainer: {
@@ -345,7 +292,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
   },
   view: {
-    backgroundColor: '#0000',
+    backgroundColor: 'transparent',
   },
   image: {
     flex: 1,
