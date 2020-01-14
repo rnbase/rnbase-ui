@@ -48,7 +48,9 @@ class StretchyHeader extends React.Component<StretchyHeaderProps, StretchyHeader
   private _scrollEnabled: boolean;
   private _scrollContentHeight: number;
   private _panResponder: PanResponderInstance;
-  private _scrollView: React.RefObject<ScrollView>;
+  private _scrollView: React.RefObject<any>;
+
+  scrollYValue = new Animated.Value(0);
 
   constructor(props: StretchyHeaderProps) {
     super(props);
@@ -63,7 +65,7 @@ class StretchyHeader extends React.Component<StretchyHeaderProps, StretchyHeader
     this._index = 0;
     this._scrollEnabled = true;
     this._scrollContentHeight = 0;
-    this._scrollView = React.createRef<ScrollView>();
+    this._scrollView = React.createRef<any>();
     this._panResponder = PanResponder.create({
       onMoveShouldSetPanResponderCapture: this._onMoveShouldSetPanResponderCapture,
       onPanResponderGrant: this._onPanResponderGrant,
@@ -82,23 +84,25 @@ class StretchyHeader extends React.Component<StretchyHeaderProps, StretchyHeader
 
     return (
       <View style={styles.wrapper}>
-        <ScrollView
-          style={styles.scrollView}
+        <Animated.ScrollView
           ref={this._scrollView}
-          automaticallyAdjustContentInsets={false}
+          style={styles.scrollView}
           keyboardDismissMode="interactive"
-          keyboardShouldPersistTaps="never"
-          showsVerticalScrollIndicator={false}
-          onScroll={this._onScroll}
+          keyboardShouldPersistTaps="handled"
+          automaticallyAdjustContentInsets={false}
+          onScroll={Animated.event(
+            [{ nativeEvent: { contentOffset: { y: this.scrollYValue } } }],
+            { useNativeDriver: true },
+          )}
           onLayout={this._onScrollViewLayout}
           onContentSizeChange={this._onContentSizeChange}
-          scrollEventThrottle={1}
+          scrollEventThrottle={16}
         >
           <View {...this._panResponder.panHandlers} style={[styles.view, { height: imageHeight }]}>
             {this._renderHeader()}
           </View>
           {children}
-        </ScrollView>
+        </Animated.ScrollView>
       </View>
     );
   }
@@ -115,7 +119,7 @@ class StretchyHeader extends React.Component<StretchyHeaderProps, StretchyHeader
   _onPanResponderGrant = () => {
     this._toggleScroll(false);
 
-    const scrollView = this._scrollView.current;
+    const scrollView = this._scrollView.current.getNode();
 
     if (scrollView) {
       scrollView./* getScrollResponder() */ scrollTo({ x: 0, y: 0 });
@@ -202,6 +206,7 @@ class StretchyHeader extends React.Component<StretchyHeaderProps, StretchyHeader
 
     Animated.timing(this.state.scrollX, {
       toValue: this._index,
+      useNativeDriver: true,
       easing: Easing.out(Easing.exp),
     }).start(this._raiseImageChanged);
   }
@@ -221,7 +226,7 @@ class StretchyHeader extends React.Component<StretchyHeaderProps, StretchyHeader
     const { scrollX, scrollY, imageWidth } = this.state;
     const { images, imageHeight, foreground } = this.props;
     const width = imageWidth * images.length;
-    const scale = scrollY.interpolate({
+    const scale = this.scrollYValue.interpolate({
       inputRange: [-imageHeight, 0, imageHeight],
       outputRange: [2, 1, 1],
     });
@@ -229,11 +234,11 @@ class StretchyHeader extends React.Component<StretchyHeaderProps, StretchyHeader
       inputRange: [0, 1],
       outputRange: [0, -imageWidth],
     });
-    const translateY = scrollY.interpolate({
+    const translateY = this.scrollYValue.interpolate({
       inputRange: [-imageHeight, 0, imageHeight],
       outputRange: [-imageHeight / 2, 0, imageHeight / 2],
     });
-    const opacity = scrollY.interpolate({
+    const opacity = this.scrollYValue.interpolate({
       inputRange: [-imageHeight, 0, imageHeight],
       outputRange: [1, 1, 0],
     });
@@ -298,7 +303,6 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   imageView: {
-    ...StyleSheet.absoluteFillObject,
     overflow: 'hidden',
     backgroundColor: '#30303C',
   },
