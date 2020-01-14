@@ -23,8 +23,6 @@ interface StretchyHeaderProps {
 
 interface StretchyHeaderState {
   imageWidth: number;
-  scrollX: Animated.Value;
-  scrollY: Animated.Value;
 }
 
 class StretchyHeader extends React.Component<StretchyHeaderProps, StretchyHeaderState> {
@@ -40,23 +38,21 @@ class StretchyHeader extends React.Component<StretchyHeaderProps, StretchyHeader
     imageHeight: 260,
   };
 
-  private _index: number;
-  private _scrollEnabled: boolean;
+  public state = {
+    imageWidth: 0,
+  };
+
+  private _index = 0;
+  private _scrollEnabled = true;
+  private _scrollView = React.createRef<typeof Animated.ScrollView>();
+  private _scrollX = new Animated.Value(0);
+  private _scrollY = new Animated.Value(0);
+
   private _panResponder: PanResponderInstance;
-  private _scrollView: React.RefObject<any>;
 
   constructor(props: StretchyHeaderProps) {
     super(props);
 
-    this.state = {
-      imageWidth: 0,
-      scrollX: new Animated.Value(0),
-      scrollY: new Animated.Value(0),
-    };
-
-    this._index = 0;
-    this._scrollEnabled = true;
-    this._scrollView = React.createRef<any>();
     this._panResponder = PanResponder.create({
       onMoveShouldSetPanResponderCapture: this._onMoveShouldSetPanResponderCapture,
       onPanResponderGrant: this._onPanResponderGrant,
@@ -81,10 +77,9 @@ class StretchyHeader extends React.Component<StretchyHeaderProps, StretchyHeader
           keyboardDismissMode="interactive"
           keyboardShouldPersistTaps="handled"
           automaticallyAdjustContentInsets={false}
-          onScroll={Animated.event(
-            [{ nativeEvent: { contentOffset: { y: this.state.scrollY } } }],
-            { useNativeDriver: true },
-          )}
+          onScroll={Animated.event([{ nativeEvent: { contentOffset: { y: this._scrollY } } }], {
+            useNativeDriver: true,
+          })}
           scrollEventThrottle={16}
         >
           <View {...this._panResponder.panHandlers} style={[styles.view, { height: imageHeight }]}>
@@ -125,7 +120,7 @@ class StretchyHeader extends React.Component<StretchyHeaderProps, StretchyHeader
     } = this;
     const reduce = (index === 0 && dx > 0) || (index === images.length - 1 && dx < 0) ? 2 : 1;
 
-    this.state.scrollX.setValue(-dx / imageWidth / reduce + index);
+    this._scrollX.setValue(-dx / imageWidth / reduce + index);
   };
 
   // Touch is released, set the closest view
@@ -156,10 +151,10 @@ class StretchyHeader extends React.Component<StretchyHeaderProps, StretchyHeader
     if (this._scrollEnabled !== scrollEnabled) {
       this._scrollEnabled = scrollEnabled;
 
-      const scrollView: any = this._scrollView.current;
+      const scrollView = this._scrollView.current;
 
       if (scrollView) {
-        (scrollView as View).setNativeProps({ scrollEnabled });
+        scrollView.setNativeProps({ scrollEnabled });
       }
     }
   }
@@ -177,7 +172,7 @@ class StretchyHeader extends React.Component<StretchyHeaderProps, StretchyHeader
 
     this._index = Math.max(0, Math.min(index, images.length - 1));
 
-    Animated.timing(this.state.scrollX, {
+    Animated.timing(this._scrollX, {
       toValue: this._index,
       useNativeDriver: true,
       easing: Easing.out(Easing.exp),
@@ -186,22 +181,22 @@ class StretchyHeader extends React.Component<StretchyHeaderProps, StretchyHeader
 
   // Render stretchy image header
   _renderHeader() {
-    const { scrollX, scrollY, imageWidth } = this.state;
+    const { imageWidth } = this.state;
     const { images, imageHeight, foreground } = this.props;
     const width = imageWidth * images.length;
-    const scale = scrollY.interpolate({
+    const scale = this._scrollY.interpolate({
       inputRange: [-imageHeight, 0, imageHeight],
       outputRange: [2, 1, 1],
     });
-    const translateX = scrollX.interpolate({
+    const translateX = this._scrollX.interpolate({
       inputRange: [0, 1],
       outputRange: [0, -imageWidth],
     });
-    const translateY = scrollY.interpolate({
+    const translateY = this._scrollY.interpolate({
       inputRange: [-imageHeight, 0, imageHeight],
       outputRange: [-imageHeight / 2, 0, imageHeight / 2],
     });
-    const opacity = scrollY.interpolate({
+    const opacity = this._scrollY.interpolate({
       inputRange: [-imageHeight, 0, imageHeight],
       outputRange: [1, 1, 0],
     });
