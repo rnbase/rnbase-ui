@@ -82,7 +82,6 @@ class StretchyHeader extends React.Component<StretchyHeaderProps, StretchyHeader
 
     return (
       <View style={styles.wrapper}>
-        {this._renderHeader()}
         <ScrollView
           style={styles.scrollView}
           ref={this._scrollView}
@@ -93,12 +92,11 @@ class StretchyHeader extends React.Component<StretchyHeaderProps, StretchyHeader
           onScroll={this._onScroll}
           onLayout={this._onScrollViewLayout}
           onContentSizeChange={this._onContentSizeChange}
-          scrollEventThrottle={16}
+          scrollEventThrottle={1}
         >
-          <View
-            {...this._panResponder.panHandlers}
-            style={[styles.view, { height: imageHeight }]}
-          />
+          <View {...this._panResponder.panHandlers} style={[styles.view, { height: imageHeight }]}>
+            {this._renderHeader()}
+          </View>
           {children}
         </ScrollView>
       </View>
@@ -233,7 +231,7 @@ class StretchyHeader extends React.Component<StretchyHeaderProps, StretchyHeader
     });
     const translateY = scrollY.interpolate({
       inputRange: [-imageHeight, 0, imageHeight],
-      outputRange: [imageHeight / 2, 0, -imageHeight / 2],
+      outputRange: [-imageHeight / 2, 0, imageHeight / 2],
     });
     const opacity = scrollY.interpolate({
       inputRange: [-imageHeight, 0, imageHeight],

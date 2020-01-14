@@ -56,7 +56,7 @@ const App = () => {
         imageHeight={300}
         foreground={
           <View style={styles.header}>
-            <Text style={styles.headerTitle}>Welcome to React</Text>
+            <Button text="Welcome to React" onPress={() => setBadge(badge + 1)} />
           </View>
         }
       >
