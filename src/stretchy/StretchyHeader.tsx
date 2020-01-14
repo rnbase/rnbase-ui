@@ -41,18 +41,20 @@ class StretchyHeader extends React.Component<StretchyHeaderProps, StretchyHeader
   private _scrollX = new Animated.Value(0);
   private _scrollY = new Animated.Value(0);
 
-  private _panResponder: PanResponderInstance;
+  private _panResponder: undefined | PanResponderInstance;
 
   constructor(props: StretchyHeaderProps) {
     super(props);
 
-    this._panResponder = PanResponder.create({
-      onMoveShouldSetPanResponderCapture: this._onMoveShouldSetPanResponderCapture,
-      onPanResponderGrant: this._onPanResponderGrant,
-      onPanResponderMove: this._onPanResponderMove,
-      onPanResponderRelease: this._onPanResponderRelease,
-      onPanResponderTerminate: this._onPanResponderRelease,
-    });
+    if (props.images.length > 1) {
+      this._panResponder = PanResponder.create({
+        onMoveShouldSetPanResponderCapture: this._onMoveShouldSetPanResponderCapture,
+        onPanResponderGrant: this._onPanResponderGrant,
+        onPanResponderMove: this._onPanResponderMove,
+        onPanResponderRelease: this._onPanResponderRelease,
+        onPanResponderTerminate: this._onPanResponderRelease,
+      });
+    }
   }
 
   componentDidMount() {
@@ -167,8 +169,12 @@ class StretchyHeader extends React.Component<StretchyHeaderProps, StretchyHeader
 
   // Render stretchy image header
   _renderHeader() {
-    const { imageWidth } = this.state;
-    const { images, imageHeight, foreground } = this.props;
+    const {
+      _panResponder: panResponder,
+      _onHeaderLayout: onHeaderLayout,
+      state: { imageWidth },
+      props: { images, imageHeight, foreground },
+    } = this;
     const scale = this._scrollY.interpolate({
       inputRange: [-imageHeight, 0, imageHeight],
       outputRange: [2, 1, 1],
@@ -187,7 +193,7 @@ class StretchyHeader extends React.Component<StretchyHeaderProps, StretchyHeader
     });
 
     return (
-      <View {...this._panResponder.panHandlers} onLayout={this._onHeaderLayout}>
+      <View {...panResponder && panResponder.panHandlers} onLayout={onHeaderLayout}>
         <Animated.View
           style={[
             styles.imageView,
