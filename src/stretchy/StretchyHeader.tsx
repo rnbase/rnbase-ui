@@ -195,7 +195,7 @@ class StretchyHeader extends React.Component<StretchyHeaderProps, StretchyHeader
     });
 
     return (
-      <View {...this._panResponder.panHandlers} style={[styles.view, { height: imageHeight }]}>
+      <View {...this._panResponder.panHandlers}>
         <Animated.View
           onLayout={this._onHeaderLayout}
           style={[
@@ -226,7 +226,6 @@ class StretchyHeader extends React.Component<StretchyHeaderProps, StretchyHeader
             style={[
               styles.foregroundContainer,
               {
-                height: imageHeight,
                 opacity,
                 transform: [{ translateY }],
               },
@@ -254,24 +253,16 @@ const styles = StyleSheet.create({
   },
   foregroundContainer: {
     ...StyleSheet.absoluteFillObject,
-    flex: 1,
-    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   imageContainer: {
     flex: 1,
     flexDirection: 'row',
   },
-  view: {
-    backgroundColor: 'transparent',
-  },
   image: {
     flex: 1,
     resizeMode: 'cover',
-  },
-  footer: {
-    left: 0,
-    right: 0,
-    position: 'absolute',
   },
 });
 
