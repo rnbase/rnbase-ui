@@ -67,27 +67,20 @@ class StretchyHeader extends React.Component<StretchyHeaderProps, StretchyHeader
   }
 
   render() {
-    const { children, imageHeight } = this.props;
-
     return (
-      <View style={styles.wrapper}>
-        <Animated.ScrollView
-          ref={this._scrollView}
-          style={styles.scrollView}
-          keyboardDismissMode="interactive"
-          keyboardShouldPersistTaps="handled"
-          automaticallyAdjustContentInsets={false}
-          onScroll={Animated.event([{ nativeEvent: { contentOffset: { y: this._scrollY } } }], {
-            useNativeDriver: true,
-          })}
-          scrollEventThrottle={16}
-        >
-          <View {...this._panResponder.panHandlers} style={[styles.view, { height: imageHeight }]}>
-            {this._renderHeader()}
-          </View>
-          {children}
-        </Animated.ScrollView>
-      </View>
+      <Animated.ScrollView
+        ref={this._scrollView}
+        style={styles.root}
+        keyboardShouldPersistTaps="handled"
+        automaticallyAdjustContentInsets={false}
+        scrollEventThrottle={16}
+        onScroll={Animated.event([{ nativeEvent: { contentOffset: { y: this._scrollY } } }], {
+          useNativeDriver: true,
+        })}
+      >
+        {this._renderHeader()}
+        {this.props.children}
+      </Animated.ScrollView>
     );
   }
 
@@ -118,7 +111,7 @@ class StretchyHeader extends React.Component<StretchyHeaderProps, StretchyHeader
       props: { images },
       state: { imageWidth },
     } = this;
-    const reduce = (index === 0 && dx > 0) || (index === images.length - 1 && dx < 0) ? 2 : 1;
+    const reduce = (index === 0 && dx > 0) || (index === images.length - 1 && dx < 0) ? 3 : 1;
 
     this._scrollX.setValue(-dx / imageWidth / reduce + index);
   };
@@ -202,7 +195,7 @@ class StretchyHeader extends React.Component<StretchyHeaderProps, StretchyHeader
     });
 
     return (
-      <>
+      <View {...this._panResponder.panHandlers} style={[styles.view, { height: imageHeight }]}>
         <Animated.View
           onLayout={this._onHeaderLayout}
           style={[
@@ -242,7 +235,7 @@ class StretchyHeader extends React.Component<StretchyHeaderProps, StretchyHeader
             {foreground}
           </Animated.View>
         )}
-      </>
+      </View>
     );
   }
 
@@ -252,12 +245,7 @@ class StretchyHeader extends React.Component<StretchyHeaderProps, StretchyHeader
 }
 
 const styles = StyleSheet.create({
-  wrapper: {
-    flex: 1,
-    overflow: 'hidden',
-    position: 'relative',
-  },
-  scrollView: {
+  root: {
     flex: 1,
   },
   imageView: {
