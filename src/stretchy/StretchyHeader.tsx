@@ -169,7 +169,6 @@ class StretchyHeader extends React.Component<StretchyHeaderProps, StretchyHeader
   _renderHeader() {
     const { imageWidth } = this.state;
     const { images, imageHeight, foreground } = this.props;
-    const width = imageWidth * images.length;
     const scale = this._scrollY.interpolate({
       inputRange: [-imageHeight, 0, imageHeight],
       outputRange: [2, 1, 1],
@@ -188,9 +187,8 @@ class StretchyHeader extends React.Component<StretchyHeaderProps, StretchyHeader
     });
 
     return (
-      <View {...this._panResponder.panHandlers}>
+      <View {...this._panResponder.panHandlers} onLayout={this._onHeaderLayout}>
         <Animated.View
-          onLayout={this._onHeaderLayout}
           style={[
             styles.imageView,
             {
@@ -203,7 +201,6 @@ class StretchyHeader extends React.Component<StretchyHeaderProps, StretchyHeader
             style={[
               styles.imageContainer,
               {
-                width,
                 opacity,
                 transform: [{ translateX }],
               },
@@ -244,18 +241,18 @@ const styles = StyleSheet.create({
     overflow: 'hidden',
     backgroundColor: '#30303C',
   },
+  imageContainer: {
+    flexGrow: 1,
+    flexDirection: 'row',
+  },
+  image: {
+    width: '100%',
+    resizeMode: 'cover',
+  },
   foregroundContainer: {
     ...StyleSheet.absoluteFillObject,
     alignItems: 'center',
     justifyContent: 'center',
-  },
-  imageContainer: {
-    flex: 1,
-    flexDirection: 'row',
-  },
-  image: {
-    flex: 1,
-    resizeMode: 'cover',
   },
 });
 
