@@ -103,7 +103,7 @@ class StretchyHeader extends React.Component<StretchyHeaderProps, StretchyHeader
   _onPanResponderGrant = () => {
     this._toggleScroll(false);
 
-    const scrollView = this._scrollView.current;
+    const scrollView = this._scrollView.current.getNode();
 
     if (scrollView) {
       scrollView.getScrollResponder().scrollTo({ x: 0, y: 0 });
