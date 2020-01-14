@@ -56,11 +56,7 @@ const App = () => {
       <StretchyHeader
         images={images}
         imageHeight={300}
-        foreground={
-          <View style={styles.header}>
-            <Button text="Welcome to React" onPress={() => setBadge(badge + 1)} />
-          </View>
-        }
+        foreground={<Button text="Welcome to React" onPress={() => setBadge(badge + 1)} />}
       >
         <Component>Themed Component</Component>
         <View style={styles.body}>
@@ -193,18 +189,6 @@ const App = () => {
 };
 
 const styles = StyleSheet.create({
-  header: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  headerTitle: {
-    fontSize: 32,
-    fontWeight: '600',
-    padding: 5,
-    backgroundColor: Colors.white,
-    borderWidth: 1,
-  },
   scrollView: {
     backgroundColor: Colors.lighter,
   },
