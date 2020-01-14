@@ -38,9 +38,6 @@ const avatars = {
 };
 
 const App = () => {
-  // eslint-disable-next-line no-undef
-  const usingHermes = typeof HermesInternal === 'object' && HermesInternal !== null;
-
   const [busy, setBusy] = useState(false);
   const [badge, setBadge] = useState(0);
   const [selectedButton, setSelectedButton] = useState(0);
@@ -63,11 +60,6 @@ const App = () => {
           </View>
         }
       >
-        {!usingHermes ? null : (
-          <View style={styles.engine}>
-            <Text style={styles.footer}>Engine: Hermes</Text>
-          </View>
-        )}
         <Component>Themed Component</Component>
         <View style={styles.body}>
           <View style={styles.stack}>
