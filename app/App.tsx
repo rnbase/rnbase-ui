@@ -37,6 +37,12 @@ const avatars = {
   test: { uri: 'https://randomuser.me/api/portraits/women/68.jpg' },
 };
 
+const images = [
+  { uri: 'https://picsum.photos/id/112/900/600' },
+  { uri: 'https://picsum.photos/id/1041/900/600' },
+  { uri: 'https://picsum.photos/id/106/900/600' },
+];
+
 const App = () => {
   const [busy, setBusy] = useState(false);
   const [badge, setBadge] = useState(0);
@@ -48,11 +54,7 @@ const App = () => {
     <ThemeProvider colorScheme="no-preference" theme={theme}>
       <StatusBar barStyle="dark-content" />
       <StretchyHeader
-        images={[
-          'https://s3.eu-central-1.amazonaws.com/com.hammer-corp.dev.inventory/preview/2015_mercedes-benz_s500.jpg',
-          'https://s3.eu-central-1.amazonaws.com/com.hammer-corp.dev.inventory/preview/2015_bmw_5.jpg',
-          'https://s3.eu-central-1.amazonaws.com/com.hammer-corp.dev.inventory/preview/2015_audi_a7.jpg',
-        ]}
+        images={images}
         imageHeight={300}
         foreground={
           <View style={styles.header}>

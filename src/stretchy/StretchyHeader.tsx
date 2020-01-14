@@ -1,9 +1,9 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import {
   Animated,
   Easing,
   Image,
+  ImageSourcePropType,
   PanResponder,
   PanResponderInstance,
   PanResponderGestureState,
@@ -15,7 +15,7 @@ import {
 
 interface StretchyHeaderProps {
   children: React.ReactNode;
-  images: string[];
+  images: ImageSourcePropType[];
   imageHeight: number;
   foreground?: React.ReactNode;
   onImageChanged?: (event: { index: number }) => void;
@@ -26,13 +26,6 @@ interface StretchyHeaderState {
 }
 
 class StretchyHeader extends React.Component<StretchyHeaderProps, StretchyHeaderState> {
-  static propTypes = {
-    children: PropTypes.any.isRequired,
-    images: PropTypes.arrayOf(PropTypes.string).isRequired,
-    imageHeight: PropTypes.number.isRequired,
-    onImageChanged: PropTypes.func,
-  };
-
   static defaultProps = {
     images: [],
     imageHeight: 260,
@@ -216,8 +209,8 @@ class StretchyHeader extends React.Component<StretchyHeaderProps, StretchyHeader
               },
             ]}
           >
-            {images.map((uri, index) => (
-              <Image key={index} style={styles.image} source={{ uri }} />
+            {images.map((image, index) => (
+              <Image key={index} style={styles.image} source={image} />
             ))}
           </Animated.View>
         </Animated.View>
