@@ -41,20 +41,18 @@ class StretchyHeader extends React.Component<StretchyHeaderProps, StretchyHeader
   private _scrollX = new Animated.Value(0);
   private _scrollY = new Animated.Value(0);
 
-  private _panResponder: undefined | PanResponderInstance;
+  private _panResponder: PanResponderInstance;
 
   constructor(props: StretchyHeaderProps) {
     super(props);
 
-    if (props.images.length > 1) {
-      this._panResponder = PanResponder.create({
-        onMoveShouldSetPanResponderCapture: this._onMoveShouldSetPanResponderCapture,
-        onPanResponderGrant: this._onPanResponderGrant,
-        onPanResponderMove: this._onPanResponderMove,
-        onPanResponderRelease: this._onPanResponderRelease,
-        onPanResponderTerminate: this._onPanResponderRelease,
-      });
-    }
+    this._panResponder = PanResponder.create({
+      onMoveShouldSetPanResponderCapture: this._onMoveShouldSetPanResponderCapture,
+      onPanResponderGrant: this._onPanResponderGrant,
+      onPanResponderMove: this._onPanResponderMove,
+      onPanResponderRelease: this._onPanResponderRelease,
+      onPanResponderTerminate: this._onPanResponderRelease,
+    });
   }
 
   componentDidMount() {
@@ -193,7 +191,7 @@ class StretchyHeader extends React.Component<StretchyHeaderProps, StretchyHeader
     });
 
     return (
-      <View {...panResponder && panResponder.panHandlers} onLayout={onHeaderLayout}>
+      <View {...images.length > 1 && panResponder.panHandlers} onLayout={onHeaderLayout}>
         <Animated.View
           style={[
             styles.imageView,
