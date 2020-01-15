@@ -31,7 +31,7 @@ class StretchyHeader extends React.Component<StretchyHeaderProps, StretchyHeader
     imageHeight: 260,
   };
 
-  public state = {
+  state = {
     imageWidth: 0,
   };
 
@@ -60,6 +60,33 @@ class StretchyHeader extends React.Component<StretchyHeaderProps, StretchyHeader
   }
 
   render() {
+    const {
+      _panResponder: panResponder,
+      _onHeaderLayout: onHeaderLayout,
+      state: { imageWidth },
+      props: { images, imageHeight, foreground, children },
+    } = this;
+
+    const scale = this._scrollY.interpolate({
+      inputRange: [-imageHeight, 0, imageHeight],
+      outputRange: [2, 1, 1],
+    });
+
+    const translateX = this._scrollX.interpolate({
+      inputRange: [0, 1],
+      outputRange: [0, -imageWidth],
+    });
+
+    const translateY = this._scrollY.interpolate({
+      inputRange: [-imageHeight, 0, imageHeight],
+      outputRange: [-imageHeight / 2, 0, imageHeight / 2],
+    });
+
+    const opacity = this._scrollY.interpolate({
+      inputRange: [-imageHeight, 0, imageHeight],
+      outputRange: [1, 1, 0],
+    });
+
     return (
       <Animated.ScrollView
         ref={this._scrollView}
@@ -71,14 +98,51 @@ class StretchyHeader extends React.Component<StretchyHeaderProps, StretchyHeader
           useNativeDriver: true,
         })}
       >
-        {this._renderHeader()}
-        {this.props.children}
+        <View {...images.length > 1 && panResponder.panHandlers} onLayout={onHeaderLayout}>
+          <Animated.View
+            style={[
+              styles.imageView,
+              {
+                height: imageHeight,
+                transform: [{ translateY }, { scale }],
+              },
+            ]}
+          >
+            <Animated.View
+              style={[
+                styles.imageContainer,
+                {
+                  opacity,
+                  transform: [{ translateX }],
+                },
+              ]}
+            >
+              {images.map((image, index) => (
+                <Image key={index} style={styles.image} source={image} />
+              ))}
+            </Animated.View>
+          </Animated.View>
+          {foreground && (
+            <Animated.View
+              style={[
+                styles.foregroundContainer,
+                {
+                  opacity,
+                  transform: [{ translateY }],
+                },
+              ]}
+            >
+              {foreground}
+            </Animated.View>
+          )}
+        </View>
+        {children}
       </Animated.ScrollView>
     );
   }
 
   // Claim responder if it's a horizontal pan
-  _onMoveShouldSetPanResponderCapture = (
+  private _onMoveShouldSetPanResponderCapture = (
     _event: GestureResponderEvent,
     gestureState: PanResponderGestureState,
   ) => {
@@ -86,7 +150,7 @@ class StretchyHeader extends React.Component<StretchyHeaderProps, StretchyHeader
   };
 
   // Disable scroll and scroll to top
-  _onPanResponderGrant = () => {
+  private _onPanResponderGrant = () => {
     this._toggleScroll(false);
 
     const scrollView = this._scrollView.current.getNode();
@@ -97,7 +161,10 @@ class StretchyHeader extends React.Component<StretchyHeaderProps, StretchyHeader
   };
 
   // Dragging, continuously move the view
-  _onPanResponderMove = (_event: GestureResponderEvent, gestureState: PanResponderGestureState) => {
+  private _onPanResponderMove = (
+    _event: GestureResponderEvent,
+    gestureState: PanResponderGestureState,
+  ) => {
     const { dx } = gestureState;
     const {
       _index: index,
@@ -110,7 +177,7 @@ class StretchyHeader extends React.Component<StretchyHeaderProps, StretchyHeader
   };
 
   // Touch is released, set the closest view
-  _onPanResponderRelease = (
+  private _onPanResponderRelease = (
     _event: GestureResponderEvent,
     gestureState: PanResponderGestureState,
   ) => {
@@ -133,7 +200,7 @@ class StretchyHeader extends React.Component<StretchyHeaderProps, StretchyHeader
   };
 
   // Toggle scrollEnabled for the main ScrollView
-  _toggleScroll(scrollEnabled: boolean) {
+  private _toggleScroll(scrollEnabled: boolean) {
     if (this._scrollEnabled !== scrollEnabled) {
       this._scrollEnabled = scrollEnabled;
 
@@ -146,14 +213,14 @@ class StretchyHeader extends React.Component<StretchyHeaderProps, StretchyHeader
   }
 
   // Determine header width
-  _onHeaderLayout = (event: LayoutChangeEvent) => {
+  private _onHeaderLayout = (event: LayoutChangeEvent) => {
     this.setState({
       imageWidth: event.nativeEvent.layout.width,
     });
   };
 
   // Spring animation to the given view
-  _setView(index: number) {
+  private _setView(index: number) {
     const { images } = this.props;
 
     this._index = Math.max(0, Math.min(index, images.length - 1));
@@ -165,74 +232,7 @@ class StretchyHeader extends React.Component<StretchyHeaderProps, StretchyHeader
     }).start(this._raiseImageChanged);
   }
 
-  // Render stretchy image header
-  _renderHeader() {
-    const {
-      _panResponder: panResponder,
-      _onHeaderLayout: onHeaderLayout,
-      state: { imageWidth },
-      props: { images, imageHeight, foreground },
-    } = this;
-    const scale = this._scrollY.interpolate({
-      inputRange: [-imageHeight, 0, imageHeight],
-      outputRange: [2, 1, 1],
-    });
-    const translateX = this._scrollX.interpolate({
-      inputRange: [0, 1],
-      outputRange: [0, -imageWidth],
-    });
-    const translateY = this._scrollY.interpolate({
-      inputRange: [-imageHeight, 0, imageHeight],
-      outputRange: [-imageHeight / 2, 0, imageHeight / 2],
-    });
-    const opacity = this._scrollY.interpolate({
-      inputRange: [-imageHeight, 0, imageHeight],
-      outputRange: [1, 1, 0],
-    });
-
-    return (
-      <View {...images.length > 1 && panResponder.panHandlers} onLayout={onHeaderLayout}>
-        <Animated.View
-          style={[
-            styles.imageView,
-            {
-              height: imageHeight,
-              transform: [{ translateY }, { scale }],
-            },
-          ]}
-        >
-          <Animated.View
-            style={[
-              styles.imageContainer,
-              {
-                opacity,
-                transform: [{ translateX }],
-              },
-            ]}
-          >
-            {images.map((image, index) => (
-              <Image key={index} style={styles.image} source={image} />
-            ))}
-          </Animated.View>
-        </Animated.View>
-        {foreground && (
-          <Animated.View
-            style={[
-              styles.foregroundContainer,
-              {
-                opacity,
-                transform: [{ translateY }],
-              },
-            ]}
-          >
-            {foreground}
-          </Animated.View>
-        )}
-      </View>
-    );
-  }
-
-  _raiseImageChanged = () => {
+  private _raiseImageChanged = () => {
     this.props.onImageChanged && this.props.onImageChanged({ index: this._index });
   };
 }
