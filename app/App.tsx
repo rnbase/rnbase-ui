@@ -28,7 +28,7 @@ import {
   ProgressBar,
   TextButton,
   Segmented,
-  StretchyHeader,
+  StretchyScrollView,
   Component,
 } from '../';
 
@@ -53,10 +53,11 @@ const App = () => {
   return (
     <ThemeProvider colorScheme="no-preference" theme={theme}>
       <StatusBar barStyle="dark-content" />
-      <StretchyHeader
-        images={images}
-        imageHeight={300}
-        foreground={<Button text="Welcome to React" onPress={() => setBadge(badge + 1)} />}
+      <StretchyScrollView
+        headerImages={images}
+        headerHeight={300}
+        headerBackgroundColor="#30303C"
+        headerContent={<Button text="Welcome to React" onPress={() => setBadge(badge + 1)} />}
       >
         <Component>Themed Component</Component>
         <View style={styles.body}>
@@ -183,7 +184,7 @@ const App = () => {
           </View>
           <LearnMoreLinks />
         </View>
-      </StretchyHeader>
+      </StretchyScrollView>
     </ThemeProvider>
   );
 };
