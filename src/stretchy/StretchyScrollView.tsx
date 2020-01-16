@@ -36,7 +36,7 @@ const StretchyScrollView: React.FC<StretchyScrollViewProps> = ({
 
     if (scrollView) {
       props.scrollEnabled !== false && scrollView.setNativeProps({ scrollEnabled });
-      !scrollEnabled && scrollView.scrollTo({ x: 0, y: 0 });
+      !scrollEnabled && scrollView.getScrollResponder().scrollTo({ x: 0, y: 0 });
     }
   };
 
