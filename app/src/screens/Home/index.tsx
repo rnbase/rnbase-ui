@@ -15,7 +15,8 @@ type Props = {
 
 const HomeScreen: React.FC<Props> = props => (
   <View style={styles.container}>
-    <Button text="Welcome to React" onPress={() => props.navigation.navigate('Example')} />
+    <Button text="Example" onPress={() => props.navigation.navigate('Example')} />
+    <Button text="StretchyFlatList" onPress={() => props.navigation.navigate('StretchyFlatList')} />
   </View>
 );
 

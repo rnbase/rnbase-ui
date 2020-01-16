@@ -41,7 +41,7 @@ const images = [
   { uri: 'https://picsum.photos/id/106/900/600' },
 ];
 
-const App = () => {
+const ExampleScreen = () => {
   const [busy, setBusy] = useState(false);
   const [badge, setBadge] = useState(0);
   const [selectedButton, setSelectedButton] = useState(0);
@@ -233,4 +233,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default App;
+export default ExampleScreen;
