@@ -1,72 +1,48 @@
-import React, { useRef, useState } from 'react';
-import { Animated, ImageSourcePropType, ScrollViewProps } from 'react-native';
+import React from 'react';
+import { Animated, ScrollViewProps } from 'react-native';
 
-import StretchyHeader from './StretchyHeader';
+import useStretchy, { StretchyProps } from './Stretchy';
 
-interface StretchyScrollViewProps extends ScrollViewProps {
-  headerHeight: number;
-  headerImages?: ImageSourcePropType[];
-  headerContent?: React.ReactNode;
-  headerBackgroundColor?: string;
+export interface StretchyScrollViewProps extends ScrollViewProps, StretchyProps {
   children?: React.ReactNode;
-  scrollComponent?: 'ScrollView' | 'FlatList' | 'SectionList';
-  onChangeImage?: (event: { index: number }) => void;
 }
 
 const StretchyScrollView: React.FC<StretchyScrollViewProps> = ({
   children,
-  headerImages,
+  headerImages = [],
   headerHeight,
   headerContent,
   headerBackgroundColor,
-  scrollEventThrottle = 16,
-  scrollComponent = 'ScrollView',
   onScroll,
   onChangeImage,
+  scrollEventThrottle = 16,
   ...props
 }) => {
-  const refScrollView = useRef<typeof Animated.ScrollView>(null);
-  const [animatedValue] = useState(() => new Animated.Value(0));
-
-  const toggleScroll = (scrollEnabled: boolean) => {
-    const scrollView = refScrollView.current.getNode();
-
-    if (scrollView) {
-      props.scrollEnabled !== false && scrollView.setNativeProps({ scrollEnabled });
-      !scrollEnabled && scrollView.getScrollResponder().scrollTo({ x: 0, y: 0 });
-    }
-  };
-
-  const HeaderComponent = (
-    <StretchyHeader
-      key="header"
-      images={headerImages}
-      height={headerHeight}
-      backgroundColor={headerBackgroundColor}
-      scrollY={animatedValue}
-      onChange={onChangeImage}
-      onTouchEnd={() => toggleScroll(true)}
-      onTouchStart={() => toggleScroll(false)}
-    >
-      {headerContent}
-    </StretchyHeader>
+  const [refScrollView, animatedValue, header] = useStretchy<typeof Animated.ScrollView>(
+    {
+      children: headerContent,
+      images: headerImages,
+      height: headerHeight,
+      backgroundColor: headerBackgroundColor,
+      onChange: onChangeImage,
+    },
+    props.scrollEnabled,
   );
 
-  const Component = Animated[scrollComponent];
-  const componentProps = {
-    ...props,
-    ref: refScrollView,
-    scrollEventThrottle,
-    onScroll: Animated.event([{ nativeEvent: { contentOffset: { y: animatedValue } } }], {
-      listener: onScroll,
-      useNativeDriver: true,
-    }),
-    ...(scrollComponent === 'ScrollView'
-      ? { children: [HeaderComponent, children] }
-      : { ListHeaderComponent: HeaderComponent }),
-  };
-
-  return <Component {...componentProps} />;
+  return (
+    <Animated.ScrollView
+      {...props}
+      ref={refScrollView}
+      scrollEventThrottle={scrollEventThrottle}
+      onScroll={Animated.event([{ nativeEvent: { contentOffset: { y: animatedValue } } }], {
+        listener: onScroll,
+        useNativeDriver: true,
+      })}
+    >
+      {header}
+      {children}
+    </Animated.ScrollView>
+  );
 };
 
 export default StretchyScrollView;

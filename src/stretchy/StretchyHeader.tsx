@@ -2,25 +2,25 @@ import React from 'react';
 import {
   Animated,
   Easing,
+  GestureResponderEvent,
   Image,
   ImageSourcePropType,
+  LayoutChangeEvent,
   PanResponder,
   PanResponderInstance,
   PanResponderGestureState,
-  LayoutChangeEvent,
-  GestureResponderEvent,
   StyleSheet,
   View,
 } from 'react-native';
 
-interface StretchyHeaderProps {
+export interface StretchyHeaderProps {
   height: number;
   scrollY: Animated.Value;
   images: ImageSourcePropType[];
   backgroundColor?: string;
   children?: React.ReactNode;
-  onTouchStart?: Function;
-  onTouchEnd?: Function;
+  onTouchStart?: () => void;
+  onTouchEnd?: () => void;
   onChange?: (event: { index: number }) => void;
 }
 
@@ -139,7 +139,11 @@ class StretchyHeader extends React.Component<StretchyHeaderProps, StretchyHeader
   };
 
   private _onPanResponderGrant = () => {
-    this.props.onTouchStart && this.props.onTouchStart();
+    const { onTouchStart } = this.props;
+
+    if (onTouchStart) {
+      onTouchStart();
+    }
   };
 
   // Move images horizontally when panning
@@ -165,6 +169,7 @@ class StretchyHeader extends React.Component<StretchyHeaderProps, StretchyHeader
   ) => {
     const {
       _index: index,
+      props: { onTouchEnd },
       state: { width },
     } = this;
     const { dx, vx } = gestureState;
@@ -178,13 +183,15 @@ class StretchyHeader extends React.Component<StretchyHeaderProps, StretchyHeader
       this._setImage(index);
     }
 
-    this.props.onTouchEnd && this.props.onTouchEnd();
+    if (onTouchEnd) {
+      onTouchEnd();
+    }
   };
 
   // Animate to the given image
   private _setImage(index: number) {
     const {
-      _index: oldIndex,
+      _index: prevIndex,
       props: { images, onChange },
     } = this;
 
@@ -195,8 +202,8 @@ class StretchyHeader extends React.Component<StretchyHeaderProps, StretchyHeader
       useNativeDriver: true,
       easing: Easing.out(Easing.exp),
     }).start(() => {
-      if (this._index !== oldIndex) {
-        onChange && onChange({ index: this._index });
+      if (this._index !== prevIndex && onChange) {
+        onChange({ index: this._index });
       }
     });
   }
