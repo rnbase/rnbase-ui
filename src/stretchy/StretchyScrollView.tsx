@@ -1,11 +1,5 @@
 import React, { useRef, useState } from 'react';
-import {
-  Animated,
-  ImageSourcePropType,
-  NativeSyntheticEvent,
-  NativeScrollEvent,
-  ScrollViewProps,
-} from 'react-native';
+import { Animated, ImageSourcePropType, ScrollViewProps } from 'react-native';
 
 import StretchyHeader from './StretchyHeader';
 
@@ -27,6 +21,7 @@ const StretchyScrollView: React.FC<StretchyScrollViewProps> = ({
   headerBackgroundColor,
   scrollEventThrottle = 16,
   scrollComponent = 'ScrollView',
+  onScroll,
   onChangeImage,
   ...props
 }) => {
@@ -40,10 +35,6 @@ const StretchyScrollView: React.FC<StretchyScrollViewProps> = ({
       props.scrollEnabled !== false && scrollView.setNativeProps({ scrollEnabled });
       !scrollEnabled && scrollView.getScrollResponder().scrollTo({ x: 0, y: 0 });
     }
-  };
-
-  const onScroll = (event: NativeSyntheticEvent<NativeScrollEvent>) => {
-    props.onScroll && props.onScroll(event);
   };
 
   const HeaderComponent = (
@@ -67,8 +58,8 @@ const StretchyScrollView: React.FC<StretchyScrollViewProps> = ({
     ref: refScrollView,
     scrollEventThrottle,
     onScroll: Animated.event([{ nativeEvent: { contentOffset: { y: animatedValue } } }], {
-      useNativeDriver: true,
       listener: onScroll,
+      useNativeDriver: true,
     }),
     ...(scrollComponent === 'ScrollView'
       ? { children: [HeaderComponent, children] }
