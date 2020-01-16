@@ -73,20 +73,20 @@ class StretchyHeader extends React.Component<StretchyHeaderProps, StretchyHeader
     } = this;
 
     const opacity = scrollY.interpolate({
-      inputRange: [-height, 0, height],
-      outputRange: [1, 1, 0],
+      inputRange: [0, height],
+      outputRange: [1, 0],
       extrapolate: 'clamp',
     });
 
     const scale = scrollY.interpolate({
-      inputRange: [-height, 0, height],
-      outputRange: [2, 1, 1],
+      inputRange: [-height, 0],
+      outputRange: [2, 1],
       extrapolateRight: 'clamp',
     });
 
     const translateY = scrollY.interpolate({
-      inputRange: [-height, 0, height],
-      outputRange: [-height / 2, 0, height / 2],
+      inputRange: [0, height],
+      outputRange: [0, height / 2],
       extrapolateRight: 'clamp',
     });
 
