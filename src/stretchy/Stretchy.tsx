@@ -31,7 +31,7 @@ export default function useStretchy<T extends AnimatedComponent>(
         const node = animatedComponent.getNode();
 
         if (scrollEnabled !== false) {
-          node.setNativeProps({ enabled });
+          node.setNativeProps({ scrollEnabled: enabled });
         }
 
         if (!enabled) {
