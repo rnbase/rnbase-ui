@@ -26,6 +26,7 @@ export interface StretchyHeaderProps {
 
 interface StretchyHeaderState {
   width: number;
+  overflow?: 'visible' | 'hidden';
 }
 
 class StretchyHeader extends React.Component<StretchyHeaderProps, StretchyHeaderState> {
@@ -36,6 +37,7 @@ class StretchyHeader extends React.Component<StretchyHeaderProps, StretchyHeader
 
   state = {
     width: 0,
+    overflow: undefined,
   };
 
   private _index = 0;
@@ -53,6 +55,12 @@ class StretchyHeader extends React.Component<StretchyHeaderProps, StretchyHeader
       onPanResponderRelease: this._onPanResponderRelease,
       onPanResponderTerminate: this._onPanResponderRelease,
     });
+
+    props.scrollY.addListener(({ value }) => {
+      const overflow = value > 0 ? 'hidden' : 'visible';
+
+      overflow !== this.state.overflow && this.setState({ overflow });
+    });
   }
 
   render() {
@@ -60,7 +68,7 @@ class StretchyHeader extends React.Component<StretchyHeaderProps, StretchyHeader
       _scrollX: scrollX,
       _onLayout: onLayout,
       _panResponder: panResponder,
-      state: { width },
+      state: { width, overflow },
       props: { images, height, backgroundColor, children, scrollY },
     } = this;
 
@@ -88,7 +96,11 @@ class StretchyHeader extends React.Component<StretchyHeaderProps, StretchyHeader
     });
 
     return (
-      <View {...images.length > 1 && panResponder.panHandlers} onLayout={onLayout}>
+      <View
+        style={{ overflow }}
+        onLayout={onLayout}
+        {...images.length > 1 && panResponder.panHandlers}
+      >
         <Animated.View
           style={[
             styles.background,
