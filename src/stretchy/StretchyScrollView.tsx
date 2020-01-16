@@ -3,9 +3,7 @@ import { Animated, ScrollViewProps } from 'react-native';
 
 import useStretchy, { StretchyProps } from './Stretchy';
 
-export interface StretchyScrollViewProps extends ScrollViewProps, StretchyProps {
-  children?: React.ReactNode;
-}
+export type StretchyScrollViewProps = ScrollViewProps & StretchyProps;
 
 const StretchyScrollView: React.FC<StretchyScrollViewProps> = ({
   children,
