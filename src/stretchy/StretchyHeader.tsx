@@ -55,13 +55,19 @@ class StretchyHeader extends React.Component<StretchyHeaderProps, StretchyHeader
       onPanResponderRelease: this._onPanResponderRelease,
       onPanResponderTerminate: this._onPanResponderRelease,
     });
+  }
 
-    props.scrollY.addListener(({ value }) => {
+  componentDidMount = () => {
+    this.props.scrollY.addListener(({ value }) => {
       const overflow = value > 0 ? 'hidden' : 'visible';
 
       overflow !== this.state.overflow && this.setState({ overflow });
     });
-  }
+  };
+
+  componentWillUnmount = () => {
+    this.props.scrollY.removeAllListeners();
+  };
 
   render() {
     const {
