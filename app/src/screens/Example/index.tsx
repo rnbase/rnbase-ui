@@ -18,9 +18,7 @@ import {
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
 
-import theme from './theme';
 import {
-  ThemeProvider,
   Avatar,
   Badge,
   Button,
@@ -30,7 +28,7 @@ import {
   Segmented,
   StretchyScrollView,
   Component,
-} from '../';
+} from '../../../..';
 
 const avatars = {
   none: { uri: 'https://randomuser.me/api/portraits/none.jpg' },
@@ -51,7 +49,7 @@ const App = () => {
   const onSelectButton = (index: number) => setSelectedButton(index);
 
   return (
-    <ThemeProvider colorScheme="no-preference" theme={theme}>
+    <>
       <StatusBar barStyle="dark-content" />
       <StretchyScrollView
         headerImages={images}
@@ -103,19 +101,19 @@ const App = () => {
           <View style={styles.stack}>
             <Button
               text="Button"
-              imageSource={require('./src/assets/star.png')}
+              imageSource={require('../../assets/star.png')}
               onPress={() => setBadge(badge + 1)}
             />
             <OutlineButton
               text="Button"
-              imageSource={require('./src/assets/heart.png')}
+              imageSource={require('../../assets/heart.png')}
               onPress={() => setBadge(0)}
             />
             <TextButton
               text="Button"
               busy={busy}
               imageAlignment="right"
-              imageSource={require('./src/assets/chevron-right.png')}
+              imageSource={require('../../assets/chevron-right.png')}
               onPress={() => {
                 setBusy(true);
                 setTimeout(() => setBusy(false), 3000);
@@ -127,7 +125,7 @@ const App = () => {
             style={{ marginVertical: 10 }}
             text="Activity Button"
             busyAnimationType="slide"
-            imageSource={require('./src/assets/check-circle.png')}
+            imageSource={require('../../assets/check-circle.png')}
             onPress={() => {
               setBusy(true);
               setTimeout(() => setBusy(false), 3000);
@@ -139,11 +137,11 @@ const App = () => {
             items={[
               {
                 text: 'One',
-                iconSource: require('./src/assets/star.png'),
+                iconSource: require('../../assets/star.png'),
               },
               {
                 text: 'Two',
-                iconSource: require('./src/assets/heart.png'),
+                iconSource: require('../../assets/heart.png'),
               },
               {
                 text: 'Three',
@@ -185,7 +183,7 @@ const App = () => {
           <LearnMoreLinks />
         </View>
       </StretchyScrollView>
-    </ThemeProvider>
+    </>
   );
 };
 

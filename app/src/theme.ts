@@ -1,4 +1,4 @@
-import { ThemeFactory } from '../';
+import { ThemeFactory } from '../..';
 
 const theme: ThemeFactory = ({ scheme }) => {
   const BaseColors = {
