@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Image, StyleSheet, Text, TouchableHighlight, View } from 'react-native';
 
-import { Avatar, StretchySectionList } from 'rnbase-ui';
+import { Avatar, StretchySectionList, useTheme, Theme } from 'rnbase-ui';
 
 import { generateHeaderImages, generateUsers } from '../../data';
 
@@ -12,18 +12,28 @@ const StretchySectionListScreen = () => {
     { data: generateUsers(10), title: 'Employees' },
     { data: generateUsers(15), title: 'Customers' },
   ]);
+  const { Colors, Fonts } = useTheme();
+  const styles = createStyles({ Colors, Fonts });
 
   return (
     <StretchySectionList
       headerHeight={212}
       headerBackground={headerImages.map(source => (
-        <Image source={source} />
+        <Image style={styles.headerImage} source={source} />
       ))}
-      headerBackgroundColor="#30303C"
+      headerBackgroundColor={Colors.black}
       headerContent={
         <View style={styles.headerContent}>
           <Text style={styles.headerTitle}>Stretchy Header</Text>
           <Text style={styles.headerText}>SectionList Component Example</Text>
+        </View>
+      }
+      ListFooterComponent={
+        <View style={styles.footer}>
+          <Text style={styles.footerText}>
+            People avatars, names, and email addresses listed on this screen are fake data generated
+            using Faker.js
+          </Text>
         </View>
       }
       sections={sections}
@@ -35,7 +45,7 @@ const StretchySectionListScreen = () => {
         </View>
       )}
       renderItem={({ item }) => (
-        <TouchableHighlight activeOpacity={1} underlayColor="#0001" onPress={() => {}}>
+        <TouchableHighlight activeOpacity={1} underlayColor={Colors.underlay} onPress={() => {}}>
           <View style={styles.item}>
             <Avatar size={50} imageSource={{ uri: item.image }} />
             <View style={styles.itemContent}>
@@ -53,59 +63,71 @@ const StretchySectionListScreen = () => {
   );
 };
 
-const styles = StyleSheet.create({
-  headerContent: {
-    flexGrow: 1,
-    alignSelf: 'stretch',
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: '#0008',
-  },
-  headerTitle: {
-    color: '#fff',
-    fontSize: 35,
-    fontWeight: '700',
-  },
-  headerText: {
-    color: '#fff',
-    fontSize: 18,
-    fontWeight: '400',
-  },
-  separator: {
-    marginHorizontal: 10,
-    backgroundColor: '#0003',
-    height: StyleSheet.hairlineWidth,
-  },
-  section: {
-    backgroundColor: '#4A4A4A',
-  },
-  sectionText: {
-    color: '#FFF',
-    padding: 10,
-    fontSize: 20,
-    fontWeight: '600',
-  },
-  item: {
-    flex: 1,
-    paddingVertical: 10,
-    paddingHorizontal: 15,
-    flexDirection: 'row',
-    alignItems: 'center',
-  },
-  itemContent: {
-    flex: 1,
-    marginLeft: 10,
-  },
-  itemTitle: {
-    color: '#000',
-    fontSize: 16,
-    fontWeight: '600',
-  },
-  itemText: {
-    color: '#888',
-    fontSize: 13,
-    fontWeight: '400',
-  },
-});
+const createStyles = ({ Colors, Fonts }: Theme) =>
+  StyleSheet.create({
+    headerImage: {
+      opacity: 0.5,
+    },
+    headerContent: {
+      alignItems: 'center',
+    },
+    headerTitle: {
+      ...Fonts.bold,
+      fontSize: 35,
+      color: Colors.white,
+    },
+    headerText: {
+      ...Fonts.normal,
+      fontSize: 18,
+      color: Colors.white,
+    },
+    separator: {
+      marginHorizontal: 10,
+      backgroundColor: Colors.separator,
+      height: StyleSheet.hairlineWidth,
+    },
+    section: {
+      backgroundColor: Colors.gray6,
+    },
+    sectionText: {
+      ...Fonts.semibold,
+      fontSize: 18,
+      color: Colors.blue,
+      padding: 15,
+    },
+    item: {
+      flex: 1,
+      paddingVertical: 10,
+      paddingHorizontal: 15,
+      flexDirection: 'row',
+      alignItems: 'center',
+    },
+    itemContent: {
+      flex: 1,
+      marginLeft: 10,
+    },
+    itemTitle: {
+      ...Fonts.semibold,
+      fontSize: 16,
+      color: Colors.black,
+    },
+    itemText: {
+      ...Fonts.normal,
+      fontSize: 13,
+      color: Colors.gray,
+    },
+    footer: {
+      marginTop: 10,
+      marginBottom: 35,
+      alignItems: 'center',
+    },
+    footerText: {
+      ...Fonts.normal,
+      fontSize: 13,
+      maxWidth: 320,
+      textAlign: 'center',
+      color: Colors.gray2,
+    },
+  });
 
 export default StretchySectionListScreen;
