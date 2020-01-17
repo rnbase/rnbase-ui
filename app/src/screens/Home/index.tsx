@@ -30,8 +30,14 @@ const HomeScreen: React.FC<Props> = ({ navigation }) => (
       <View style={styles.separator} />
       <Button
         themeKey="HomeButton"
-        text="Stretchy Header"
+        text="Stretchy Flat List"
         onPress={() => navigation.navigate('StretchyFlatList')}
+      />
+      <View style={styles.separator} />
+      <Button
+        themeKey="HomeButton"
+        text="Stretchy Section List"
+        onPress={() => navigation.navigate('StretchySectionList')}
       />
     </View>
   </StretchyScrollView>
