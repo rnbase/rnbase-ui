@@ -1,15 +1,22 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { StyleSheet, Text, TouchableHighlight, View } from 'react-native';
 
 import { Avatar, StretchySectionList } from 'rnbase-ui';
 
-import { HeaderImages, Users, shuffleArray } from '../../data';
+import { generateHeaderImages, generateUsers } from '../../data';
 
 const StretchySectionListScreen = () => {
+  const [headerImages] = useState(() => generateHeaderImages(3));
+  const [sections] = useState(() => [
+    { data: generateUsers(5), title: 'Administrators' },
+    { data: generateUsers(10), title: 'Employees' },
+    { data: generateUsers(15), title: 'Customers' },
+  ]);
+
   return (
     <StretchySectionList
       headerHeight={212}
-      headerImages={shuffleArray(HeaderImages)}
+      headerImages={headerImages}
       headerBackgroundColor="#30303C"
       headerContent={
         <View style={styles.headerContent}>
@@ -17,11 +24,7 @@ const StretchySectionListScreen = () => {
           <Text style={styles.headerText}>SectionList Component Example</Text>
         </View>
       }
-      sections={[
-        { data: Users.slice(0, 10), title: 'Administrators' },
-        { data: Users.slice(10, 20), title: 'Employees' },
-        { data: Users.slice(20, 30), title: 'Customers' },
-      ]}
+      sections={sections}
       keyExtractor={item => `item-${item.id}`}
       ItemSeparatorComponent={() => <View style={styles.separator} />}
       renderSectionHeader={({ section }) => (

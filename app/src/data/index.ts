@@ -5,23 +5,10 @@ faker.seed(Math.random());
 let lastId = 1000;
 
 export function generateId() {
-  lastId += 1;
-  return lastId;
+  return ++lastId;
 }
 
-export function shuffleArray(array: any[]) {
-  for (let i = array.length - 1; i > 0; i--) {
-    let r = Math.floor(Math.random() * (i + 1));
-    let temp = array[i];
-
-    array[i] = array[r];
-    array[r] = temp;
-  }
-
-  return array;
-}
-
-const HeaderImages = [
+const allHeaderImages = [
   { uri: 'https://picsum.photos/id/112/900/600' },
   { uri: 'https://picsum.photos/id/1041/900/600' },
   { uri: 'https://picsum.photos/id/167/900/600' },
@@ -29,22 +16,33 @@ const HeaderImages = [
   { uri: 'https://picsum.photos/id/106/900/600' },
 ];
 
-interface UserType {
+export const generateHeaderImages = (limit: number) => {
+  const headerImages = faker.helpers.shuffle(allHeaderImages);
+
+  return limit > 0 ? headerImages.slice(0, limit) : headerImages;
+};
+
+interface User {
   id: number;
   name: string;
   email: string;
   image: string;
 }
 
-const Users: UserType[] = [];
+export const generateUser = (props?: Partial<User>): User => ({
+  id: generateId(),
+  name: faker.name.findName(),
+  email: faker.internet.email(),
+  image: faker.image.avatar(),
+  ...props,
+});
 
-for (let i = 1; i < 30; i += 1) {
-  Users.push({
-    id: generateId(),
-    name: faker.name.findName(),
-    email: faker.internet.email(),
-    image: faker.image.avatar(),
-  });
-}
+export const generateUsers = (limit: number): User[] =>
+  Array(limit)
+    .fill(undefined)
+    .map(() => generateUser());
 
-export { HeaderImages, Users };
+export default {
+  users: generateUsers(30),
+  headerImages: allHeaderImages,
+};

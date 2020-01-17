@@ -1,15 +1,18 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { StyleSheet, Text, TouchableHighlight, View } from 'react-native';
 
 import { Avatar, StretchyFlatList } from 'rnbase-ui';
 
-import { HeaderImages, Users, shuffleArray } from '../../data';
+import { generateHeaderImages, generateUsers } from '../../data';
 
 const StretchyFlatListScreen = () => {
+  const [headerImages] = useState(() => generateHeaderImages(3));
+  const [users] = useState(() => generateUsers(50));
+
   return (
     <StretchyFlatList
       headerHeight={212}
-      headerImages={shuffleArray(HeaderImages)}
+      headerImages={headerImages}
       headerBackgroundColor="#30303C"
       headerContent={
         <View style={styles.headerContent}>
@@ -17,7 +20,7 @@ const StretchyFlatListScreen = () => {
           <Text style={styles.headerText}>FlatList Component Example</Text>
         </View>
       }
-      data={Users}
+      data={users}
       keyExtractor={item => `item-${item.id}`}
       ItemSeparatorComponent={() => <View style={styles.separator} />}
       renderItem={({ item }) => (

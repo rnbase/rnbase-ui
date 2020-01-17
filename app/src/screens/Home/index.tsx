@@ -4,7 +4,7 @@ import { NavigationScreenProp } from 'react-navigation';
 
 import { Button, StretchyScrollView } from 'rnbase-ui';
 
-import { HeaderImages } from '../../data';
+import data from '../../data';
 
 type NavigationState = {
   params: {};
@@ -17,7 +17,7 @@ type Props = {
 const HomeScreen: React.FC<Props> = ({ navigation }) => (
   <StretchyScrollView
     headerHeight={300}
-    headerImages={HeaderImages}
+    headerImages={data.headerImages}
     headerBackgroundColor="#30303C"
     headerContent={<Image style={styles.logo} source={require('../../assets/logo.png')} />}
   >

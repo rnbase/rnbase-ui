@@ -30,27 +30,24 @@ import {
   Component,
 } from 'rnbase-ui';
 
+import { generateHeaderImages } from '../../data';
+
 const avatars = {
   none: { uri: 'https://randomuser.me/api/portraits/none.jpg' },
   test: { uri: 'https://randomuser.me/api/portraits/women/68.jpg' },
 };
 
-const images = [
-  { uri: 'https://picsum.photos/id/112/900/600' },
-  { uri: 'https://picsum.photos/id/1041/900/600' },
-  { uri: 'https://picsum.photos/id/106/900/600' },
-];
-
 const ExampleScreen = () => {
   const [busy, setBusy] = useState(false);
   const [badge, setBadge] = useState(0);
   const [selectedButton, setSelectedButton] = useState(0);
+  const [headerImages] = useState(() => generateHeaderImages(3));
 
   const onSelectButton = (index: number) => setSelectedButton(index);
 
   return (
     <StretchyScrollView
-      headerImages={images}
+      headerImages={headerImages}
       headerHeight={300}
       headerBackgroundColor="#30303C"
       headerContent={<Button text="Welcome to React" onPress={() => setBadge(badge + 1)} />}
