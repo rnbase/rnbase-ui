@@ -4,6 +4,8 @@ import { NavigationScreenProp } from 'react-navigation';
 
 import { Button, StretchyScrollView } from '../../../..';
 
+import { HeaderImages } from '../../data';
+
 type NavigationState = {
   params: {};
 };
@@ -12,18 +14,10 @@ type Props = {
   navigation: NavigationScreenProp<NavigationState>;
 };
 
-const images = [
-  { uri: 'https://picsum.photos/id/112/900/600' },
-  { uri: 'https://picsum.photos/id/1041/900/600' },
-  { uri: 'https://picsum.photos/id/167/900/600' },
-  { uri: 'https://picsum.photos/id/487/900/600' },
-  { uri: 'https://picsum.photos/id/106/900/600' },
-];
-
 const HomeScreen: React.FC<Props> = ({ navigation }) => (
   <StretchyScrollView
-    headerImages={images}
     headerHeight={300}
+    headerImages={HeaderImages}
     headerBackgroundColor="#30303C"
     headerContent={<Image style={styles.logo} source={require('../../assets/logo.png')} />}
   >
