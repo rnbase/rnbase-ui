@@ -22,13 +22,13 @@ export default createStackNavigator(
     StretchyFlatList: {
       screen: StretchyFlatListScreen,
       navigationOptions: {
-        title: 'Stretchy Flat List',
+        title: 'Stretchy FlatList',
       },
     },
     StretchySectionList: {
       screen: StretchySectionListScreen,
       navigationOptions: {
-        title: 'Stretchy Section List',
+        title: 'Stretchy SectionList',
       },
     },
   },
@@ -38,7 +38,7 @@ export default createStackNavigator(
       headerBackTitle: 'Back',
       headerStyleInterpolator: HeaderStyleInterpolators.forUIKit,
       cardStyle: {
-        backgroundColor: 'white',
+        backgroundColor: '#fff',
       },
     },
   },
