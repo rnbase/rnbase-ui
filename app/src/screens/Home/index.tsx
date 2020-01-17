@@ -2,7 +2,7 @@ import React from 'react';
 import { Image, StyleSheet, View } from 'react-native';
 import { NavigationScreenProp } from 'react-navigation';
 
-import { Button, StretchyScrollView } from 'rnbase-ui';
+import { Button, StretchyScrollView, useTheme, Theme } from 'rnbase-ui';
 
 import data from '../../data';
 
@@ -14,50 +14,56 @@ type Props = {
   navigation: NavigationScreenProp<NavigationState>;
 };
 
-const HomeScreen: React.FC<Props> = ({ navigation }) => (
-  <StretchyScrollView
-    headerHeight={300}
-    headerBackground={data.headerImages.map(source => (
-      <Image source={source} />
-    ))}
-    headerBackgroundColor="#30303C"
-    headerContent={<Image style={styles.logo} source={require('../../assets/logo.png')} />}
-  >
-    <View style={styles.container}>
-      <Button
-        themeKey="HomeButton"
-        text="Component Examples"
-        onPress={() => navigation.navigate('Example')}
-      />
-      <View style={styles.separator} />
-      <Button
-        themeKey="HomeButton"
-        text="Stretchy Flat List"
-        onPress={() => navigation.navigate('StretchyFlatList')}
-      />
-      <View style={styles.separator} />
-      <Button
-        themeKey="HomeButton"
-        text="Stretchy Section List"
-        onPress={() => navigation.navigate('StretchySectionList')}
-      />
-    </View>
-  </StretchyScrollView>
-);
+const HomeScreen: React.FC<Props> = ({ navigation }) => {
+  const { Colors, Fonts } = useTheme();
+  const styles = createStyles({ Colors, Fonts });
 
-const styles = StyleSheet.create({
-  container: {
-    padding: 20,
-  },
-  logo: {
-    width: 120,
-    height: 120,
-  },
-  separator: {
-    marginVertical: 10,
-    backgroundColor: '#0003',
-    height: StyleSheet.hairlineWidth,
-  },
-});
+  return (
+    <StretchyScrollView
+      headerHeight={300}
+      headerBackground={data.headerImages.map(source => (
+        <Image source={source} />
+      ))}
+      headerBackgroundColor={Colors.black}
+      headerContent={<Image style={styles.logo} source={require('../../assets/logo.png')} />}
+    >
+      <View style={styles.container}>
+        <Button
+          themeKey="HomeButton"
+          text="Component Examples"
+          onPress={() => navigation.navigate('Example')}
+        />
+        <View style={styles.separator} />
+        <Button
+          themeKey="HomeButton"
+          text="Stretchy Flat List"
+          onPress={() => navigation.navigate('StretchyFlatList')}
+        />
+        <View style={styles.separator} />
+        <Button
+          themeKey="HomeButton"
+          text="Stretchy Section List"
+          onPress={() => navigation.navigate('StretchySectionList')}
+        />
+      </View>
+    </StretchyScrollView>
+  );
+};
+
+const createStyles = ({ Colors }: Theme) =>
+  StyleSheet.create({
+    container: {
+      padding: 15,
+    },
+    logo: {
+      width: 120,
+      height: 120,
+    },
+    separator: {
+      marginVertical: 10,
+      backgroundColor: Colors.separator,
+      height: StyleSheet.hairlineWidth,
+    },
+  });
 
 export default HomeScreen;
