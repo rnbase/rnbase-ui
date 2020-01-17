@@ -9,7 +9,7 @@ const theme: ThemeFactory = ({ scheme }) => {
     orange: scheme({ default: '#ff9500', dark: '#ff9f0a' }),
     red: scheme({ default: '#ff3b30', dark: '#ff453a' }),
     yellow: scheme({ default: '#ffcc00', dark: '#ffd60a' }),
-    gray: '#8e8e93',
+    gray: scheme({ default: '#838387', dark: '#8e8e93' }),
     gray2: scheme({ default: '#aeaeb2', dark: '#636366' }),
     gray3: scheme({ default: '#c7c7cc', dark: '#48484a' }),
     gray4: scheme({ default: '#d1d1d6', dark: '#3a3a3c' }),
@@ -27,31 +27,30 @@ const theme: ThemeFactory = ({ scheme }) => {
   const Avatar = {
     styles: {
       root: {
-        padding: 2,
+        //padding: 2,
       },
       image: {},
       text: {},
     },
   };
 
-  const ActivityButton = {
+  const HomeButton = {
     styles: {
       root: {
-        backgroundColor: Colors.red,
+        borderRadius: null,
+        backgroundColor: null,
+        paddingHorizontal: null,
       },
-      text: {},
-      image: {},
+      text: {
+        flexGrow: 1,
+        color: Colors.black,
+      },
+      image: {
+        tintColor: Colors.blue,
+      },
     },
-    indicatorColor: Colors.black,
-  };
-
-  const Button = {
-    styles: {
-      root: {},
-      text: {},
-      image: {},
-    },
-    activeOpacity: 0.75,
+    imageAlignment: 'right',
+    imageSource: require('./assets/chevron-right.png'),
   };
 
   const Component = {
@@ -68,8 +67,7 @@ const theme: ThemeFactory = ({ scheme }) => {
   return {
     Colors,
     Avatar,
-    ActivityButton,
-    Button,
+    HomeButton,
     Component,
   };
 };
