@@ -43,6 +43,7 @@ class StretchyHeader extends React.Component<StretchyHeaderProps, StretchyHeader
   private _index = 0;
   private _scrollX = new Animated.Value(0);
 
+  private _listenerId: string | undefined;
   private _panResponder: PanResponderInstance;
 
   constructor(props: StretchyHeaderProps) {
@@ -58,15 +59,19 @@ class StretchyHeader extends React.Component<StretchyHeaderProps, StretchyHeader
   }
 
   componentDidMount = () => {
-    this.props.scrollY.addListener(({ value }) => {
+    this._listenerId = this.props.scrollY.addListener(({ value }) => {
       const overflow = value > 0 ? 'hidden' : 'visible';
 
-      overflow !== this.state.overflow && this.setState({ overflow });
+      if (overflow !== this.state.overflow) {
+        this.setState({ overflow });
+      }
     });
   };
 
   componentWillUnmount = () => {
-    this.props.scrollY.removeAllListeners();
+    if (this._listenerId) {
+      this.props.scrollY.removeListener(this._listenerId);
+    }
   };
 
   render() {
