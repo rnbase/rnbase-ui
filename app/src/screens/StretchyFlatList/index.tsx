@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, TouchableHighlight, View } from 'react-native';
 
-import { Avatar, StretchyFlatList } from '../../../..';
+import { Avatar, StretchyFlatList } from 'rnbase-ui';
 
 import { HeaderImages, Users, shuffleArray } from '../../data';
 

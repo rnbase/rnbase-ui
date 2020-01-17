@@ -2,7 +2,7 @@ import React from 'react';
 import { Image, StyleSheet, View } from 'react-native';
 import { NavigationScreenProp } from 'react-navigation';
 
-import { Button, StretchyScrollView } from '../../../..';
+import { Button, StretchyScrollView } from 'rnbase-ui';
 
 import { HeaderImages } from '../../data';
 

@@ -28,7 +28,7 @@ import {
   Segmented,
   StretchyScrollView,
   Component,
-} from '../../../..';
+} from 'rnbase-ui';
 
 const avatars = {
   none: { uri: 'https://randomuser.me/api/portraits/none.jpg' },

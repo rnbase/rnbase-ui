@@ -5,7 +5,7 @@ import { createAppContainer } from 'react-navigation';
 import RootNavigator from './router';
 import theme from './theme';
 
-import { ThemeProvider } from '../..';
+import { ThemeProvider } from 'rnbase-ui';
 
 StatusBar.setBarStyle('dark-content');
 

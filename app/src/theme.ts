@@ -1,4 +1,4 @@
-import { ThemeFactory } from '../..';
+import { ThemeFactory } from 'rnbase-ui';
 
 const theme: ThemeFactory = ({ scheme }) => {
   const BaseColors = {
