@@ -1,5 +1,5 @@
 import React from 'react';
-import { Animated, ScrollViewProps } from 'react-native';
+import { Animated, ScrollViewProps, Image } from 'react-native';
 
 import useStretchy, { StretchyProps } from './Stretchy';
 
@@ -19,7 +19,7 @@ const StretchyScrollView: React.FC<StretchyScrollViewProps> = ({
   const [refScrollView, animatedValue, header] = useStretchy<typeof Animated.ScrollView>(
     {
       children: headerContent,
-      images: headerImages,
+      background: headerImages.map(source => <Image source={source} />),
       height: headerHeight,
       backgroundColor: headerBackgroundColor,
       onChange: onChangeImage,

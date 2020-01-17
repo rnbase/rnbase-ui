@@ -3,8 +3,6 @@ import {
   Animated,
   Easing,
   GestureResponderEvent,
-  Image,
-  ImageSourcePropType,
   LayoutChangeEvent,
   PanResponder,
   PanResponderInstance,
@@ -13,10 +11,12 @@ import {
   View,
 } from 'react-native';
 
+export type BackgroundPropType = React.ReactElement | React.ReactElement[];
+
 export interface StretchyHeaderProps {
   height: number;
   scrollY: Animated.Value;
-  images: ImageSourcePropType[];
+  background: BackgroundPropType;
   backgroundColor?: string;
   children?: React.ReactNode;
   onTouchStart?: () => void;
@@ -80,7 +80,7 @@ class StretchyHeader extends React.Component<StretchyHeaderProps, StretchyHeader
       _onLayout: onLayout,
       _panResponder: panResponder,
       state: { width, overflow },
-      props: { images, height, backgroundColor, children, scrollY },
+      props: { background, height, backgroundColor, children, scrollY },
     } = this;
 
     const opacity = scrollY.interpolate({
@@ -106,11 +106,13 @@ class StretchyHeader extends React.Component<StretchyHeaderProps, StretchyHeader
       outputRange: [0, -width],
     });
 
+    const elements = Array.isArray(background) ? background : [background];
+
     return (
       <View
         style={{ overflow }}
         onLayout={onLayout}
-        {...images.length > 1 && panResponder.panHandlers}
+        {...elements.length > 1 && panResponder.panHandlers}
       >
         <Animated.View
           style={[
@@ -124,16 +126,22 @@ class StretchyHeader extends React.Component<StretchyHeaderProps, StretchyHeader
         >
           <Animated.View
             style={[
-              styles.images,
+              styles.elements,
               {
                 opacity,
                 transform: [{ translateX }],
               },
             ]}
           >
-            {images.map((image, index) => (
-              <Image key={index} style={styles.image} source={image} />
-            ))}
+            {elements.map((element, index) =>
+              React.cloneElement(element, {
+                key: index,
+                style: {
+                  ...element.props.style,
+                  ...styles.element,
+                },
+              }),
+            )}
           </Animated.View>
         </Animated.View>
         {children && (
@@ -176,11 +184,12 @@ class StretchyHeader extends React.Component<StretchyHeaderProps, StretchyHeader
   ) => {
     const {
       _index: index,
-      props: { images },
+      props: { background },
       state: { width },
     } = this;
     const { dx } = gestureState;
-    const reduce = (index === 0 && dx > 0) || (index === images.length - 1 && dx < 0) ? 3 : 1;
+    const length = Array.isArray(background) ? background.length : 1;
+    const reduce = (index === 0 && dx > 0) || (index === length - 1 && dx < 0) ? 3 : 1;
 
     this._scrollX.setValue(-dx / width / reduce + index);
   };
@@ -215,10 +224,11 @@ class StretchyHeader extends React.Component<StretchyHeaderProps, StretchyHeader
   private _setImage(index: number) {
     const {
       _index: prevIndex,
-      props: { images, onChange },
+      props: { background, onChange },
     } = this;
+    const length = Array.isArray(background) ? background.length : 1;
 
-    this._index = Math.max(0, Math.min(index, images.length - 1));
+    this._index = Math.max(0, Math.min(index, length - 1));
 
     Animated.timing(this._scrollX, {
       toValue: this._index,
@@ -243,11 +253,11 @@ const styles = StyleSheet.create({
   background: {
     overflow: 'hidden',
   },
-  images: {
+  elements: {
     flexGrow: 1,
     flexDirection: 'row',
   },
-  image: {
+  element: {
     width: '100%',
     resizeMode: 'cover',
   },
