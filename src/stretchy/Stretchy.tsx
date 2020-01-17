@@ -1,11 +1,11 @@
 import React, { useCallback, useRef, useState } from 'react';
-import { Animated, ImageSourcePropType, ScrollView, View } from 'react-native';
+import { Animated, ScrollView, View } from 'react-native';
 
-import StretchyHeader, { StretchyHeaderProps } from './StretchyHeader';
+import StretchyHeader, { BackgroundPropType, StretchyHeaderProps } from './StretchyHeader';
 
 export interface StretchyProps {
   headerHeight: number;
-  headerImages?: ImageSourcePropType[];
+  headerBackground?: BackgroundPropType;
   headerContent?: React.ReactNode;
   headerBackgroundColor?: string;
   onChangeImage?: (event: { index: number }) => void;

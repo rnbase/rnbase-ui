@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, TouchableHighlight, View } from 'react-native';
+import { Image, StyleSheet, Text, TouchableHighlight, View } from 'react-native';
 
 import { Avatar, StretchySectionList } from 'rnbase-ui';
 
@@ -16,7 +16,9 @@ const StretchySectionListScreen = () => {
   return (
     <StretchySectionList
       headerHeight={212}
-      headerImages={headerImages}
+      headerBackground={headerImages.map(source => (
+        <Image source={source} />
+      ))}
       headerBackgroundColor="#30303C"
       headerContent={
         <View style={styles.headerContent}>

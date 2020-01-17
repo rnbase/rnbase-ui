@@ -1,12 +1,12 @@
 import React from 'react';
-import { Animated, FlatListProps, Image } from 'react-native';
+import { Animated, FlatListProps } from 'react-native';
 
 import useStretchy, { StretchyProps } from './Stretchy';
 
 export type StretchyFlatListProps<ItemT> = FlatListProps<ItemT> & StretchyProps;
 
 function StretchyFlatList<ItemT>({
-  headerImages = [],
+  headerBackground = [],
   headerHeight,
   headerContent,
   headerBackgroundColor,
@@ -18,7 +18,7 @@ function StretchyFlatList<ItemT>({
   const [refFlatList, animatedValue, header] = useStretchy<typeof Animated.FlatList>(
     {
       children: headerContent,
-      background: headerImages.map(source => <Image source={source} />),
+      background: headerBackground,
       height: headerHeight,
       backgroundColor: headerBackgroundColor,
       onChange: onChangeImage,

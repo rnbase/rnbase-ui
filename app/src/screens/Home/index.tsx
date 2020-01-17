@@ -17,7 +17,9 @@ type Props = {
 const HomeScreen: React.FC<Props> = ({ navigation }) => (
   <StretchyScrollView
     headerHeight={300}
-    headerImages={data.headerImages}
+    headerBackground={data.headerImages.map(source => (
+      <Image source={source} />
+    ))}
     headerBackgroundColor="#30303C"
     headerContent={<Image style={styles.logo} source={require('../../assets/logo.png')} />}
   >

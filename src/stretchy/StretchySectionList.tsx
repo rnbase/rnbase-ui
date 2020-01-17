@@ -1,12 +1,12 @@
 import React from 'react';
-import { Animated, SectionListProps, Image } from 'react-native';
+import { Animated, SectionListProps } from 'react-native';
 
 import useStretchy, { StretchyProps } from './Stretchy';
 
 export type StretchySectionListProps<ItemT> = SectionListProps<ItemT> & StretchyProps;
 
 function StretchySectionList<ItemT>({
-  headerImages = [],
+  headerBackground = [],
   headerHeight,
   headerContent,
   headerBackgroundColor,
@@ -18,7 +18,7 @@ function StretchySectionList<ItemT>({
   const [refSectionList, animatedValue, header] = useStretchy<typeof Animated.SectionList>(
     {
       children: headerContent,
-      background: headerImages.map(source => <Image source={source} />),
+      background: headerBackground,
       height: headerHeight,
       backgroundColor: headerBackgroundColor,
       onChange: onChangeImage,

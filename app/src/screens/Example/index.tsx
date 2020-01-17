@@ -9,7 +9,7 @@
  */
 
 import React, { useState } from 'react';
-import { StyleSheet, View, Text } from 'react-native';
+import { Image, StyleSheet, View, Text } from 'react-native';
 
 import {
   LearnMoreLinks,
@@ -47,7 +47,9 @@ const ExampleScreen = () => {
 
   return (
     <StretchyScrollView
-      headerImages={headerImages}
+      headerBackground={headerImages.map(source => (
+        <Image source={source} />
+      ))}
       headerHeight={300}
       headerBackgroundColor="#30303C"
       headerContent={<Button text="Welcome to React" onPress={() => setBadge(badge + 1)} />}
