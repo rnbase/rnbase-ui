@@ -22,6 +22,8 @@ const theme: ThemeFactory = ({ scheme }) => {
     primary: BaseColors.blue,
     success: BaseColors.green,
     danger: BaseColors.red,
+    underlay: scheme({ default: '#0001', dark: '#fff1' }),
+    separator: scheme({ default: '#0003', dark: '#fff3' }),
   };
 
   const Avatar = {
