@@ -1,11 +1,20 @@
 import React, { useState } from 'react';
 import { Image, StyleSheet, Text, TouchableHighlight, View } from 'react-native';
+import { NavigationScreenProp } from 'react-navigation';
 
 import { Avatar, StretchySectionList, useTheme, Theme } from 'rnbase-ui';
 
 import { generateHeaderImages, generateUsers } from '../../data';
 
-const StretchySectionListScreen = () => {
+type NavigationState = {
+  params: {};
+};
+
+type Props = {
+  navigation: NavigationScreenProp<NavigationState>;
+};
+
+const StretchySectionListScreen: React.FC<Props> = ({ navigation }) => {
   const [headerImages] = useState(() => generateHeaderImages(3));
   const [sections] = useState(() => [
     { data: generateUsers(5), title: 'Administrators' },
@@ -25,7 +34,7 @@ const StretchySectionListScreen = () => {
       headerContent={
         <View style={styles.headerContent}>
           <Text style={styles.headerTitle}>Stretchy Header</Text>
-          <Text style={styles.headerText}>SectionList Component Example</Text>
+          <Text style={styles.headerText}>With image gallery in the background</Text>
         </View>
       }
       ListFooterComponent={
@@ -45,7 +54,11 @@ const StretchySectionListScreen = () => {
         </View>
       )}
       renderItem={({ item }) => (
-        <TouchableHighlight activeOpacity={1} underlayColor={Colors.underlay} onPress={() => {}}>
+        <TouchableHighlight
+          activeOpacity={1}
+          underlayColor={Colors.underlay}
+          onPress={() => navigation.navigate('StretchyScrollView', { item })}
+        >
           <View style={styles.item}>
             <Avatar size={50} imageSource={{ uri: item.image }} />
             <View style={styles.itemContent}>

@@ -1,11 +1,20 @@
 import React, { useState } from 'react';
 import { Image, StyleSheet, Text, TouchableHighlight, View } from 'react-native';
+import { NavigationScreenProp } from 'react-navigation';
 
 import { Avatar, StretchyFlatList, useTheme, Theme } from 'rnbase-ui';
 
 import { generateHeaderImages, generateUsers } from '../../data';
 
-const StretchyFlatListScreen = () => {
+type NavigationState = {
+  params: {};
+};
+
+type Props = {
+  navigation: NavigationScreenProp<NavigationState>;
+};
+
+const StretchyFlatListScreen: React.FC<Props> = ({ navigation }) => {
   const [headerImages] = useState(() => generateHeaderImages(3));
   const [users] = useState(() => generateUsers(50));
   const { Colors, Fonts } = useTheme();
@@ -21,7 +30,7 @@ const StretchyFlatListScreen = () => {
       headerContent={
         <View style={styles.headerContent}>
           <Text style={styles.headerTitle}>Stretchy Header</Text>
-          <Text style={styles.headerText}>FlatList Component Example</Text>
+          <Text style={styles.headerText}>With image gallery in the background</Text>
         </View>
       }
       ListFooterComponent={
@@ -36,7 +45,11 @@ const StretchyFlatListScreen = () => {
       keyExtractor={item => `item-${item.id}`}
       ItemSeparatorComponent={() => <View style={styles.separator} />}
       renderItem={({ item }) => (
-        <TouchableHighlight activeOpacity={1} underlayColor={Colors.underlay} onPress={() => {}}>
+        <TouchableHighlight
+          activeOpacity={1}
+          underlayColor={Colors.underlay}
+          onPress={() => navigation.navigate('StretchyScrollView', { item })}
+        >
           <View style={styles.item}>
             <Avatar size={50} imageSource={{ uri: item.image }} />
             <View style={styles.itemContent}>
