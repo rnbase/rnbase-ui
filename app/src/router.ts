@@ -3,6 +3,7 @@ import { createStackNavigator, HeaderStyleInterpolators } from 'react-navigation
 import HomeScreen from './screens/Home';
 import ExampleScreen from './screens/Example';
 import StretchyFlatListScreen from './screens/StretchyFlatList';
+import StretchyScrollViewScreen from './screens/StretchyScrollView';
 import StretchySectionListScreen from './screens/StretchySectionList';
 
 export default createStackNavigator(
@@ -23,6 +24,12 @@ export default createStackNavigator(
       screen: StretchyFlatListScreen,
       navigationOptions: {
         title: 'Stretchy FlatList',
+      },
+    },
+    StretchyScrollView: {
+      screen: StretchyScrollViewScreen,
+      navigationOptions: {
+        title: 'Stretchy ScrollView',
       },
     },
     StretchySectionList: {
