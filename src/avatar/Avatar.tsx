@@ -40,7 +40,7 @@ const getInitials = (name: string): string => {
 };
 
 interface AvatarProps extends ViewProps {
-  size: number;
+  size?: number;
   shape?: 'square' | 'circle';
   name?: string;
   email?: string;
@@ -56,7 +56,7 @@ interface AvatarProps extends ViewProps {
 
 const Avatar: React.FC<Themed<typeof createStyleSheet, AvatarProps>> = ({
   styles,
-  size,
+  size = 50,
   shape = 'circle',
   name,
   email,
