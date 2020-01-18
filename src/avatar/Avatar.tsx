@@ -46,6 +46,7 @@ interface AvatarProps extends ViewProps {
   email?: string;
   colorize?: boolean;
   badge?: BadgeProps;
+  badgePosition?: 'top-right' | 'bottom-right' | 'bottom-left' | 'top-left';
   imageSource?: ImageSourcePropType;
   defaultImageSource?: ImageSourcePropType;
   style?: StyleProp<ViewStyle>;
@@ -61,6 +62,7 @@ const Avatar: React.FC<Themed<typeof createStyleSheet, AvatarProps>> = ({
   email,
   colorize = false,
   badge,
+  badgePosition = 'top-right',
   imageSource,
   defaultImageSource = require('./default.png'),
   style,
@@ -162,10 +164,11 @@ const Avatar: React.FC<Themed<typeof createStyleSheet, AvatarProps>> = ({
   }
 
   if (badge) {
+    const [badgeY, badgeX] = badgePosition.split('-');
     const badgeStyles = [
       {
-        top: badgeOffset,
-        right: badgeOffset,
+        [badgeY]: badgeOffset,
+        [badgeX]: badgeOffset,
       },
       styles.badge,
       badge.style,
