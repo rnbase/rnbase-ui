@@ -38,8 +38,8 @@ function StretchyScrollViewScreen({ navigation }: Props) {
           </Text>
           <Text style={styles.text}>
             This sample user details screen has been created using{' '}
-            <Text style={styles.textBold}>StretchyScrollView</Text> component. For the background we
-            have used the same avatar image with a blur filter applied.
+            <Text style={styles.textBold}>StretchyScrollView</Text> component. For the header
+            background we have used the same avatar image with a blur filter applied.
           </Text>
         </View>
         <Button style={styles.button} text="Back to List" onPress={() => navigation.goBack()} />
@@ -58,7 +58,7 @@ const createStyles = ({ Colors, Fonts }: Theme) =>
       borderColor: Colors.white,
     },
     container: {
-      //flexGrow: 1,
+      flexGrow: 1,
     },
     content: {
       flexGrow: 1,
@@ -80,12 +80,12 @@ const createStyles = ({ Colors, Fonts }: Theme) =>
       ...Fonts.light,
       fontSize: 18,
       lineHeight: 26,
-      marginTop: 20,
+      marginVertical: 20,
       color: Colors.black,
       textAlign: 'center',
     },
     textBold: {
-      fontWeight: '600',
+      fontWeight: '500',
     },
     button: {
       margin: 15,
