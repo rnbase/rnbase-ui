@@ -66,7 +66,7 @@ const Badge: React.FC<Themed<typeof createStyleSheet, BadgeProps>> = ({
   }
 
   let content;
-  let height = styles.root.height;
+  let height = styles.root.minHeight;
 
   if (typeof value === 'number' && value !== 0) {
     const displayValue = limit && value > limit ? `${limit}+` : value;
@@ -108,8 +108,8 @@ const Badge: React.FC<Themed<typeof createStyleSheet, BadgeProps>> = ({
 const createStyleSheet = ({ Colors, Fonts }: Theme) =>
   StyleSheet.create({
     root: {
-      height: 10,
       minWidth: 10,
+      minHeight: 10,
       alignSelf: 'center',
       alignItems: 'center',
       justifyContent: 'center',

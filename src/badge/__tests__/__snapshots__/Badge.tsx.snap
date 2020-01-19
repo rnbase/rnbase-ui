@@ -14,6 +14,7 @@ exports[`should render normally 1`] = `
       "borderRadius": 10,
       "height": 20,
       "justifyContent": "center",
+      "minHeight": 10,
       "minWidth": 20,
       "paddingHorizontal": 6,
       "transform": Array [
@@ -58,6 +59,7 @@ exports[`should render when greather than limit 1`] = `
       "borderRadius": 10,
       "height": 20,
       "justifyContent": "center",
+      "minHeight": 10,
       "minWidth": 20,
       "paddingHorizontal": 6,
       "transform": Array [
@@ -101,6 +103,7 @@ exports[`should render with custom props 1`] = `
       "backgroundColor": "red",
       "height": 26.5,
       "justifyContent": "center",
+      "minHeight": 10,
       "minWidth": 26.5,
       "paddingHorizontal": 8,
       "transform": Array [
@@ -143,8 +146,8 @@ exports[`should render without number 1`] = `
       "alignSelf": "center",
       "backgroundColor": "#007aff",
       "borderRadius": 5,
-      "height": 10,
       "justifyContent": "center",
+      "minHeight": 10,
       "minWidth": 10,
       "transform": Array [
         Object {
