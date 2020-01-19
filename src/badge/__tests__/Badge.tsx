@@ -51,7 +51,7 @@ it('should render when greather than limit', () => {
 });
 
 it('should render with custom props', () => {
-  expect(createRenderer({ value: 12, size: 16, rounded: false, color: 'red' })).toMatchSnapshot();
+  expect(createRenderer({ value: 12, size: 16, cornerRadius: 0 })).toMatchSnapshot();
 });
 
 it('should not render when value = 0', () => {

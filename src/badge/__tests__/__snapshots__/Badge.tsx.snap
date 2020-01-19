@@ -16,7 +16,6 @@ exports[`should render normally 1`] = `
       "justifyContent": "center",
       "minHeight": 10,
       "minWidth": 20,
-      "paddingHorizontal": 6,
       "transform": Array [
         Object {
           "scale": 1,
@@ -30,6 +29,10 @@ exports[`should render normally 1`] = `
     style={
       Array [
         Object {
+          "fontSize": 12,
+          "marginHorizontal": 6,
+        },
+        Object {
           "backgroundColor": "transparent",
           "color": "#ffffff",
           "fontFamily": "System",
@@ -38,9 +41,6 @@ exports[`should render normally 1`] = `
           "textAlignVertical": "center",
         },
         undefined,
-        Object {
-          "fontSize": 12,
-        },
       ]
     }
   >
@@ -61,7 +61,6 @@ exports[`should render when greather than limit 1`] = `
       "justifyContent": "center",
       "minHeight": 10,
       "minWidth": 20,
-      "paddingHorizontal": 6,
       "transform": Array [
         Object {
           "scale": 1,
@@ -75,6 +74,10 @@ exports[`should render when greather than limit 1`] = `
     style={
       Array [
         Object {
+          "fontSize": 12,
+          "marginHorizontal": 6,
+        },
+        Object {
           "backgroundColor": "transparent",
           "color": "#ffffff",
           "fontFamily": "System",
@@ -83,9 +86,6 @@ exports[`should render when greather than limit 1`] = `
           "textAlignVertical": "center",
         },
         undefined,
-        Object {
-          "fontSize": 12,
-        },
       ]
     }
   >
@@ -100,12 +100,12 @@ exports[`should render with custom props 1`] = `
     Object {
       "alignItems": "center",
       "alignSelf": "center",
-      "backgroundColor": "red",
-      "height": 26.5,
+      "backgroundColor": "#007aff",
+      "borderRadius": 0,
+      "height": 16,
       "justifyContent": "center",
       "minHeight": 10,
-      "minWidth": 26.5,
-      "paddingHorizontal": 8,
+      "minWidth": 16,
       "transform": Array [
         Object {
           "scale": 1,
@@ -119,6 +119,10 @@ exports[`should render with custom props 1`] = `
     style={
       Array [
         Object {
+          "fontSize": 9.5,
+          "marginHorizontal": 4.75,
+        },
+        Object {
           "backgroundColor": "transparent",
           "color": "#ffffff",
           "fontFamily": "System",
@@ -127,9 +131,6 @@ exports[`should render with custom props 1`] = `
           "textAlignVertical": "center",
         },
         undefined,
-        Object {
-          "fontSize": 16,
-        },
       ]
     }
   >
@@ -146,6 +147,7 @@ exports[`should render without number 1`] = `
       "alignSelf": "center",
       "backgroundColor": "#007aff",
       "borderRadius": 5,
+      "height": 10,
       "justifyContent": "center",
       "minHeight": 10,
       "minWidth": 10,
