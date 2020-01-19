@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useMemo } from 'react';
 import {
   ActivityIndicator,
   Animated,
@@ -17,11 +17,29 @@ import {
 
 import { Themed, Theme, WithThemeProps, withTheme } from '../theming';
 
+const getRadius = (value: number | string, height: number) => {
+  if (typeof value === 'string') {
+    const match = value.match(/^([0-9]|[1-4][0-9]|50)%$/);
+    const percent = match ? parseInt(match[0], 10) : 0;
+
+    return (height * percent) / 100;
+  }
+
+  return value;
+};
+
 const toValue = (value?: boolean) => (value ? 1 : 0);
+
+const inRange = (value: number, min: number, max: number) => Math.max(min, Math.min(value, max));
+
+const minSize = 20;
+const maxSize = 70;
 
 interface ButtonProps extends TouchableOpacityProps {
   children?: React.ReactNode;
   disabled?: boolean;
+  size?: number;
+  cornerRadius?: number | string;
   busy?: boolean;
   busyIndicatorColor?: string;
   busyAnimationType?: 'fade' | 'zoom' | 'slide';
@@ -36,6 +54,8 @@ interface ButtonProps extends TouchableOpacityProps {
 
 const Button: React.FC<Themed<typeof createStyleSheet, ButtonProps>> = ({
   styles,
+  size = 50,
+  cornerRadius = '16%',
   busy,
   busyIndicatorColor,
   busyAnimationType = 'fade',
@@ -73,6 +93,20 @@ const Button: React.FC<Themed<typeof createStyleSheet, ButtonProps>> = ({
     }[busyAnimationType],
   });
 
+  const proportions = useMemo(() => {
+    const height = inRange(Math.round(size), minSize, maxSize);
+    const increment = Math.floor(height / 5);
+
+    return {
+      height,
+      fontSize: 7 + increment,
+      iconSize: 10 + increment,
+      textMargin: increment / 2,
+      contentPadding: (height - increment) / 2 - 5,
+      borderRadius: getRadius(cornerRadius, height),
+    };
+  }, [size, cornerRadius]);
+
   let content;
 
   if (children) {
@@ -81,34 +115,72 @@ const Button: React.FC<Themed<typeof createStyleSheet, ButtonProps>> = ({
     content = [];
 
     if (text) {
-      const textStyles = [styles.text, textStyle, props.disabled && styles.disabledText];
-
       content.push(
-        <Text key="text" style={textStyles} numberOfLines={1}>
+        <Text
+          key="text"
+          style={[
+            {
+              fontSize: proportions.fontSize,
+              marginHorizontal: proportions.textMargin,
+            },
+            styles.text,
+            textStyle,
+            props.disabled && styles.disabledText,
+          ]}
+          numberOfLines={1}
+        >
           {text}
         </Text>,
       );
     }
 
     if (imageSource) {
-      const imageStyles = [styles.image, imageStyle, props.disabled && styles.disabledImage];
-      const image = <Image key="image" style={imageStyles} source={imageSource} />;
+      const image = (
+        <Image
+          key="image"
+          style={[
+            {
+              width: proportions.iconSize,
+              height: proportions.iconSize,
+            },
+            styles.image,
+            imageStyle,
+            props.disabled && styles.disabledImage,
+          ]}
+          source={imageSource}
+        />
+      );
 
-      if (imageAlignment === 'left') {
-        content.unshift(image);
-      } else {
+      if (imageAlignment === 'right') {
         content.push(image);
+      } else {
+        content.unshift(image);
       }
     }
   }
 
-  const rootStyles = [styles.root, style, props.disabled && styles.disabledRoot];
-  const indicatorColor = busyIndicatorColor || styles.text.color;
-
   return (
-    <TouchableOpacity disabled={busy} activeOpacity={activeOpacity} style={rootStyles} {...props}>
+    <TouchableOpacity
+      style={[
+        {
+          height: proportions.height,
+          borderRadius: proportions.borderRadius,
+          paddingHorizontal: proportions.contentPadding,
+        },
+        styles.root,
+        style,
+        props.disabled && styles.disabledRoot,
+      ]}
+      disabled={busy}
+      activeOpacity={activeOpacity}
+      {...props}
+    >
       <Animated.View style={[styles.busy, animation('in')]} pointerEvents="none">
-        <ActivityIndicator animating={busy} size="small" color={indicatorColor} />
+        <ActivityIndicator
+          size="small"
+          animating={busy}
+          color={busyIndicatorColor || styles.text.color}
+        />
       </Animated.View>
       <Animated.View style={[styles.content, animation('out')]}>{content}</Animated.View>
     </TouchableOpacity>
@@ -118,12 +190,14 @@ const Button: React.FC<Themed<typeof createStyleSheet, ButtonProps>> = ({
 const createStyleSheet = ({ Colors, Fonts }: Theme) =>
   StyleSheet.create({
     root: {
-      height: 50,
-      borderRadius: 8,
       overflow: 'hidden',
-      paddingHorizontal: 15,
       justifyContent: 'center',
       backgroundColor: Colors.blue,
+    },
+    busy: {
+      ...StyleSheet.absoluteFillObject,
+      alignItems: 'center',
+      justifyContent: 'center',
     },
     content: {
       alignItems: 'center',
@@ -132,20 +206,11 @@ const createStyleSheet = ({ Colors, Fonts }: Theme) =>
     },
     text: {
       ...Fonts.semibold,
-      fontSize: 17,
       color: Colors.white,
-      marginHorizontal: 5,
     },
     image: {
-      width: 20,
-      height: 20,
       flexShrink: 0,
       tintColor: Colors.white,
-    },
-    busy: {
-      ...StyleSheet.absoluteFillObject,
-      alignItems: 'center',
-      justifyContent: 'center',
     },
     disabledRoot: {
       backgroundColor: Colors.gray5,
