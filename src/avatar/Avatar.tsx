@@ -16,7 +16,7 @@ import {
 } from 'react-native';
 
 import { Themed, Theme, WithThemeProps, withTheme } from '../theming';
-import Badge, { BadgeProps } from '../badge/Badge';
+import Badge, { Props as BadgeProps } from '../badge/Badge';
 
 const getColor = (string: string): string => {
   let hash = 0;
