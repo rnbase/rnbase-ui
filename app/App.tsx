@@ -78,7 +78,7 @@ const App = () => {
                 imageSource={avatars.none}
                 badge={{
                   value: !!badge,
-                  color: '#3B0',
+                  style: { backgroundColor: '#3B0' },
                 }}
               />
               <Avatar
@@ -92,12 +92,12 @@ const App = () => {
               <Avatar size={50} email="user@email.com" imageSource={avatars.none} />
             </View>
             <View style={styles.stack}>
-              <Badge value={true} color="#3B0" />
-              <Badge value={true} color="#FC0" rounded={false} />
+              <Badge value={true} style={{ backgroundColor: '#3B0' }} />
+              <Badge value={true} style={{ backgroundColor: '#FC0' }} cornerRadius={0} />
               <Badge value={badge} />
-              <Badge value={35} color="#F20" />
-              <Badge value={350} size={16} />
-              <Badge value={355} limit={false} rounded={false} style={{ borderRadius: 3 }} />
+              <Badge value={35} style={{ backgroundColor: '#F20' }} />
+              <Badge value={350} size={30} />
+              <Badge value={355} limit={false} cornerRadius={3} />
             </View>
             <View style={styles.stack}>
               <Button
