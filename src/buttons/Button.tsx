@@ -28,22 +28,20 @@ const getRadius = (value: number | string, height: number) => {
   return value;
 };
 
-const toValue = (value?: boolean) => (value ? 1 : 0);
-
 const inRange = (value: number, min: number, max: number) => Math.max(min, Math.min(value, max));
 
 const minSize = 20;
 const maxSize = 70;
 
 interface ButtonProps extends TouchableOpacityProps {
-  children?: React.ReactNode;
-  disabled?: boolean;
   size?: number;
   cornerRadius?: number | string;
+  disabled?: boolean;
   busy?: boolean;
   busyIndicatorColor?: string;
   busyAnimationType?: 'fade' | 'zoom' | 'slide';
   busyAnimationDuration?: number;
+  children?: React.ReactNode;
   style?: StyleProp<ViewStyle>;
   text?: React.ReactNode;
   textStyle?: StyleProp<TextStyle>;
@@ -56,6 +54,7 @@ const Button: React.FC<Themed<typeof createStyleSheet, ButtonProps>> = ({
   styles,
   size = 50,
   cornerRadius = '16%',
+  disabled,
   busy,
   busyIndicatorColor,
   busyAnimationType = 'fade',
@@ -70,16 +69,17 @@ const Button: React.FC<Themed<typeof createStyleSheet, ButtonProps>> = ({
   imageAlignment = 'left',
   ...props
 }) => {
-  const [animatedValue] = useState(() => new Animated.Value(toValue(busy)));
+  const toValue = busy ? 1 : 0;
+  const [animatedValue] = useState(() => new Animated.Value(toValue));
 
   useEffect(() => {
     Animated.timing(animatedValue, {
       duration: busyAnimationDuration,
-      toValue: toValue(busy),
+      toValue: toValue,
       useNativeDriver: true,
       easing: Easing.out(Easing.exp),
     }).start();
-  }, [animatedValue, busy, busyAnimationDuration]);
+  }, [animatedValue, busyAnimationDuration, toValue]);
 
   const interpolate = (outputRange: number[]) =>
     animatedValue.interpolate({ inputRange: [0, 1], outputRange });
@@ -125,7 +125,7 @@ const Button: React.FC<Themed<typeof createStyleSheet, ButtonProps>> = ({
             },
             styles.text,
             textStyle,
-            props.disabled && styles.disabledText,
+            disabled && styles.disabledText,
           ]}
           numberOfLines={1}
         >
@@ -145,7 +145,7 @@ const Button: React.FC<Themed<typeof createStyleSheet, ButtonProps>> = ({
             },
             styles.image,
             imageStyle,
-            props.disabled && styles.disabledImage,
+            disabled && styles.disabledImage,
           ]}
           source={imageSource}
         />
@@ -169,9 +169,9 @@ const Button: React.FC<Themed<typeof createStyleSheet, ButtonProps>> = ({
         },
         styles.root,
         style,
-        props.disabled && styles.disabledRoot,
+        disabled && styles.disabledRoot,
       ]}
-      disabled={busy}
+      disabled={busy || disabled}
       activeOpacity={activeOpacity}
       {...props}
     >
