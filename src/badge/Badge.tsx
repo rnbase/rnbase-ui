@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import {
   Animated,
-  Easing,
   PixelRatio,
   StyleProp,
   StyleSheet,
@@ -54,11 +53,11 @@ const Badge: React.FC<Themed<typeof createStyleSheet, BadgeProps>> = ({
   const [animatedValue] = useState(() => new Animated.Value(toValue));
 
   useEffect(() => {
-    Animated.timing(animatedValue, {
-      duration: 300,
+    Animated.spring(animatedValue, {
+      tension: 60,
+      friction: 6,
       toValue: toValue,
       useNativeDriver: true,
-      easing: Easing.in(Easing.elastic(1)),
     }).start();
   }, [animatedValue, toValue]);
 

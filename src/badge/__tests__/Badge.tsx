@@ -11,7 +11,7 @@ jest.doMock('react-native/Libraries/Animated/src/Animated', () => {
 
   return {
     ...Animated,
-    timing: jest.fn((value: any, { toValue }: any) => {
+    spring: jest.fn((value: any, { toValue }: any) => {
       value.setValue(toValue);
 
       return {
@@ -25,12 +25,6 @@ jest.doMock('react-native/Libraries/Animated/src/Animated', () => {
  * Under test
  */
 const { default: Badge } = jest.requireActual('../Badge');
-
-jest.mock('react-native/Libraries/Animated/src/Easing', () => ({
-  in: (v: any) => `Easing.in(${v})`,
-  out: (v: any) => `Easing.out(${v})`,
-  elastic: (v: any) => `Easing.elastic(${v})`,
-}));
 
 const Animated: any = AnimatedObj;
 
@@ -65,7 +59,7 @@ it('should not render when value = undefined', () => {
 describe('animation', () => {
   const start = jest.fn();
 
-  Animated.timing.mockImplementation(() => ({ start }));
+  Animated.spring.mockImplementation(() => ({ start }));
 
   beforeEach(() => {
     start.mockClear();
@@ -76,13 +70,13 @@ describe('animation', () => {
 
     act(() => {});
 
-    Animated.timing.mockClear();
+    Animated.spring.mockClear();
 
     act(() => {
       tree.update(createElement({ value: 2 }));
     });
 
-    expect(Animated.timing).not.toBeCalled();
+    expect(Animated.spring).not.toBeCalled();
   });
 
   it('should animate appearance', () => {
@@ -90,17 +84,17 @@ describe('animation', () => {
 
     act(() => {});
 
-    Animated.timing.mockClear();
+    Animated.spring.mockClear();
 
     act(() => {
       tree.update(createElement({ value: 1 }));
     });
 
-    expect(Animated.timing).toBeCalledWith(expect.objectContaining({ _value: 0 }), {
+    expect(Animated.spring).toBeCalledWith(expect.objectContaining({ _value: 0 }), {
       toValue: 1,
-      duration: 300,
+      friction: 6,
+      tension: 60,
       useNativeDriver: true,
-      easing: 'Easing.in(Easing.elastic(1))',
     });
     expect(start).toBeCalled();
   });
