@@ -82,7 +82,7 @@ const defaultTheme: ThemeFactory = ({ scheme }) => {
       text: {
         color: Colors.blue,
       },
-      image: {
+      icon: {
         tintColor: Colors.blue,
       },
       disabledRoot: {
@@ -92,7 +92,7 @@ const defaultTheme: ThemeFactory = ({ scheme }) => {
       disabledText: {
         color: Colors.gray2,
       },
-      disabledImage: {
+      disabledIcon: {
         tintColor: Colors.gray2,
       },
     },
@@ -115,7 +115,7 @@ const defaultTheme: ThemeFactory = ({ scheme }) => {
       text: {
         color: Colors.blue,
       },
-      image: {
+      icon: {
         tintColor: Colors.blue,
       },
       disabledRoot: {
@@ -124,7 +124,7 @@ const defaultTheme: ThemeFactory = ({ scheme }) => {
       disabledText: {
         color: Colors.gray2,
       },
-      disabledImage: {
+      disabledIcon: {
         tintColor: Colors.gray2,
       },
     },
