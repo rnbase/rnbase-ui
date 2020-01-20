@@ -16,8 +16,8 @@ import {
 } from 'react-native';
 
 import { Themed, Theme, WithThemeProps, withTheme } from '../theming';
-import Badge, { Props as BadgeProps } from '../badge/Badge';
 import { getColor, getInitials, getRadius } from '../helpers';
+import Badge, { Props as BadgeProps } from '../badge/Badge';
 
 interface AvatarProps extends ViewProps {
   size?: number;
