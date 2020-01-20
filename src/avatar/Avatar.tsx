@@ -17,28 +17,7 @@ import {
 
 import { Themed, Theme, WithThemeProps, withTheme } from '../theming';
 import Badge, { Props as BadgeProps } from '../badge/Badge';
-import { getRadius } from '../helpers';
-
-const getColor = (string: string): string => {
-  let hash = 0;
-
-  if (string.length > 0) {
-    for (let i = 0; i < string.length; i += 1) {
-      /* eslint-disable no-bitwise */
-      hash = string.charCodeAt(i) + ((hash << 5) - hash);
-      hash &= hash;
-      /* eslint-enable no-bitwise */
-    }
-  }
-
-  return `hsl(${hash % 360}, 75%, 50%)`;
-};
-
-const getInitials = (name: string): string => {
-  const initials = name.match(/\b\w/g) || [];
-
-  return ((initials.shift() || '') + (initials.pop() || '')).toUpperCase();
-};
+import { getColor, getInitials, getRadius } from '../helpers';
 
 interface AvatarProps extends ViewProps {
   size?: number;
