@@ -103,41 +103,41 @@ const Button: React.FC<Themed<typeof createStyleSheet, ButtonProps>> = ({
     content = [];
 
     if (text) {
+      const textStyles = [
+        {
+          fontSize: proportions.fontSize,
+          marginHorizontal: proportions.textMargin,
+        },
+        styles.text,
+        textStyle,
+      ];
+
+      if (disabled) {
+        textStyles.push(styles.disabledText);
+      }
+
       content.push(
-        <Text
-          key="text"
-          style={[
-            {
-              fontSize: proportions.fontSize,
-              marginHorizontal: proportions.textMargin,
-            },
-            styles.text,
-            textStyle,
-            disabled && styles.disabledText,
-          ]}
-          numberOfLines={1}
-        >
+        <Text key="text" style={textStyles} numberOfLines={1}>
           {text}
         </Text>,
       );
     }
 
     if (imageSource) {
-      const image = (
-        <Image
-          key="image"
-          style={[
-            {
-              width: proportions.iconSize,
-              height: proportions.iconSize,
-            },
-            styles.image,
-            imageStyle,
-            disabled && styles.disabledImage,
-          ]}
-          source={imageSource}
-        />
-      );
+      const imageStyles = [
+        {
+          width: proportions.iconSize,
+          height: proportions.iconSize,
+        },
+        styles.image,
+        imageStyle,
+      ];
+
+      if (disabled) {
+        imageStyles.push(styles.disabledImage);
+      }
+
+      const image = <Image key="image" style={imageStyles} source={imageSource} />;
 
       if (imageAlignment === 'right') {
         content.push(image);
@@ -147,18 +147,23 @@ const Button: React.FC<Themed<typeof createStyleSheet, ButtonProps>> = ({
     }
   }
 
+  const rootStyles = [
+    {
+      height: proportions.height,
+      borderRadius: proportions.borderRadius,
+      paddingHorizontal: proportions.contentPadding,
+    },
+    styles.root,
+    style,
+  ];
+
+  if (disabled) {
+    rootStyles.push(styles.disabledRoot);
+  }
+
   return (
     <TouchableOpacity
-      style={[
-        {
-          height: proportions.height,
-          borderRadius: proportions.borderRadius,
-          paddingHorizontal: proportions.contentPadding,
-        },
-        styles.root,
-        style,
-        disabled && styles.disabledRoot,
-      ]}
+      style={rootStyles}
       disabled={busy || disabled}
       activeOpacity={activeOpacity}
       {...props}
