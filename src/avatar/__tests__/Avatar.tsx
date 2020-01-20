@@ -12,28 +12,26 @@ import Badge from '../../badge/Badge';
 
 jest.mock('../../badge/Badge', () => 'Badge');
 
-const size = 50;
-
 const createElement = (props: Props) => <Avatar {...props} />;
 
 const createRenderer = (props: Props) => TestRenderer.create(createElement(props));
 
 it('should render default image', () => {
-  expect(createRenderer({ size })).toMatchSnapshot();
+  expect(createRenderer({})).toMatchSnapshot();
 });
 
 it('should render image', () => {
-  const tree = createRenderer({ size });
+  const tree = createRenderer({});
 
   act(() => {
-    tree.update(createElement({ size, imageSource: { uri: 'image.png' } }));
+    tree.update(createElement({ imageSource: { uri: 'image.png' } }));
   });
 
   expect(tree).toMatchSnapshot();
 });
 
 it('should render image as square', () => {
-  const tree = createRenderer({ size, cornerRadius: 0, imageSource: { uri: 'image.png' } });
+  const tree = createRenderer({ cornerRadius: 0, imageSource: { uri: 'image.png' } });
 
   act(() => {});
 
@@ -41,30 +39,30 @@ it('should render image as square', () => {
 });
 
 it('should render gravatar', () => {
-  const tree = createRenderer({ size });
+  const tree = createRenderer({});
 
   act(() => {
-    tree.update(createElement({ size, email: 'user@email.com' }));
+    tree.update(createElement({ email: 'user@email.com' }));
   });
 
   expect(tree).toMatchSnapshot();
 });
 
 it('should render initials', () => {
-  const tree = createRenderer({ size });
+  const tree = createRenderer({});
 
   act(() => {
-    tree.update(createElement({ size, name: 'User Name', colorize: true }));
+    tree.update(createElement({ name: 'User Name', colorize: true }));
   });
 
   expect(tree).toMatchSnapshot();
 });
 
 it('should fallback to initials', () => {
-  const tree = createRenderer({ size });
+  const tree = createRenderer({});
 
   act(() => {
-    tree.update(createElement({ size, name: 'User Name', email: 'user@email.com' }));
+    tree.update(createElement({ name: 'User Name', email: 'user@email.com' }));
   });
 
   const image = tree.root.findByType(Image);
@@ -76,7 +74,6 @@ it('should fallback to initials', () => {
 
 it('should render default image if no image', () => {
   const tree = createRenderer({
-    size,
     imageSource: { uri: 'image.png' },
     defaultImageSource: { uri: 'default.png' },
   });
@@ -92,7 +89,6 @@ it('should render default image if no image', () => {
 
 it('should render default image if no gravatar', () => {
   const tree = createRenderer({
-    size,
     email: 'user@email.com',
     defaultImageSource: { uri: 'default.png' },
   });
@@ -107,7 +103,7 @@ it('should render default image if no gravatar', () => {
 });
 
 it('should render default image if empty name', () => {
-  const tree = createRenderer({ size, name: '', defaultImageSource: { uri: 'default.png' } });
+  const tree = createRenderer({ name: '', defaultImageSource: { uri: 'default.png' } });
 
   act(() => {});
 
@@ -118,13 +114,14 @@ it('should render default image if empty name', () => {
   expect(tree).toMatchSnapshot();
 });
 
-it('should render as circle with badge', () => {
-  const tree = createRenderer({ size, badge: { value: 1 } });
+it('should render as rounded square', () => {
+  const size = 50;
+  const tree = createRenderer({ size, cornerRadius: 10 });
 
   act(() => {});
 
-  const height = 30;
-  const { onLayout } = tree.root.findByType(Badge).props;
+  const height = size - 10;
+  const { onLayout } = tree.root.findByType(Image).props;
 
   act(() => {
     onLayout({ nativeEvent: { layout: { height } } });
@@ -133,6 +130,41 @@ it('should render as circle with badge', () => {
   expect(tree).toMatchSnapshot();
 });
 
-it('should render as square with badge', () => {
-  expect(createRenderer({ size, cornerRadius: 0, badge: { value: true } })).toMatchSnapshot();
+const badgePositions: Props['badgePosition'][] = [
+  'top-right',
+  'bottom-right',
+  'bottom-left',
+  'top-left',
+];
+
+badgePositions.forEach(badgePosition => {
+  it(`should render as circle with ${badgePosition} badge`, () => {
+    const tree = createRenderer({ badgePosition, badge: { value: 1 } });
+
+    act(() => {});
+
+    const height = 20;
+    const { onLayout } = tree.root.findByType(Badge).props;
+
+    act(() => {
+      onLayout({ nativeEvent: { layout: { height } } });
+    });
+
+    expect(tree).toMatchSnapshot();
+  });
+
+  it(`should render as square with ${badgePosition} badge`, () => {
+    const tree = createRenderer({ badgePosition, badge: { value: 1 }, cornerRadius: 0 });
+
+    act(() => {});
+
+    const height = 20;
+    const { onLayout } = tree.root.findByType(Badge).props;
+
+    act(() => {
+      onLayout({ nativeEvent: { layout: { height } } });
+    });
+
+    expect(tree).toMatchSnapshot();
+  });
 });
