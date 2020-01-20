@@ -62,17 +62,13 @@ const App = () => {
           <View style={styles.body}>
             <View style={styles.stack}>
               <Avatar
-                size={50}
                 name="John Smith"
                 imageSource={avatars.none}
                 defaultImageSource={avatars.test}
-                badge={{
-                  value: badge,
-                }}
+                badge={{ value: badge }}
               />
-              <Avatar size={50} email="jitewaboh@lagify.com" defaultImageSource={avatars.test} />
+              <Avatar email="jitewaboh@lagify.com" defaultImageSource={avatars.test} />
               <Avatar
-                size={50}
                 name="Elon Musk"
                 colorize={true}
                 imageSource={avatars.none}
@@ -81,15 +77,8 @@ const App = () => {
                   style: { backgroundColor: '#3B0' },
                 }}
               />
-              <Avatar
-                size={50}
-                name="John Smith"
-                imageSource={avatars.test}
-                shape="square"
-                style={{ borderRadius: 10 }}
-                imageStyle={{ borderRadius: 7 }}
-              />
-              <Avatar size={50} email="user@email.com" imageSource={avatars.none} />
+              <Avatar name="John Smith" imageSource={avatars.test} cornerRadius={10} />
+              <Avatar email="user@email.com" imageSource={avatars.none} />
             </View>
             <View style={styles.stack}>
               <Badge value={true} style={{ backgroundColor: '#3B0' }} />
