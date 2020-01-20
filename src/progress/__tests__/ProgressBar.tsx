@@ -68,10 +68,10 @@ it('should render as infinite progress', () => {
 it('should render with custom props', () => {
   const tree = createRenderer({
     value: 35,
-    height: 10,
-    rounded: false,
-    trackColor: 'green',
-    indicatorColor: 'red',
+    size: 10,
+    cornerRadius: 0,
+    style: { backgroundColor: 'green' },
+    indicatorStyle: { backgroundColor: 'red' },
   });
 
   act(() => {});

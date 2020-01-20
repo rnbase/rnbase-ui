@@ -11,13 +11,12 @@ import {
 } from 'react-native';
 
 import { Themed, Theme, WithThemeProps, withTheme } from '../theming';
+import { getRadius } from '../helpers';
 
 interface ProgressBarProps extends ViewProps {
+  size?: number;
+  cornerRadius?: number | string;
   value?: number;
-  height?: number;
-  rounded?: boolean;
-  trackColor?: string;
-  indicatorColor?: string;
   style?: StyleProp<ViewStyle>;
   indicatorStyle?: StyleProp<ViewStyle>;
 }
@@ -25,10 +24,8 @@ interface ProgressBarProps extends ViewProps {
 const ProgressBar: React.FC<Themed<typeof createStyleSheet, ProgressBarProps>> = ({
   styles,
   value,
-  height = 6,
-  rounded = true,
-  trackColor,
-  indicatorColor,
+  size = 6,
+  cornerRadius = '50%',
   style,
   indicatorStyle,
   ...props
@@ -62,8 +59,6 @@ const ProgressBar: React.FC<Themed<typeof createStyleSheet, ProgressBarProps>> =
     setWidth(event.nativeEvent.layout.width);
   }, []);
 
-  const rootStyles = [styles.root, style, { height }];
-  const indicatorStyles = [styles.indicator, indicatorStyle];
   const transform = [];
 
   if (value !== undefined) {
@@ -92,21 +87,18 @@ const ProgressBar: React.FC<Themed<typeof createStyleSheet, ProgressBarProps>> =
     });
   }
 
-  if (rounded) {
-    rootStyles.push({ borderRadius: height / 2 });
-  }
-
-  if (trackColor) {
-    rootStyles.push({ backgroundColor: trackColor });
-  }
-
-  if (indicatorColor) {
-    indicatorStyles.push({ backgroundColor: indicatorColor });
-  }
+  const rootStyles = [
+    {
+      height: size,
+      borderRadius: getRadius(cornerRadius, size),
+    },
+    styles.root,
+    style,
+  ];
 
   return (
-    <View {...props} testID="root" onLayout={onLayout} style={rootStyles}>
-      <Animated.View style={[indicatorStyles, { transform }]} />
+    <View testID="root" {...props} style={rootStyles} onLayout={onLayout}>
+      <Animated.View style={[styles.indicator, indicatorStyle, { transform }]} />
     </View>
   );
 };

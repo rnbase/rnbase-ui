@@ -6,18 +6,16 @@ exports[`should render as infinite progress 1`] = `
   style={
     Array [
       Object {
+        "borderRadius": 3,
+        "height": 6,
+      },
+      Object {
         "backgroundColor": "#e5e5ea",
         "flexDirection": "row",
         "justifyContent": "flex-start",
         "overflow": "hidden",
       },
       undefined,
-      Object {
-        "height": 6,
-      },
-      Object {
-        "borderRadius": 3,
-      },
     ]
   }
   testID="root"
@@ -45,18 +43,16 @@ exports[`should render normally 1`] = `
   style={
     Array [
       Object {
+        "borderRadius": 3,
+        "height": 6,
+      },
+      Object {
         "backgroundColor": "#e5e5ea",
         "flexDirection": "row",
         "justifyContent": "flex-start",
         "overflow": "hidden",
       },
       undefined,
-      Object {
-        "height": 6,
-      },
-      Object {
-        "borderRadius": 3,
-      },
     ]
   }
   testID="root"
@@ -87,14 +83,14 @@ exports[`should render with custom props 1`] = `
   style={
     Array [
       Object {
+        "borderRadius": 0,
+        "height": 10,
+      },
+      Object {
         "backgroundColor": "#e5e5ea",
         "flexDirection": "row",
         "justifyContent": "flex-start",
         "overflow": "hidden",
-      },
-      undefined,
-      Object {
-        "height": 10,
       },
       Object {
         "backgroundColor": "green",
