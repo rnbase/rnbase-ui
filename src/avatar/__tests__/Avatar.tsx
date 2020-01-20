@@ -33,7 +33,7 @@ it('should render image', () => {
 });
 
 it('should render image as square', () => {
-  const tree = createRenderer({ size, shape: 'square', imageSource: { uri: 'image.png' } });
+  const tree = createRenderer({ size, cornerRadius: 0, imageSource: { uri: 'image.png' } });
 
   act(() => {});
 
@@ -134,5 +134,5 @@ it('should render as circle with badge', () => {
 });
 
 it('should render as square with badge', () => {
-  expect(createRenderer({ size, shape: 'square', badge: { value: true } })).toMatchSnapshot();
+  expect(createRenderer({ size, cornerRadius: 0, badge: { value: true } })).toMatchSnapshot();
 });

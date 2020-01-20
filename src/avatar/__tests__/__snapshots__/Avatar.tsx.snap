@@ -5,19 +5,17 @@ exports[`should fallback to initials 1`] = `
   style={
     Array [
       Object {
+        "borderRadius": 25,
+        "height": 50,
+        "width": 50,
+      },
+      Object {
         "alignItems": "center",
         "alignSelf": "center",
         "backgroundColor": "#aeaeb2",
         "justifyContent": "center",
       },
       undefined,
-      Object {
-        "height": 50,
-        "width": 50,
-      },
-      Object {
-        "borderRadius": 25,
-      },
     ]
   }
 >
@@ -25,6 +23,9 @@ exports[`should fallback to initials 1`] = `
     numberOfLines={1}
     style={
       Array [
+        Object {
+          "fontSize": 20,
+        },
         Object {
           "backgroundColor": "transparent",
           "color": "#ffffff",
@@ -34,9 +35,6 @@ exports[`should fallback to initials 1`] = `
           "textAlignVertical": "center",
         },
         undefined,
-        Object {
-          "fontSize": 20,
-        },
       ]
     }
   >
@@ -50,24 +48,23 @@ exports[`should render as circle with badge 1`] = `
   style={
     Array [
       Object {
+        "borderRadius": 25,
+        "height": 50,
+        "width": 50,
+      },
+      Object {
         "alignItems": "center",
         "alignSelf": "center",
         "backgroundColor": "#aeaeb2",
         "justifyContent": "center",
       },
       undefined,
-      Object {
-        "height": 50,
-        "width": 50,
-      },
-      Object {
-        "borderRadius": 25,
-      },
     ]
   }
 >
   <Image
     onError={[Function]}
+    onLayout={[Function]}
     source={
       Object {
         "testUri": "../../../src/avatar/default.png",
@@ -76,13 +73,13 @@ exports[`should render as circle with badge 1`] = `
     style={
       Array [
         Object {
+          "borderRadius": 25,
+        },
+        Object {
           "height": "100%",
           "width": "100%",
         },
         undefined,
-        Object {
-          "borderRadius": 25,
-        },
       ]
     }
   />
@@ -119,15 +116,15 @@ exports[`should render as square with badge 1`] = `
   style={
     Array [
       Object {
+        "borderRadius": 0,
+        "height": 50,
+        "width": 50,
+      },
+      Object {
         "alignItems": "center",
         "alignSelf": "center",
         "backgroundColor": "#aeaeb2",
         "justifyContent": "center",
-      },
-      undefined,
-      Object {
-        "height": 50,
-        "width": 50,
       },
       undefined,
     ]
@@ -135,6 +132,7 @@ exports[`should render as square with badge 1`] = `
 >
   <Image
     onError={[Function]}
+    onLayout={[Function]}
     source={
       Object {
         "testUri": "../../../src/avatar/default.png",
@@ -143,10 +141,12 @@ exports[`should render as square with badge 1`] = `
     style={
       Array [
         Object {
+          "borderRadius": 0,
+        },
+        Object {
           "height": "100%",
           "width": "100%",
         },
-        undefined,
         undefined,
       ]
     }
@@ -184,24 +184,23 @@ exports[`should render default image 1`] = `
   style={
     Array [
       Object {
+        "borderRadius": 25,
+        "height": 50,
+        "width": 50,
+      },
+      Object {
         "alignItems": "center",
         "alignSelf": "center",
         "backgroundColor": "#aeaeb2",
         "justifyContent": "center",
       },
       undefined,
-      Object {
-        "height": 50,
-        "width": 50,
-      },
-      Object {
-        "borderRadius": 25,
-      },
     ]
   }
 >
   <Image
     onError={[Function]}
+    onLayout={[Function]}
     source={
       Object {
         "testUri": "../../../src/avatar/default.png",
@@ -210,13 +209,13 @@ exports[`should render default image 1`] = `
     style={
       Array [
         Object {
+          "borderRadius": 25,
+        },
+        Object {
           "height": "100%",
           "width": "100%",
         },
         undefined,
-        Object {
-          "borderRadius": 25,
-        },
       ]
     }
   />
@@ -228,24 +227,23 @@ exports[`should render default image if empty name 1`] = `
   style={
     Array [
       Object {
+        "borderRadius": 25,
+        "height": 50,
+        "width": 50,
+      },
+      Object {
         "alignItems": "center",
         "alignSelf": "center",
         "backgroundColor": "#aeaeb2",
         "justifyContent": "center",
       },
       undefined,
-      Object {
-        "height": 50,
-        "width": 50,
-      },
-      Object {
-        "borderRadius": 25,
-      },
     ]
   }
 >
   <Image
     onError={[Function]}
+    onLayout={[Function]}
     source={
       Object {
         "uri": "default.png",
@@ -254,13 +252,13 @@ exports[`should render default image if empty name 1`] = `
     style={
       Array [
         Object {
+          "borderRadius": 25,
+        },
+        Object {
           "height": "100%",
           "width": "100%",
         },
         undefined,
-        Object {
-          "borderRadius": 25,
-        },
       ]
     }
   />
@@ -272,24 +270,23 @@ exports[`should render default image if no gravatar 1`] = `
   style={
     Array [
       Object {
+        "borderRadius": 25,
+        "height": 50,
+        "width": 50,
+      },
+      Object {
         "alignItems": "center",
         "alignSelf": "center",
         "backgroundColor": "#aeaeb2",
         "justifyContent": "center",
       },
       undefined,
-      Object {
-        "height": 50,
-        "width": 50,
-      },
-      Object {
-        "borderRadius": 25,
-      },
     ]
   }
 >
   <Image
     onError={[Function]}
+    onLayout={[Function]}
     source={
       Object {
         "uri": "default.png",
@@ -298,13 +295,13 @@ exports[`should render default image if no gravatar 1`] = `
     style={
       Array [
         Object {
+          "borderRadius": 25,
+        },
+        Object {
           "height": "100%",
           "width": "100%",
         },
         undefined,
-        Object {
-          "borderRadius": 25,
-        },
       ]
     }
   />
@@ -316,24 +313,23 @@ exports[`should render default image if no image 1`] = `
   style={
     Array [
       Object {
+        "borderRadius": 25,
+        "height": 50,
+        "width": 50,
+      },
+      Object {
         "alignItems": "center",
         "alignSelf": "center",
         "backgroundColor": "#aeaeb2",
         "justifyContent": "center",
       },
       undefined,
-      Object {
-        "height": 50,
-        "width": 50,
-      },
-      Object {
-        "borderRadius": 25,
-      },
     ]
   }
 >
   <Image
     onError={[Function]}
+    onLayout={[Function]}
     source={
       Object {
         "uri": "default.png",
@@ -342,13 +338,13 @@ exports[`should render default image if no image 1`] = `
     style={
       Array [
         Object {
+          "borderRadius": 25,
+        },
+        Object {
           "height": "100%",
           "width": "100%",
         },
         undefined,
-        Object {
-          "borderRadius": 25,
-        },
       ]
     }
   />
@@ -360,24 +356,23 @@ exports[`should render gravatar 1`] = `
   style={
     Array [
       Object {
+        "borderRadius": 25,
+        "height": 50,
+        "width": 50,
+      },
+      Object {
         "alignItems": "center",
         "alignSelf": "center",
         "backgroundColor": "#aeaeb2",
         "justifyContent": "center",
       },
       undefined,
-      Object {
-        "height": 50,
-        "width": 50,
-      },
-      Object {
-        "borderRadius": 25,
-      },
     ]
   }
 >
   <Image
     onError={[Function]}
+    onLayout={[Function]}
     source={
       Object {
         "uri": "https://www.gravatar.com/avatar/b58c6f14d292556214bd64909bcdb118?s=100&d=404",
@@ -386,13 +381,13 @@ exports[`should render gravatar 1`] = `
     style={
       Array [
         Object {
+          "borderRadius": 25,
+        },
+        Object {
           "height": "100%",
           "width": "100%",
         },
         undefined,
-        Object {
-          "borderRadius": 25,
-        },
       ]
     }
   />
@@ -404,24 +399,23 @@ exports[`should render image 1`] = `
   style={
     Array [
       Object {
+        "borderRadius": 25,
+        "height": 50,
+        "width": 50,
+      },
+      Object {
         "alignItems": "center",
         "alignSelf": "center",
         "backgroundColor": "#aeaeb2",
         "justifyContent": "center",
       },
       undefined,
-      Object {
-        "height": 50,
-        "width": 50,
-      },
-      Object {
-        "borderRadius": 25,
-      },
     ]
   }
 >
   <Image
     onError={[Function]}
+    onLayout={[Function]}
     source={
       Object {
         "uri": "image.png",
@@ -430,13 +424,13 @@ exports[`should render image 1`] = `
     style={
       Array [
         Object {
+          "borderRadius": 25,
+        },
+        Object {
           "height": "100%",
           "width": "100%",
         },
         undefined,
-        Object {
-          "borderRadius": 25,
-        },
       ]
     }
   />
@@ -448,15 +442,15 @@ exports[`should render image as square 1`] = `
   style={
     Array [
       Object {
+        "borderRadius": 0,
+        "height": 50,
+        "width": 50,
+      },
+      Object {
         "alignItems": "center",
         "alignSelf": "center",
         "backgroundColor": "#aeaeb2",
         "justifyContent": "center",
-      },
-      undefined,
-      Object {
-        "height": 50,
-        "width": 50,
       },
       undefined,
     ]
@@ -464,6 +458,7 @@ exports[`should render image as square 1`] = `
 >
   <Image
     onError={[Function]}
+    onLayout={[Function]}
     source={
       Object {
         "uri": "image.png",
@@ -472,10 +467,12 @@ exports[`should render image as square 1`] = `
     style={
       Array [
         Object {
+          "borderRadius": 0,
+        },
+        Object {
           "height": "100%",
           "width": "100%",
         },
-        undefined,
         undefined,
       ]
     }
@@ -488,19 +485,17 @@ exports[`should render initials 1`] = `
   style={
     Array [
       Object {
+        "borderRadius": 25,
+        "height": 50,
+        "width": 50,
+      },
+      Object {
         "alignItems": "center",
         "alignSelf": "center",
         "backgroundColor": "#aeaeb2",
         "justifyContent": "center",
       },
       undefined,
-      Object {
-        "height": 50,
-        "width": 50,
-      },
-      Object {
-        "borderRadius": 25,
-      },
       Object {
         "backgroundColor": "hsl(-216, 75%, 50%)",
       },
@@ -512,6 +507,9 @@ exports[`should render initials 1`] = `
     style={
       Array [
         Object {
+          "fontSize": 20,
+        },
+        Object {
           "backgroundColor": "transparent",
           "color": "#ffffff",
           "fontFamily": "System",
@@ -520,9 +518,6 @@ exports[`should render initials 1`] = `
           "textAlignVertical": "center",
         },
         undefined,
-        Object {
-          "fontSize": 20,
-        },
       ]
     }
   >
