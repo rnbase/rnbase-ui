@@ -91,19 +91,19 @@ const App = () => {
             <View style={styles.stack}>
               <Button
                 text="Button"
-                imageSource={require('./src/assets/star.png')}
+                iconSource={require('./src/assets/star.png')}
                 onPress={() => setBadge(badge + 1)}
               />
               <OutlineButton
                 text="Button"
-                imageSource={require('./src/assets/heart.png')}
+                iconSource={require('./src/assets/heart.png')}
                 onPress={() => setBadge(0)}
               />
               <TextButton
                 text="Button"
                 busy={busy}
-                imageAlignment="right"
-                imageSource={require('./src/assets/chevron-right.png')}
+                iconAlignment="right"
+                iconSource={require('./src/assets/chevron-right.png')}
                 onPress={() => {
                   setBusy(true);
                   setTimeout(() => setBusy(false), 3000);
@@ -115,7 +115,7 @@ const App = () => {
               style={{ marginVertical: 10 }}
               text="Activity Button"
               busyAnimationType="slide"
-              imageSource={require('./src/assets/check-circle.png')}
+              iconSource={require('./src/assets/check-circle.png')}
               onPress={() => {
                 setBusy(true);
                 setTimeout(() => setBusy(false), 3000);

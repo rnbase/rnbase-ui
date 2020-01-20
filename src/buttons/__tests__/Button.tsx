@@ -47,14 +47,14 @@ it('should render text only', () => {
 });
 
 it('should render image only', () => {
-  expect(createRenderer({ imageSource: { uri: 'image.png' } })).toMatchSnapshot();
+  expect(createRenderer({ iconSource: { uri: 'image.png' } })).toMatchSnapshot();
 });
 
 it('should render as disabled', () => {
   expect(
     createRenderer({
       text: 'Button',
-      imageSource: { uri: 'image.png' },
+      iconSource: { uri: 'image.png' },
       disabled: true,
     }),
   ).toMatchSnapshot();
@@ -64,8 +64,8 @@ it('should render image at the left', () => {
   expect(
     createRenderer({
       text: 'Right Text',
-      imageSource: { uri: 'left.png' },
-      imageAlignment: 'left',
+      iconSource: { uri: 'left.png' },
+      iconAlignment: 'left',
     }),
   ).toMatchSnapshot();
 });
@@ -74,8 +74,8 @@ it('should render image at the right', () => {
   expect(
     createRenderer({
       text: 'Left Text',
-      imageSource: { uri: 'right.png' },
-      imageAlignment: 'right',
+      iconSource: { uri: 'right.png' },
+      iconAlignment: 'right',
     }),
   ).toMatchSnapshot();
 });
@@ -84,10 +84,10 @@ it('should render with custom styles', () => {
   expect(
     createRenderer({
       text: 'Button',
-      imageSource: { uri: 'image.png' },
+      iconSource: { uri: 'image.png' },
       style: { backgroundColor: 'red' },
       textStyle: { color: 'green' },
-      imageStyle: { tintColor: 'blue' },
+      iconStyle: { tintColor: 'blue' },
     }),
   ).toMatchSnapshot();
 });

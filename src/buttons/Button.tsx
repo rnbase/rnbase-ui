@@ -33,9 +33,9 @@ interface ButtonProps extends TouchableOpacityProps {
   style?: StyleProp<ViewStyle>;
   text?: React.ReactNode;
   textStyle?: StyleProp<TextStyle>;
-  imageSource?: ImageSourcePropType;
-  imageStyle?: StyleProp<ImageStyle>;
-  imageAlignment?: 'left' | 'right';
+  iconSource?: ImageSourcePropType;
+  iconStyle?: StyleProp<ImageStyle>;
+  iconAlignment?: 'left' | 'right';
 }
 
 const Button: React.FC<Themed<typeof createStyleSheet, ButtonProps>> = ({
@@ -52,9 +52,9 @@ const Button: React.FC<Themed<typeof createStyleSheet, ButtonProps>> = ({
   style,
   text,
   textStyle,
-  imageSource,
-  imageStyle,
-  imageAlignment = 'left',
+  iconSource,
+  iconStyle,
+  iconAlignment = 'left',
   ...props
 }) => {
   const toValue = busy ? 1 : 0;
@@ -123,23 +123,23 @@ const Button: React.FC<Themed<typeof createStyleSheet, ButtonProps>> = ({
       );
     }
 
-    if (imageSource) {
-      const imageStyles = [
+    if (iconSource) {
+      const iconStyles = [
         {
           width: proportions.iconSize,
           height: proportions.iconSize,
         },
-        styles.image,
-        imageStyle,
+        styles.icon,
+        iconStyle,
       ];
 
       if (disabled) {
-        imageStyles.push(styles.disabledImage);
+        iconStyles.push(styles.disabledIcon);
       }
 
-      const image = <Image key="image" style={imageStyles} source={imageSource} />;
+      const image = <Image key="image" style={iconStyles} source={iconSource} />;
 
-      if (imageAlignment === 'right') {
+      if (iconAlignment === 'right') {
         content.push(image);
       } else {
         content.unshift(image);
@@ -201,7 +201,7 @@ const createStyleSheet = ({ Colors, Fonts }: Theme) =>
       ...Fonts.semibold,
       color: Colors.white,
     },
-    image: {
+    icon: {
       flexShrink: 0,
       tintColor: Colors.white,
     },
@@ -211,7 +211,7 @@ const createStyleSheet = ({ Colors, Fonts }: Theme) =>
     disabledText: {
       color: Colors.gray2,
     },
-    disabledImage: {
+    disabledIcon: {
       tintColor: Colors.gray2,
     },
   });
