@@ -11,9 +11,8 @@ import {
 } from 'react-native';
 
 import { Themed, Theme, WithThemeProps, withTheme } from '../theming';
+import { inRange } from '../helpers';
 import RatingSymbol from './RatingSymbol';
-
-const inRange = (value: number, maxValue: number) => Math.max(0, Math.min(value, maxValue));
 
 interface RatingProps extends ViewProps {
   size?: number;
@@ -52,14 +51,14 @@ const Rating: React.FC<Themed<typeof createStyleSheet, RatingProps>> = ({
     size,
   ]);
 
-  useEffect(() => setOverlayWidth(inRange(value, maxValue)), [setOverlayWidth, value, maxValue]);
+  useEffect(() => setOverlayWidth(inRange(value, 0, maxValue)), [setOverlayWidth, value, maxValue]);
 
   const onMove = useCallback(
     ({ nativeEvent }) => {
       const eventValue = allowDecimals
         ? Math.round((nativeEvent.locationX / size) * 10) / 10
         : Math.ceil(nativeEvent.locationX / size);
-      const ratingValue = inRange(eventValue, maxValue);
+      const ratingValue = inRange(eventValue, 0, maxValue);
 
       setRating(ratingValue);
       setOverlayWidth(ratingValue);
