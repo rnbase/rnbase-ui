@@ -11,40 +11,28 @@ import {
 } from 'react-native';
 
 import { Themed, Theme, WithThemeProps, withTheme } from '../theming';
-
-const getRadius = (value: number | string, height: number) => {
-  if (typeof value === 'string') {
-    const match = value.match(/^([0-9]|[1-4][0-9]|50)%$/);
-    const percent = match ? parseInt(match[0], 10) : 0;
-
-    return (height * percent) / 100;
-  }
-
-  return value;
-};
-
-const inRange = (value: number, min: number, max: number) => Math.max(min, Math.min(value, max));
+import { inRange, getRadius } from '../helpers';
 
 const minSize = 15;
 const maxSize = 40;
 
 interface BadgeProps extends ViewProps {
-  value?: number | boolean;
-  limit?: number | boolean;
   size?: number;
   cornerRadius?: number | string;
   animate?: boolean;
+  value?: number | boolean;
+  limit?: number | boolean;
   style?: StyleProp<ViewStyle>;
   textStyle?: StyleProp<TextStyle>;
 }
 
 const Badge: React.FC<Themed<typeof createStyleSheet, BadgeProps>> = ({
   styles,
-  value,
-  limit = 99,
   size = 20,
   cornerRadius = '50%',
   animate = true,
+  value,
+  limit = 99,
   style,
   textStyle,
   ...props
