@@ -35,12 +35,12 @@ it('should render with custom props', () => {
   expect(tree).toMatchSnapshot();
 });
 
-it('should render with custom colors', () => {
+it('should render with custom styles', () => {
   const tree = createRenderer({
     value: 3,
-    activeColor: 'red',
-    ratingColor: 'green',
-    underlayColor: 'blue',
+    symbolStyle: { color: 'black' },
+    activeSymbolStyle: { color: 'blue' },
+    selectedSymbolStyle: { color: 'green' },
   });
 
   act(() => {});

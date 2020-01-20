@@ -20,11 +20,11 @@ interface RatingProps extends ViewProps {
   value?: number;
   animate?: boolean;
   maxValue?: number;
-  activeColor?: string;
-  ratingColor?: string;
-  underlayColor?: string;
   allowDecimals?: boolean;
   style?: StyleProp<ViewStyle>;
+  symbolStyle?: StyleProp<TextStyle>;
+  activeSymbolStyle?: StyleProp<TextStyle>;
+  selectedSymbolStyle?: StyleProp<TextStyle>;
   onChange?: Function;
   onFinish?: Function;
 }
@@ -36,11 +36,11 @@ const Rating: React.FC<Themed<typeof createStyleSheet, RatingProps>> = ({
   value = 0,
   animate = true,
   maxValue = 5,
-  activeColor,
-  ratingColor,
-  underlayColor,
   allowDecimals = false,
   style,
+  symbolStyle,
+  activeSymbolStyle,
+  selectedSymbolStyle,
   onChange,
   onFinish,
 }) => {
@@ -93,43 +93,38 @@ const Rating: React.FC<Themed<typeof createStyleSheet, RatingProps>> = ({
   }, [onChange, onFinish, onMove, onRelease]);
 
   const rootStyles = [
-    styles.root,
-    style,
     {
       width: size * maxValue,
       height: size,
     },
+    styles.root,
+    style,
   ];
 
   const overlayStyles = [
-    styles.root,
-    styles.overlay,
     {
       width: overlayWidth,
       height: size,
     },
+    styles.root,
+    styles.overlay,
   ];
 
-  const textStyle = {
-    width: size,
-    fontSize: size,
-    height: size * 1.25,
-    lineHeight: size * 1.25,
-  };
+  const symbolStyles = [
+    {
+      width: size,
+      fontSize: size,
+      height: size * 1.25,
+      lineHeight: size * 1.25,
+    },
+    styles.symbol,
+    symbolStyle,
+  ];
 
-  const underlaySymbolStyles = [textStyle, styles.symbol, styles.symbolUnderlay];
-  const overlaySymbolStyles = [textStyle, styles.symbol, styles.symbolOverlay];
-
-  if (underlayColor) {
-    underlaySymbolStyles.push({ color: underlayColor });
-  }
-
-  if (ratingColor) {
-    overlaySymbolStyles.push({ color: ratingColor });
-  }
+  const overlaySymbolStyles = [symbolStyles, styles.symbolActive, activeSymbolStyle];
 
   if (rating) {
-    overlaySymbolStyles.push(activeColor ? { color: activeColor } : styles.symbolActive);
+    overlaySymbolStyles.push(styles.symbolSelected, selectedSymbolStyle);
   }
 
   const getSymbols = useCallback(
@@ -150,7 +145,7 @@ const Rating: React.FC<Themed<typeof createStyleSheet, RatingProps>> = ({
 
   return (
     <View {...panResponder && panResponder.panHandlers} pointerEvents="box-only" style={rootStyles}>
-      {renderSymbols('underlay', underlaySymbolStyles)}
+      {renderSymbols('underlay', symbolStyles)}
       <Animated.View style={overlayStyles}>
         {renderSymbols('overlay', overlaySymbolStyles)}
       </Animated.View>
@@ -174,19 +169,17 @@ const createStyleSheet = ({ Colors }: Theme) =>
     symbol: {
       flexShrink: 0,
       fontWeight: '200',
+      color: Colors.gray3,
       textAlign: 'center',
       fontFamily: 'System',
       includeFontPadding: false,
       textAlignVertical: 'center',
       backgroundColor: 'transparent',
     },
-    symbolUnderlay: {
-      color: Colors.gray3,
-    },
-    symbolOverlay: {
+    symbolActive: {
       color: Colors.orange,
     },
-    symbolActive: {
+    symbolSelected: {
       color: Colors.red,
     },
   });
