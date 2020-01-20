@@ -1,0 +1,1222 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render normally 1`] = `
+<View
+  pointerEvents="box-only"
+  style={
+    Array [
+      Object {
+        "alignItems": "center",
+        "flexDirection": "row",
+        "flexShrink": 0,
+      },
+      undefined,
+      Object {
+        "height": 20,
+        "width": 100,
+      },
+    ]
+  }
+>
+  <RatingSymbol
+    selected={false}
+    style={
+      Array [
+        Object {
+          "fontSize": 20,
+          "height": 25,
+          "lineHeight": 25,
+          "width": 20,
+        },
+        Object {
+          "backgroundColor": "transparent",
+          "flexShrink": 0,
+          "fontFamily": "System",
+          "fontWeight": "200",
+          "includeFontPadding": false,
+          "textAlign": "center",
+          "textAlignVertical": "center",
+        },
+        Object {
+          "color": "#c7c7cc",
+        },
+      ]
+    }
+  >
+    ☆
+  </RatingSymbol>
+  <RatingSymbol
+    selected={false}
+    style={
+      Array [
+        Object {
+          "fontSize": 20,
+          "height": 25,
+          "lineHeight": 25,
+          "width": 20,
+        },
+        Object {
+          "backgroundColor": "transparent",
+          "flexShrink": 0,
+          "fontFamily": "System",
+          "fontWeight": "200",
+          "includeFontPadding": false,
+          "textAlign": "center",
+          "textAlignVertical": "center",
+        },
+        Object {
+          "color": "#c7c7cc",
+        },
+      ]
+    }
+  >
+    ☆
+  </RatingSymbol>
+  <RatingSymbol
+    selected={false}
+    style={
+      Array [
+        Object {
+          "fontSize": 20,
+          "height": 25,
+          "lineHeight": 25,
+          "width": 20,
+        },
+        Object {
+          "backgroundColor": "transparent",
+          "flexShrink": 0,
+          "fontFamily": "System",
+          "fontWeight": "200",
+          "includeFontPadding": false,
+          "textAlign": "center",
+          "textAlignVertical": "center",
+        },
+        Object {
+          "color": "#c7c7cc",
+        },
+      ]
+    }
+  >
+    ☆
+  </RatingSymbol>
+  <RatingSymbol
+    selected={false}
+    style={
+      Array [
+        Object {
+          "fontSize": 20,
+          "height": 25,
+          "lineHeight": 25,
+          "width": 20,
+        },
+        Object {
+          "backgroundColor": "transparent",
+          "flexShrink": 0,
+          "fontFamily": "System",
+          "fontWeight": "200",
+          "includeFontPadding": false,
+          "textAlign": "center",
+          "textAlignVertical": "center",
+        },
+        Object {
+          "color": "#c7c7cc",
+        },
+      ]
+    }
+  >
+    ☆
+  </RatingSymbol>
+  <RatingSymbol
+    selected={false}
+    style={
+      Array [
+        Object {
+          "fontSize": 20,
+          "height": 25,
+          "lineHeight": 25,
+          "width": 20,
+        },
+        Object {
+          "backgroundColor": "transparent",
+          "flexShrink": 0,
+          "fontFamily": "System",
+          "fontWeight": "200",
+          "includeFontPadding": false,
+          "textAlign": "center",
+          "textAlignVertical": "center",
+        },
+        Object {
+          "color": "#c7c7cc",
+        },
+      ]
+    }
+  >
+    ☆
+  </RatingSymbol>
+  <View
+    style={
+      Object {
+        "alignItems": "center",
+        "flexDirection": "row",
+        "flexShrink": 0,
+        "height": 20,
+        "left": 0,
+        "overflow": "hidden",
+        "position": "absolute",
+        "top": 0,
+        "width": 60,
+      }
+    }
+  >
+    <RatingSymbol
+      selected={false}
+      style={
+        Array [
+          Object {
+            "fontSize": 20,
+            "height": 25,
+            "lineHeight": 25,
+            "width": 20,
+          },
+          Object {
+            "backgroundColor": "transparent",
+            "flexShrink": 0,
+            "fontFamily": "System",
+            "fontWeight": "200",
+            "includeFontPadding": false,
+            "textAlign": "center",
+            "textAlignVertical": "center",
+          },
+          Object {
+            "color": "#ff9500",
+          },
+        ]
+      }
+    >
+      ★
+    </RatingSymbol>
+    <RatingSymbol
+      selected={false}
+      style={
+        Array [
+          Object {
+            "fontSize": 20,
+            "height": 25,
+            "lineHeight": 25,
+            "width": 20,
+          },
+          Object {
+            "backgroundColor": "transparent",
+            "flexShrink": 0,
+            "fontFamily": "System",
+            "fontWeight": "200",
+            "includeFontPadding": false,
+            "textAlign": "center",
+            "textAlignVertical": "center",
+          },
+          Object {
+            "color": "#ff9500",
+          },
+        ]
+      }
+    >
+      ★
+    </RatingSymbol>
+    <RatingSymbol
+      selected={false}
+      style={
+        Array [
+          Object {
+            "fontSize": 20,
+            "height": 25,
+            "lineHeight": 25,
+            "width": 20,
+          },
+          Object {
+            "backgroundColor": "transparent",
+            "flexShrink": 0,
+            "fontFamily": "System",
+            "fontWeight": "200",
+            "includeFontPadding": false,
+            "textAlign": "center",
+            "textAlignVertical": "center",
+          },
+          Object {
+            "color": "#ff9500",
+          },
+        ]
+      }
+    >
+      ★
+    </RatingSymbol>
+    <RatingSymbol
+      selected={false}
+      style={
+        Array [
+          Object {
+            "fontSize": 20,
+            "height": 25,
+            "lineHeight": 25,
+            "width": 20,
+          },
+          Object {
+            "backgroundColor": "transparent",
+            "flexShrink": 0,
+            "fontFamily": "System",
+            "fontWeight": "200",
+            "includeFontPadding": false,
+            "textAlign": "center",
+            "textAlignVertical": "center",
+          },
+          Object {
+            "color": "#ff9500",
+          },
+        ]
+      }
+    >
+      ★
+    </RatingSymbol>
+    <RatingSymbol
+      selected={false}
+      style={
+        Array [
+          Object {
+            "fontSize": 20,
+            "height": 25,
+            "lineHeight": 25,
+            "width": 20,
+          },
+          Object {
+            "backgroundColor": "transparent",
+            "flexShrink": 0,
+            "fontFamily": "System",
+            "fontWeight": "200",
+            "includeFontPadding": false,
+            "textAlign": "center",
+            "textAlignVertical": "center",
+          },
+          Object {
+            "color": "#ff9500",
+          },
+        ]
+      }
+    >
+      ★
+    </RatingSymbol>
+  </View>
+</View>
+`;
+
+exports[`should render with custom colors 1`] = `
+<View
+  pointerEvents="box-only"
+  style={
+    Array [
+      Object {
+        "alignItems": "center",
+        "flexDirection": "row",
+        "flexShrink": 0,
+      },
+      undefined,
+      Object {
+        "height": 20,
+        "width": 100,
+      },
+    ]
+  }
+>
+  <RatingSymbol
+    selected={false}
+    style={
+      Array [
+        Object {
+          "fontSize": 20,
+          "height": 25,
+          "lineHeight": 25,
+          "width": 20,
+        },
+        Object {
+          "backgroundColor": "transparent",
+          "flexShrink": 0,
+          "fontFamily": "System",
+          "fontWeight": "200",
+          "includeFontPadding": false,
+          "textAlign": "center",
+          "textAlignVertical": "center",
+        },
+        Object {
+          "color": "#c7c7cc",
+        },
+        Object {
+          "color": "blue",
+        },
+      ]
+    }
+  >
+    ☆
+  </RatingSymbol>
+  <RatingSymbol
+    selected={false}
+    style={
+      Array [
+        Object {
+          "fontSize": 20,
+          "height": 25,
+          "lineHeight": 25,
+          "width": 20,
+        },
+        Object {
+          "backgroundColor": "transparent",
+          "flexShrink": 0,
+          "fontFamily": "System",
+          "fontWeight": "200",
+          "includeFontPadding": false,
+          "textAlign": "center",
+          "textAlignVertical": "center",
+        },
+        Object {
+          "color": "#c7c7cc",
+        },
+        Object {
+          "color": "blue",
+        },
+      ]
+    }
+  >
+    ☆
+  </RatingSymbol>
+  <RatingSymbol
+    selected={false}
+    style={
+      Array [
+        Object {
+          "fontSize": 20,
+          "height": 25,
+          "lineHeight": 25,
+          "width": 20,
+        },
+        Object {
+          "backgroundColor": "transparent",
+          "flexShrink": 0,
+          "fontFamily": "System",
+          "fontWeight": "200",
+          "includeFontPadding": false,
+          "textAlign": "center",
+          "textAlignVertical": "center",
+        },
+        Object {
+          "color": "#c7c7cc",
+        },
+        Object {
+          "color": "blue",
+        },
+      ]
+    }
+  >
+    ☆
+  </RatingSymbol>
+  <RatingSymbol
+    selected={false}
+    style={
+      Array [
+        Object {
+          "fontSize": 20,
+          "height": 25,
+          "lineHeight": 25,
+          "width": 20,
+        },
+        Object {
+          "backgroundColor": "transparent",
+          "flexShrink": 0,
+          "fontFamily": "System",
+          "fontWeight": "200",
+          "includeFontPadding": false,
+          "textAlign": "center",
+          "textAlignVertical": "center",
+        },
+        Object {
+          "color": "#c7c7cc",
+        },
+        Object {
+          "color": "blue",
+        },
+      ]
+    }
+  >
+    ☆
+  </RatingSymbol>
+  <RatingSymbol
+    selected={false}
+    style={
+      Array [
+        Object {
+          "fontSize": 20,
+          "height": 25,
+          "lineHeight": 25,
+          "width": 20,
+        },
+        Object {
+          "backgroundColor": "transparent",
+          "flexShrink": 0,
+          "fontFamily": "System",
+          "fontWeight": "200",
+          "includeFontPadding": false,
+          "textAlign": "center",
+          "textAlignVertical": "center",
+        },
+        Object {
+          "color": "#c7c7cc",
+        },
+        Object {
+          "color": "blue",
+        },
+      ]
+    }
+  >
+    ☆
+  </RatingSymbol>
+  <View
+    style={
+      Object {
+        "alignItems": "center",
+        "flexDirection": "row",
+        "flexShrink": 0,
+        "height": 20,
+        "left": 0,
+        "overflow": "hidden",
+        "position": "absolute",
+        "top": 0,
+        "width": 60,
+      }
+    }
+  >
+    <RatingSymbol
+      selected={false}
+      style={
+        Array [
+          Object {
+            "fontSize": 20,
+            "height": 25,
+            "lineHeight": 25,
+            "width": 20,
+          },
+          Object {
+            "backgroundColor": "transparent",
+            "flexShrink": 0,
+            "fontFamily": "System",
+            "fontWeight": "200",
+            "includeFontPadding": false,
+            "textAlign": "center",
+            "textAlignVertical": "center",
+          },
+          Object {
+            "color": "#ff9500",
+          },
+          Object {
+            "color": "green",
+          },
+        ]
+      }
+    >
+      ★
+    </RatingSymbol>
+    <RatingSymbol
+      selected={false}
+      style={
+        Array [
+          Object {
+            "fontSize": 20,
+            "height": 25,
+            "lineHeight": 25,
+            "width": 20,
+          },
+          Object {
+            "backgroundColor": "transparent",
+            "flexShrink": 0,
+            "fontFamily": "System",
+            "fontWeight": "200",
+            "includeFontPadding": false,
+            "textAlign": "center",
+            "textAlignVertical": "center",
+          },
+          Object {
+            "color": "#ff9500",
+          },
+          Object {
+            "color": "green",
+          },
+        ]
+      }
+    >
+      ★
+    </RatingSymbol>
+    <RatingSymbol
+      selected={false}
+      style={
+        Array [
+          Object {
+            "fontSize": 20,
+            "height": 25,
+            "lineHeight": 25,
+            "width": 20,
+          },
+          Object {
+            "backgroundColor": "transparent",
+            "flexShrink": 0,
+            "fontFamily": "System",
+            "fontWeight": "200",
+            "includeFontPadding": false,
+            "textAlign": "center",
+            "textAlignVertical": "center",
+          },
+          Object {
+            "color": "#ff9500",
+          },
+          Object {
+            "color": "green",
+          },
+        ]
+      }
+    >
+      ★
+    </RatingSymbol>
+    <RatingSymbol
+      selected={false}
+      style={
+        Array [
+          Object {
+            "fontSize": 20,
+            "height": 25,
+            "lineHeight": 25,
+            "width": 20,
+          },
+          Object {
+            "backgroundColor": "transparent",
+            "flexShrink": 0,
+            "fontFamily": "System",
+            "fontWeight": "200",
+            "includeFontPadding": false,
+            "textAlign": "center",
+            "textAlignVertical": "center",
+          },
+          Object {
+            "color": "#ff9500",
+          },
+          Object {
+            "color": "green",
+          },
+        ]
+      }
+    >
+      ★
+    </RatingSymbol>
+    <RatingSymbol
+      selected={false}
+      style={
+        Array [
+          Object {
+            "fontSize": 20,
+            "height": 25,
+            "lineHeight": 25,
+            "width": 20,
+          },
+          Object {
+            "backgroundColor": "transparent",
+            "flexShrink": 0,
+            "fontFamily": "System",
+            "fontWeight": "200",
+            "includeFontPadding": false,
+            "textAlign": "center",
+            "textAlignVertical": "center",
+          },
+          Object {
+            "color": "#ff9500",
+          },
+          Object {
+            "color": "green",
+          },
+        ]
+      }
+    >
+      ★
+    </RatingSymbol>
+  </View>
+</View>
+`;
+
+exports[`should render with custom props 1`] = `
+<View
+  pointerEvents="box-only"
+  style={
+    Array [
+      Object {
+        "alignItems": "center",
+        "flexDirection": "row",
+        "flexShrink": 0,
+      },
+      undefined,
+      Object {
+        "height": 30,
+        "width": 300,
+      },
+    ]
+  }
+>
+  <RatingSymbol
+    selected={false}
+    style={
+      Array [
+        Object {
+          "fontSize": 30,
+          "height": 37.5,
+          "lineHeight": 37.5,
+          "width": 30,
+        },
+        Object {
+          "backgroundColor": "transparent",
+          "flexShrink": 0,
+          "fontFamily": "System",
+          "fontWeight": "200",
+          "includeFontPadding": false,
+          "textAlign": "center",
+          "textAlignVertical": "center",
+        },
+        Object {
+          "color": "#c7c7cc",
+        },
+      ]
+    }
+  >
+    ★
+  </RatingSymbol>
+  <RatingSymbol
+    selected={false}
+    style={
+      Array [
+        Object {
+          "fontSize": 30,
+          "height": 37.5,
+          "lineHeight": 37.5,
+          "width": 30,
+        },
+        Object {
+          "backgroundColor": "transparent",
+          "flexShrink": 0,
+          "fontFamily": "System",
+          "fontWeight": "200",
+          "includeFontPadding": false,
+          "textAlign": "center",
+          "textAlignVertical": "center",
+        },
+        Object {
+          "color": "#c7c7cc",
+        },
+      ]
+    }
+  >
+    ★
+  </RatingSymbol>
+  <RatingSymbol
+    selected={false}
+    style={
+      Array [
+        Object {
+          "fontSize": 30,
+          "height": 37.5,
+          "lineHeight": 37.5,
+          "width": 30,
+        },
+        Object {
+          "backgroundColor": "transparent",
+          "flexShrink": 0,
+          "fontFamily": "System",
+          "fontWeight": "200",
+          "includeFontPadding": false,
+          "textAlign": "center",
+          "textAlignVertical": "center",
+        },
+        Object {
+          "color": "#c7c7cc",
+        },
+      ]
+    }
+  >
+    ★
+  </RatingSymbol>
+  <RatingSymbol
+    selected={false}
+    style={
+      Array [
+        Object {
+          "fontSize": 30,
+          "height": 37.5,
+          "lineHeight": 37.5,
+          "width": 30,
+        },
+        Object {
+          "backgroundColor": "transparent",
+          "flexShrink": 0,
+          "fontFamily": "System",
+          "fontWeight": "200",
+          "includeFontPadding": false,
+          "textAlign": "center",
+          "textAlignVertical": "center",
+        },
+        Object {
+          "color": "#c7c7cc",
+        },
+      ]
+    }
+  >
+    ★
+  </RatingSymbol>
+  <RatingSymbol
+    selected={false}
+    style={
+      Array [
+        Object {
+          "fontSize": 30,
+          "height": 37.5,
+          "lineHeight": 37.5,
+          "width": 30,
+        },
+        Object {
+          "backgroundColor": "transparent",
+          "flexShrink": 0,
+          "fontFamily": "System",
+          "fontWeight": "200",
+          "includeFontPadding": false,
+          "textAlign": "center",
+          "textAlignVertical": "center",
+        },
+        Object {
+          "color": "#c7c7cc",
+        },
+      ]
+    }
+  >
+    ★
+  </RatingSymbol>
+  <RatingSymbol
+    selected={false}
+    style={
+      Array [
+        Object {
+          "fontSize": 30,
+          "height": 37.5,
+          "lineHeight": 37.5,
+          "width": 30,
+        },
+        Object {
+          "backgroundColor": "transparent",
+          "flexShrink": 0,
+          "fontFamily": "System",
+          "fontWeight": "200",
+          "includeFontPadding": false,
+          "textAlign": "center",
+          "textAlignVertical": "center",
+        },
+        Object {
+          "color": "#c7c7cc",
+        },
+      ]
+    }
+  >
+    ★
+  </RatingSymbol>
+  <RatingSymbol
+    selected={false}
+    style={
+      Array [
+        Object {
+          "fontSize": 30,
+          "height": 37.5,
+          "lineHeight": 37.5,
+          "width": 30,
+        },
+        Object {
+          "backgroundColor": "transparent",
+          "flexShrink": 0,
+          "fontFamily": "System",
+          "fontWeight": "200",
+          "includeFontPadding": false,
+          "textAlign": "center",
+          "textAlignVertical": "center",
+        },
+        Object {
+          "color": "#c7c7cc",
+        },
+      ]
+    }
+  >
+    ★
+  </RatingSymbol>
+  <RatingSymbol
+    selected={false}
+    style={
+      Array [
+        Object {
+          "fontSize": 30,
+          "height": 37.5,
+          "lineHeight": 37.5,
+          "width": 30,
+        },
+        Object {
+          "backgroundColor": "transparent",
+          "flexShrink": 0,
+          "fontFamily": "System",
+          "fontWeight": "200",
+          "includeFontPadding": false,
+          "textAlign": "center",
+          "textAlignVertical": "center",
+        },
+        Object {
+          "color": "#c7c7cc",
+        },
+      ]
+    }
+  >
+    ★
+  </RatingSymbol>
+  <RatingSymbol
+    selected={false}
+    style={
+      Array [
+        Object {
+          "fontSize": 30,
+          "height": 37.5,
+          "lineHeight": 37.5,
+          "width": 30,
+        },
+        Object {
+          "backgroundColor": "transparent",
+          "flexShrink": 0,
+          "fontFamily": "System",
+          "fontWeight": "200",
+          "includeFontPadding": false,
+          "textAlign": "center",
+          "textAlignVertical": "center",
+        },
+        Object {
+          "color": "#c7c7cc",
+        },
+      ]
+    }
+  >
+    ★
+  </RatingSymbol>
+  <RatingSymbol
+    selected={false}
+    style={
+      Array [
+        Object {
+          "fontSize": 30,
+          "height": 37.5,
+          "lineHeight": 37.5,
+          "width": 30,
+        },
+        Object {
+          "backgroundColor": "transparent",
+          "flexShrink": 0,
+          "fontFamily": "System",
+          "fontWeight": "200",
+          "includeFontPadding": false,
+          "textAlign": "center",
+          "textAlignVertical": "center",
+        },
+        Object {
+          "color": "#c7c7cc",
+        },
+      ]
+    }
+  >
+    ★
+  </RatingSymbol>
+  <View
+    style={
+      Object {
+        "alignItems": "center",
+        "flexDirection": "row",
+        "flexShrink": 0,
+        "height": 30,
+        "left": 0,
+        "overflow": "hidden",
+        "position": "absolute",
+        "top": 0,
+        "width": 90,
+      }
+    }
+  >
+    <RatingSymbol
+      selected={false}
+      style={
+        Array [
+          Object {
+            "fontSize": 30,
+            "height": 37.5,
+            "lineHeight": 37.5,
+            "width": 30,
+          },
+          Object {
+            "backgroundColor": "transparent",
+            "flexShrink": 0,
+            "fontFamily": "System",
+            "fontWeight": "200",
+            "includeFontPadding": false,
+            "textAlign": "center",
+            "textAlignVertical": "center",
+          },
+          Object {
+            "color": "#ff9500",
+          },
+        ]
+      }
+    >
+      ★
+    </RatingSymbol>
+    <RatingSymbol
+      selected={false}
+      style={
+        Array [
+          Object {
+            "fontSize": 30,
+            "height": 37.5,
+            "lineHeight": 37.5,
+            "width": 30,
+          },
+          Object {
+            "backgroundColor": "transparent",
+            "flexShrink": 0,
+            "fontFamily": "System",
+            "fontWeight": "200",
+            "includeFontPadding": false,
+            "textAlign": "center",
+            "textAlignVertical": "center",
+          },
+          Object {
+            "color": "#ff9500",
+          },
+        ]
+      }
+    >
+      ★
+    </RatingSymbol>
+    <RatingSymbol
+      selected={false}
+      style={
+        Array [
+          Object {
+            "fontSize": 30,
+            "height": 37.5,
+            "lineHeight": 37.5,
+            "width": 30,
+          },
+          Object {
+            "backgroundColor": "transparent",
+            "flexShrink": 0,
+            "fontFamily": "System",
+            "fontWeight": "200",
+            "includeFontPadding": false,
+            "textAlign": "center",
+            "textAlignVertical": "center",
+          },
+          Object {
+            "color": "#ff9500",
+          },
+        ]
+      }
+    >
+      ★
+    </RatingSymbol>
+    <RatingSymbol
+      selected={false}
+      style={
+        Array [
+          Object {
+            "fontSize": 30,
+            "height": 37.5,
+            "lineHeight": 37.5,
+            "width": 30,
+          },
+          Object {
+            "backgroundColor": "transparent",
+            "flexShrink": 0,
+            "fontFamily": "System",
+            "fontWeight": "200",
+            "includeFontPadding": false,
+            "textAlign": "center",
+            "textAlignVertical": "center",
+          },
+          Object {
+            "color": "#ff9500",
+          },
+        ]
+      }
+    >
+      ★
+    </RatingSymbol>
+    <RatingSymbol
+      selected={false}
+      style={
+        Array [
+          Object {
+            "fontSize": 30,
+            "height": 37.5,
+            "lineHeight": 37.5,
+            "width": 30,
+          },
+          Object {
+            "backgroundColor": "transparent",
+            "flexShrink": 0,
+            "fontFamily": "System",
+            "fontWeight": "200",
+            "includeFontPadding": false,
+            "textAlign": "center",
+            "textAlignVertical": "center",
+          },
+          Object {
+            "color": "#ff9500",
+          },
+        ]
+      }
+    >
+      ★
+    </RatingSymbol>
+    <RatingSymbol
+      selected={false}
+      style={
+        Array [
+          Object {
+            "fontSize": 30,
+            "height": 37.5,
+            "lineHeight": 37.5,
+            "width": 30,
+          },
+          Object {
+            "backgroundColor": "transparent",
+            "flexShrink": 0,
+            "fontFamily": "System",
+            "fontWeight": "200",
+            "includeFontPadding": false,
+            "textAlign": "center",
+            "textAlignVertical": "center",
+          },
+          Object {
+            "color": "#ff9500",
+          },
+        ]
+      }
+    >
+      ★
+    </RatingSymbol>
+    <RatingSymbol
+      selected={false}
+      style={
+        Array [
+          Object {
+            "fontSize": 30,
+            "height": 37.5,
+            "lineHeight": 37.5,
+            "width": 30,
+          },
+          Object {
+            "backgroundColor": "transparent",
+            "flexShrink": 0,
+            "fontFamily": "System",
+            "fontWeight": "200",
+            "includeFontPadding": false,
+            "textAlign": "center",
+            "textAlignVertical": "center",
+          },
+          Object {
+            "color": "#ff9500",
+          },
+        ]
+      }
+    >
+      ★
+    </RatingSymbol>
+    <RatingSymbol
+      selected={false}
+      style={
+        Array [
+          Object {
+            "fontSize": 30,
+            "height": 37.5,
+            "lineHeight": 37.5,
+            "width": 30,
+          },
+          Object {
+            "backgroundColor": "transparent",
+            "flexShrink": 0,
+            "fontFamily": "System",
+            "fontWeight": "200",
+            "includeFontPadding": false,
+            "textAlign": "center",
+            "textAlignVertical": "center",
+          },
+          Object {
+            "color": "#ff9500",
+          },
+        ]
+      }
+    >
+      ★
+    </RatingSymbol>
+    <RatingSymbol
+      selected={false}
+      style={
+        Array [
+          Object {
+            "fontSize": 30,
+            "height": 37.5,
+            "lineHeight": 37.5,
+            "width": 30,
+          },
+          Object {
+            "backgroundColor": "transparent",
+            "flexShrink": 0,
+            "fontFamily": "System",
+            "fontWeight": "200",
+            "includeFontPadding": false,
+            "textAlign": "center",
+            "textAlignVertical": "center",
+          },
+          Object {
+            "color": "#ff9500",
+          },
+        ]
+      }
+    >
+      ★
+    </RatingSymbol>
+    <RatingSymbol
+      selected={false}
+      style={
+        Array [
+          Object {
+            "fontSize": 30,
+            "height": 37.5,
+            "lineHeight": 37.5,
+            "width": 30,
+          },
+          Object {
+            "backgroundColor": "transparent",
+            "flexShrink": 0,
+            "fontFamily": "System",
+            "fontWeight": "200",
+            "includeFontPadding": false,
+            "textAlign": "center",
+            "textAlignVertical": "center",
+          },
+          Object {
+            "color": "#ff9500",
+          },
+        ]
+      }
+    >
+      ★
+    </RatingSymbol>
+  </View>
+</View>
+`;
