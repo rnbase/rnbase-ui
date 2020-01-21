@@ -7,6 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.0.4] - 2020-01-21
+
+### Added
+
+- `Badge`, `Progress`, `Rating`, `Segmented` components
+- `StretchyFlatList`, `StretchyScrollView`, `StretchySectionList` components
+- `useTheme` hook
+
 ## [0.0.3] - 2019-12-25
 
 ### Added
