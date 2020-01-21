@@ -132,12 +132,12 @@ const Rating: React.FC<Themed<typeof createStyleSheet, RatingProps>> = ({
     [maxValue, type],
   );
 
-  const renderSymbols = (layer: 'underlay' | 'overlay', symbolStyle: StyleProp<TextStyle>) =>
+  const renderSymbols = (layer: 'underlay' | 'overlay', ratingSymbolStyle: StyleProp<TextStyle>) =>
     getSymbols(layer).map((symbol, index) => (
       <RatingSymbol
         key={index}
         selected={animate && Math.ceil(rating) === index + 1}
-        style={symbolStyle}
+        style={ratingSymbolStyle}
       >
         {symbol}
       </RatingSymbol>
