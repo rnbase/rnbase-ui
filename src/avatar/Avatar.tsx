@@ -4,7 +4,6 @@ import {
   Image,
   ImageStyle,
   ImageSourcePropType,
-  LayoutChangeEvent,
   PixelRatio,
   StyleSheet,
   StyleProp,
@@ -16,7 +15,7 @@ import {
 } from 'react-native';
 
 import { Themed, Theme, WithThemeProps, withTheme } from '../theming';
-import { getColor, getInitials, getRadius } from '../helpers';
+import { getColor, getInitials, getRadius, useLayout } from '../helpers';
 import Badge, { Props as BadgeProps } from '../badge/Badge';
 
 interface AvatarProps extends ViewProps {
@@ -64,8 +63,8 @@ const Avatar: React.FC<Themed<typeof createStyleSheet, AvatarProps>> = ({
     return defaultImageSource;
   }, [imageSource, email, size, defaultImageSource]);
 
-  const [badgeHeight, setBadgeHeight] = useState(10);
-  const [imageHeight, setImageHeight] = useState(size);
+  const [{ height: badgeHeight }, onBadgeLayout] = useLayout({ height: 10 });
+  const [{ height: imageHeight }, onImageLayout] = useLayout({ height: size });
   const [avatarImageSource, setAvatarImageSource] = useState(getAvatarImageSource);
 
   useEffect(() => setAvatarImageSource(getAvatarImageSource()), [
@@ -74,14 +73,6 @@ const Avatar: React.FC<Themed<typeof createStyleSheet, AvatarProps>> = ({
   ]);
 
   const onError = useCallback(() => setAvatarImageSource(defaultImageSource), [defaultImageSource]);
-
-  const onImageLayout = useCallback((event: LayoutChangeEvent) => {
-    setImageHeight(event.nativeEvent.layout.height);
-  }, []);
-
-  const onBadgeLayout = useCallback((event: LayoutChangeEvent) => {
-    setBadgeHeight(event.nativeEvent.layout.height);
-  }, []);
 
   const initials = useMemo(
     () =>

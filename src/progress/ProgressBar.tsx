@@ -1,17 +1,8 @@
-import React, { useCallback, useState, useEffect } from 'react';
-import {
-  Animated,
-  Easing,
-  LayoutChangeEvent,
-  StyleProp,
-  StyleSheet,
-  View,
-  ViewProps,
-  ViewStyle,
-} from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { Animated, Easing, StyleProp, StyleSheet, View, ViewProps, ViewStyle } from 'react-native';
 
 import { Themed, Theme, WithThemeProps, withTheme } from '../theming';
-import { getRadius } from '../helpers';
+import { getRadius, useLayout } from '../helpers';
 
 interface ProgressBarProps extends ViewProps {
   size?: number;
@@ -31,7 +22,7 @@ const ProgressBar: React.FC<Themed<typeof createStyleSheet, ProgressBarProps>> =
   indicatorStyle,
   ...props
 }) => {
-  const [width, setWidth] = useState(0);
+  const [{ width }, onLayout] = useLayout();
   const [animatedValue] = useState(() => new Animated.Value(value || 0));
 
   useEffect(() => {
@@ -55,10 +46,6 @@ const ProgressBar: React.FC<Themed<typeof createStyleSheet, ProgressBarProps>> =
       ).start();
     }
   }, [animatedValue, value]);
-
-  const onLayout = useCallback((event: LayoutChangeEvent) => {
-    setWidth(event.nativeEvent.layout.width);
-  }, []);
 
   const transform = [];
 
