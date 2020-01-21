@@ -35,9 +35,9 @@ jest.mock('react-native/Libraries/Animated/src/Easing', () => ({
 
 const Animated: any = AnimatedObj;
 
-const createElement = (props: Props) => <ProgressBar {...props} />;
+const createElement = (props: Partial<Props>) => <ProgressBar {...props} />;
 
-const createRenderer = (props: Props) => TestRenderer.create(createElement(props));
+const createRenderer = (props: Partial<Props>) => TestRenderer.create(createElement(props));
 
 it('should render normally', () => {
   const tree = createRenderer({ value: 35 });

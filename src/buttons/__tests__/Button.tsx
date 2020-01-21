@@ -38,9 +38,9 @@ jest.mock('react-native/Libraries/Animated/src/Easing', () => ({
 
 const Animated: any = AnimatedObj;
 
-const createElement = (props: Props) => <Button {...props} />;
+const createElement = (props: Partial<Props>) => <Button {...props} />;
 
-const createRenderer = (props: Props) => TestRenderer.create(createElement(props));
+const createRenderer = (props: Partial<Props>) => TestRenderer.create(createElement(props));
 
 it('should render text only', () => {
   expect(createRenderer({ text: 'Button' })).toMatchSnapshot();

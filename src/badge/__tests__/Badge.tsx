@@ -28,9 +28,9 @@ const { default: Badge } = jest.requireActual('../Badge');
 
 const Animated: any = AnimatedObj;
 
-const createElement = (props: Props) => <Badge {...props} />;
+const createElement = (props: Partial<Props>) => <Badge {...props} />;
 
-const createRenderer = (props: Props) => TestRenderer.create(createElement(props));
+const createRenderer = (props: Partial<Props>) => TestRenderer.create(createElement(props));
 
 it('should render normally', () => {
   expect(createRenderer({ value: 12 })).toMatchSnapshot();

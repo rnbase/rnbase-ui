@@ -12,9 +12,9 @@ import Badge from '../../badge/Badge';
 
 jest.mock('../../badge/Badge', () => 'Badge');
 
-const createElement = (props: Props) => <Avatar {...props} />;
+const createElement = (props: Partial<Props>) => <Avatar {...props} />;
 
-const createRenderer = (props: Props) => TestRenderer.create(createElement(props));
+const createRenderer = (props: Partial<Props>) => TestRenderer.create(createElement(props));
 
 it('should render default image', () => {
   expect(createRenderer({})).toMatchSnapshot();

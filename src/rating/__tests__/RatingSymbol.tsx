@@ -28,9 +28,9 @@ const { default: RatingSymbol } = jest.requireActual('../RatingSymbol');
 
 const Animated: any = AnimatedObj;
 
-const createElement = (props: Props) => <RatingSymbol {...props} />;
+const createElement = (props: Partial<Props>) => <RatingSymbol {...props} />;
 
-const createRenderer = (props: Props) => TestRenderer.create(createElement(props));
+const createRenderer = (props: Partial<Props>) => TestRenderer.create(createElement(props));
 
 it('should render normally', () => {
   const tree = createRenderer({ children: '\u2605' });

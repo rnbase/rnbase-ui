@@ -48,9 +48,9 @@ const items = [
   },
 ];
 
-const createElement = (props: Props) => <Segmented {...props} />;
+const createElement = (props: Partial<Props>) => <Segmented {...props} />;
 
-const createRenderer = (props: Props) => TestRenderer.create(createElement(props));
+const createRenderer = (props: Partial<Props>) => TestRenderer.create(createElement(props));
 
 it('should render normally', () => {
   expect(createRenderer({ items, onChange })).toMatchSnapshot();

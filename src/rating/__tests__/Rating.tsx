@@ -10,9 +10,9 @@ import Rating, { Props } from '../Rating';
 
 jest.mock('../RatingSymbol', () => 'RatingSymbol');
 
-const createElement = (props: Props) => <Rating {...props} />;
+const createElement = (props: Partial<Props>) => <Rating {...props} />;
 
-const createRenderer = (props: Props) => TestRenderer.create(createElement(props));
+const createRenderer = (props: Partial<Props>) => TestRenderer.create(createElement(props));
 
 it('should render normally', () => {
   const tree = createRenderer({ value: 3 });
