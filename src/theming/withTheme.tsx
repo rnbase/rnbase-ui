@@ -7,18 +7,23 @@ export interface WithThemeProps {
   themeKey?: string;
 }
 
-export function withTheme<T, P extends ThemeProps<T>>(
-  WrappedComponent: React.ComponentType<P>,
-  stylesFactory: (theme: Theme) => T,
-  defaultThemeKey: string,
-) {
-  type Props = Omit<P, keyof ThemeProps<T>> & WithThemeProps;
+type Subtract<T extends K, K> = Omit<T, keyof K>;
 
-  const ThemedComponent = ({ themeKey = defaultThemeKey, ...props }: Props) => {
+export function withTheme<
+  S,
+  C extends React.ComponentType<React.ComponentProps<C> & ThemeProps<S>>,
+  T = JSX.LibraryManagedAttributes<C, Subtract<React.ComponentProps<C>, ThemeProps<S>>>
+>(WrappedComponent: C, stylesFactory: (theme: Theme) => S, defaultThemeKey: string) {
+  const ThemedComponent = ({ themeKey = defaultThemeKey, ...props }: T & WithThemeProps) => {
     const context = useContext(ThemeContext);
     const themeProps = context.getThemeProps(stylesFactory, themeKey);
 
-    return <WrappedComponent {...themeProps} {...props as P} />;
+    return (
+      <WrappedComponent
+        {...themeProps}
+        {...props as JSX.LibraryManagedAttributes<C, React.ComponentProps<C>>}
+      />
+    );
   };
 
   const displayName = WrappedComponent.displayName || WrappedComponent.name || 'Component';
