@@ -7,7 +7,7 @@ export type StretchyScrollViewProps = ScrollViewProps & StretchyProps;
 
 const StretchyScrollView: React.FC<StretchyScrollViewProps> = ({
   children,
-  headerBackground = [],
+  headerBackground,
   headerHeight,
   headerContent,
   headerBackgroundColor,

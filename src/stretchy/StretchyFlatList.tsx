@@ -6,7 +6,7 @@ import useStretchy, { StretchyProps } from './Stretchy';
 export type StretchyFlatListProps<ItemT> = FlatListProps<ItemT> & StretchyProps;
 
 function StretchyFlatList<ItemT>({
-  headerBackground = [],
+  headerBackground,
   headerHeight,
   headerContent,
   headerBackgroundColor,

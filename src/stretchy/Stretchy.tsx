@@ -1,7 +1,7 @@
 import React, { useCallback, useRef, useState } from 'react';
 import { Animated, ScrollView, View } from 'react-native';
 
-import StretchyHeader, { BackgroundPropType, StretchyHeaderProps } from './StretchyHeader';
+import StretchyHeader, { BackgroundPropType } from './StretchyHeader';
 
 export interface StretchyProps {
   headerHeight: number;
@@ -18,7 +18,10 @@ interface AnimatedComponent {
 }
 
 export default function useStretchy<T extends AnimatedComponent>(
-  props: Omit<StretchyHeaderProps, 'scrollY'>,
+  props: JSX.LibraryManagedAttributes<
+    typeof StretchyHeader,
+    Omit<React.ComponentProps<typeof StretchyHeader>, 'scrollY'>
+  >,
   scrollEnabled?: boolean,
 ): [React.RefObject<T>, Animated.Value, React.ReactElement<StretchyHeader>] {
   const refAnimatedComponent = useRef<T>(null);

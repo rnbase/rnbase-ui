@@ -6,7 +6,7 @@ import useStretchy, { StretchyProps } from './Stretchy';
 export type StretchySectionListProps<ItemT> = SectionListProps<ItemT> & StretchyProps;
 
 function StretchySectionList<ItemT>({
-  headerBackground = [],
+  headerBackground,
   headerHeight,
   headerContent,
   headerBackgroundColor,

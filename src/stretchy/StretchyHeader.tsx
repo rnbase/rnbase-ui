@@ -31,7 +31,7 @@ interface StretchyHeaderState {
 
 class StretchyHeader extends React.Component<StretchyHeaderProps, StretchyHeaderState> {
   static defaultProps = {
-    images: [],
+    background: [],
     backgroundColor: 'transparent',
   };
 
