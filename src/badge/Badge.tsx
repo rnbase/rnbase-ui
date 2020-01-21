@@ -86,10 +86,11 @@ const Badge: React.FC<Themed<typeof createStyleSheet, BadgeProps>> = ({
     },
     styles.root,
     style,
-    animate && {
-      transform: [{ scale: animatedValue }],
-    },
   ];
+
+  if (animate) {
+    rootStyles.push({ transform: [{ scale: animatedValue as any }] });
+  }
 
   return (
     <Animated.View {...props} style={rootStyles}>
