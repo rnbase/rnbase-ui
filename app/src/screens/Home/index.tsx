@@ -15,7 +15,9 @@ type Props = {
 };
 
 const HomeScreen: React.FC<Props> = ({ navigation }) => {
-  const { Colors, styles } = useTheme(createStyles, 'HomeScreen');
+  const {
+    theme: { Colors, styles },
+  } = useTheme(createStyles, 'HomeScreen');
 
   return (
     <StretchyScrollView

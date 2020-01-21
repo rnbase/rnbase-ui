@@ -15,7 +15,9 @@ type Props = {
 };
 
 const StretchyFlatListScreen: React.FC<Props> = ({ navigation }) => {
-  const { Colors, styles } = useTheme(createStyles, 'StretchyFlatListScreen');
+  const {
+    theme: { Colors, styles },
+  } = useTheme(createStyles, 'StretchyFlatListScreen');
 
   const [headerImages] = useState(() => generateHeaderImages(3));
   const [users] = useState(() => generateUsers(50));

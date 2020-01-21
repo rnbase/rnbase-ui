@@ -27,8 +27,7 @@ interface BadgeProps extends ViewProps {
 }
 
 const Badge: React.FC<Themed<typeof createStyleSheet, BadgeProps>> = ({
-  Colors: _Colors,
-  styles,
+  theme: { styles },
   size = 20,
   cornerRadius = '50%',
   animate = true,

@@ -39,8 +39,7 @@ interface ButtonProps extends TouchableOpacityProps {
 }
 
 const Button: React.FC<Themed<typeof createStyleSheet, ButtonProps>> = ({
-  Colors: _Colors,
-  styles,
+  theme: { styles },
   size = 50,
   cornerRadius = '16%',
   disabled,
