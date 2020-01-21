@@ -2,7 +2,7 @@ import React from 'react';
 import { Image, StyleSheet, View } from 'react-native';
 import { NavigationScreenProp } from 'react-navigation';
 
-import { Button, StretchyScrollView, Themed, Theme, withTheme, useTheme } from 'rnbase-ui';
+import { Button, StretchyScrollView, Theme, useTheme } from 'rnbase-ui';
 
 import data from '../../data';
 
@@ -14,8 +14,8 @@ type Props = {
   navigation: NavigationScreenProp<NavigationState>;
 };
 
-const HomeScreen: React.FC<Themed<typeof createStyles, Props>> = ({ navigation, styles }) => {
-  const { Colors } = useTheme();
+const HomeScreen: React.FC<Props> = ({ navigation }) => {
+  const { Colors, styles } = useTheme(createStyles, 'HomeScreen');
 
   return (
     <StretchyScrollView
@@ -65,4 +65,4 @@ const createStyles = ({ Colors }: Theme) =>
     },
   });
 
-export default withTheme(HomeScreen, createStyles, 'HomeScreen');
+export default HomeScreen;

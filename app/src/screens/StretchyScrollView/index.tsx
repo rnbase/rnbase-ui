@@ -3,7 +3,7 @@ import { Image, StyleSheet, View, Text } from 'react-native';
 import { NavigationScreenProp } from 'react-navigation';
 import SafeAreaView from 'react-native-safe-area-view';
 
-import { Avatar, Button, StretchyScrollView, Themed, Theme, useTheme, withTheme } from 'rnbase-ui';
+import { Avatar, Button, StretchyScrollView, Theme, useTheme } from 'rnbase-ui';
 
 type NavigationState = {
   params: {};
@@ -13,8 +13,9 @@ type Props = {
   navigation: NavigationScreenProp<NavigationState>;
 };
 
-function StretchyScrollViewScreen({ navigation, styles }: Themed<typeof createStyles, Props>) {
-  const { Colors } = useTheme();
+const StretchyScrollViewScreen: React.FC<Props> = ({ navigation }) => {
+  const { Colors, styles } = useTheme(createStyles, 'StretchyScrollViewScreen');
+
   const item = navigation.getParam('item');
 
   return (
@@ -45,7 +46,7 @@ function StretchyScrollViewScreen({ navigation, styles }: Themed<typeof createSt
       </SafeAreaView>
     </StretchyScrollView>
   );
-}
+};
 
 const createStyles = ({ Colors, Fonts }: Theme) =>
   StyleSheet.create({
@@ -91,4 +92,4 @@ const createStyles = ({ Colors, Fonts }: Theme) =>
     },
   });
 
-export default withTheme(StretchyScrollViewScreen, createStyles, 'StretchyScrollViewScreen');
+export default StretchyScrollViewScreen;

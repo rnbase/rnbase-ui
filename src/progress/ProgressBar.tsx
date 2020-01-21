@@ -22,6 +22,7 @@ interface ProgressBarProps extends ViewProps {
 }
 
 const ProgressBar: React.FC<Themed<typeof createStyleSheet, ProgressBarProps>> = ({
+  Colors: _Colors,
   styles,
   value,
   size = 6,

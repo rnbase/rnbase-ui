@@ -35,6 +35,7 @@ interface AvatarProps extends ViewProps {
 }
 
 const Avatar: React.FC<Themed<typeof createStyleSheet, AvatarProps>> = ({
+  Colors: _Colors,
   styles,
   size = 50,
   cornerRadius = '50%',

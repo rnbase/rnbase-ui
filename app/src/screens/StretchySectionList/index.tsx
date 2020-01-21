@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Image, StyleSheet, Text, TouchableHighlight, View } from 'react-native';
 import { NavigationScreenProp } from 'react-navigation';
 
-import { Avatar, StretchySectionList, Themed, Theme, useTheme, withTheme } from 'rnbase-ui';
+import { Avatar, StretchySectionList, Theme, useTheme } from 'rnbase-ui';
 
 import { generateHeaderImages, generateUsers } from '../../data';
 
@@ -14,17 +14,15 @@ type Props = {
   navigation: NavigationScreenProp<NavigationState>;
 };
 
-const StretchySectionListScreen: React.FC<Themed<typeof createStyles, Props>> = ({
-  navigation,
-  styles,
-}) => {
+const StretchySectionListScreen: React.FC<Props> = ({ navigation }) => {
+  const { Colors, styles } = useTheme(createStyles, 'StretchySectionListScreen');
+
   const [headerImages] = useState(() => generateHeaderImages(3));
   const [sections] = useState(() => [
     { data: generateUsers(5), title: 'Administrators' },
     { data: generateUsers(10), title: 'Employees' },
     { data: generateUsers(15), title: 'Customers' },
   ]);
-  const { Colors } = useTheme();
 
   return (
     <StretchySectionList
@@ -145,4 +143,4 @@ const createStyles = ({ Colors, Fonts }: Theme) =>
     },
   });
 
-export default withTheme(StretchySectionListScreen, createStyles, 'StretchySectionListScreen');
+export default StretchySectionListScreen;
