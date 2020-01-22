@@ -37,7 +37,7 @@ interface SegmentedProps extends TouchableOpacityProps {
 }
 
 const Segmented: React.FC<Themed<typeof createStyleSheet, SegmentedProps>> = ({
-  styles,
+  theme: { styles },
   items,
   disabled,
   selected = 0,

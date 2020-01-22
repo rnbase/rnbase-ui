@@ -30,7 +30,7 @@ interface RatingProps extends ViewProps {
 }
 
 const Rating: React.FC<Themed<typeof createStyleSheet, RatingProps>> = ({
-  styles,
+  theme: { styles },
   size = 20,
   type = 'outline',
   value = 0,

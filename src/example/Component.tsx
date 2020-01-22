@@ -16,7 +16,14 @@ class Component extends React.Component<Themed<typeof createStyleSheet, Componen
   };
 
   render() {
-    const { Colors: _Colors, styles, visible, children, style, textStyle, ...props } = this.props;
+    const {
+      theme: { styles },
+      visible,
+      children,
+      style,
+      textStyle,
+      ...props
+    } = this.props;
 
     return !visible ? null : (
       <View style={[styles.wrapper, style]} {...props}>
