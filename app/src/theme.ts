@@ -38,8 +38,8 @@ const theme: ThemeFactory = ({ scheme }) => {
 
   const HomeButton = {
     props: {
-      imageAlignment: 'right',
-      imageSource: require('./assets/chevron-right.png'),
+      iconAlignment: 'right',
+      iconSource: require('./assets/chevron-right.png'),
     },
     styles: {
       root: {
@@ -51,7 +51,7 @@ const theme: ThemeFactory = ({ scheme }) => {
         flexGrow: 1,
         color: Colors.black,
       },
-      image: {
+      icon: {
         tintColor: Colors.blue,
       },
     },

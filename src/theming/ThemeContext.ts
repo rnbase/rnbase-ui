@@ -38,9 +38,11 @@ export function createThemeCache(
 
   return {
     getThemeProps(stylesFactory, explicitThemeKey) {
-      let themeKey: PropertyKey;
+      let themeKey;
 
-      if (!explicitThemeKey) {
+      if (explicitThemeKey) {
+        themeKey = explicitThemeKey;
+      } else {
         let propertyDescriptor = Object.getOwnPropertyDescriptor(stylesFactory, propertyKey);
 
         if (!propertyDescriptor) {
@@ -53,13 +55,10 @@ export function createThemeCache(
         }
 
         themeKey = propertyDescriptor.value;
-      } else {
-        themeKey = explicitThemeKey;
       }
 
       if (!cache[themeKey]) {
-        const { styles = undefined, props = undefined } =
-          typeof themeKey === 'symbol' ? {} : theme[themeKey] || {};
+        const { props, styles } = theme[themeKey] || {};
 
         cache[themeKey] = {
           ...props,
