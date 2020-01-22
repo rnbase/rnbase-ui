@@ -37,6 +37,10 @@ const theme: ThemeFactory = ({ scheme }) => {
   };
 
   const HomeButton = {
+    props: {
+      imageAlignment: 'right',
+      imageSource: require('./assets/chevron-right.png'),
+    },
     styles: {
       root: {
         borderRadius: null,
@@ -51,8 +55,6 @@ const theme: ThemeFactory = ({ scheme }) => {
         tintColor: Colors.blue,
       },
     },
-    imageAlignment: 'right',
-    imageSource: require('./assets/chevron-right.png'),
   };
 
   const Component = {

@@ -58,18 +58,16 @@ export function createThemeCache(
       }
 
       if (!cache[themeKey]) {
-        const styles = stylesFactory(theme);
-        const props = typeof themeKey === 'symbol' ? undefined : theme[themeKey];
+        const { styles = undefined, props = undefined } =
+          typeof themeKey === 'symbol' ? {} : theme[themeKey] || {};
 
         cache[themeKey] = {
           ...props,
-          styles: undefined,
           theme: {
             Colors: theme.Colors,
-            styles:
-              props && props.styles
-                ? StyleSheet.create(deepmerge(styles, props.styles) as any)
-                : styles,
+            styles: styles
+              ? StyleSheet.create(deepmerge<Theme>(stylesFactory(theme), styles))
+              : stylesFactory(theme),
           },
         };
       }
