@@ -15,7 +15,7 @@ type Props = {
 
 const StretchyScrollViewScreen: React.FC<Props> = ({ navigation }) => {
   const {
-    theme: { Colors, styles },
+    theme: { colors, styles },
   } = useTheme(createStyles);
 
   const item = navigation.getParam('item');
@@ -26,7 +26,7 @@ const StretchyScrollViewScreen: React.FC<Props> = ({ navigation }) => {
       headerBackground={
         <Image style={styles.headerImage} source={{ uri: item.image }} blurRadius={15} />
       }
-      headerBackgroundColor={Colors.black}
+      headerBackgroundColor={colors.black}
       headerContent={<Avatar style={styles.avatar} size={128} imageSource={{ uri: item.image }} />}
       contentContainerStyle={styles.container}
     >
@@ -50,14 +50,14 @@ const StretchyScrollViewScreen: React.FC<Props> = ({ navigation }) => {
   );
 };
 
-const createStyles = ({ Colors, Fonts }: Theme) =>
+const createStyles = ({ colors, fonts }: Theme) =>
   StyleSheet.create({
     headerImage: {
       opacity: 0.8,
     },
     avatar: {
       borderWidth: 5,
-      borderColor: Colors.white,
+      borderColor: colors.white,
     },
     container: {
       flexGrow: 1,
@@ -69,21 +69,21 @@ const createStyles = ({ Colors, Fonts }: Theme) =>
       paddingHorizontal: 15,
     },
     name: {
-      ...Fonts.semibold,
+      ...fonts.semibold,
       fontSize: 26,
-      color: Colors.black,
+      color: colors.black,
     },
     email: {
-      ...Fonts.light,
+      ...fonts.light,
       fontSize: 16,
-      color: Colors.gray,
+      color: colors.gray,
     },
     text: {
-      ...Fonts.light,
+      ...fonts.light,
       fontSize: 18,
       lineHeight: 26,
       marginVertical: 20,
-      color: Colors.black,
+      color: colors.black,
       textAlign: 'center',
     },
     textBold: {

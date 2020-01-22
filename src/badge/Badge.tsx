@@ -98,18 +98,18 @@ const Badge: React.FC<Themed<typeof createStyleSheet, BadgeProps>> = ({
   );
 };
 
-const createStyleSheet = ({ Colors, Fonts }: Theme) =>
+const createStyleSheet = ({ colors, fonts }: Theme) =>
   StyleSheet.create({
     root: {
       minHeight: 10,
       alignSelf: 'center',
       alignItems: 'center',
       justifyContent: 'center',
-      backgroundColor: Colors.blue,
+      backgroundColor: colors.blue,
     },
     text: {
-      ...Fonts.normal,
-      color: Colors.white,
+      ...fonts.normal,
+      color: colors.white,
     },
   });
 

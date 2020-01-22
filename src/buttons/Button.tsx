@@ -180,12 +180,12 @@ const Button: React.FC<Themed<typeof createStyleSheet, ButtonProps>> = ({
   );
 };
 
-const createStyleSheet = ({ Colors, Fonts }: Theme) =>
+const createStyleSheet = ({ colors, fonts }: Theme) =>
   StyleSheet.create({
     root: {
       overflow: 'hidden',
       justifyContent: 'center',
-      backgroundColor: Colors.blue,
+      backgroundColor: colors.blue,
     },
     busy: {
       ...StyleSheet.absoluteFillObject,
@@ -198,21 +198,21 @@ const createStyleSheet = ({ Colors, Fonts }: Theme) =>
       justifyContent: 'center',
     },
     text: {
-      ...Fonts.semibold,
-      color: Colors.white,
+      ...fonts.semibold,
+      color: colors.white,
     },
     icon: {
       flexShrink: 0,
-      tintColor: Colors.white,
+      tintColor: colors.white,
     },
     disabledRoot: {
-      backgroundColor: Colors.gray5,
+      backgroundColor: colors.gray5,
     },
     disabledText: {
-      color: Colors.gray2,
+      color: colors.gray2,
     },
     disabledIcon: {
-      tintColor: Colors.gray2,
+      tintColor: colors.gray2,
     },
   });
 

@@ -16,7 +16,7 @@ type Props = {
 
 const StretchySectionListScreen: React.FC<Props> = ({ navigation }) => {
   const {
-    theme: { Colors, styles },
+    theme: { colors, styles },
   } = useTheme(createStyles);
 
   const [headerImages] = useState(() => generateHeaderImages(3));
@@ -32,7 +32,7 @@ const StretchySectionListScreen: React.FC<Props> = ({ navigation }) => {
       headerBackground={headerImages.map(source => (
         <Image style={styles.headerImage} source={source} />
       ))}
-      headerBackgroundColor={Colors.black}
+      headerBackgroundColor={colors.black}
       headerContent={
         <View style={styles.headerContent}>
           <Text style={styles.headerTitle}>Stretchy Header</Text>
@@ -58,7 +58,7 @@ const StretchySectionListScreen: React.FC<Props> = ({ navigation }) => {
       renderItem={({ item }) => (
         <TouchableHighlight
           activeOpacity={1}
-          underlayColor={Colors.underlay}
+          underlayColor={colors.underlay}
           onPress={() => navigation.navigate('StretchyScrollView', { item })}
         >
           <View style={styles.item}>
@@ -78,7 +78,7 @@ const StretchySectionListScreen: React.FC<Props> = ({ navigation }) => {
   );
 };
 
-const createStyles = ({ Colors, Fonts }: Theme) =>
+const createStyles = ({ colors, fonts }: Theme) =>
   StyleSheet.create({
     headerImage: {
       opacity: 0.5,
@@ -87,27 +87,27 @@ const createStyles = ({ Colors, Fonts }: Theme) =>
       alignItems: 'center',
     },
     headerTitle: {
-      ...Fonts.bold,
+      ...fonts.bold,
       fontSize: 35,
-      color: Colors.white,
+      color: colors.white,
     },
     headerText: {
-      ...Fonts.normal,
+      ...fonts.normal,
       fontSize: 18,
-      color: Colors.white,
+      color: colors.white,
     },
     separator: {
       marginHorizontal: 10,
-      backgroundColor: Colors.separator,
+      backgroundColor: colors.separator,
       height: StyleSheet.hairlineWidth,
     },
     section: {
-      backgroundColor: Colors.gray6,
+      backgroundColor: colors.gray6,
     },
     sectionText: {
-      ...Fonts.semibold,
+      ...fonts.semibold,
       fontSize: 18,
-      color: Colors.blue,
+      color: colors.blue,
       padding: 15,
     },
     item: {
@@ -122,14 +122,14 @@ const createStyles = ({ Colors, Fonts }: Theme) =>
       marginLeft: 10,
     },
     itemTitle: {
-      ...Fonts.semibold,
+      ...fonts.semibold,
       fontSize: 16,
-      color: Colors.black,
+      color: colors.black,
     },
     itemText: {
-      ...Fonts.normal,
+      ...fonts.normal,
       fontSize: 13,
-      color: Colors.gray,
+      color: colors.gray,
     },
     footer: {
       marginTop: 10,
@@ -137,11 +137,11 @@ const createStyles = ({ Colors, Fonts }: Theme) =>
       alignItems: 'center',
     },
     footerText: {
-      ...Fonts.normal,
+      ...fonts.normal,
       fontSize: 13,
       maxWidth: 320,
       textAlign: 'center',
-      color: Colors.gray2,
+      color: colors.gray2,
     },
   });
 

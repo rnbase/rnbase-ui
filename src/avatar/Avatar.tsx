@@ -156,26 +156,26 @@ const Avatar: React.FC<Themed<typeof createStyleSheet, AvatarProps>> = ({
   );
 };
 
-const createStyleSheet = ({ Colors, Fonts }: Theme) =>
+const createStyleSheet = ({ colors, fonts }: Theme) =>
   StyleSheet.create({
     root: {
       alignSelf: 'center',
       alignItems: 'center',
       justifyContent: 'center',
-      backgroundColor: Colors.gray2,
+      backgroundColor: colors.gray2,
     },
     image: {
       width: '100%',
       height: '100%',
     },
     text: {
-      ...Fonts.bold,
-      color: Colors.white,
+      ...fonts.bold,
+      color: colors.white,
     },
     badge: {
       zIndex: 1,
       position: 'absolute',
-      shadowColor: Colors.black,
+      shadowColor: colors.black,
       shadowOffset: {
         width: 0,
         height: 1,

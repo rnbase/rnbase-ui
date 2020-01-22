@@ -14,7 +14,7 @@ export type ThemeFactory = Theme | ((args: ThemeFactoryArgs) => Theme);
 // Colors based on Apple Human Interface Guidelines
 // https://developer.apple.com/design/human-interface-guidelines/ios/visual-design/color/
 const defaultTheme: ThemeFactory = ({ scheme }) => {
-  const Colors = {
+  const colors = {
     white: '#ffffff',
     black: '#000000',
     blue: scheme({ default: '#007aff', dark: '#0a84ff' }),
@@ -34,7 +34,7 @@ const defaultTheme: ThemeFactory = ({ scheme }) => {
     gray6: scheme({ default: '#f2f2f7', dark: '#1c1c1e' }),
   };
 
-  const Fonts = {
+  const fonts = {
     thin: {
       fontWeight: '100',
       fontFamily: 'System',
@@ -76,24 +76,24 @@ const defaultTheme: ThemeFactory = ({ scheme }) => {
     styles: {
       root: {
         borderWidth: 2,
-        borderColor: Colors.blue,
+        borderColor: colors.blue,
         backgroundColor: null,
       },
       text: {
-        color: Colors.blue,
+        color: colors.blue,
       },
       icon: {
-        tintColor: Colors.blue,
+        tintColor: colors.blue,
       },
       disabledRoot: {
-        borderColor: Colors.gray3,
+        borderColor: colors.gray3,
         backgroundColor: null,
       },
       disabledText: {
-        color: Colors.gray2,
+        color: colors.gray2,
       },
       disabledIcon: {
-        tintColor: Colors.gray2,
+        tintColor: colors.gray2,
       },
     },
   };
@@ -116,26 +116,26 @@ const defaultTheme: ThemeFactory = ({ scheme }) => {
         paddingHorizontal: null,
       },
       text: {
-        color: Colors.blue,
+        color: colors.blue,
       },
       icon: {
-        tintColor: Colors.blue,
+        tintColor: colors.blue,
       },
       disabledRoot: {
         backgroundColor: null,
       },
       disabledText: {
-        color: Colors.gray2,
+        color: colors.gray2,
       },
       disabledIcon: {
-        tintColor: Colors.gray2,
+        tintColor: colors.gray2,
       },
     },
   };
 
   return {
-    Colors,
-    Fonts,
+    colors,
+    fonts,
     OutlineButton,
     TextButton,
   };

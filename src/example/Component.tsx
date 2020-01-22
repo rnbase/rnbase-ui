@@ -37,7 +37,7 @@ class Component extends React.Component<Themed<typeof createStyleSheet, Componen
   }
 }
 
-const createStyleSheet = ({ Colors }: Theme) =>
+const createStyleSheet = ({ colors }: Theme) =>
   StyleSheet.create({
     wrapper: {
       height: 50,
@@ -45,11 +45,11 @@ const createStyleSheet = ({ Colors }: Theme) =>
       flexDirection: 'row',
       paddingHorizontal: 15,
       justifyContent: 'center',
-      backgroundColor: Colors.gray2,
+      backgroundColor: colors.gray2,
     },
     text: {
       fontSize: 16,
-      color: Colors.white,
+      color: colors.white,
       fontWeight: 'bold',
       fontFamily: 'System',
       textTransform: 'uppercase',

@@ -1,7 +1,7 @@
 import { ThemeFactory } from 'rnbase-ui';
 
 const theme: ThemeFactory = ({ scheme }) => {
-  const BaseColors = {
+  const baseColors = {
     white: '#ffffff',
     black: '#000000',
     blue: scheme({ default: '#007aff', dark: '#0a84ff' }),
@@ -17,11 +17,11 @@ const theme: ThemeFactory = ({ scheme }) => {
     gray6: scheme({ default: '#f2f2f7', dark: '#1c1c1e' }),
   };
 
-  const Colors = {
-    ...BaseColors,
-    primary: BaseColors.blue,
-    success: BaseColors.green,
-    danger: BaseColors.red,
+  const colors = {
+    ...baseColors,
+    primary: baseColors.blue,
+    success: baseColors.green,
+    danger: baseColors.red,
     underlay: scheme({ default: '#0001', dark: '#fff1' }),
     separator: scheme({ default: '#0003', dark: '#fff3' }),
   };
@@ -49,10 +49,10 @@ const theme: ThemeFactory = ({ scheme }) => {
       },
       text: {
         flexGrow: 1,
-        color: Colors.black,
+        color: colors.black,
       },
       icon: {
-        tintColor: Colors.blue,
+        tintColor: colors.blue,
       },
     },
   };
@@ -63,13 +63,13 @@ const theme: ThemeFactory = ({ scheme }) => {
         height: 90,
       },
       text: {
-        color: Colors.blue,
+        color: colors.blue,
       },
     },
   };
 
   return {
-    Colors,
+    colors,
     Avatar,
     HomeButton,
     Component,

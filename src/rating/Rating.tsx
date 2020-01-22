@@ -153,7 +153,7 @@ const Rating: React.FC<Themed<typeof createStyleSheet, RatingProps>> = ({
   );
 };
 
-const createStyleSheet = ({ Colors }: Theme) =>
+const createStyleSheet = ({ colors }: Theme) =>
   StyleSheet.create({
     root: {
       flexShrink: 0,
@@ -169,7 +169,7 @@ const createStyleSheet = ({ Colors }: Theme) =>
     symbol: {
       flexShrink: 0,
       fontWeight: '200',
-      color: Colors.gray3,
+      color: colors.gray3,
       textAlign: 'center',
       fontFamily: 'System',
       includeFontPadding: false,
@@ -177,10 +177,10 @@ const createStyleSheet = ({ Colors }: Theme) =>
       backgroundColor: 'transparent',
     },
     symbolActive: {
-      color: Colors.orange,
+      color: colors.orange,
     },
     symbolSelected: {
-      color: Colors.red,
+      color: colors.red,
     },
   });
 

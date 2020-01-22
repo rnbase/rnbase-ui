@@ -16,7 +16,7 @@ type Props = {
 
 const HomeScreen: React.FC<Props> = ({ navigation }) => {
   const {
-    theme: { Colors, styles },
+    theme: { colors, styles },
   } = useTheme(createStyles);
 
   return (
@@ -25,7 +25,7 @@ const HomeScreen: React.FC<Props> = ({ navigation }) => {
       headerBackground={data.headerImages.map(source => (
         <Image source={source} />
       ))}
-      headerBackgroundColor={Colors.black}
+      headerBackgroundColor={colors.black}
       headerContent={<Image style={styles.logo} source={require('../../assets/logo.png')} />}
     >
       <View style={styles.container}>
@@ -51,7 +51,7 @@ const HomeScreen: React.FC<Props> = ({ navigation }) => {
   );
 };
 
-const createStyles = ({ Colors }: Theme) =>
+const createStyles = ({ colors }: Theme) =>
   StyleSheet.create({
     container: {
       padding: 15,
@@ -62,7 +62,7 @@ const createStyles = ({ Colors }: Theme) =>
     },
     separator: {
       marginVertical: 10,
-      backgroundColor: Colors.separator,
+      backgroundColor: colors.separator,
       height: StyleSheet.hairlineWidth,
     },
   });

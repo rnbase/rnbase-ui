@@ -90,18 +90,18 @@ const ProgressBar: React.FC<Themed<typeof createStyleSheet, ProgressBarProps>> =
   );
 };
 
-const createStyleSheet = ({ Colors }: Theme) =>
+const createStyleSheet = ({ colors }: Theme) =>
   StyleSheet.create({
     root: {
       overflow: 'hidden',
       flexDirection: 'row',
       justifyContent: 'flex-start',
-      backgroundColor: Colors.gray5,
+      backgroundColor: colors.gray5,
     },
     indicator: {
       width: '100%',
       height: '100%',
-      backgroundColor: Colors.blue,
+      backgroundColor: colors.blue,
     },
   });
 

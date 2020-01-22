@@ -136,13 +136,13 @@ const Segmented: React.FC<Themed<typeof createStyleSheet, SegmentedProps>> = ({
   );
 };
 
-const createStyleSheet = ({ Colors, Fonts }: Theme) =>
+const createStyleSheet = ({ colors, fonts }: Theme) =>
   StyleSheet.create({
     root: {
       height: 40,
       padding: 3,
       borderRadius: 8,
-      backgroundColor: Colors.gray5,
+      backgroundColor: colors.gray5,
     },
     content: {
       flexGrow: 1,
@@ -151,7 +151,7 @@ const createStyleSheet = ({ Colors, Fonts }: Theme) =>
     indicator: {
       ...StyleSheet.absoluteFillObject,
       borderRadius: 5,
-      backgroundColor: Colors.white,
+      backgroundColor: colors.white,
     },
     item: {
       flex: 1,
@@ -161,30 +161,30 @@ const createStyleSheet = ({ Colors, Fonts }: Theme) =>
       justifyContent: 'center',
     },
     text: {
-      ...Fonts.semibold,
+      ...fonts.semibold,
       fontSize: 15,
       marginHorizontal: 5,
-      color: Colors.gray,
+      color: colors.gray,
     },
     icon: {
       width: 18,
       height: 18,
-      tintColor: Colors.gray,
+      tintColor: colors.gray,
     },
     selectedText: {
-      color: Colors.blue,
+      color: colors.blue,
     },
     selectedIcon: {
-      tintColor: Colors.blue,
+      tintColor: colors.blue,
     },
     disabledRoot: {
-      backgroundColor: Colors.gray6,
+      backgroundColor: colors.gray6,
     },
     disabledText: {
-      color: Colors.gray2,
+      color: colors.gray2,
     },
     disabledIcon: {
-      tintColor: Colors.gray2,
+      tintColor: colors.gray2,
     },
     disabledIndicator: {
       opacity: 0.6,

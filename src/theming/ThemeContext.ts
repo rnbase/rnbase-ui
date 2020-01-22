@@ -16,7 +16,7 @@ function resolveTheme(theme: ThemeFactory, colorScheme: ColorSchemeName): Theme 
 
 export interface ThemeProps<T> {
   theme: {
-    Colors: Theme;
+    colors: Theme;
     styles: T;
   };
 }
@@ -63,7 +63,7 @@ export function createThemeCache(
         cache[themeKey] = {
           ...props,
           theme: {
-            Colors: theme.Colors,
+            colors: theme.colors,
             styles: styles
               ? StyleSheet.create(deepmerge<Theme>(stylesFactory(theme), styles))
               : stylesFactory(theme),
