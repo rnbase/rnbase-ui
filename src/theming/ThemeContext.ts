@@ -22,25 +22,44 @@ export interface ThemeProps<T> {
 }
 
 interface ThemeCache {
-  theme: Theme;
-  getThemeProps<T>(stylesFactory: (theme: Theme) => T, themeKey: string): ThemeProps<T>;
+  getThemeProps<T>(stylesFactory: (theme: Theme) => T, explicitThemeKey?: string): ThemeProps<T>;
 }
+
+const propertyKey = Symbol();
 
 export function createThemeCache(
   customTheme: ThemeFactory = defaultTheme,
   colorScheme: ColorSchemeName = 'no-preference',
 ): ThemeCache {
-  var cache: any = {};
-  var theme = customTheme
+  let cache: any = {};
+  let theme = customTheme
     ? deepmerge(resolveTheme(defaultTheme, colorScheme), resolveTheme(customTheme, colorScheme))
     : resolveTheme(defaultTheme, colorScheme);
 
   return {
-    theme,
-    getThemeProps(stylesFactory, themeKey) {
+    getThemeProps(stylesFactory, explicitThemeKey) {
+      let themeKey: PropertyKey;
+
+      if (!explicitThemeKey) {
+        let propertyDescriptor = Object.getOwnPropertyDescriptor(stylesFactory, propertyKey);
+
+        if (!propertyDescriptor) {
+          propertyDescriptor = {
+            value: Symbol(),
+            writable: false,
+          };
+
+          Object.defineProperty(stylesFactory, propertyKey, propertyDescriptor);
+        }
+
+        themeKey = propertyDescriptor.value;
+      } else {
+        themeKey = explicitThemeKey;
+      }
+
       if (!cache[themeKey]) {
         const styles = stylesFactory(theme);
-        const props = theme[themeKey];
+        const props = typeof themeKey === 'symbol' ? undefined : theme[themeKey];
 
         cache[themeKey] = {
           ...props,

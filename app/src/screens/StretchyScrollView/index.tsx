@@ -16,7 +16,7 @@ type Props = {
 const StretchyScrollViewScreen: React.FC<Props> = ({ navigation }) => {
   const {
     theme: { Colors, styles },
-  } = useTheme(createStyles, 'StretchyScrollViewScreen');
+  } = useTheme(createStyles);
 
   const item = navigation.getParam('item');
 

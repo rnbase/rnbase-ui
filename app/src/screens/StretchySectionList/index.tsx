@@ -17,7 +17,7 @@ type Props = {
 const StretchySectionListScreen: React.FC<Props> = ({ navigation }) => {
   const {
     theme: { Colors, styles },
-  } = useTheme(createStyles, 'StretchySectionListScreen');
+  } = useTheme(createStyles);
 
   const [headerImages] = useState(() => generateHeaderImages(3));
   const [sections] = useState(() => [
