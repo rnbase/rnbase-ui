@@ -11,17 +11,16 @@ export class RatingValue {
   }
 
   public set value(value: number) {
-    if (this._value === value) {
+    const prevValue = this._value;
+
+    if (prevValue === value) {
       return;
     }
 
-    const nextValue = Math.ceil(value);
-    const prevValue = Math.ceil(this._value);
-
     this._value = value;
 
-    if (nextValue !== prevValue) {
-      this._listeners.forEach(listener => listener(nextValue, prevValue));
+    if (!this.isEqual(prevValue)) {
+      this._listeners.forEach(listener => listener(value, prevValue));
     }
   }
 
@@ -35,8 +34,8 @@ export class RatingValue {
     };
   }
 
-  scale(value: number) {
-    return Math.ceil(this._value) === value ? 1.25 : 1;
+  isEqual(value: number) {
+    return Math.ceil(this._value) === Math.ceil(value);
   }
 }
 

@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { Animated, StyleProp, TextProps, TextStyle } from 'react-native';
-import { RatingContext } from './RatingContext';
+import { RatingContext, RatingValue } from './RatingContext';
 
 export interface Props extends TextProps {
   animate: boolean;
@@ -11,12 +11,14 @@ export interface Props extends TextProps {
 
 // let renders = 0;
 
+const scale = (ratingValue: RatingValue, value: number) => (ratingValue.isEqual(value) ? 1.25 : 1);
+
 const RatingSymbol: React.FC<Props> = ({ animate, value, children, style }) => {
   // console.log(`RatingSymbol, render(${++renders}): `, value);
 
   const ratingValue = useContext(RatingContext);
 
-  const [animatedValue] = useState(() => new Animated.Value(ratingValue.scale(value)));
+  const [animatedValue] = useState(() => new Animated.Value(scale(ratingValue, value)));
 
   useEffect(() => {
     if (animate) {
@@ -24,7 +26,7 @@ const RatingSymbol: React.FC<Props> = ({ animate, value, children, style }) => {
         Animated.spring(animatedValue, {
           tension: 50,
           friction: 3,
-          toValue: ratingValue.scale(value),
+          toValue: scale(ratingValue, value),
           useNativeDriver: true,
         }).start();
       });
