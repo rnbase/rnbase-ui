@@ -6,6 +6,8 @@ import TestRenderer, { act } from 'react-test-renderer';
 
 import { Props } from '../RatingSymbol';
 
+import { RatingContext, RatingValue } from '../RatingContext';
+
 jest.doMock('react-native/Libraries/Animated/src/Animated', () => {
   const Animated = jest.requireActual('react-native/Libraries/Animated/src/Animated');
 
@@ -28,12 +30,34 @@ const { default: RatingSymbol } = jest.requireActual('../RatingSymbol');
 
 const Animated: any = AnimatedObj;
 
-const createElement = (props: Partial<Props>) => <RatingSymbol {...props} />;
+let ratingValue: RatingValue;
+
+beforeEach(() => {
+  ratingValue = new RatingValue();
+});
+
+const createElement = (props: Partial<Props>) => (
+  <RatingContext.Provider value={ratingValue}>
+    <RatingSymbol value={1} {...props}>
+      {'\u2605'}
+    </RatingSymbol>
+  </RatingContext.Provider>
+);
 
 const createRenderer = (props: Partial<Props>) => TestRenderer.create(createElement(props));
 
 it('should render normally', () => {
-  const tree = createRenderer({ children: '\u2605' });
+  const tree = createRenderer({});
+
+  act(() => {});
+
+  expect(tree).toMatchSnapshot();
+});
+
+it('should render scaled', () => {
+  ratingValue.value = 1;
+
+  const tree = createRenderer({ value: ratingValue.value });
 
   act(() => {});
 
@@ -61,15 +85,15 @@ describe('animation', () => {
   });
 
   it('should animate to selected', () => {
-    const tree = createRenderer({ children: '\u2605' });
+    const value = ratingValue.value + 1;
+
+    createRenderer({ animate: true, value });
 
     act(() => {});
 
     Animated.spring.mockClear();
 
-    act(() => {
-      tree.update(createElement({ children: '\u2605', selected: true }));
-    });
+    ratingValue.value = value;
 
     expect(Animated.spring).toBeCalledWith(expect.objectContaining({ _value: 1 }), {
       toValue: 1.25,
@@ -81,15 +105,13 @@ describe('animation', () => {
   });
 
   it('should animate from selected', () => {
-    const tree = createRenderer({ children: '\u2605', selected: true });
+    createRenderer({ animate: true, value: ratingValue.value });
 
     act(() => {});
 
     Animated.spring.mockClear();
 
-    act(() => {
-      tree.update(createElement({ children: '\u2605' }));
-    });
+    ratingValue.value++;
 
     expect(Animated.spring).toBeCalledWith(expect.objectContaining({ _value: 1.25 }), {
       toValue: 1,

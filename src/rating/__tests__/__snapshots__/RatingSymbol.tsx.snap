@@ -17,6 +17,23 @@ exports[`should render normally 1`] = `
 </Text>
 `;
 
+exports[`should render scaled 1`] = `
+<Text
+  allowFontScaling={false}
+  style={
+    Object {
+      "transform": Array [
+        Object {
+          "scale": 1.25,
+        },
+      ],
+    }
+  }
+>
+  ★
+</Text>
+`;
+
 exports[`should render with custom style 1`] = `
 <Text
   allowFontScaling={false}
