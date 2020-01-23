@@ -11,7 +11,9 @@ import {
 } from 'react-native';
 
 import { Themed, Theme, WithThemeProps, withTheme } from '../theming';
+import { RatingContext, RatingValue } from './RatingContext';
 import { inRange } from '../helpers';
+
 import RatingSymbol from './RatingSymbol';
 
 interface RatingProps extends ViewProps {
@@ -29,6 +31,8 @@ interface RatingProps extends ViewProps {
   onFinish?: Function;
 }
 
+// let renders = 0;
+
 const Rating: React.FC<Themed<typeof createStyleSheet, RatingProps>> = ({
   theme: { styles },
   size = 20,
@@ -44,12 +48,12 @@ const Rating: React.FC<Themed<typeof createStyleSheet, RatingProps>> = ({
   onChange,
   onFinish,
 }) => {
-  const [rating, setRating] = useState();
+  // console.log(`Rating, render(${++renders}): `, value);
+
+  const [interactive, setInteractive] = useState(false);
   const [overlayWidth] = useState(() => new Animated.Value(0));
-  const setOverlayWidth = useCallback(ratingValue => overlayWidth.setValue(ratingValue * size), [
-    overlayWidth,
-    size,
-  ]);
+  const [ratingValue] = useState(() => new RatingValue());
+  const setOverlayWidth = useCallback(v => overlayWidth.setValue(v * size), [overlayWidth, size]);
 
   useEffect(() => setOverlayWidth(inRange(value, 0, maxValue)), [setOverlayWidth, value, maxValue]);
 
@@ -58,25 +62,35 @@ const Rating: React.FC<Themed<typeof createStyleSheet, RatingProps>> = ({
       const eventValue = allowDecimals
         ? Math.round((nativeEvent.locationX / size) * 10) / 10
         : Math.ceil(nativeEvent.locationX / size);
-      const ratingValue = inRange(eventValue, 0, maxValue);
 
-      setRating(ratingValue);
-      setOverlayWidth(ratingValue);
+      ratingValue.value = inRange(eventValue, 0, maxValue);
+
+      setOverlayWidth(ratingValue.value);
 
       if (onChange) {
-        onChange(ratingValue);
+        onChange(ratingValue.value);
       }
     },
-    [allowDecimals, size, maxValue, setOverlayWidth, onChange],
+    [allowDecimals, size, maxValue, setOverlayWidth, onChange, ratingValue],
+  );
+
+  const onGrant = useCallback(
+    event => {
+      setInteractive(true);
+      onMove(event);
+    },
+    [onMove],
   );
 
   const onRelease = useCallback(() => {
     if (onFinish) {
-      onFinish(rating);
+      onFinish(ratingValue.value);
     }
 
-    setRating(undefined);
-  }, [onFinish, rating]);
+    ratingValue.value = 0;
+
+    setInteractive(false);
+  }, [onFinish, ratingValue]);
 
   const panResponder = useMemo(() => {
     if (!onChange && !onFinish) {
@@ -86,11 +100,11 @@ const Rating: React.FC<Themed<typeof createStyleSheet, RatingProps>> = ({
     return PanResponder.create({
       onStartShouldSetPanResponder: () => true,
       onPanResponderTerminationRequest: () => false,
-      onPanResponderGrant: onMove,
+      onPanResponderGrant: onGrant,
       onPanResponderMove: onMove,
       onPanResponderRelease: onRelease,
     });
-  }, [onChange, onFinish, onMove, onRelease]);
+  }, [onChange, onFinish, onGrant, onMove, onRelease]);
 
   const rootStyles = [
     {
@@ -123,32 +137,28 @@ const Rating: React.FC<Themed<typeof createStyleSheet, RatingProps>> = ({
 
   const overlaySymbolStyles = [symbolStyles, styles.symbolActive, activeSymbolStyle];
 
-  if (rating) {
+  if (interactive) {
     overlaySymbolStyles.push(styles.symbolSelected, selectedSymbolStyle);
   }
 
-  const getSymbols = useCallback(
-    layer => Array(maxValue).fill(layer === 'overlay' || type === 'solid' ? '\u2605' : '\u2606'),
-    [maxValue, type],
-  );
+  const overlaySymbols = Array(maxValue).fill('\u2605');
+  const underlaySymbols = type === 'solid' ? overlaySymbols : Array(maxValue).fill('\u2606');
 
-  const renderSymbols = (layer: 'underlay' | 'overlay', ratingSymbolStyle: StyleProp<TextStyle>) =>
-    getSymbols(layer).map((symbol, index) => (
-      <RatingSymbol
-        key={index}
-        selected={animate && Math.ceil(rating) === index + 1}
-        style={ratingSymbolStyle}
-      >
+  const renderSymbols = (symbols: string[], ratingSymbolStyle: StyleProp<TextStyle>) =>
+    symbols.map((symbol, index) => (
+      <RatingSymbol key={index} animate={animate} value={index + 1} style={ratingSymbolStyle}>
         {symbol}
       </RatingSymbol>
     ));
 
   return (
     <View {...panResponder && panResponder.panHandlers} pointerEvents="box-only" style={rootStyles}>
-      {renderSymbols('underlay', symbolStyles)}
-      <Animated.View style={overlayStyles}>
-        {renderSymbols('overlay', overlaySymbolStyles)}
-      </Animated.View>
+      <RatingContext.Provider value={ratingValue}>
+        {renderSymbols(underlaySymbols, symbolStyles)}
+        <Animated.View style={overlayStyles}>
+          {renderSymbols(overlaySymbols, overlaySymbolStyles)}
+        </Animated.View>
+      </RatingContext.Provider>
     </View>
   );
 };
