@@ -62,13 +62,16 @@ const Rating: React.FC<Themed<typeof createStyleSheet, RatingProps>> = ({
       const eventValue = allowDecimals
         ? Math.round((nativeEvent.locationX / size) * 10) / 10
         : Math.ceil(nativeEvent.locationX / size);
+      const rating = inRange(eventValue, 0, maxValue);
 
-      ratingValue.value = inRange(eventValue, 0, maxValue);
+      if (ratingValue.value !== rating) {
+        ratingValue.value = rating;
 
-      setOverlayWidth(ratingValue.value);
+        setOverlayWidth(ratingValue.value);
 
-      if (onChange) {
-        onChange(ratingValue.value);
+        if (onChange) {
+          onChange(ratingValue.value);
+        }
       }
     },
     [allowDecimals, size, maxValue, setOverlayWidth, onChange, ratingValue],
