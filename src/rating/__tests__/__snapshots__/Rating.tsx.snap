@@ -19,7 +19,7 @@ exports[`should render normally 1`] = `
   }
 >
   <RatingSymbol
-    selected={false}
+    animate={true}
     style={
       Array [
         Object {
@@ -41,11 +41,12 @@ exports[`should render normally 1`] = `
         undefined,
       ]
     }
+    value={1}
   >
     ☆
   </RatingSymbol>
   <RatingSymbol
-    selected={false}
+    animate={true}
     style={
       Array [
         Object {
@@ -67,11 +68,12 @@ exports[`should render normally 1`] = `
         undefined,
       ]
     }
+    value={2}
   >
     ☆
   </RatingSymbol>
   <RatingSymbol
-    selected={false}
+    animate={true}
     style={
       Array [
         Object {
@@ -93,11 +95,12 @@ exports[`should render normally 1`] = `
         undefined,
       ]
     }
+    value={3}
   >
     ☆
   </RatingSymbol>
   <RatingSymbol
-    selected={false}
+    animate={true}
     style={
       Array [
         Object {
@@ -119,11 +122,12 @@ exports[`should render normally 1`] = `
         undefined,
       ]
     }
+    value={4}
   >
     ☆
   </RatingSymbol>
   <RatingSymbol
-    selected={false}
+    animate={true}
     style={
       Array [
         Object {
@@ -145,6 +149,7 @@ exports[`should render normally 1`] = `
         undefined,
       ]
     }
+    value={5}
   >
     ☆
   </RatingSymbol>
@@ -164,7 +169,7 @@ exports[`should render normally 1`] = `
     }
   >
     <RatingSymbol
-      selected={false}
+      animate={true}
       style={
         Array [
           Array [
@@ -192,11 +197,12 @@ exports[`should render normally 1`] = `
           undefined,
         ]
       }
+      value={1}
     >
       ★
     </RatingSymbol>
     <RatingSymbol
-      selected={false}
+      animate={true}
       style={
         Array [
           Array [
@@ -224,11 +230,12 @@ exports[`should render normally 1`] = `
           undefined,
         ]
       }
+      value={2}
     >
       ★
     </RatingSymbol>
     <RatingSymbol
-      selected={false}
+      animate={true}
       style={
         Array [
           Array [
@@ -256,11 +263,12 @@ exports[`should render normally 1`] = `
           undefined,
         ]
       }
+      value={3}
     >
       ★
     </RatingSymbol>
     <RatingSymbol
-      selected={false}
+      animate={true}
       style={
         Array [
           Array [
@@ -288,11 +296,12 @@ exports[`should render normally 1`] = `
           undefined,
         ]
       }
+      value={4}
     >
       ★
     </RatingSymbol>
     <RatingSymbol
-      selected={false}
+      animate={true}
       style={
         Array [
           Array [
@@ -320,6 +329,7 @@ exports[`should render normally 1`] = `
           undefined,
         ]
       }
+      value={5}
     >
       ★
     </RatingSymbol>
@@ -346,7 +356,7 @@ exports[`should render with custom props 1`] = `
   }
 >
   <RatingSymbol
-    selected={false}
+    animate={true}
     style={
       Array [
         Object {
@@ -368,11 +378,12 @@ exports[`should render with custom props 1`] = `
         undefined,
       ]
     }
+    value={1}
   >
     ★
   </RatingSymbol>
   <RatingSymbol
-    selected={false}
+    animate={true}
     style={
       Array [
         Object {
@@ -394,11 +405,12 @@ exports[`should render with custom props 1`] = `
         undefined,
       ]
     }
+    value={2}
   >
     ★
   </RatingSymbol>
   <RatingSymbol
-    selected={false}
+    animate={true}
     style={
       Array [
         Object {
@@ -420,11 +432,12 @@ exports[`should render with custom props 1`] = `
         undefined,
       ]
     }
+    value={3}
   >
     ★
   </RatingSymbol>
   <RatingSymbol
-    selected={false}
+    animate={true}
     style={
       Array [
         Object {
@@ -446,11 +459,12 @@ exports[`should render with custom props 1`] = `
         undefined,
       ]
     }
+    value={4}
   >
     ★
   </RatingSymbol>
   <RatingSymbol
-    selected={false}
+    animate={true}
     style={
       Array [
         Object {
@@ -472,11 +486,12 @@ exports[`should render with custom props 1`] = `
         undefined,
       ]
     }
+    value={5}
   >
     ★
   </RatingSymbol>
   <RatingSymbol
-    selected={false}
+    animate={true}
     style={
       Array [
         Object {
@@ -498,11 +513,12 @@ exports[`should render with custom props 1`] = `
         undefined,
       ]
     }
+    value={6}
   >
     ★
   </RatingSymbol>
   <RatingSymbol
-    selected={false}
+    animate={true}
     style={
       Array [
         Object {
@@ -524,11 +540,12 @@ exports[`should render with custom props 1`] = `
         undefined,
       ]
     }
+    value={7}
   >
     ★
   </RatingSymbol>
   <RatingSymbol
-    selected={false}
+    animate={true}
     style={
       Array [
         Object {
@@ -550,11 +567,12 @@ exports[`should render with custom props 1`] = `
         undefined,
       ]
     }
+    value={8}
   >
     ★
   </RatingSymbol>
   <RatingSymbol
-    selected={false}
+    animate={true}
     style={
       Array [
         Object {
@@ -576,11 +594,12 @@ exports[`should render with custom props 1`] = `
         undefined,
       ]
     }
+    value={9}
   >
     ★
   </RatingSymbol>
   <RatingSymbol
-    selected={false}
+    animate={true}
     style={
       Array [
         Object {
@@ -602,6 +621,7 @@ exports[`should render with custom props 1`] = `
         undefined,
       ]
     }
+    value={10}
   >
     ★
   </RatingSymbol>
@@ -621,7 +641,7 @@ exports[`should render with custom props 1`] = `
     }
   >
     <RatingSymbol
-      selected={false}
+      animate={true}
       style={
         Array [
           Array [
@@ -649,11 +669,12 @@ exports[`should render with custom props 1`] = `
           undefined,
         ]
       }
+      value={1}
     >
       ★
     </RatingSymbol>
     <RatingSymbol
-      selected={false}
+      animate={true}
       style={
         Array [
           Array [
@@ -681,11 +702,12 @@ exports[`should render with custom props 1`] = `
           undefined,
         ]
       }
+      value={2}
     >
       ★
     </RatingSymbol>
     <RatingSymbol
-      selected={false}
+      animate={true}
       style={
         Array [
           Array [
@@ -713,11 +735,12 @@ exports[`should render with custom props 1`] = `
           undefined,
         ]
       }
+      value={3}
     >
       ★
     </RatingSymbol>
     <RatingSymbol
-      selected={false}
+      animate={true}
       style={
         Array [
           Array [
@@ -745,11 +768,12 @@ exports[`should render with custom props 1`] = `
           undefined,
         ]
       }
+      value={4}
     >
       ★
     </RatingSymbol>
     <RatingSymbol
-      selected={false}
+      animate={true}
       style={
         Array [
           Array [
@@ -777,11 +801,12 @@ exports[`should render with custom props 1`] = `
           undefined,
         ]
       }
+      value={5}
     >
       ★
     </RatingSymbol>
     <RatingSymbol
-      selected={false}
+      animate={true}
       style={
         Array [
           Array [
@@ -809,11 +834,12 @@ exports[`should render with custom props 1`] = `
           undefined,
         ]
       }
+      value={6}
     >
       ★
     </RatingSymbol>
     <RatingSymbol
-      selected={false}
+      animate={true}
       style={
         Array [
           Array [
@@ -841,11 +867,12 @@ exports[`should render with custom props 1`] = `
           undefined,
         ]
       }
+      value={7}
     >
       ★
     </RatingSymbol>
     <RatingSymbol
-      selected={false}
+      animate={true}
       style={
         Array [
           Array [
@@ -873,11 +900,12 @@ exports[`should render with custom props 1`] = `
           undefined,
         ]
       }
+      value={8}
     >
       ★
     </RatingSymbol>
     <RatingSymbol
-      selected={false}
+      animate={true}
       style={
         Array [
           Array [
@@ -905,11 +933,12 @@ exports[`should render with custom props 1`] = `
           undefined,
         ]
       }
+      value={9}
     >
       ★
     </RatingSymbol>
     <RatingSymbol
-      selected={false}
+      animate={true}
       style={
         Array [
           Array [
@@ -937,6 +966,7 @@ exports[`should render with custom props 1`] = `
           undefined,
         ]
       }
+      value={10}
     >
       ★
     </RatingSymbol>
@@ -963,7 +993,7 @@ exports[`should render with custom styles 1`] = `
   }
 >
   <RatingSymbol
-    selected={false}
+    animate={true}
     style={
       Array [
         Object {
@@ -987,11 +1017,12 @@ exports[`should render with custom styles 1`] = `
         },
       ]
     }
+    value={1}
   >
     ☆
   </RatingSymbol>
   <RatingSymbol
-    selected={false}
+    animate={true}
     style={
       Array [
         Object {
@@ -1015,11 +1046,12 @@ exports[`should render with custom styles 1`] = `
         },
       ]
     }
+    value={2}
   >
     ☆
   </RatingSymbol>
   <RatingSymbol
-    selected={false}
+    animate={true}
     style={
       Array [
         Object {
@@ -1043,11 +1075,12 @@ exports[`should render with custom styles 1`] = `
         },
       ]
     }
+    value={3}
   >
     ☆
   </RatingSymbol>
   <RatingSymbol
-    selected={false}
+    animate={true}
     style={
       Array [
         Object {
@@ -1071,11 +1104,12 @@ exports[`should render with custom styles 1`] = `
         },
       ]
     }
+    value={4}
   >
     ☆
   </RatingSymbol>
   <RatingSymbol
-    selected={false}
+    animate={true}
     style={
       Array [
         Object {
@@ -1099,6 +1133,7 @@ exports[`should render with custom styles 1`] = `
         },
       ]
     }
+    value={5}
   >
     ☆
   </RatingSymbol>
@@ -1118,7 +1153,7 @@ exports[`should render with custom styles 1`] = `
     }
   >
     <RatingSymbol
-      selected={false}
+      animate={true}
       style={
         Array [
           Array [
@@ -1150,11 +1185,12 @@ exports[`should render with custom styles 1`] = `
           },
         ]
       }
+      value={1}
     >
       ★
     </RatingSymbol>
     <RatingSymbol
-      selected={false}
+      animate={true}
       style={
         Array [
           Array [
@@ -1186,11 +1222,12 @@ exports[`should render with custom styles 1`] = `
           },
         ]
       }
+      value={2}
     >
       ★
     </RatingSymbol>
     <RatingSymbol
-      selected={false}
+      animate={true}
       style={
         Array [
           Array [
@@ -1222,11 +1259,12 @@ exports[`should render with custom styles 1`] = `
           },
         ]
       }
+      value={3}
     >
       ★
     </RatingSymbol>
     <RatingSymbol
-      selected={false}
+      animate={true}
       style={
         Array [
           Array [
@@ -1258,11 +1296,12 @@ exports[`should render with custom styles 1`] = `
           },
         ]
       }
+      value={4}
     >
       ★
     </RatingSymbol>
     <RatingSymbol
-      selected={false}
+      animate={true}
       style={
         Array [
           Array [
@@ -1294,6 +1333,7 @@ exports[`should render with custom styles 1`] = `
           },
         ]
       }
+      value={5}
     >
       ★
     </RatingSymbol>
