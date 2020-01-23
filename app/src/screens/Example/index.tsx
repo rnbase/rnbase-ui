@@ -8,7 +8,7 @@
  * @format
  */
 
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import { Image, StyleSheet, View, Text } from 'react-native';
 
 import {
@@ -42,10 +42,20 @@ const ExampleScreen = () => {
   const [busy, setBusy] = useState(false);
   const [badge, setBadge] = useState(0);
   const [rating, setRating] = useState(3.5);
+  const [userRating, setUserRating] = useState();
   const [selectedButton, setSelectedButton] = useState(0);
   const [headerImages] = useState(() => generateHeaderImages(3));
 
   const onSelectButton = (index: number) => setSelectedButton(index);
+
+  const onChangeRating = useCallback(setUserRating, []);
+  const onFinishRating = useCallback(
+    (value: number) => {
+      setRating(Math.round((rating + value) * 5) / 10);
+      setUserRating(undefined);
+    },
+    [rating],
+  );
 
   return (
     <StretchyScrollView
@@ -162,13 +172,8 @@ const ExampleScreen = () => {
           </View>
         )}
         <View style={styles.stack}>
-          <Rating
-            size={30}
-            value={rating}
-            onChange={setRating}
-            onFinish={(value: number) => setRating((value + 3) / 2)}
-          />
-          <Text>Rating: {rating} out of 5</Text>
+          <Rating size={30} value={rating} onChange={onChangeRating} onFinish={onFinishRating} />
+          <Text>Rating: {userRating || rating} out of 5</Text>
         </View>
         <ProgressBar value={badge ? badge * 10 : undefined} />
         <View style={styles.sectionContainer}>
