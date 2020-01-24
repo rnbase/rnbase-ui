@@ -13,7 +13,6 @@ const scale = (ratingValue: RatingValue, value: number) => (ratingValue.isEqual(
 
 const RatingSymbol: React.FC<Props> = ({ animate, value, children, style }) => {
   const ratingValue = useContext(RatingContext);
-
   const [animatedValue] = useState(() => new Animated.Value(scale(ratingValue, value)));
 
   useEffect(() => {

@@ -8,7 +8,6 @@ import {
   StyleSheet,
   TextStyle,
   View,
-  ViewProps,
   ViewStyle,
 } from 'react-native';
 
@@ -20,7 +19,7 @@ import RatingSymbol from './RatingSymbol';
 
 type Type = 'solid' | 'outline';
 
-interface RatingProps extends ViewProps {
+interface RatingProps {
   size: number;
   type: Type;
   value: number;
@@ -31,8 +30,9 @@ interface RatingProps extends ViewProps {
   symbolStyle?: StyleProp<TextStyle>;
   activeSymbolStyle?: StyleProp<TextStyle>;
   selectedSymbolStyle?: StyleProp<TextStyle>;
-  onChange?: Function;
-  onFinish?: Function;
+  onTouchStart?: () => void;
+  onTouchEnd?: (rating: number) => void;
+  onChange?: (rating: number) => void;
 }
 
 type ThemedRatingProps = Themed<typeof createStyleSheet, RatingProps>;
@@ -55,8 +55,8 @@ class Rating extends React.PureComponent<ThemedRatingProps, State> {
     interactive: false,
   };
 
-  private readonly overlayWidth = new Animated.Value(0);
   private readonly ratingValue = new RatingValue();
+  private readonly overlayWidth = new Animated.Value(0);
 
   private readonly panResponder: PanResponderInstance;
   private rafHandle: number | undefined;
@@ -102,8 +102,9 @@ class Rating extends React.PureComponent<ThemedRatingProps, State> {
       symbolStyle,
       activeSymbolStyle,
       selectedSymbolStyle,
+      onTouchStart,
+      onTouchEnd,
       onChange,
-      onFinish,
     } = this.props;
 
     const { interactive } = this.state;
@@ -155,7 +156,7 @@ class Rating extends React.PureComponent<ThemedRatingProps, State> {
 
     return (
       <View
-        {...(onChange || onFinish) && this.panResponder.panHandlers}
+        {...(onTouchStart || onChange || onTouchEnd) && this.panResponder.panHandlers}
         pointerEvents="box-only"
         style={rootStyles}
       >
@@ -178,8 +179,14 @@ class Rating extends React.PureComponent<ThemedRatingProps, State> {
   }
 
   private handlePanResponderGrant = (event: GestureResponderEvent) => {
+    const { onTouchStart } = this.props;
+
     this.setInteractive(true);
     this.handlePanResponderMove(event);
+
+    if (onTouchStart) {
+      onTouchStart();
+    }
   };
 
   private handlePanResponderMove = ({ nativeEvent: { locationX } }: GestureResponderEvent) => {
@@ -211,10 +218,10 @@ class Rating extends React.PureComponent<ThemedRatingProps, State> {
   };
 
   private handlePanResponderRelease = () => {
-    const { onFinish } = this.props;
+    const { onTouchEnd } = this.props;
 
-    if (onFinish) {
-      onFinish(this.ratingValue.value);
+    if (onTouchEnd) {
+      onTouchEnd(this.ratingValue.value);
     }
 
     this.ratingValue.value = 0;
