@@ -48,8 +48,8 @@ const ExampleScreen = () => {
 
   const onSelectButton = (index: number) => setSelectedButton(index);
 
-  const onChangeRating = useCallback(setUserRating, []);
-  const onFinishRating = useCallback(
+  const handleRatingChage = useCallback(setUserRating, []);
+  const handleRatingTounchEnd = useCallback(
     (value: number) => {
       setRating(Math.round((rating + value) * 5) / 10);
       setUserRating(undefined);
@@ -172,7 +172,12 @@ const ExampleScreen = () => {
           </View>
         )}
         <View style={styles.stack}>
-          <Rating size={30} value={rating} onChange={onChangeRating} onFinish={onFinishRating} />
+          <Rating
+            size={30}
+            value={rating}
+            onChange={handleRatingChage}
+            onTouchEnd={handleRatingTounchEnd}
+          />
           <Text>Rating: {userRating || rating} out of 5</Text>
         </View>
         <ProgressBar value={badge ? badge * 10 : undefined} />
