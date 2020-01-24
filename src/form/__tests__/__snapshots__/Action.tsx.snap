@@ -1,0 +1,173 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render normally 1`] = `
+<View
+  style={
+    Object {
+      "alignItems": "center",
+      "flexDirection": "row",
+    }
+  }
+>
+  <Text
+    numberOfLines={1}
+    style={
+      Array [
+        Object {
+          "backgroundColor": "transparent",
+          "color": "#5856d6",
+          "fontFamily": "System",
+          "fontSize": 16,
+          "fontWeight": "600",
+          "height": 16,
+          "includeFontPadding": false,
+          "lineHeight": 16,
+          "textAlignVertical": "center",
+        },
+        undefined,
+      ]
+    }
+  >
+    text
+  </Text>
+</View>
+`;
+
+exports[`should render with custom styles 1`] = `
+<View
+  style={
+    Object {
+      "alignItems": "center",
+      "flexDirection": "row",
+    }
+  }
+>
+  <Text
+    numberOfLines={1}
+    style={
+      Array [
+        Object {
+          "backgroundColor": "transparent",
+          "color": "#5856d6",
+          "fontFamily": "System",
+          "fontSize": 16,
+          "fontWeight": "600",
+          "height": 16,
+          "includeFontPadding": false,
+          "lineHeight": 16,
+          "textAlignVertical": "center",
+        },
+        Object {
+          "color": "red",
+        },
+      ]
+    }
+  >
+    text
+  </Text>
+</View>
+`;
+
+exports[`should render with icon 1`] = `
+<View
+  style={
+    Object {
+      "alignItems": "center",
+      "flexDirection": "row",
+    }
+  }
+>
+  <Text
+    numberOfLines={1}
+    style={
+      Array [
+        Object {
+          "backgroundColor": "transparent",
+          "color": "#5856d6",
+          "fontFamily": "System",
+          "fontSize": 16,
+          "fontWeight": "600",
+          "height": 16,
+          "includeFontPadding": false,
+          "lineHeight": 16,
+          "textAlignVertical": "center",
+        },
+        undefined,
+      ]
+    }
+  >
+    text
+  </Text>
+  <Image
+    source={
+      Object {
+        "uri": "../../assets/star.png",
+      }
+    }
+    style={
+      Array [
+        Object {
+          "height": 22,
+          "marginRight": -4,
+          "tintColor": "#5856d6",
+          "width": 22,
+        },
+        undefined,
+      ]
+    }
+  />
+</View>
+`;
+
+exports[`should render with icon and custom icon styles 1`] = `
+<View
+  style={
+    Object {
+      "alignItems": "center",
+      "flexDirection": "row",
+    }
+  }
+>
+  <Text
+    numberOfLines={1}
+    style={
+      Array [
+        Object {
+          "backgroundColor": "transparent",
+          "color": "#5856d6",
+          "fontFamily": "System",
+          "fontSize": 16,
+          "fontWeight": "600",
+          "height": 16,
+          "includeFontPadding": false,
+          "lineHeight": 16,
+          "textAlignVertical": "center",
+        },
+        undefined,
+      ]
+    }
+  >
+    text
+  </Text>
+  <Image
+    source={
+      Object {
+        "uri": "../../assets/star.png",
+      }
+    }
+    style={
+      Array [
+        Object {
+          "height": 22,
+          "marginRight": -4,
+          "tintColor": "#5856d6",
+          "width": 22,
+        },
+        Object {
+          "tintColor": "red",
+        },
+      ]
+    }
+  />
+</View>
+`;
