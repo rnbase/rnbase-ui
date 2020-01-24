@@ -1,7 +1,9 @@
-import React, { useCallback, useMemo, useState, useEffect } from 'react';
+import React from 'react';
 import {
   Animated,
+  GestureResponderEvent,
   PanResponder,
+  PanResponderInstance,
   StyleProp,
   StyleSheet,
   TextStyle,
@@ -16,13 +18,15 @@ import { inRange } from '../helpers';
 
 import RatingSymbol from './RatingSymbol';
 
+type Type = 'solid' | 'outline';
+
 interface RatingProps extends ViewProps {
-  size?: number;
-  type?: 'solid' | 'outline';
-  value?: number;
-  animate?: boolean;
-  maxValue?: number;
-  allowDecimals?: boolean;
+  size: number;
+  type: Type;
+  value: number;
+  animate: boolean;
+  maxValue: number;
+  allowDecimals: boolean;
   style?: StyleProp<ViewStyle>;
   symbolStyle?: StyleProp<TextStyle>;
   activeSymbolStyle?: StyleProp<TextStyle>;
@@ -31,140 +35,178 @@ interface RatingProps extends ViewProps {
   onFinish?: Function;
 }
 
-// let renders = 0;
+type ThemedRatingProps = Themed<typeof createStyleSheet, RatingProps>;
 
-const Rating: React.FC<Themed<typeof createStyleSheet, RatingProps>> = ({
-  theme: { styles },
-  size = 20,
-  type = 'outline',
-  value = 0,
-  animate = true,
-  maxValue = 5,
-  allowDecimals = false,
-  style,
-  symbolStyle,
-  activeSymbolStyle,
-  selectedSymbolStyle,
-  onChange,
-  onFinish,
-}) => {
-  // console.log(`Rating, render(${++renders}): `, value);
+type State = {
+  interactive: boolean;
+};
 
-  const [interactive, setInteractive] = useState(false);
-  const [overlayWidth] = useState(() => new Animated.Value(0));
-  const [ratingValue] = useState(() => new RatingValue());
-  const setOverlayWidth = useCallback(v => overlayWidth.setValue(v * size), [overlayWidth, size]);
+class Rating extends React.PureComponent<ThemedRatingProps, State> {
+  public static defaultProps = {
+    size: 20,
+    type: 'outline' as Type,
+    value: 0,
+    animate: true,
+    maxValue: 5,
+    allowDecimals: false,
+  };
 
-  useEffect(() => setOverlayWidth(inRange(value, 0, maxValue)), [setOverlayWidth, value, maxValue]);
+  state = {
+    interactive: false,
+  };
 
-  const onMove = useCallback(
-    ({ nativeEvent }) => {
-      const eventValue = allowDecimals
-        ? Math.round((nativeEvent.locationX / size) * 10) / 10
-        : Math.ceil(nativeEvent.locationX / size);
-      const rating = inRange(eventValue, 0, maxValue);
+  private readonly overlayWidth = new Animated.Value(0);
+  private readonly ratingValue = new RatingValue();
 
-      if (ratingValue.value !== rating) {
-        ratingValue.value = rating;
+  private readonly panResponder: PanResponderInstance;
 
-        setOverlayWidth(ratingValue.value);
+  constructor(props: ThemedRatingProps) {
+    super(props);
 
-        if (onChange) {
-          onChange(ratingValue.value);
-        }
-      }
-    },
-    [allowDecimals, size, maxValue, setOverlayWidth, onChange, ratingValue],
-  );
-
-  const onGrant = useCallback(
-    event => {
-      setInteractive(true);
-      onMove(event);
-    },
-    [onMove],
-  );
-
-  const onRelease = useCallback(() => {
-    if (onFinish) {
-      onFinish(ratingValue.value);
-    }
-
-    ratingValue.value = 0;
-
-    setInteractive(false);
-  }, [onFinish, ratingValue]);
-
-  const panResponder = useMemo(() => {
-    if (!onChange && !onFinish) {
-      return false;
-    }
-
-    return PanResponder.create({
+    this.panResponder = PanResponder.create({
       onStartShouldSetPanResponder: () => true,
       onPanResponderTerminationRequest: () => false,
-      onPanResponderGrant: onGrant,
-      onPanResponderMove: onMove,
-      onPanResponderRelease: onRelease,
+      onPanResponderGrant: this.onGrant,
+      onPanResponderMove: this.onMove,
+      onPanResponderRelease: this.onRelease,
     });
-  }, [onChange, onFinish, onGrant, onMove, onRelease]);
-
-  const rootStyles = [
-    {
-      width: size * maxValue,
-      height: size,
-    },
-    styles.root,
-    style,
-  ];
-
-  const overlayStyles = [
-    {
-      width: overlayWidth,
-      height: size,
-    },
-    styles.root,
-    styles.overlay,
-  ];
-
-  const symbolStyles = [
-    {
-      width: size,
-      fontSize: size,
-      height: size * 1.25,
-      lineHeight: size * 1.25,
-    },
-    styles.symbol,
-    symbolStyle,
-  ];
-
-  const overlaySymbolStyles = [symbolStyles, styles.symbolActive, activeSymbolStyle];
-
-  if (interactive) {
-    overlaySymbolStyles.push(styles.symbolSelected, selectedSymbolStyle);
   }
 
-  const overlaySymbols = Array(maxValue).fill('\u2605');
-  const underlaySymbols = type === 'solid' ? overlaySymbols : Array(maxValue).fill('\u2606');
+  componentDidMount() {
+    this.setOverlayWidth(inRange(this.props.value, 0, this.props.maxValue));
+  }
 
-  const renderSymbols = (symbols: string[], ratingSymbolStyle: StyleProp<TextStyle>) =>
-    symbols.map((symbol, index) => (
-      <RatingSymbol key={index} animate={animate} value={index + 1} style={ratingSymbolStyle}>
-        {symbol}
-      </RatingSymbol>
-    ));
+  componentDidUpdate(prevProps: ThemedRatingProps) {
+    const { value, maxValue } = this.props;
 
-  return (
-    <View {...panResponder && panResponder.panHandlers} pointerEvents="box-only" style={rootStyles}>
-      <RatingContext.Provider value={ratingValue}>
-        {renderSymbols(underlaySymbols, symbolStyles)}
-        <Animated.View style={overlayStyles}>
-          {renderSymbols(overlaySymbols, overlaySymbolStyles)}
-        </Animated.View>
-      </RatingContext.Provider>
-    </View>
-  );
-};
+    if (value !== prevProps.value || maxValue !== prevProps.maxValue) {
+      this.setOverlayWidth(inRange(value, 0, maxValue));
+    }
+  }
+
+  render() {
+    const {
+      theme: { styles },
+      size,
+      type,
+      animate,
+      maxValue,
+      style,
+      symbolStyle,
+      activeSymbolStyle,
+      selectedSymbolStyle,
+      onChange,
+      onFinish,
+    } = this.props;
+
+    const { interactive } = this.state;
+
+    const rootStyles = [
+      {
+        width: size * maxValue,
+        height: size,
+      },
+      styles.root,
+      style,
+    ];
+
+    const overlayStyles = [
+      {
+        width: this.overlayWidth,
+        height: size,
+      },
+      styles.root,
+      styles.overlay,
+    ];
+
+    const symbolStyles = [
+      {
+        width: size,
+        fontSize: size,
+        height: size * 1.25,
+        lineHeight: size * 1.25,
+      },
+      styles.symbol,
+      symbolStyle,
+    ];
+
+    const overlaySymbolStyles = [symbolStyles, styles.symbolActive, activeSymbolStyle];
+
+    if (interactive) {
+      overlaySymbolStyles.push(styles.symbolSelected, selectedSymbolStyle);
+    }
+
+    const overlaySymbols = Array(maxValue).fill('\u2605');
+    const underlaySymbols = type === 'solid' ? overlaySymbols : Array(maxValue).fill('\u2606');
+
+    const renderSymbols = (symbols: string[], ratingSymbolStyle: StyleProp<TextStyle>) =>
+      symbols.map((symbol, index) => (
+        <RatingSymbol key={index} animate={animate} value={index + 1} style={ratingSymbolStyle}>
+          {symbol}
+        </RatingSymbol>
+      ));
+
+    return (
+      <View
+        {...(onChange || onFinish) && this.panResponder.panHandlers}
+        pointerEvents="box-only"
+        style={rootStyles}
+      >
+        <RatingContext.Provider value={this.ratingValue}>
+          {renderSymbols(underlaySymbols, symbolStyles)}
+          <Animated.View style={overlayStyles}>
+            {renderSymbols(overlaySymbols, overlaySymbolStyles)}
+          </Animated.View>
+        </RatingContext.Provider>
+      </View>
+    );
+  }
+
+  private setInteractive(interactive: boolean) {
+    this.setState({ interactive });
+  }
+
+  private setOverlayWidth(rating: number) {
+    this.overlayWidth.setValue(rating * this.props.size);
+  }
+
+  private onMove = ({ nativeEvent: { locationX } }: GestureResponderEvent) => {
+    const { allowDecimals, size, maxValue } = this.props;
+
+    const eventValue = allowDecimals
+      ? Math.round((locationX / size) * 10) / 10
+      : Math.ceil(locationX / size);
+
+    const rating = inRange(eventValue, 0, maxValue);
+
+    if (this.ratingValue.value !== rating) {
+      this.ratingValue.value = rating;
+
+      this.setOverlayWidth(rating);
+
+      const { onChange } = this.props;
+
+      if (onChange) {
+        onChange(rating);
+      }
+    }
+  };
+
+  private onGrant = (event: GestureResponderEvent) => {
+    this.setInteractive(true);
+    this.onMove(event);
+  };
+
+  private onRelease = () => {
+    const { onFinish } = this.props;
+
+    if (onFinish) {
+      onFinish(this.ratingValue.value);
+    }
+
+    this.setInteractive(false);
+  };
+}
 
 const createStyleSheet = ({ colors }: Theme) =>
   StyleSheet.create({
