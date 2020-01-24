@@ -29,9 +29,8 @@ interface RatingProps {
   ratingColor?: string;
   activeColor?: string;
   style?: StyleProp<ViewStyle>;
-  onTouchStart?: () => void;
-  onTouchEnd?: (rating: number) => void;
   onChange?: (rating: number) => void;
+  onComplete?: (rating: number) => void;
 }
 
 type ThemedRatingProps = Themed<typeof createStyleSheet, RatingProps>;
@@ -102,9 +101,8 @@ class Rating extends React.PureComponent<ThemedRatingProps, State> {
       ratingColor,
       activeColor,
       style,
-      onTouchStart,
-      onTouchEnd,
       onChange,
+      onComplete,
     } = this.props;
 
     const rootStyles = [
@@ -150,7 +148,7 @@ class Rating extends React.PureComponent<ThemedRatingProps, State> {
 
     return (
       <View
-        {...(onTouchStart || onChange || onTouchEnd) && this.panResponder.panHandlers}
+        {...(onChange || onComplete) && this.panResponder.panHandlers}
         pointerEvents="box-only"
         style={rootStyles}
       >
@@ -173,14 +171,8 @@ class Rating extends React.PureComponent<ThemedRatingProps, State> {
   }
 
   private handlePanResponderGrant = (event: GestureResponderEvent) => {
-    const { onTouchStart } = this.props;
-
     this.setInteractive(true);
     this.handlePanResponderMove(event);
-
-    if (onTouchStart) {
-      onTouchStart();
-    }
   };
 
   private handlePanResponderMove = ({ nativeEvent: { locationX } }: GestureResponderEvent) => {
@@ -212,10 +204,10 @@ class Rating extends React.PureComponent<ThemedRatingProps, State> {
   };
 
   private handlePanResponderRelease = () => {
-    const { onTouchEnd } = this.props;
+    const { onComplete } = this.props;
 
-    if (onTouchEnd) {
-      onTouchEnd(this.ratingValue.value);
+    if (onComplete) {
+      onComplete(this.ratingValue.value);
     }
 
     this.ratingValue.value = 0;

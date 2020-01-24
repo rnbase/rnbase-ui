@@ -48,8 +48,8 @@ const ExampleScreen = () => {
 
   const onSelectButton = (index: number) => setSelectedButton(index);
 
-  const handleRatingChage = useCallback(setUserRating, []);
-  const handleRatingTounchEnd = useCallback(
+  const handleRatingChange = useCallback(setUserRating, []);
+  const handleRatingComplete = useCallback(
     (value: number) => {
       setRating(Math.round((rating + value) * 5) / 10);
       setUserRating(undefined);
@@ -175,8 +175,8 @@ const ExampleScreen = () => {
           <Rating
             size={35}
             value={rating}
-            onChange={handleRatingChage}
-            onTouchEnd={handleRatingTounchEnd}
+            onChange={handleRatingChange}
+            onComplete={handleRatingComplete}
           />
           <Text>Rating: {userRating || rating} out of 5</Text>
         </View>
