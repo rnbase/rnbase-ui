@@ -29,7 +29,7 @@ interface StretchyHeaderState {
   overflow?: 'visible' | 'hidden';
 }
 
-class StretchyHeader extends React.Component<StretchyHeaderProps, StretchyHeaderState> {
+class StretchyHeader extends React.PureComponent<StretchyHeaderProps, StretchyHeaderState> {
   static defaultProps = {
     background: [],
     backgroundColor: 'transparent',
@@ -40,26 +40,26 @@ class StretchyHeader extends React.Component<StretchyHeaderProps, StretchyHeader
     overflow: undefined,
   };
 
-  private _index = 0;
-  private _scrollX = new Animated.Value(0);
+  private index = 0;
+  private scrollX = new Animated.Value(0);
 
-  private _listenerId: string | undefined;
-  private _panResponder: PanResponderInstance;
+  private scrollListener: string | undefined;
+  private panResponder: PanResponderInstance;
 
   constructor(props: StretchyHeaderProps) {
     super(props);
 
-    this._panResponder = PanResponder.create({
-      onMoveShouldSetPanResponderCapture: this._onMoveShouldSetPanResponderCapture,
-      onPanResponderGrant: this._onPanResponderGrant,
-      onPanResponderMove: this._onPanResponderMove,
-      onPanResponderRelease: this._onPanResponderRelease,
-      onPanResponderTerminate: this._onPanResponderRelease,
+    this.panResponder = PanResponder.create({
+      onMoveShouldSetPanResponderCapture: this.onMoveCapture,
+      onPanResponderGrant: this.onGrant,
+      onPanResponderMove: this.onMove,
+      onPanResponderRelease: this.onRelease,
+      onPanResponderTerminate: this.onRelease,
     });
   }
 
   componentDidMount = () => {
-    this._listenerId = this.props.scrollY.addListener(({ value }) => {
+    this.scrollListener = this.props.scrollY.addListener(({ value }) => {
       const overflow = value > 0 ? 'hidden' : 'visible';
 
       if (overflow !== this.state.overflow) {
@@ -69,16 +69,16 @@ class StretchyHeader extends React.Component<StretchyHeaderProps, StretchyHeader
   };
 
   componentWillUnmount = () => {
-    if (this._listenerId) {
-      this.props.scrollY.removeListener(this._listenerId);
+    if (this.scrollListener) {
+      this.props.scrollY.removeListener(this.scrollListener);
     }
   };
 
   render() {
     const {
-      _scrollX: scrollX,
-      _onLayout: onLayout,
-      _panResponder: panResponder,
+      scrollX,
+      onLayout,
+      panResponder,
       state: { width, overflow },
       props: { background, height, backgroundColor, children, scrollY },
     } = this;
@@ -162,14 +162,15 @@ class StretchyHeader extends React.Component<StretchyHeaderProps, StretchyHeader
   }
 
   // Claim responder if it's a horizontal pan
-  private _onMoveShouldSetPanResponderCapture = (
+  private onMoveCapture = (
     _event: GestureResponderEvent,
     gestureState: PanResponderGestureState,
   ) => {
     return Math.abs(gestureState.dx) * 2 >= Math.abs(gestureState.dy);
   };
 
-  private _onPanResponderGrant = () => {
+  // Run touch started callback
+  private onGrant = () => {
     const { onTouchStart } = this.props;
 
     if (onTouchStart) {
@@ -178,12 +179,9 @@ class StretchyHeader extends React.Component<StretchyHeaderProps, StretchyHeader
   };
 
   // Move images horizontally when panning
-  private _onPanResponderMove = (
-    _event: GestureResponderEvent,
-    gestureState: PanResponderGestureState,
-  ) => {
+  private onMove = (_event: GestureResponderEvent, gestureState: PanResponderGestureState) => {
     const {
-      _index: index,
+      index,
       props: { background },
       state: { width },
     } = this;
@@ -191,16 +189,13 @@ class StretchyHeader extends React.Component<StretchyHeaderProps, StretchyHeader
     const length = Array.isArray(background) ? background.length : 1;
     const reduce = (index === 0 && dx > 0) || (index === length - 1 && dx < 0) ? 3 : 1;
 
-    this._scrollX.setValue(-dx / width / reduce + index);
+    this.scrollX.setValue(-dx / width / reduce + index);
   };
 
-  // Set the closest image when toutch released
-  private _onPanResponderRelease = (
-    _event: GestureResponderEvent,
-    gestureState: PanResponderGestureState,
-  ) => {
+  // Set the closest image when touch released
+  private onRelease = (_event: GestureResponderEvent, gestureState: PanResponderGestureState) => {
     const {
-      _index: index,
+      index,
       props: { onTouchEnd },
       state: { width },
     } = this;
@@ -208,11 +203,11 @@ class StretchyHeader extends React.Component<StretchyHeaderProps, StretchyHeader
     const relativeDistance = dx / width;
 
     if (relativeDistance < -0.5 || (relativeDistance < 0 && vx <= -0.5)) {
-      this._setImage(index + 1);
+      this.setImage(index + 1);
     } else if (relativeDistance > 0.5 || (relativeDistance > 0 && vx >= 0.5)) {
-      this._setImage(index - 1);
+      this.setImage(index - 1);
     } else {
-      this._setImage(index);
+      this.setImage(index);
     }
 
     if (onTouchEnd) {
@@ -221,28 +216,28 @@ class StretchyHeader extends React.Component<StretchyHeaderProps, StretchyHeader
   };
 
   // Animate to the given image
-  private _setImage(index: number) {
+  private setImage(index: number) {
     const {
-      _index: prevIndex,
+      index: prevIndex,
       props: { background, onChange },
     } = this;
     const length = Array.isArray(background) ? background.length : 1;
 
-    this._index = Math.max(0, Math.min(index, length - 1));
+    this.index = Math.max(0, Math.min(index, length - 1));
 
-    Animated.timing(this._scrollX, {
-      toValue: this._index,
+    Animated.timing(this.scrollX, {
+      toValue: this.index,
       useNativeDriver: true,
       easing: Easing.out(Easing.exp),
     }).start(() => {
-      if (this._index !== prevIndex && onChange) {
-        onChange({ index: this._index });
+      if (this.index !== prevIndex && onChange) {
+        onChange({ index: this.index });
       }
     });
   }
 
   // Determine header width
-  private _onLayout = (event: LayoutChangeEvent) => {
+  private onLayout = (event: LayoutChangeEvent) => {
     this.setState({
       width: event.nativeEvent.layout.width,
     });
