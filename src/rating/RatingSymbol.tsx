@@ -3,15 +3,15 @@ import { Animated, StyleProp, TextProps, TextStyle } from 'react-native';
 import { RatingContext, RatingValue } from './RatingContext';
 
 export interface Props extends TextProps {
-  animate: boolean;
   value: number;
+  animate: boolean;
   children?: React.ReactNode;
   style?: StyleProp<TextStyle>;
 }
 
-const scale = (ratingValue: RatingValue, value: number) => (ratingValue.isEqual(value) ? 1.25 : 1);
+const scale = (ratingValue: RatingValue, value: number) => (ratingValue.isEqual(value) ? 1.2 : 1);
 
-const RatingSymbol: React.FC<Props> = ({ animate, value, children, style }) => {
+const RatingSymbol: React.FC<Props> = ({ value, animate, children, style }) => {
   const ratingValue = useContext(RatingContext);
   const [animatedValue] = useState(() => new Animated.Value(scale(ratingValue, value)));
 
