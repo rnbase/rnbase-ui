@@ -37,6 +37,12 @@ const HomeScreen: React.FC<Props> = ({ navigation }) => {
         <View style={styles.separator} />
         <Button
           themeKey="HomeButton"
+          text="Form Controls"
+          onPress={() => navigation.navigate('Form')}
+        />
+        <View style={styles.separator} />
+        <Button
+          themeKey="HomeButton"
           text="Stretchy Flat List"
           onPress={() => navigation.navigate('StretchyFlatList')}
         />
