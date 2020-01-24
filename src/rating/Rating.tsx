@@ -215,6 +215,8 @@ class Rating extends React.PureComponent<ThemedRatingProps, State> {
       onFinish(this.ratingValue.value);
     }
 
+    this.ratingValue.value = 0;
+
     this.setInteractive(false);
   };
 }
