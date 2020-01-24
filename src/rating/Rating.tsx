@@ -177,6 +177,11 @@ class Rating extends React.PureComponent<ThemedRatingProps, State> {
     this.overlayWidth.setValue(rating * this.props.size);
   }
 
+  private handlePanResponderGrant = (event: GestureResponderEvent) => {
+    this.setInteractive(true);
+    this.handlePanResponderMove(event);
+  };
+
   private handlePanResponderMove = ({ nativeEvent: { locationX } }: GestureResponderEvent) => {
     const { allowDecimals, size, maxValue } = this.props;
 
@@ -189,23 +194,20 @@ class Rating extends React.PureComponent<ThemedRatingProps, State> {
     if (this.ratingValue.value !== rating) {
       this.ratingValue.value = rating;
 
-      this.setOverlayWidth(rating);
-
-      const { onChange } = this.props;
-
-      if (onChange) {
-        if (this.rafHandle) {
-          cancelAnimationFrame(this.rafHandle);
-        }
-
-        this.rafHandle = requestAnimationFrame(() => onChange(rating));
+      if (this.rafHandle) {
+        cancelAnimationFrame(this.rafHandle);
       }
-    }
-  };
 
-  private handlePanResponderGrant = (event: GestureResponderEvent) => {
-    this.setInteractive(true);
-    this.handlePanResponderMove(event);
+      this.rafHandle = requestAnimationFrame(() => {
+        const { onChange } = this.props;
+
+        this.setOverlayWidth(rating);
+
+        if (onChange) {
+          onChange(rating);
+        }
+      });
+    }
   };
 
   private handlePanResponderRelease = () => {
@@ -216,7 +218,6 @@ class Rating extends React.PureComponent<ThemedRatingProps, State> {
     }
 
     this.ratingValue.value = 0;
-
     this.setInteractive(false);
   };
 }
