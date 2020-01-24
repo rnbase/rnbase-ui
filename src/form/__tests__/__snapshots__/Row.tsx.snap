@@ -1,0 +1,72 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render as touchable 1`] = `
+<TouchableHighlight
+  activeOpacity={1}
+  onPress={[MockFunction]}
+  underlayColor="#0001"
+>
+  <View
+    style={
+      Array [
+        Object {
+          "alignItems": "center",
+          "flexDirection": "row",
+          "flexWrap": "nowrap",
+          "justifyContent": "space-between",
+          "minHeight": 48,
+          "paddingHorizontal": 15,
+        },
+        undefined,
+      ]
+    }
+  >
+    <Label />
+    <Action />
+  </View>
+</TouchableHighlight>
+`;
+
+exports[`should render normally 1`] = `
+<View
+  style={
+    Array [
+      Object {
+        "alignItems": "center",
+        "flexDirection": "row",
+        "flexWrap": "nowrap",
+        "justifyContent": "space-between",
+        "minHeight": 48,
+        "paddingHorizontal": 15,
+      },
+      undefined,
+    ]
+  }
+>
+  <Label />
+  <Action />
+</View>
+`;
+
+exports[`should render with custom styles 1`] = `
+<View
+  style={
+    Array [
+      Object {
+        "alignItems": "center",
+        "flexDirection": "row",
+        "flexWrap": "nowrap",
+        "justifyContent": "space-between",
+        "minHeight": 48,
+        "paddingHorizontal": 15,
+      },
+      Object {
+        "backgroundColor": "red",
+      },
+    ]
+  }
+>
+  <Label />
+  <Action />
+</View>
+`;
