@@ -1,0 +1,23 @@
+import React from 'react';
+
+// Note: test renderer must be required after react-native.
+import TestRenderer from 'react-test-renderer';
+
+import Separator from '../Separator';
+
+type Props = React.ComponentProps<typeof Separator>;
+
+/**
+ * Under test
+ */
+const createElement = (props: Partial<Props>) => <Separator {...props} />;
+
+const createRenderer = (props: Partial<Props>) => TestRenderer.create(createElement(props));
+
+it('should render normally', () => {
+  expect(createRenderer({})).toMatchSnapshot();
+});
+
+it('should render with custom styles', () => {
+  expect(createRenderer({ style: { backgroundColor: 'red' } })).toMatchSnapshot();
+});

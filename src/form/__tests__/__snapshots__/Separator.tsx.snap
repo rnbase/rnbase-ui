@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render normally 1`] = `
+<View
+  style={
+    Array [
+      Object {
+        "backgroundColor": "#0003",
+        "height": 0.5,
+        "marginLeft": 15,
+      },
+      undefined,
+    ]
+  }
+/>
+`;
+
+exports[`should render with custom styles 1`] = `
+<View
+  style={
+    Array [
+      Object {
+        "backgroundColor": "#0003",
+        "height": 0.5,
+        "marginLeft": 15,
+      },
+      Object {
+        "backgroundColor": "red",
+      },
+    ]
+  }
+/>
+`;
