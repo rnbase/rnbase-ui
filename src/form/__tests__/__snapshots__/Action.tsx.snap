@@ -15,7 +15,7 @@ exports[`should render normally 1`] = `
       Array [
         Object {
           "backgroundColor": "transparent",
-          "color": "#5856d6",
+          "color": "#007aff",
           "fontFamily": "System",
           "fontSize": 16,
           "fontWeight": "600",
@@ -48,7 +48,7 @@ exports[`should render with custom styles 1`] = `
       Array [
         Object {
           "backgroundColor": "transparent",
-          "color": "#5856d6",
+          "color": "#007aff",
           "fontFamily": "System",
           "fontSize": 16,
           "fontWeight": "600",
@@ -83,7 +83,7 @@ exports[`should render with icon 1`] = `
       Array [
         Object {
           "backgroundColor": "transparent",
-          "color": "#5856d6",
+          "color": "#007aff",
           "fontFamily": "System",
           "fontSize": 16,
           "fontWeight": "600",
@@ -109,7 +109,7 @@ exports[`should render with icon 1`] = `
         Object {
           "height": 22,
           "marginRight": -4,
-          "tintColor": "#5856d6",
+          "tintColor": "#007aff",
           "width": 22,
         },
         undefined,
@@ -134,7 +134,7 @@ exports[`should render with icon and custom icon styles 1`] = `
       Array [
         Object {
           "backgroundColor": "transparent",
-          "color": "#5856d6",
+          "color": "#007aff",
           "fontFamily": "System",
           "fontSize": 16,
           "fontWeight": "600",
@@ -160,7 +160,7 @@ exports[`should render with icon and custom icon styles 1`] = `
         Object {
           "height": 22,
           "marginRight": -4,
-          "tintColor": "#5856d6",
+          "tintColor": "#007aff",
           "width": 22,
         },
         Object {

@@ -3,7 +3,9 @@ import { StyleSheet, View, ViewProps } from 'react-native';
 
 import { Themed, withTheme } from '../theming';
 
-interface FieldsetProps extends ViewProps {}
+interface FieldsetProps extends ViewProps {
+  children: React.ReactNode;
+}
 
 const Fieldset: React.FC<Themed<typeof createStyleSheet, FieldsetProps>> = ({
   theme: { styles },
