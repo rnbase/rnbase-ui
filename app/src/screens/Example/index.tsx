@@ -173,7 +173,7 @@ const ExampleScreen = () => {
         )}
         <View style={styles.stack}>
           <Rating
-            size={30}
+            size={35}
             value={rating}
             onChange={handleRatingChage}
             onTouchEnd={handleRatingTounchEnd}
