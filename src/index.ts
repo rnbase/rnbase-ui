@@ -1,6 +1,7 @@
 export { default as Avatar } from './avatar/Avatar';
 export { default as Badge } from './badge/Badge';
 export { default as Button } from './buttons/Button';
+export { default as Form } from './form';
 export { default as OutlineButton } from './buttons/OutlineButton';
 export { default as Pager } from './pager/Pager';
 export { default as ProgressBar } from './progress/ProgressBar';
