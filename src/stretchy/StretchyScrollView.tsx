@@ -6,23 +6,27 @@ import useStretchy, { StretchyProps } from './Stretchy';
 export type StretchyScrollViewProps = ScrollViewProps & StretchyProps;
 
 const StretchyScrollView: React.FC<StretchyScrollViewProps> = ({
-  children,
   headerBackground,
   headerHeight,
   headerContent,
   headerBackgroundColor,
-  onScroll,
-  onChangeImage,
+  headerShowPager,
+  headerPagerProps,
+  onHeaderChange,
+  children,
   scrollEventThrottle = 16,
+  onScroll,
   ...props
 }) => {
   const [refScrollView, animatedValue, header] = useStretchy<typeof Animated.ScrollView>(
     {
-      children: headerContent,
       background: headerBackground,
       height: headerHeight,
+      children: headerContent,
       backgroundColor: headerBackgroundColor,
-      onChange: onChangeImage,
+      showPager: headerShowPager,
+      pagerProps: headerPagerProps,
+      onChange: onHeaderChange,
     },
     props.scrollEnabled,
   );

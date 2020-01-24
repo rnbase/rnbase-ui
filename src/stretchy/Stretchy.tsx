@@ -2,13 +2,16 @@ import React, { useCallback, useRef, useState } from 'react';
 import { Animated, ScrollView, View } from 'react-native';
 
 import StretchyHeader, { BackgroundPropType } from './StretchyHeader';
+import { Props as PagerProps } from '../pager/Pager';
 
 export interface StretchyProps {
   headerHeight: number;
   headerBackground?: BackgroundPropType;
   headerContent?: React.ReactNode;
   headerBackgroundColor?: string;
-  onChangeImage?: (event: { index: number }) => void;
+  headerShowPager?: boolean;
+  headerPagerProps?: PagerProps;
+  onHeaderChange?: (event: { index: number }) => void;
 }
 
 interface AnimatedComponent {
