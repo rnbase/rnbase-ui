@@ -11,10 +11,9 @@ import {
   ViewStyle,
 } from 'react-native';
 
-import { Themed, Theme, WithThemeProps, withTheme } from '../theming';
-import { RatingContext, RatingValue } from './RatingContext';
+import { Themed, WithThemeProps, withTheme } from '../theming';
 import { inRange } from '../helpers';
-
+import { RatingContext, RatingValue } from './RatingContext';
 import RatingSymbol from './RatingSymbol';
 
 type Type = 'solid' | 'outline';
@@ -23,13 +22,13 @@ interface RatingProps {
   size: number;
   type: Type;
   value: number;
-  animate: boolean;
   maxValue: number;
+  animate: boolean;
   allowDecimals: boolean;
+  baseColor?: string;
+  ratingColor?: string;
+  activeColor?: string;
   style?: StyleProp<ViewStyle>;
-  symbolStyle?: StyleProp<TextStyle>;
-  activeSymbolStyle?: StyleProp<TextStyle>;
-  selectedSymbolStyle?: StyleProp<TextStyle>;
   onTouchStart?: () => void;
   onTouchEnd?: (rating: number) => void;
   onChange?: (rating: number) => void;
@@ -46,8 +45,8 @@ class Rating extends React.PureComponent<ThemedRatingProps, State> {
     size: 20,
     type: 'outline' as Type,
     value: 0,
-    animate: true,
     maxValue: 5,
+    animate: true,
     allowDecimals: false,
   };
 
@@ -92,22 +91,21 @@ class Rating extends React.PureComponent<ThemedRatingProps, State> {
   }
 
   render() {
+    const { interactive } = this.state;
     const {
-      theme: { styles },
+      theme: { colors, styles },
       size,
       type,
       animate,
       maxValue,
+      baseColor,
+      ratingColor,
+      activeColor,
       style,
-      symbolStyle,
-      activeSymbolStyle,
-      selectedSymbolStyle,
       onTouchStart,
       onTouchEnd,
       onChange,
     } = this.props;
-
-    const { interactive } = this.state;
 
     const rootStyles = [
       {
@@ -133,19 +131,15 @@ class Rating extends React.PureComponent<ThemedRatingProps, State> {
         fontSize: size,
         height: size * 1.25,
         lineHeight: size * 1.25,
+        color: baseColor || colors.gray3,
       },
       styles.symbol,
-      symbolStyle,
     ];
-
-    const overlaySymbolStyles = [symbolStyles, styles.symbolActive, activeSymbolStyle];
-
-    if (interactive) {
-      overlaySymbolStyles.push(styles.symbolSelected, selectedSymbolStyle);
-    }
 
     const overlaySymbols = Array(maxValue).fill('\u2605');
     const underlaySymbols = type === 'solid' ? overlaySymbols : Array(maxValue).fill('\u2606');
+    const overlayColor = interactive ? activeColor || colors.red : ratingColor || colors.orange;
+    const overlaySymbolStyles = [symbolStyles, { color: overlayColor }];
 
     const renderSymbols = (symbols: string[], ratingSymbolStyle: StyleProp<TextStyle>) =>
       symbols.map((symbol, index) => (
@@ -229,7 +223,7 @@ class Rating extends React.PureComponent<ThemedRatingProps, State> {
   };
 }
 
-const createStyleSheet = ({ colors }: Theme) =>
+const createStyleSheet = () =>
   StyleSheet.create({
     root: {
       flexShrink: 0,
@@ -245,18 +239,11 @@ const createStyleSheet = ({ colors }: Theme) =>
     symbol: {
       flexShrink: 0,
       fontWeight: '200',
-      color: colors.gray3,
       textAlign: 'center',
       fontFamily: 'System',
       includeFontPadding: false,
       textAlignVertical: 'center',
       backgroundColor: 'transparent',
-    },
-    symbolActive: {
-      color: colors.orange,
-    },
-    symbolSelected: {
-      color: colors.red,
     },
   });
 
