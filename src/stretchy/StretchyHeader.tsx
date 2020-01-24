@@ -56,11 +56,11 @@ class StretchyHeader extends React.PureComponent<StretchyHeaderProps, StretchyHe
     super(props);
 
     this.panResponder = PanResponder.create({
-      onMoveShouldSetPanResponderCapture: this.onMoveCapture,
-      onPanResponderGrant: this.onGrant,
-      onPanResponderMove: this.onMove,
-      onPanResponderRelease: this.onRelease,
-      onPanResponderTerminate: this.onRelease,
+      onMoveShouldSetPanResponderCapture: this.onMoveShouldSetPanResponderCapture,
+      onPanResponderGrant: this.onPanResponderGrant,
+      onPanResponderMove: this.onPanResponderMove,
+      onPanResponderRelease: this.onPanResponderRelease,
+      onPanResponderTerminate: this.onPanResponderRelease,
     });
   }
 
@@ -171,15 +171,15 @@ class StretchyHeader extends React.PureComponent<StretchyHeaderProps, StretchyHe
   }
 
   // Claim responder if it's a horizontal pan
-  private onMoveCapture = (
+  private onMoveShouldSetPanResponderCapture = (
     _event: GestureResponderEvent,
     gestureState: PanResponderGestureState,
   ) => {
     return Math.abs(gestureState.dx) * 2 >= Math.abs(gestureState.dy);
   };
 
-  // Run touch started callback
-  private onGrant = () => {
+  // Run callback when touch started
+  private onPanResponderGrant = () => {
     const { onTouchStart } = this.props;
 
     if (onTouchStart) {
@@ -187,8 +187,11 @@ class StretchyHeader extends React.PureComponent<StretchyHeaderProps, StretchyHe
     }
   };
 
-  // Move images horizontally when panning
-  private onMove = (_event: GestureResponderEvent, gestureState: PanResponderGestureState) => {
+  // Move background items horizontally when panning
+  private onPanResponderMove = (
+    _event: GestureResponderEvent,
+    gestureState: PanResponderGestureState,
+  ) => {
     const {
       props: { background },
       state: { width, index },
@@ -200,8 +203,11 @@ class StretchyHeader extends React.PureComponent<StretchyHeaderProps, StretchyHe
     this.scrollX.setValue(-dx / width / reduce + index);
   };
 
-  // Set the closest image when touch released
-  private onRelease = (_event: GestureResponderEvent, gestureState: PanResponderGestureState) => {
+  // Set the closest background item when touch released
+  private onPanResponderRelease = (
+    _event: GestureResponderEvent,
+    gestureState: PanResponderGestureState,
+  ) => {
     const {
       props: { onTouchEnd },
       state: { width, index },
