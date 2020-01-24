@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { createRef } from 'react';
 import {
   Animated,
   Easing,
@@ -32,7 +32,6 @@ export interface StretchyHeaderProps {
 interface StretchyHeaderState {
   width: number;
   index: number;
-  overflow?: 'visible' | 'hidden';
 }
 
 class StretchyHeader extends React.PureComponent<StretchyHeaderProps, StretchyHeaderState> {
@@ -45,9 +44,9 @@ class StretchyHeader extends React.PureComponent<StretchyHeaderProps, StretchyHe
   state = {
     width: 0,
     index: 0,
-    overflow: undefined,
   };
 
+  private refRoot = createRef<View>();
   private scrollX = new Animated.Value(0);
 
   private scrollListener: string | undefined;
@@ -68,10 +67,9 @@ class StretchyHeader extends React.PureComponent<StretchyHeaderProps, StretchyHe
   componentDidMount = () => {
     this.scrollListener = this.props.scrollY.addListener(({ value }) => {
       const overflow = value > 0 ? 'hidden' : 'visible';
+      const { current: rootView } = this.refRoot;
 
-      if (overflow !== this.state.overflow) {
-        this.setState({ overflow });
-      }
+      rootView && rootView.setNativeProps({ style: { overflow } });
     });
   };
 
@@ -86,7 +84,7 @@ class StretchyHeader extends React.PureComponent<StretchyHeaderProps, StretchyHe
       scrollX,
       onLayout,
       panResponder,
-      state: { width, index, overflow },
+      state: { width, index },
       props: { background, height, backgroundColor, children, scrollY, showPager, pagerProps },
     } = this;
 
@@ -159,7 +157,7 @@ class StretchyHeader extends React.PureComponent<StretchyHeaderProps, StretchyHe
     ];
 
     return (
-      <View style={{ overflow }} onLayout={onLayout} {...length > 1 && panResponder.panHandlers}>
+      <View ref={this.refRoot} onLayout={onLayout} {...length > 1 && panResponder.panHandlers}>
         <Animated.View style={backgroundStyles}>
           <Animated.View style={wrapperStyles}>
             {elements.map((element, key) =>
@@ -248,9 +246,7 @@ class StretchyHeader extends React.PureComponent<StretchyHeaderProps, StretchyHe
 
   // Determine header width
   private onLayout = (event: LayoutChangeEvent) => {
-    this.setState({
-      width: event.nativeEvent.layout.width,
-    });
+    this.setState({ width: event.nativeEvent.layout.width });
   };
 }
 
