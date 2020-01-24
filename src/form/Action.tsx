@@ -45,13 +45,13 @@ const createStyleSheet = ({ colors, fonts }: Theme) =>
       height: 16,
       fontSize: 16,
       lineHeight: 16,
-      color: colors.indigo,
+      color: colors.blue,
     },
     icon: {
       width: 22,
       height: 22,
       marginRight: -4,
-      tintColor: colors.indigo,
+      tintColor: colors.blue,
     },
   });
 
