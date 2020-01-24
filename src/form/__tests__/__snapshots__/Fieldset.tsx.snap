@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render normally 1`] = `
+<View
+  style={
+    Array [
+      Object {
+        "marginVertical": 15,
+      },
+      undefined,
+    ]
+  }
+>
+  <Row />
+</View>
+`;
+
+exports[`should render with custom styles 1`] = `
+<View
+  style={
+    Array [
+      Object {
+        "marginVertical": 15,
+      },
+      Object {
+        "height": 123,
+      },
+    ]
+  }
+>
+  <Row />
+</View>
+`;
