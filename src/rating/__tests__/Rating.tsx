@@ -28,19 +28,9 @@ it('should render with custom props', () => {
     size: 30,
     type: 'solid',
     maxValue: 10,
-  });
-
-  act(() => {});
-
-  expect(tree).toMatchSnapshot();
-});
-
-it('should render with custom styles', () => {
-  const tree = createRenderer({
-    value: 3,
-    symbolStyle: { color: 'black' },
-    activeSymbolStyle: { color: 'blue' },
-    selectedSymbolStyle: { color: 'green' },
+    baseColor: 'black',
+    ratingColor: 'blue',
+    activeColor: 'green',
   });
 
   act(() => {});

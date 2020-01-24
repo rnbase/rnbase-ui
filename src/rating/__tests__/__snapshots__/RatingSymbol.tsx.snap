@@ -24,7 +24,7 @@ exports[`should render scaled 1`] = `
     Object {
       "transform": Array [
         Object {
-          "scale": 1.25,
+          "scale": 1.2,
         },
       ],
     }

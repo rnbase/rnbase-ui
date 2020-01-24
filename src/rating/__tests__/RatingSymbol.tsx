@@ -5,7 +5,6 @@ import { Animated as AnimatedObj } from 'react-native';
 import TestRenderer, { act } from 'react-test-renderer';
 
 import { Props } from '../RatingSymbol';
-
 import { RatingContext, RatingValue } from '../RatingContext';
 
 jest.doMock('react-native/Libraries/Animated/src/Animated', () => {
@@ -96,7 +95,7 @@ describe('animation', () => {
     ratingValue.value = value;
 
     expect(Animated.spring).toBeCalledWith(expect.objectContaining({ _value: 1 }), {
-      toValue: 1.25,
+      toValue: 1.2,
       friction: 3,
       tension: 50,
       useNativeDriver: true,
@@ -113,7 +112,7 @@ describe('animation', () => {
 
     ratingValue.value++;
 
-    expect(Animated.spring).toBeCalledWith(expect.objectContaining({ _value: 1.25 }), {
+    expect(Animated.spring).toBeCalledWith(expect.objectContaining({ _value: 1.2 }), {
       toValue: 1,
       friction: 3,
       tension: 50,

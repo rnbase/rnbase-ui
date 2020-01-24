@@ -23,6 +23,7 @@ exports[`should render normally 1`] = `
     style={
       Array [
         Object {
+          "color": "#c7c7cc",
           "fontSize": 20,
           "height": 25,
           "lineHeight": 25,
@@ -30,7 +31,6 @@ exports[`should render normally 1`] = `
         },
         Object {
           "backgroundColor": "transparent",
-          "color": "#c7c7cc",
           "flexShrink": 0,
           "fontFamily": "System",
           "fontWeight": "200",
@@ -38,7 +38,6 @@ exports[`should render normally 1`] = `
           "textAlign": "center",
           "textAlignVertical": "center",
         },
-        undefined,
       ]
     }
     value={1}
@@ -50,6 +49,7 @@ exports[`should render normally 1`] = `
     style={
       Array [
         Object {
+          "color": "#c7c7cc",
           "fontSize": 20,
           "height": 25,
           "lineHeight": 25,
@@ -57,7 +57,6 @@ exports[`should render normally 1`] = `
         },
         Object {
           "backgroundColor": "transparent",
-          "color": "#c7c7cc",
           "flexShrink": 0,
           "fontFamily": "System",
           "fontWeight": "200",
@@ -65,7 +64,6 @@ exports[`should render normally 1`] = `
           "textAlign": "center",
           "textAlignVertical": "center",
         },
-        undefined,
       ]
     }
     value={2}
@@ -77,6 +75,7 @@ exports[`should render normally 1`] = `
     style={
       Array [
         Object {
+          "color": "#c7c7cc",
           "fontSize": 20,
           "height": 25,
           "lineHeight": 25,
@@ -84,7 +83,6 @@ exports[`should render normally 1`] = `
         },
         Object {
           "backgroundColor": "transparent",
-          "color": "#c7c7cc",
           "flexShrink": 0,
           "fontFamily": "System",
           "fontWeight": "200",
@@ -92,7 +90,6 @@ exports[`should render normally 1`] = `
           "textAlign": "center",
           "textAlignVertical": "center",
         },
-        undefined,
       ]
     }
     value={3}
@@ -104,6 +101,7 @@ exports[`should render normally 1`] = `
     style={
       Array [
         Object {
+          "color": "#c7c7cc",
           "fontSize": 20,
           "height": 25,
           "lineHeight": 25,
@@ -111,7 +109,6 @@ exports[`should render normally 1`] = `
         },
         Object {
           "backgroundColor": "transparent",
-          "color": "#c7c7cc",
           "flexShrink": 0,
           "fontFamily": "System",
           "fontWeight": "200",
@@ -119,7 +116,6 @@ exports[`should render normally 1`] = `
           "textAlign": "center",
           "textAlignVertical": "center",
         },
-        undefined,
       ]
     }
     value={4}
@@ -131,6 +127,7 @@ exports[`should render normally 1`] = `
     style={
       Array [
         Object {
+          "color": "#c7c7cc",
           "fontSize": 20,
           "height": 25,
           "lineHeight": 25,
@@ -138,7 +135,6 @@ exports[`should render normally 1`] = `
         },
         Object {
           "backgroundColor": "transparent",
-          "color": "#c7c7cc",
           "flexShrink": 0,
           "fontFamily": "System",
           "fontWeight": "200",
@@ -146,7 +142,6 @@ exports[`should render normally 1`] = `
           "textAlign": "center",
           "textAlignVertical": "center",
         },
-        undefined,
       ]
     }
     value={5}
@@ -174,6 +169,7 @@ exports[`should render normally 1`] = `
         Array [
           Array [
             Object {
+              "color": "#c7c7cc",
               "fontSize": 20,
               "height": 25,
               "lineHeight": 25,
@@ -181,7 +177,6 @@ exports[`should render normally 1`] = `
             },
             Object {
               "backgroundColor": "transparent",
-              "color": "#c7c7cc",
               "flexShrink": 0,
               "fontFamily": "System",
               "fontWeight": "200",
@@ -189,12 +184,10 @@ exports[`should render normally 1`] = `
               "textAlign": "center",
               "textAlignVertical": "center",
             },
-            undefined,
           ],
           Object {
             "color": "#ff9500",
           },
-          undefined,
         ]
       }
       value={1}
@@ -207,6 +200,7 @@ exports[`should render normally 1`] = `
         Array [
           Array [
             Object {
+              "color": "#c7c7cc",
               "fontSize": 20,
               "height": 25,
               "lineHeight": 25,
@@ -214,7 +208,6 @@ exports[`should render normally 1`] = `
             },
             Object {
               "backgroundColor": "transparent",
-              "color": "#c7c7cc",
               "flexShrink": 0,
               "fontFamily": "System",
               "fontWeight": "200",
@@ -222,12 +215,10 @@ exports[`should render normally 1`] = `
               "textAlign": "center",
               "textAlignVertical": "center",
             },
-            undefined,
           ],
           Object {
             "color": "#ff9500",
           },
-          undefined,
         ]
       }
       value={2}
@@ -240,6 +231,7 @@ exports[`should render normally 1`] = `
         Array [
           Array [
             Object {
+              "color": "#c7c7cc",
               "fontSize": 20,
               "height": 25,
               "lineHeight": 25,
@@ -247,7 +239,6 @@ exports[`should render normally 1`] = `
             },
             Object {
               "backgroundColor": "transparent",
-              "color": "#c7c7cc",
               "flexShrink": 0,
               "fontFamily": "System",
               "fontWeight": "200",
@@ -255,12 +246,10 @@ exports[`should render normally 1`] = `
               "textAlign": "center",
               "textAlignVertical": "center",
             },
-            undefined,
           ],
           Object {
             "color": "#ff9500",
           },
-          undefined,
         ]
       }
       value={3}
@@ -273,6 +262,7 @@ exports[`should render normally 1`] = `
         Array [
           Array [
             Object {
+              "color": "#c7c7cc",
               "fontSize": 20,
               "height": 25,
               "lineHeight": 25,
@@ -280,7 +270,6 @@ exports[`should render normally 1`] = `
             },
             Object {
               "backgroundColor": "transparent",
-              "color": "#c7c7cc",
               "flexShrink": 0,
               "fontFamily": "System",
               "fontWeight": "200",
@@ -288,12 +277,10 @@ exports[`should render normally 1`] = `
               "textAlign": "center",
               "textAlignVertical": "center",
             },
-            undefined,
           ],
           Object {
             "color": "#ff9500",
           },
-          undefined,
         ]
       }
       value={4}
@@ -306,6 +293,7 @@ exports[`should render normally 1`] = `
         Array [
           Array [
             Object {
+              "color": "#c7c7cc",
               "fontSize": 20,
               "height": 25,
               "lineHeight": 25,
@@ -313,7 +301,6 @@ exports[`should render normally 1`] = `
             },
             Object {
               "backgroundColor": "transparent",
-              "color": "#c7c7cc",
               "flexShrink": 0,
               "fontFamily": "System",
               "fontWeight": "200",
@@ -321,12 +308,10 @@ exports[`should render normally 1`] = `
               "textAlign": "center",
               "textAlignVertical": "center",
             },
-            undefined,
           ],
           Object {
             "color": "#ff9500",
           },
-          undefined,
         ]
       }
       value={5}
@@ -360,6 +345,7 @@ exports[`should render with custom props 1`] = `
     style={
       Array [
         Object {
+          "color": "black",
           "fontSize": 30,
           "height": 37.5,
           "lineHeight": 37.5,
@@ -367,7 +353,6 @@ exports[`should render with custom props 1`] = `
         },
         Object {
           "backgroundColor": "transparent",
-          "color": "#c7c7cc",
           "flexShrink": 0,
           "fontFamily": "System",
           "fontWeight": "200",
@@ -375,7 +360,6 @@ exports[`should render with custom props 1`] = `
           "textAlign": "center",
           "textAlignVertical": "center",
         },
-        undefined,
       ]
     }
     value={1}
@@ -387,6 +371,7 @@ exports[`should render with custom props 1`] = `
     style={
       Array [
         Object {
+          "color": "black",
           "fontSize": 30,
           "height": 37.5,
           "lineHeight": 37.5,
@@ -394,7 +379,6 @@ exports[`should render with custom props 1`] = `
         },
         Object {
           "backgroundColor": "transparent",
-          "color": "#c7c7cc",
           "flexShrink": 0,
           "fontFamily": "System",
           "fontWeight": "200",
@@ -402,7 +386,6 @@ exports[`should render with custom props 1`] = `
           "textAlign": "center",
           "textAlignVertical": "center",
         },
-        undefined,
       ]
     }
     value={2}
@@ -414,6 +397,7 @@ exports[`should render with custom props 1`] = `
     style={
       Array [
         Object {
+          "color": "black",
           "fontSize": 30,
           "height": 37.5,
           "lineHeight": 37.5,
@@ -421,7 +405,6 @@ exports[`should render with custom props 1`] = `
         },
         Object {
           "backgroundColor": "transparent",
-          "color": "#c7c7cc",
           "flexShrink": 0,
           "fontFamily": "System",
           "fontWeight": "200",
@@ -429,7 +412,6 @@ exports[`should render with custom props 1`] = `
           "textAlign": "center",
           "textAlignVertical": "center",
         },
-        undefined,
       ]
     }
     value={3}
@@ -441,6 +423,7 @@ exports[`should render with custom props 1`] = `
     style={
       Array [
         Object {
+          "color": "black",
           "fontSize": 30,
           "height": 37.5,
           "lineHeight": 37.5,
@@ -448,7 +431,6 @@ exports[`should render with custom props 1`] = `
         },
         Object {
           "backgroundColor": "transparent",
-          "color": "#c7c7cc",
           "flexShrink": 0,
           "fontFamily": "System",
           "fontWeight": "200",
@@ -456,7 +438,6 @@ exports[`should render with custom props 1`] = `
           "textAlign": "center",
           "textAlignVertical": "center",
         },
-        undefined,
       ]
     }
     value={4}
@@ -468,6 +449,7 @@ exports[`should render with custom props 1`] = `
     style={
       Array [
         Object {
+          "color": "black",
           "fontSize": 30,
           "height": 37.5,
           "lineHeight": 37.5,
@@ -475,7 +457,6 @@ exports[`should render with custom props 1`] = `
         },
         Object {
           "backgroundColor": "transparent",
-          "color": "#c7c7cc",
           "flexShrink": 0,
           "fontFamily": "System",
           "fontWeight": "200",
@@ -483,7 +464,6 @@ exports[`should render with custom props 1`] = `
           "textAlign": "center",
           "textAlignVertical": "center",
         },
-        undefined,
       ]
     }
     value={5}
@@ -495,6 +475,7 @@ exports[`should render with custom props 1`] = `
     style={
       Array [
         Object {
+          "color": "black",
           "fontSize": 30,
           "height": 37.5,
           "lineHeight": 37.5,
@@ -502,7 +483,6 @@ exports[`should render with custom props 1`] = `
         },
         Object {
           "backgroundColor": "transparent",
-          "color": "#c7c7cc",
           "flexShrink": 0,
           "fontFamily": "System",
           "fontWeight": "200",
@@ -510,7 +490,6 @@ exports[`should render with custom props 1`] = `
           "textAlign": "center",
           "textAlignVertical": "center",
         },
-        undefined,
       ]
     }
     value={6}
@@ -522,6 +501,7 @@ exports[`should render with custom props 1`] = `
     style={
       Array [
         Object {
+          "color": "black",
           "fontSize": 30,
           "height": 37.5,
           "lineHeight": 37.5,
@@ -529,7 +509,6 @@ exports[`should render with custom props 1`] = `
         },
         Object {
           "backgroundColor": "transparent",
-          "color": "#c7c7cc",
           "flexShrink": 0,
           "fontFamily": "System",
           "fontWeight": "200",
@@ -537,7 +516,6 @@ exports[`should render with custom props 1`] = `
           "textAlign": "center",
           "textAlignVertical": "center",
         },
-        undefined,
       ]
     }
     value={7}
@@ -549,6 +527,7 @@ exports[`should render with custom props 1`] = `
     style={
       Array [
         Object {
+          "color": "black",
           "fontSize": 30,
           "height": 37.5,
           "lineHeight": 37.5,
@@ -556,7 +535,6 @@ exports[`should render with custom props 1`] = `
         },
         Object {
           "backgroundColor": "transparent",
-          "color": "#c7c7cc",
           "flexShrink": 0,
           "fontFamily": "System",
           "fontWeight": "200",
@@ -564,7 +542,6 @@ exports[`should render with custom props 1`] = `
           "textAlign": "center",
           "textAlignVertical": "center",
         },
-        undefined,
       ]
     }
     value={8}
@@ -576,6 +553,7 @@ exports[`should render with custom props 1`] = `
     style={
       Array [
         Object {
+          "color": "black",
           "fontSize": 30,
           "height": 37.5,
           "lineHeight": 37.5,
@@ -583,7 +561,6 @@ exports[`should render with custom props 1`] = `
         },
         Object {
           "backgroundColor": "transparent",
-          "color": "#c7c7cc",
           "flexShrink": 0,
           "fontFamily": "System",
           "fontWeight": "200",
@@ -591,7 +568,6 @@ exports[`should render with custom props 1`] = `
           "textAlign": "center",
           "textAlignVertical": "center",
         },
-        undefined,
       ]
     }
     value={9}
@@ -603,6 +579,7 @@ exports[`should render with custom props 1`] = `
     style={
       Array [
         Object {
+          "color": "black",
           "fontSize": 30,
           "height": 37.5,
           "lineHeight": 37.5,
@@ -610,7 +587,6 @@ exports[`should render with custom props 1`] = `
         },
         Object {
           "backgroundColor": "transparent",
-          "color": "#c7c7cc",
           "flexShrink": 0,
           "fontFamily": "System",
           "fontWeight": "200",
@@ -618,7 +594,6 @@ exports[`should render with custom props 1`] = `
           "textAlign": "center",
           "textAlignVertical": "center",
         },
-        undefined,
       ]
     }
     value={10}
@@ -646,6 +621,7 @@ exports[`should render with custom props 1`] = `
         Array [
           Array [
             Object {
+              "color": "black",
               "fontSize": 30,
               "height": 37.5,
               "lineHeight": 37.5,
@@ -653,7 +629,6 @@ exports[`should render with custom props 1`] = `
             },
             Object {
               "backgroundColor": "transparent",
-              "color": "#c7c7cc",
               "flexShrink": 0,
               "fontFamily": "System",
               "fontWeight": "200",
@@ -661,12 +636,10 @@ exports[`should render with custom props 1`] = `
               "textAlign": "center",
               "textAlignVertical": "center",
             },
-            undefined,
           ],
           Object {
-            "color": "#ff9500",
+            "color": "blue",
           },
-          undefined,
         ]
       }
       value={1}
@@ -679,6 +652,7 @@ exports[`should render with custom props 1`] = `
         Array [
           Array [
             Object {
+              "color": "black",
               "fontSize": 30,
               "height": 37.5,
               "lineHeight": 37.5,
@@ -686,7 +660,6 @@ exports[`should render with custom props 1`] = `
             },
             Object {
               "backgroundColor": "transparent",
-              "color": "#c7c7cc",
               "flexShrink": 0,
               "fontFamily": "System",
               "fontWeight": "200",
@@ -694,12 +667,10 @@ exports[`should render with custom props 1`] = `
               "textAlign": "center",
               "textAlignVertical": "center",
             },
-            undefined,
           ],
           Object {
-            "color": "#ff9500",
+            "color": "blue",
           },
-          undefined,
         ]
       }
       value={2}
@@ -712,6 +683,7 @@ exports[`should render with custom props 1`] = `
         Array [
           Array [
             Object {
+              "color": "black",
               "fontSize": 30,
               "height": 37.5,
               "lineHeight": 37.5,
@@ -719,7 +691,6 @@ exports[`should render with custom props 1`] = `
             },
             Object {
               "backgroundColor": "transparent",
-              "color": "#c7c7cc",
               "flexShrink": 0,
               "fontFamily": "System",
               "fontWeight": "200",
@@ -727,12 +698,10 @@ exports[`should render with custom props 1`] = `
               "textAlign": "center",
               "textAlignVertical": "center",
             },
-            undefined,
           ],
           Object {
-            "color": "#ff9500",
+            "color": "blue",
           },
-          undefined,
         ]
       }
       value={3}
@@ -745,6 +714,7 @@ exports[`should render with custom props 1`] = `
         Array [
           Array [
             Object {
+              "color": "black",
               "fontSize": 30,
               "height": 37.5,
               "lineHeight": 37.5,
@@ -752,7 +722,6 @@ exports[`should render with custom props 1`] = `
             },
             Object {
               "backgroundColor": "transparent",
-              "color": "#c7c7cc",
               "flexShrink": 0,
               "fontFamily": "System",
               "fontWeight": "200",
@@ -760,12 +729,10 @@ exports[`should render with custom props 1`] = `
               "textAlign": "center",
               "textAlignVertical": "center",
             },
-            undefined,
           ],
           Object {
-            "color": "#ff9500",
+            "color": "blue",
           },
-          undefined,
         ]
       }
       value={4}
@@ -778,6 +745,7 @@ exports[`should render with custom props 1`] = `
         Array [
           Array [
             Object {
+              "color": "black",
               "fontSize": 30,
               "height": 37.5,
               "lineHeight": 37.5,
@@ -785,7 +753,6 @@ exports[`should render with custom props 1`] = `
             },
             Object {
               "backgroundColor": "transparent",
-              "color": "#c7c7cc",
               "flexShrink": 0,
               "fontFamily": "System",
               "fontWeight": "200",
@@ -793,12 +760,10 @@ exports[`should render with custom props 1`] = `
               "textAlign": "center",
               "textAlignVertical": "center",
             },
-            undefined,
           ],
           Object {
-            "color": "#ff9500",
+            "color": "blue",
           },
-          undefined,
         ]
       }
       value={5}
@@ -811,6 +776,7 @@ exports[`should render with custom props 1`] = `
         Array [
           Array [
             Object {
+              "color": "black",
               "fontSize": 30,
               "height": 37.5,
               "lineHeight": 37.5,
@@ -818,7 +784,6 @@ exports[`should render with custom props 1`] = `
             },
             Object {
               "backgroundColor": "transparent",
-              "color": "#c7c7cc",
               "flexShrink": 0,
               "fontFamily": "System",
               "fontWeight": "200",
@@ -826,12 +791,10 @@ exports[`should render with custom props 1`] = `
               "textAlign": "center",
               "textAlignVertical": "center",
             },
-            undefined,
           ],
           Object {
-            "color": "#ff9500",
+            "color": "blue",
           },
-          undefined,
         ]
       }
       value={6}
@@ -844,6 +807,7 @@ exports[`should render with custom props 1`] = `
         Array [
           Array [
             Object {
+              "color": "black",
               "fontSize": 30,
               "height": 37.5,
               "lineHeight": 37.5,
@@ -851,7 +815,6 @@ exports[`should render with custom props 1`] = `
             },
             Object {
               "backgroundColor": "transparent",
-              "color": "#c7c7cc",
               "flexShrink": 0,
               "fontFamily": "System",
               "fontWeight": "200",
@@ -859,12 +822,10 @@ exports[`should render with custom props 1`] = `
               "textAlign": "center",
               "textAlignVertical": "center",
             },
-            undefined,
           ],
           Object {
-            "color": "#ff9500",
+            "color": "blue",
           },
-          undefined,
         ]
       }
       value={7}
@@ -877,6 +838,7 @@ exports[`should render with custom props 1`] = `
         Array [
           Array [
             Object {
+              "color": "black",
               "fontSize": 30,
               "height": 37.5,
               "lineHeight": 37.5,
@@ -884,7 +846,6 @@ exports[`should render with custom props 1`] = `
             },
             Object {
               "backgroundColor": "transparent",
-              "color": "#c7c7cc",
               "flexShrink": 0,
               "fontFamily": "System",
               "fontWeight": "200",
@@ -892,12 +853,10 @@ exports[`should render with custom props 1`] = `
               "textAlign": "center",
               "textAlignVertical": "center",
             },
-            undefined,
           ],
           Object {
-            "color": "#ff9500",
+            "color": "blue",
           },
-          undefined,
         ]
       }
       value={8}
@@ -910,6 +869,7 @@ exports[`should render with custom props 1`] = `
         Array [
           Array [
             Object {
+              "color": "black",
               "fontSize": 30,
               "height": 37.5,
               "lineHeight": 37.5,
@@ -917,7 +877,6 @@ exports[`should render with custom props 1`] = `
             },
             Object {
               "backgroundColor": "transparent",
-              "color": "#c7c7cc",
               "flexShrink": 0,
               "fontFamily": "System",
               "fontWeight": "200",
@@ -925,12 +884,10 @@ exports[`should render with custom props 1`] = `
               "textAlign": "center",
               "textAlignVertical": "center",
             },
-            undefined,
           ],
           Object {
-            "color": "#ff9500",
+            "color": "blue",
           },
-          undefined,
         ]
       }
       value={9}
@@ -943,6 +900,7 @@ exports[`should render with custom props 1`] = `
         Array [
           Array [
             Object {
+              "color": "black",
               "fontSize": 30,
               "height": 37.5,
               "lineHeight": 37.5,
@@ -950,7 +908,6 @@ exports[`should render with custom props 1`] = `
             },
             Object {
               "backgroundColor": "transparent",
-              "color": "#c7c7cc",
               "flexShrink": 0,
               "fontFamily": "System",
               "fontWeight": "200",
@@ -958,382 +915,13 @@ exports[`should render with custom props 1`] = `
               "textAlign": "center",
               "textAlignVertical": "center",
             },
-            undefined,
           ],
           Object {
-            "color": "#ff9500",
+            "color": "blue",
           },
-          undefined,
         ]
       }
       value={10}
-    >
-      ★
-    </RatingSymbol>
-  </View>
-</View>
-`;
-
-exports[`should render with custom styles 1`] = `
-<View
-  pointerEvents="box-only"
-  style={
-    Array [
-      Object {
-        "height": 20,
-        "width": 100,
-      },
-      Object {
-        "alignItems": "center",
-        "flexDirection": "row",
-        "flexShrink": 0,
-      },
-      undefined,
-    ]
-  }
->
-  <RatingSymbol
-    animate={true}
-    style={
-      Array [
-        Object {
-          "fontSize": 20,
-          "height": 25,
-          "lineHeight": 25,
-          "width": 20,
-        },
-        Object {
-          "backgroundColor": "transparent",
-          "color": "#c7c7cc",
-          "flexShrink": 0,
-          "fontFamily": "System",
-          "fontWeight": "200",
-          "includeFontPadding": false,
-          "textAlign": "center",
-          "textAlignVertical": "center",
-        },
-        Object {
-          "color": "black",
-        },
-      ]
-    }
-    value={1}
-  >
-    ☆
-  </RatingSymbol>
-  <RatingSymbol
-    animate={true}
-    style={
-      Array [
-        Object {
-          "fontSize": 20,
-          "height": 25,
-          "lineHeight": 25,
-          "width": 20,
-        },
-        Object {
-          "backgroundColor": "transparent",
-          "color": "#c7c7cc",
-          "flexShrink": 0,
-          "fontFamily": "System",
-          "fontWeight": "200",
-          "includeFontPadding": false,
-          "textAlign": "center",
-          "textAlignVertical": "center",
-        },
-        Object {
-          "color": "black",
-        },
-      ]
-    }
-    value={2}
-  >
-    ☆
-  </RatingSymbol>
-  <RatingSymbol
-    animate={true}
-    style={
-      Array [
-        Object {
-          "fontSize": 20,
-          "height": 25,
-          "lineHeight": 25,
-          "width": 20,
-        },
-        Object {
-          "backgroundColor": "transparent",
-          "color": "#c7c7cc",
-          "flexShrink": 0,
-          "fontFamily": "System",
-          "fontWeight": "200",
-          "includeFontPadding": false,
-          "textAlign": "center",
-          "textAlignVertical": "center",
-        },
-        Object {
-          "color": "black",
-        },
-      ]
-    }
-    value={3}
-  >
-    ☆
-  </RatingSymbol>
-  <RatingSymbol
-    animate={true}
-    style={
-      Array [
-        Object {
-          "fontSize": 20,
-          "height": 25,
-          "lineHeight": 25,
-          "width": 20,
-        },
-        Object {
-          "backgroundColor": "transparent",
-          "color": "#c7c7cc",
-          "flexShrink": 0,
-          "fontFamily": "System",
-          "fontWeight": "200",
-          "includeFontPadding": false,
-          "textAlign": "center",
-          "textAlignVertical": "center",
-        },
-        Object {
-          "color": "black",
-        },
-      ]
-    }
-    value={4}
-  >
-    ☆
-  </RatingSymbol>
-  <RatingSymbol
-    animate={true}
-    style={
-      Array [
-        Object {
-          "fontSize": 20,
-          "height": 25,
-          "lineHeight": 25,
-          "width": 20,
-        },
-        Object {
-          "backgroundColor": "transparent",
-          "color": "#c7c7cc",
-          "flexShrink": 0,
-          "fontFamily": "System",
-          "fontWeight": "200",
-          "includeFontPadding": false,
-          "textAlign": "center",
-          "textAlignVertical": "center",
-        },
-        Object {
-          "color": "black",
-        },
-      ]
-    }
-    value={5}
-  >
-    ☆
-  </RatingSymbol>
-  <View
-    style={
-      Object {
-        "alignItems": "center",
-        "flexDirection": "row",
-        "flexShrink": 0,
-        "height": 20,
-        "left": 0,
-        "overflow": "hidden",
-        "position": "absolute",
-        "top": 0,
-        "width": 60,
-      }
-    }
-  >
-    <RatingSymbol
-      animate={true}
-      style={
-        Array [
-          Array [
-            Object {
-              "fontSize": 20,
-              "height": 25,
-              "lineHeight": 25,
-              "width": 20,
-            },
-            Object {
-              "backgroundColor": "transparent",
-              "color": "#c7c7cc",
-              "flexShrink": 0,
-              "fontFamily": "System",
-              "fontWeight": "200",
-              "includeFontPadding": false,
-              "textAlign": "center",
-              "textAlignVertical": "center",
-            },
-            Object {
-              "color": "black",
-            },
-          ],
-          Object {
-            "color": "#ff9500",
-          },
-          Object {
-            "color": "blue",
-          },
-        ]
-      }
-      value={1}
-    >
-      ★
-    </RatingSymbol>
-    <RatingSymbol
-      animate={true}
-      style={
-        Array [
-          Array [
-            Object {
-              "fontSize": 20,
-              "height": 25,
-              "lineHeight": 25,
-              "width": 20,
-            },
-            Object {
-              "backgroundColor": "transparent",
-              "color": "#c7c7cc",
-              "flexShrink": 0,
-              "fontFamily": "System",
-              "fontWeight": "200",
-              "includeFontPadding": false,
-              "textAlign": "center",
-              "textAlignVertical": "center",
-            },
-            Object {
-              "color": "black",
-            },
-          ],
-          Object {
-            "color": "#ff9500",
-          },
-          Object {
-            "color": "blue",
-          },
-        ]
-      }
-      value={2}
-    >
-      ★
-    </RatingSymbol>
-    <RatingSymbol
-      animate={true}
-      style={
-        Array [
-          Array [
-            Object {
-              "fontSize": 20,
-              "height": 25,
-              "lineHeight": 25,
-              "width": 20,
-            },
-            Object {
-              "backgroundColor": "transparent",
-              "color": "#c7c7cc",
-              "flexShrink": 0,
-              "fontFamily": "System",
-              "fontWeight": "200",
-              "includeFontPadding": false,
-              "textAlign": "center",
-              "textAlignVertical": "center",
-            },
-            Object {
-              "color": "black",
-            },
-          ],
-          Object {
-            "color": "#ff9500",
-          },
-          Object {
-            "color": "blue",
-          },
-        ]
-      }
-      value={3}
-    >
-      ★
-    </RatingSymbol>
-    <RatingSymbol
-      animate={true}
-      style={
-        Array [
-          Array [
-            Object {
-              "fontSize": 20,
-              "height": 25,
-              "lineHeight": 25,
-              "width": 20,
-            },
-            Object {
-              "backgroundColor": "transparent",
-              "color": "#c7c7cc",
-              "flexShrink": 0,
-              "fontFamily": "System",
-              "fontWeight": "200",
-              "includeFontPadding": false,
-              "textAlign": "center",
-              "textAlignVertical": "center",
-            },
-            Object {
-              "color": "black",
-            },
-          ],
-          Object {
-            "color": "#ff9500",
-          },
-          Object {
-            "color": "blue",
-          },
-        ]
-      }
-      value={4}
-    >
-      ★
-    </RatingSymbol>
-    <RatingSymbol
-      animate={true}
-      style={
-        Array [
-          Array [
-            Object {
-              "fontSize": 20,
-              "height": 25,
-              "lineHeight": 25,
-              "width": 20,
-            },
-            Object {
-              "backgroundColor": "transparent",
-              "color": "#c7c7cc",
-              "flexShrink": 0,
-              "fontFamily": "System",
-              "fontWeight": "200",
-              "includeFontPadding": false,
-              "textAlign": "center",
-              "textAlignVertical": "center",
-            },
-            Object {
-              "color": "black",
-            },
-          ],
-          Object {
-            "color": "#ff9500",
-          },
-          Object {
-            "color": "blue",
-          },
-        ]
-      }
-      value={5}
     >
       ★
     </RatingSymbol>
