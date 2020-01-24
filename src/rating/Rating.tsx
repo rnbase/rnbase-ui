@@ -59,6 +59,7 @@ class Rating extends React.PureComponent<ThemedRatingProps, State> {
   private readonly ratingValue = new RatingValue();
 
   private readonly panResponder: PanResponderInstance;
+  private rafHandle: number | undefined;
 
   constructor(props: ThemedRatingProps) {
     super(props);
@@ -81,6 +82,12 @@ class Rating extends React.PureComponent<ThemedRatingProps, State> {
 
     if (value !== prevProps.value || maxValue !== prevProps.maxValue) {
       this.setOverlayWidth(inRange(value, 0, maxValue));
+    }
+  }
+
+  componentWillUnmount() {
+    if (this.rafHandle) {
+      cancelAnimationFrame(this.rafHandle);
     }
   }
 
@@ -187,7 +194,11 @@ class Rating extends React.PureComponent<ThemedRatingProps, State> {
       const { onChange } = this.props;
 
       if (onChange) {
-        onChange(rating);
+        if (this.rafHandle) {
+          cancelAnimationFrame(this.rafHandle);
+        }
+
+        this.rafHandle = requestAnimationFrame(() => onChange(rating));
       }
     }
   };
