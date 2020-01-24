@@ -67,9 +67,9 @@ class Rating extends React.PureComponent<ThemedRatingProps, State> {
     this.panResponder = PanResponder.create({
       onStartShouldSetPanResponder: () => true,
       onPanResponderTerminationRequest: () => false,
-      onPanResponderGrant: this.onGrant,
-      onPanResponderMove: this.onMove,
-      onPanResponderRelease: this.onRelease,
+      onPanResponderGrant: this.handlePanResponderGrant,
+      onPanResponderMove: this.handlePanResponderMove,
+      onPanResponderRelease: this.handlePanResponderRelease,
     });
   }
 
@@ -177,7 +177,7 @@ class Rating extends React.PureComponent<ThemedRatingProps, State> {
     this.overlayWidth.setValue(rating * this.props.size);
   }
 
-  private onMove = ({ nativeEvent: { locationX } }: GestureResponderEvent) => {
+  private handlePanResponderMove = ({ nativeEvent: { locationX } }: GestureResponderEvent) => {
     const { allowDecimals, size, maxValue } = this.props;
 
     const eventValue = allowDecimals
@@ -203,12 +203,12 @@ class Rating extends React.PureComponent<ThemedRatingProps, State> {
     }
   };
 
-  private onGrant = (event: GestureResponderEvent) => {
+  private handlePanResponderGrant = (event: GestureResponderEvent) => {
     this.setInteractive(true);
-    this.onMove(event);
+    this.handlePanResponderMove(event);
   };
 
-  private onRelease = () => {
+  private handlePanResponderRelease = () => {
     const { onFinish } = this.props;
 
     if (onFinish) {
