@@ -56,11 +56,11 @@ class StretchyHeader extends React.PureComponent<StretchyHeaderProps, StretchyHe
     super(props);
 
     this.panResponder = PanResponder.create({
-      onMoveShouldSetPanResponderCapture: this.onMoveShouldSetPanResponderCapture,
-      onPanResponderGrant: this.onPanResponderGrant,
-      onPanResponderMove: this.onPanResponderMove,
-      onPanResponderRelease: this.onPanResponderRelease,
-      onPanResponderTerminate: this.onPanResponderRelease,
+      onMoveShouldSetPanResponderCapture: this.handleMoveShouldSetPanResponderCapture,
+      onPanResponderGrant: this.handlePanResponderGrant,
+      onPanResponderMove: this.handlePanResponderMove,
+      onPanResponderRelease: this.handlePanResponderRelease,
+      onPanResponderTerminate: this.handlePanResponderRelease,
     });
   }
 
@@ -82,7 +82,7 @@ class StretchyHeader extends React.PureComponent<StretchyHeaderProps, StretchyHe
   render() {
     const {
       scrollX,
-      onLayout,
+      handleLayout,
       panResponder,
       state: { width, index },
       props: { background, height, backgroundColor, children, scrollY, showPager, pagerProps },
@@ -157,7 +157,7 @@ class StretchyHeader extends React.PureComponent<StretchyHeaderProps, StretchyHe
     ];
 
     return (
-      <View ref={this.refRoot} onLayout={onLayout} {...length > 1 && panResponder.panHandlers}>
+      <View ref={this.refRoot} onLayout={handleLayout} {...length > 1 && panResponder.panHandlers}>
         <Animated.View style={backgroundStyles}>
           <Animated.View style={wrapperStyles}>
             {elements.map((element, key) =>
@@ -171,7 +171,7 @@ class StretchyHeader extends React.PureComponent<StretchyHeaderProps, StretchyHe
   }
 
   // Claim responder if it's a horizontal pan
-  private onMoveShouldSetPanResponderCapture = (
+  private handleMoveShouldSetPanResponderCapture = (
     _event: GestureResponderEvent,
     gestureState: PanResponderGestureState,
   ) => {
@@ -179,7 +179,7 @@ class StretchyHeader extends React.PureComponent<StretchyHeaderProps, StretchyHe
   };
 
   // Run callback when touch started
-  private onPanResponderGrant = () => {
+  private handlePanResponderGrant = () => {
     const { onTouchStart } = this.props;
 
     if (onTouchStart) {
@@ -188,7 +188,7 @@ class StretchyHeader extends React.PureComponent<StretchyHeaderProps, StretchyHe
   };
 
   // Move background items horizontally when panning
-  private onPanResponderMove = (
+  private handlePanResponderMove = (
     _event: GestureResponderEvent,
     gestureState: PanResponderGestureState,
   ) => {
@@ -204,7 +204,7 @@ class StretchyHeader extends React.PureComponent<StretchyHeaderProps, StretchyHe
   };
 
   // Set the closest background item when touch released
-  private onPanResponderRelease = (
+  private handlePanResponderRelease = (
     _event: GestureResponderEvent,
     gestureState: PanResponderGestureState,
   ) => {
@@ -251,7 +251,7 @@ class StretchyHeader extends React.PureComponent<StretchyHeaderProps, StretchyHe
   }
 
   // Determine header width
-  private onLayout = (event: LayoutChangeEvent) => {
+  private handleLayout = (event: LayoutChangeEvent) => {
     this.setState({ width: event.nativeEvent.layout.width });
   };
 }
