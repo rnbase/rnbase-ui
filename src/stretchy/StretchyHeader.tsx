@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { createRef } from 'react';
 import {
   Animated,
   Easing,
@@ -11,6 +11,9 @@ import {
   View,
 } from 'react-native';
 
+import { inRange } from '../helpers';
+import Pager, { Props as PagerProps } from '../pager/Pager';
+
 export type BackgroundPropType = React.ReactElement | React.ReactElement[];
 
 export interface StretchyHeaderProps {
@@ -18,6 +21,8 @@ export interface StretchyHeaderProps {
   scrollY: Animated.Value;
   background: BackgroundPropType;
   backgroundColor?: string;
+  showPager?: boolean;
+  pagerProps?: PagerProps;
   children?: React.ReactNode;
   onTouchStart?: () => void;
   onTouchEnd?: () => void;
@@ -26,61 +31,61 @@ export interface StretchyHeaderProps {
 
 interface StretchyHeaderState {
   width: number;
-  overflow?: 'visible' | 'hidden';
+  index: number;
 }
 
-class StretchyHeader extends React.Component<StretchyHeaderProps, StretchyHeaderState> {
+class StretchyHeader extends React.PureComponent<StretchyHeaderProps, StretchyHeaderState> {
   static defaultProps = {
     background: [],
     backgroundColor: 'transparent',
+    showPager: true,
   };
 
   state = {
     width: 0,
-    overflow: undefined,
+    index: 0,
   };
 
-  private _index = 0;
-  private _scrollX = new Animated.Value(0);
+  private refRoot = createRef<View>();
+  private scrollX = new Animated.Value(0);
 
-  private _listenerId: string | undefined;
-  private _panResponder: PanResponderInstance;
+  private scrollListener: string | undefined;
+  private panResponder: PanResponderInstance;
 
   constructor(props: StretchyHeaderProps) {
     super(props);
 
-    this._panResponder = PanResponder.create({
-      onMoveShouldSetPanResponderCapture: this._onMoveShouldSetPanResponderCapture,
-      onPanResponderGrant: this._onPanResponderGrant,
-      onPanResponderMove: this._onPanResponderMove,
-      onPanResponderRelease: this._onPanResponderRelease,
-      onPanResponderTerminate: this._onPanResponderRelease,
+    this.panResponder = PanResponder.create({
+      onMoveShouldSetPanResponderCapture: this.handleMoveShouldSetPanResponderCapture,
+      onPanResponderGrant: this.handlePanResponderGrant,
+      onPanResponderMove: this.handlePanResponderMove,
+      onPanResponderRelease: this.handlePanResponderRelease,
+      onPanResponderTerminate: this.handlePanResponderRelease,
     });
   }
 
   componentDidMount = () => {
-    this._listenerId = this.props.scrollY.addListener(({ value }) => {
+    this.scrollListener = this.props.scrollY.addListener(({ value }) => {
       const overflow = value > 0 ? 'hidden' : 'visible';
+      const { current: rootView } = this.refRoot;
 
-      if (overflow !== this.state.overflow) {
-        this.setState({ overflow });
-      }
+      rootView && rootView.setNativeProps({ style: { overflow } });
     });
   };
 
   componentWillUnmount = () => {
-    if (this._listenerId) {
-      this.props.scrollY.removeListener(this._listenerId);
+    if (this.scrollListener) {
+      this.props.scrollY.removeListener(this.scrollListener);
     }
   };
 
   render() {
     const {
-      _scrollX: scrollX,
-      _onLayout: onLayout,
-      _panResponder: panResponder,
-      state: { width, overflow },
-      props: { background, height, backgroundColor, children, scrollY },
+      scrollX,
+      handleLayout,
+      panResponder,
+      state: { width, index },
+      props: { background, height, backgroundColor, children, scrollY, showPager, pagerProps },
     } = this;
 
     const opacity = scrollY.interpolate({
@@ -107,69 +112,74 @@ class StretchyHeader extends React.Component<StretchyHeaderProps, StretchyHeader
     });
 
     const elements = Array.isArray(background) ? background : [background];
+    const length = elements.length;
+    let content = [];
+
+    if (showPager) {
+      content.push(
+        <Animated.View key="pager" style={[styles.pager, { opacity }]}>
+          <Pager {...pagerProps} count={length} selected={index} orientation="horizontal" />
+        </Animated.View>,
+      );
+    }
+
+    if (children) {
+      const contentStyles = [
+        styles.content,
+        {
+          opacity,
+          transform: [{ translateY }],
+        },
+      ];
+
+      content.push(
+        <Animated.View key="content" style={contentStyles}>
+          {children}
+        </Animated.View>,
+      );
+    }
+
+    const backgroundStyles = [
+      styles.background,
+      {
+        height,
+        backgroundColor,
+        transform: [{ translateY }, { scale }],
+      },
+    ];
+
+    const wrapperStyles = [
+      styles.elements,
+      {
+        opacity,
+        transform: [{ translateX }],
+      },
+    ];
 
     return (
-      <View
-        style={{ overflow }}
-        onLayout={onLayout}
-        {...elements.length > 1 && panResponder.panHandlers}
-      >
-        <Animated.View
-          style={[
-            styles.background,
-            {
-              height,
-              backgroundColor,
-              transform: [{ translateY }, { scale }],
-            },
-          ]}
-        >
-          <Animated.View
-            style={[
-              styles.elements,
-              {
-                opacity,
-                transform: [{ translateX }],
-              },
-            ]}
-          >
-            {elements.map((element, index) =>
-              React.cloneElement(element, {
-                key: index,
-                style: {
-                  ...element.props.style,
-                  ...styles.element,
-                },
-              }),
+      <View ref={this.refRoot} onLayout={handleLayout} {...length > 1 && panResponder.panHandlers}>
+        <Animated.View style={backgroundStyles}>
+          <Animated.View style={wrapperStyles}>
+            {elements.map((element, key) =>
+              React.cloneElement(element, { key, style: [element.props.style, styles.element] }),
             )}
           </Animated.View>
         </Animated.View>
-        {children && (
-          <Animated.View
-            style={[
-              styles.content,
-              {
-                opacity,
-                transform: [{ translateY }],
-              },
-            ]}
-          >
-            {children}
-          </Animated.View>
-        )}
+        {content}
       </View>
     );
   }
 
   // Claim responder if it's a horizontal pan
-  private _onMoveShouldSetPanResponderCapture = (
+  private handleMoveShouldSetPanResponderCapture = (
     _event: GestureResponderEvent,
     gestureState: PanResponderGestureState,
   ) => {
     return Math.abs(gestureState.dx) * 2 >= Math.abs(gestureState.dy);
   };
 
-  private _onPanResponderGrant = () => {
+  // Run callback when touch started
+  private handlePanResponderGrant = () => {
     const { onTouchStart } = this.props;
 
     if (onTouchStart) {
@@ -177,42 +187,40 @@ class StretchyHeader extends React.Component<StretchyHeaderProps, StretchyHeader
     }
   };
 
-  // Move images horizontally when panning
-  private _onPanResponderMove = (
+  // Move background items horizontally when panning
+  private handlePanResponderMove = (
     _event: GestureResponderEvent,
     gestureState: PanResponderGestureState,
   ) => {
     const {
-      _index: index,
       props: { background },
-      state: { width },
+      state: { width, index },
     } = this;
     const { dx } = gestureState;
     const length = Array.isArray(background) ? background.length : 1;
     const reduce = (index === 0 && dx > 0) || (index === length - 1 && dx < 0) ? 3 : 1;
 
-    this._scrollX.setValue(-dx / width / reduce + index);
+    this.scrollX.setValue(-dx / width / reduce + index);
   };
 
-  // Set the closest image when toutch released
-  private _onPanResponderRelease = (
+  // Set the closest background item when touch released
+  private handlePanResponderRelease = (
     _event: GestureResponderEvent,
     gestureState: PanResponderGestureState,
   ) => {
     const {
-      _index: index,
       props: { onTouchEnd },
-      state: { width },
+      state: { width, index },
     } = this;
     const { dx, vx } = gestureState;
     const relativeDistance = dx / width;
 
     if (relativeDistance < -0.5 || (relativeDistance < 0 && vx <= -0.5)) {
-      this._setImage(index + 1);
+      this.setBackgroundItem(index + 1);
     } else if (relativeDistance > 0.5 || (relativeDistance > 0 && vx >= 0.5)) {
-      this._setImage(index - 1);
+      this.setBackgroundItem(index - 1);
     } else {
-      this._setImage(index);
+      this.setBackgroundItem(index);
     }
 
     if (onTouchEnd) {
@@ -220,32 +228,31 @@ class StretchyHeader extends React.Component<StretchyHeaderProps, StretchyHeader
     }
   };
 
-  // Animate to the given image
-  private _setImage(index: number) {
+  // Animate to the given background item
+  private setBackgroundItem(index: number) {
     const {
-      _index: prevIndex,
       props: { background, onChange },
+      state: { index: prevIndex },
     } = this;
     const length = Array.isArray(background) ? background.length : 1;
+    const newIndex = inRange(index, 0, length - 1);
 
-    this._index = Math.max(0, Math.min(index, length - 1));
+    this.setState({ index: newIndex });
 
-    Animated.timing(this._scrollX, {
-      toValue: this._index,
+    Animated.timing(this.scrollX, {
+      toValue: newIndex,
       useNativeDriver: true,
       easing: Easing.out(Easing.exp),
     }).start(() => {
-      if (this._index !== prevIndex && onChange) {
-        onChange({ index: this._index });
+      if (newIndex !== prevIndex && onChange) {
+        onChange({ index: newIndex });
       }
     });
   }
 
   // Determine header width
-  private _onLayout = (event: LayoutChangeEvent) => {
-    this.setState({
-      width: event.nativeEvent.layout.width,
-    });
+  private handleLayout = (event: LayoutChangeEvent) => {
+    this.setState({ width: event.nativeEvent.layout.width });
   };
 }
 
@@ -265,6 +272,12 @@ const styles = StyleSheet.create({
     ...StyleSheet.absoluteFillObject,
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  pager: {
+    left: 0,
+    right: 0,
+    bottom: 10,
+    position: 'absolute',
   },
 });
 

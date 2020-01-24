@@ -10,18 +10,22 @@ function StretchySectionList<ItemT>({
   headerHeight,
   headerContent,
   headerBackgroundColor,
-  onScroll,
-  onChangeImage,
+  headerShowPager,
+  headerPagerProps,
+  onHeaderChange,
   scrollEventThrottle = 16,
+  onScroll,
   ...props
 }: StretchySectionListProps<ItemT>) {
   const [refSectionList, animatedValue, header] = useStretchy<typeof Animated.SectionList>(
     {
-      children: headerContent,
       background: headerBackground,
       height: headerHeight,
+      children: headerContent,
       backgroundColor: headerBackgroundColor,
-      onChange: onChangeImage,
+      showPager: headerShowPager,
+      pagerProps: headerPagerProps,
+      onChange: onHeaderChange,
     },
     props.scrollEnabled,
   );

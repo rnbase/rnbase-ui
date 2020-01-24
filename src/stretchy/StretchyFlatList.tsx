@@ -10,18 +10,22 @@ function StretchyFlatList<ItemT>({
   headerHeight,
   headerContent,
   headerBackgroundColor,
-  onScroll,
-  onChangeImage,
+  headerShowPager,
+  headerPagerProps,
+  onHeaderChange,
   scrollEventThrottle = 16,
+  onScroll,
   ...props
 }: StretchyFlatListProps<ItemT>) {
   const [refFlatList, animatedValue, header] = useStretchy<typeof Animated.FlatList>(
     {
-      children: headerContent,
       background: headerBackground,
       height: headerHeight,
+      children: headerContent,
       backgroundColor: headerBackgroundColor,
-      onChange: onChangeImage,
+      showPager: headerShowPager,
+      pagerProps: headerPagerProps,
+      onChange: onHeaderChange,
     },
     props.scrollEnabled,
   );
