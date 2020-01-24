@@ -1,0 +1,51 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render normally 1`] = `
+<Text
+  style={
+    Array [
+      Object {
+        "backgroundColor": "transparent",
+        "color": "#aeaeb2",
+        "fontFamily": "System",
+        "fontSize": 12,
+        "fontWeight": "400",
+        "includeFontPadding": false,
+        "lineHeight": 14,
+        "margin": 15,
+        "marginTop": 0,
+        "textAlignVertical": "center",
+      },
+      undefined,
+    ]
+  }
+>
+  help
+</Text>
+`;
+
+exports[`should render with custom styles 1`] = `
+<Text
+  style={
+    Array [
+      Object {
+        "backgroundColor": "transparent",
+        "color": "#aeaeb2",
+        "fontFamily": "System",
+        "fontSize": 12,
+        "fontWeight": "400",
+        "includeFontPadding": false,
+        "lineHeight": 14,
+        "margin": 15,
+        "marginTop": 0,
+        "textAlignVertical": "center",
+      },
+      Object {
+        "color": "red",
+      },
+    ]
+  }
+>
+  help
+</Text>
+`;
