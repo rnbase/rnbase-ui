@@ -41,7 +41,7 @@ const StretchyScrollViewScreen: React.FC<Props> = ({ navigation }) => {
           <Text style={styles.text}>
             This sample user details screen has been created using{' '}
             <Text style={styles.textBold}>StretchyScrollView</Text> component. For the header
-            background we have used the same avatar image with a blur filter applied.
+            background it uses the same avatar image with a blur filter applied.
           </Text>
         </View>
         <Button style={styles.button} text="Back to List" onPress={() => navigation.goBack()} />
