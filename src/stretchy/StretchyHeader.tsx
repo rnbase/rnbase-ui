@@ -46,6 +46,7 @@ class StretchyHeader extends React.PureComponent<StretchyHeaderProps, StretchyHe
     index: 0,
   };
 
+  private overflow = 'visible';
   private refRoot = createRef<View>();
   private scrollX = new Animated.Value(0);
 
@@ -67,9 +68,13 @@ class StretchyHeader extends React.PureComponent<StretchyHeaderProps, StretchyHe
   componentDidMount = () => {
     this.scrollListener = this.props.scrollY.addListener(({ value }) => {
       const overflow = value > 0 ? 'hidden' : 'visible';
-      const { current: rootView } = this.refRoot;
 
-      rootView && rootView.setNativeProps({ style: { overflow } });
+      if (overflow !== this.overflow) {
+        const { current: rootView } = this.refRoot;
+
+        rootView && rootView.setNativeProps({ style: { overflow } });
+        this.overflow = overflow;
+      }
     });
   };
 
