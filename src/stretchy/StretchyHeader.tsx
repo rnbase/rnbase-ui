@@ -205,7 +205,8 @@ class StretchyHeader extends React.PureComponent<StretchyHeaderProps, StretchyHe
     const length = Array.isArray(background) ? background.length : 1;
     const reduce = (index === 0 && dx > 0) || (index === length - 1 && dx < 0) ? 3 : 1;
 
-    this.scrollX.setValue(-dx / width / reduce + index);
+    this.scrollX.stopAnimation();
+    this.scrollX.setOffset(-dx / width / reduce);
   };
 
   // Set the closest background item when touch released
@@ -218,11 +219,13 @@ class StretchyHeader extends React.PureComponent<StretchyHeaderProps, StretchyHe
       state: { width, index },
     } = this;
     const { dx, vx } = gestureState;
-    const relativeDistance = dx / width;
+    const relativeOffset = dx / width;
 
-    if (relativeDistance < -0.5 || (relativeDistance < 0 && vx <= -0.5)) {
+    this.scrollX.flattenOffset();
+
+    if (relativeOffset < -0.5 || (relativeOffset < 0 && vx <= -0.3)) {
       this.setBackgroundItem(index + 1);
-    } else if (relativeDistance > 0.5 || (relativeDistance > 0 && vx >= 0.5)) {
+    } else if (relativeOffset > 0.5 || (relativeOffset > 0 && vx >= 0.3)) {
       this.setBackgroundItem(index - 1);
     } else {
       this.setBackgroundItem(index);
@@ -245,9 +248,10 @@ class StretchyHeader extends React.PureComponent<StretchyHeaderProps, StretchyHe
     this.setState({ index: newIndex });
 
     Animated.timing(this.scrollX, {
+      duration: 500,
       toValue: newIndex,
       useNativeDriver: true,
-      easing: Easing.out(Easing.exp),
+      easing: Easing.out(Easing.cubic),
     }).start(() => {
       if (newIndex !== prevIndex && onChange) {
         onChange({ index: newIndex });
