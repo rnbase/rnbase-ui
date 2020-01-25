@@ -175,12 +175,12 @@ class StretchyHeader extends React.PureComponent<StretchyHeaderProps, StretchyHe
     );
   }
 
-  // Claim responder if it's a horizontal pan
+  // Enable responder if the pan mostly horizontal
   private handleMoveShouldSetPanResponderCapture = (
     _event: GestureResponderEvent,
     gestureState: PanResponderGestureState,
   ) => {
-    return Math.abs(gestureState.dx) * 2 >= Math.abs(gestureState.dy);
+    return Math.abs(gestureState.dx) > Math.abs(gestureState.dy) * 2;
   };
 
   // Run callback when touch started
