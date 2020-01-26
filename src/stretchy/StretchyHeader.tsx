@@ -1,7 +1,6 @@
 import React, { createRef } from 'react';
 import {
   Animated,
-  Easing,
   GestureResponderEvent,
   LayoutChangeEvent,
   PanResponder,
@@ -31,7 +30,6 @@ export interface StretchyHeaderProps {
 
 interface StretchyHeaderState {
   width: number;
-  index: number;
 }
 
 class StretchyHeader extends React.PureComponent<StretchyHeaderProps, StretchyHeaderState> {
@@ -43,12 +41,12 @@ class StretchyHeader extends React.PureComponent<StretchyHeaderProps, StretchyHe
 
   state = {
     width: 0,
-    index: 0,
   };
 
+  private index = 0;
   private overflow = 'visible';
   private refRoot = createRef<View>();
-  private scrollX = new Animated.Value(0);
+  private animatedIndex = new Animated.Value(this.index);
 
   private scrollListener: string | undefined;
   private panResponder: PanResponderInstance;
@@ -86,12 +84,14 @@ class StretchyHeader extends React.PureComponent<StretchyHeaderProps, StretchyHe
 
   render() {
     const {
-      scrollX,
       handleLayout,
       panResponder,
-      state: { width, index },
+      animatedIndex,
+      state: { width },
       props: { background, height, backgroundColor, children, scrollY, showPager, pagerProps },
     } = this;
+    const elements = Array.isArray(background) ? background : [background];
+    const length = elements.length;
 
     const opacity = scrollY.interpolate({
       inputRange: [0, height],
@@ -111,19 +111,17 @@ class StretchyHeader extends React.PureComponent<StretchyHeaderProps, StretchyHe
       extrapolateRight: 'clamp',
     });
 
-    const translateX = scrollX.interpolate({
+    const translateX = animatedIndex.interpolate({
       inputRange: [0, 1],
       outputRange: [0, -width],
     });
 
-    const elements = Array.isArray(background) ? background : [background];
-    const length = elements.length;
     let content = [];
 
     if (showPager) {
       content.push(
         <Animated.View key="pager" style={[styles.pager, { opacity }]}>
-          <Pager {...pagerProps} count={length} selected={index} orientation="horizontal" />
+          <Pager {...pagerProps} count={length} current={animatedIndex} orientation="horizontal" />
         </Animated.View>,
       );
     }
@@ -175,22 +173,24 @@ class StretchyHeader extends React.PureComponent<StretchyHeaderProps, StretchyHe
     );
   }
 
+  private getLastIndex = () => {
+    return Array.isArray(this.props.background) ? this.props.background.length - 1 : 0;
+  };
+
   // Enable responder if the pan mostly horizontal
   private handleMoveShouldSetPanResponderCapture = (
     _event: GestureResponderEvent,
     gestureState: PanResponderGestureState,
   ) => {
-    return Math.abs(gestureState.dx) > Math.abs(gestureState.dy) * 2;
+    return Math.abs(gestureState.dx) > Math.abs(gestureState.dy);
   };
 
   // Stop animation and run callback when touch started
   private handlePanResponderGrant = () => {
-    const { onTouchStart } = this.props;
+    this.animatedIndex.stopAnimation();
 
-    this.scrollX.stopAnimation();
-
-    if (onTouchStart) {
-      onTouchStart();
+    if (this.props.onTouchStart) {
+      this.props.onTouchStart();
     }
   };
 
@@ -199,15 +199,11 @@ class StretchyHeader extends React.PureComponent<StretchyHeaderProps, StretchyHe
     _event: GestureResponderEvent,
     gestureState: PanResponderGestureState,
   ) => {
-    const {
-      props: { background },
-      state: { width, index },
-    } = this;
-    const { dx } = gestureState;
-    const length = Array.isArray(background) ? background.length : 1;
-    const reduce = (index === 0 && dx > 0) || (index === length - 1 && dx < 0) ? 3 : 1;
+    const offset = -gestureState.dx / this.state.width;
+    const indexOffset = this.index + offset;
+    const resistance = indexOffset < 0 || indexOffset > this.getLastIndex() ? 3 : 1;
 
-    this.scrollX.setOffset(-dx / width / reduce);
+    this.animatedIndex.setOffset(offset / resistance);
   };
 
   // Set the closest background item when touch released
@@ -215,54 +211,46 @@ class StretchyHeader extends React.PureComponent<StretchyHeaderProps, StretchyHe
     _event: GestureResponderEvent,
     gestureState: PanResponderGestureState,
   ) => {
-    const {
-      props: { onTouchEnd },
-      state: { width, index },
-    } = this;
     const { dx, vx } = gestureState;
-    const relativeOffset = dx / width;
+    let toIndex = this.index;
 
-    this.scrollX.flattenOffset();
-
-    if (relativeOffset < -0.5 || (relativeOffset < 0 && vx <= -0.3)) {
-      this.setBackgroundItem(index + 1);
-    } else if (relativeOffset > 0.5 || (relativeOffset > 0 && vx >= 0.3)) {
-      this.setBackgroundItem(index - 1);
-    } else {
-      this.setBackgroundItem(index);
+    if (Math.abs(dx) > this.state.width / 2 || Math.abs(vx) >= 0.3) {
+      toIndex = toIndex - Math.sign(dx);
     }
 
-    if (onTouchEnd) {
-      onTouchEnd();
+    this.animatedIndex.flattenOffset();
+    this.moveToIndex(toIndex, -vx);
+
+    if (this.props.onTouchEnd) {
+      this.props.onTouchEnd();
     }
   };
 
   // Animate to the given background item
-  private setBackgroundItem(index: number) {
-    const {
-      props: { background, onChange },
-      state: { index: prevIndex },
-    } = this;
-    const length = Array.isArray(background) ? background.length : 1;
-    const newIndex = inRange(index, 0, length - 1);
+  private moveToIndex(index: number, velocity: number) {
+    const { index: prevIndex } = this;
+    const newIndex = inRange(index, 0, this.getLastIndex());
 
-    this.setState({ index: newIndex });
-
-    Animated.timing(this.scrollX, {
-      duration: 500,
+    Animated.spring(this.animatedIndex, {
+      velocity,
+      mass: 0.6,
+      damping: 500,
+      stiffness: 100,
       toValue: newIndex,
+      overshootClamping: true,
       useNativeDriver: true,
-      easing: Easing.out(Easing.cubic),
     }).start(() => {
-      if (newIndex !== prevIndex && onChange) {
-        onChange({ index: newIndex });
+      this.index = newIndex;
+
+      if (newIndex !== prevIndex && this.props.onChange) {
+        this.props.onChange({ index: newIndex });
       }
     });
   }
 
   // Determine header width
-  private handleLayout = (event: LayoutChangeEvent) => {
-    this.setState({ width: event.nativeEvent.layout.width });
+  private handleLayout = ({ nativeEvent }: LayoutChangeEvent) => {
+    this.setState({ width: nativeEvent.layout.width });
   };
 }
 
