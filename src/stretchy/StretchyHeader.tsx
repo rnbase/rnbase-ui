@@ -183,9 +183,11 @@ class StretchyHeader extends React.PureComponent<StretchyHeaderProps, StretchyHe
     return Math.abs(gestureState.dx) > Math.abs(gestureState.dy) * 2;
   };
 
-  // Run callback when touch started
+  // Stop animation and run callback when touch started
   private handlePanResponderGrant = () => {
     const { onTouchStart } = this.props;
+
+    this.scrollX.stopAnimation();
 
     if (onTouchStart) {
       onTouchStart();
@@ -205,7 +207,6 @@ class StretchyHeader extends React.PureComponent<StretchyHeaderProps, StretchyHe
     const length = Array.isArray(background) ? background.length : 1;
     const reduce = (index === 0 && dx > 0) || (index === length - 1 && dx < 0) ? 3 : 1;
 
-    this.scrollX.stopAnimation();
     this.scrollX.setOffset(-dx / width / reduce);
   };
 
