@@ -10,7 +10,7 @@ import {
   View,
 } from 'react-native';
 
-import { inRange } from '../helpers';
+import { clamp } from '../helpers';
 import Pager, { Props as PagerProps } from '../pager/Pager';
 
 export type BackgroundPropType = React.ReactElement | React.ReactElement[];
@@ -229,7 +229,7 @@ class StretchyHeader extends React.PureComponent<StretchyHeaderProps, StretchyHe
   // Animate to the given background item
   private moveToIndex(index: number, velocity: number) {
     const { index: prevIndex } = this;
-    const newIndex = inRange(index, 0, this.getLastIndex());
+    const newIndex = clamp(index, 0, this.getLastIndex());
 
     Animated.spring(this.animatedIndex, {
       velocity,

@@ -12,7 +12,7 @@ import {
 } from 'react-native';
 
 import { Themed, WithThemeProps, withTheme } from '../theming';
-import { inRange } from '../helpers';
+import { clamp } from '../helpers';
 import { RatingContext, RatingValue } from './RatingContext';
 import RatingSymbol from './RatingSymbol';
 
@@ -72,14 +72,14 @@ class Rating extends React.PureComponent<ThemedRatingProps, State> {
   }
 
   componentDidMount() {
-    this.setOverlayWidth(inRange(this.props.value, 0, this.props.maxValue));
+    this.setOverlayWidth(clamp(this.props.value, 0, this.props.maxValue));
   }
 
   componentDidUpdate(prevProps: ThemedRatingProps) {
     const { value, maxValue } = this.props;
 
     if (value !== prevProps.value || maxValue !== prevProps.maxValue) {
-      this.setOverlayWidth(inRange(value, 0, maxValue));
+      this.setOverlayWidth(clamp(value, 0, maxValue));
     }
   }
 
@@ -182,7 +182,7 @@ class Rating extends React.PureComponent<ThemedRatingProps, State> {
       ? Math.round((locationX / size) * 10) / 10
       : Math.ceil(locationX / size);
 
-    const rating = inRange(eventValue, 0, maxValue);
+    const rating = clamp(eventValue, 0, maxValue);
 
     if (this.ratingValue.value !== rating) {
       this.ratingValue.value = rating;

@@ -16,7 +16,7 @@ import {
 } from 'react-native';
 
 import { Themed, Theme, WithThemeProps, withTheme } from '../theming';
-import { inRange, getRadius } from '../helpers';
+import { clamp, getRadius } from '../helpers';
 
 const minSize = 20;
 const maxSize = 70;
@@ -82,7 +82,7 @@ const Button: React.FC<Themed<typeof createStyleSheet, ButtonProps>> = ({
   });
 
   const proportions = useMemo(() => {
-    const height = inRange(Math.round(size), minSize, maxSize);
+    const height = clamp(Math.round(size), minSize, maxSize);
     const increment = Math.floor(height / 5);
 
     return {

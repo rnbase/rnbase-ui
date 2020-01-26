@@ -11,7 +11,7 @@ import {
 } from 'react-native';
 
 import { Themed, Theme, WithThemeProps, withTheme } from '../theming';
-import { inRange, getRadius } from '../helpers';
+import { clamp, getRadius } from '../helpers';
 
 const minSize = 15;
 const maxSize = 40;
@@ -57,7 +57,7 @@ const Badge: React.FC<Themed<typeof createStyleSheet, BadgeProps>> = ({
   let height = styles.root.minHeight;
 
   if (typeof value === 'number' && value !== 0) {
-    height = inRange(Math.round(size), minSize, maxSize);
+    height = clamp(Math.round(size), minSize, maxSize);
 
     const fontSize = PixelRatio.roundToNearestPixel(height * 0.6);
     const displayValue = limit && value > limit ? `${limit}+` : value;
