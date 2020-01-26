@@ -1,33 +1,32 @@
 import React from 'react';
-import { StyleProp, StyleSheet, View, ViewProps, ViewStyle } from 'react-native';
+import { Animated, StyleProp, StyleSheet, View, ViewProps, ViewStyle } from 'react-native';
 
 import { Themed, WithThemeProps, withTheme } from '../theming';
 
 interface PagerProps extends ViewProps {
-  count?: number;
-  selected?: number;
   color?: string;
+  count?: number;
+  current?: number | Animated.Value;
   orientation?: 'horizontal' | 'vertical';
   style?: StyleProp<ViewStyle>;
   itemStyle?: StyleProp<ViewStyle>;
-  selectedItemStyle?: StyleProp<ViewStyle>;
 }
 
 const Pager: React.FC<Themed<typeof createStyleSheet, PagerProps>> = ({
   theme: { colors, styles },
-  count = 0,
-  selected,
   color = colors.white,
+  count = 0,
+  current,
   orientation = 'horizontal',
   style,
   itemStyle,
-  selectedItemStyle,
   ...props
 }) => {
   if (count < 2) {
     return null;
   }
 
+  let currentIndex = typeof current === 'number' ? new Animated.Value(current) : current;
   const rootStyles = [styles.root, style];
 
   if (orientation === 'horizontal') {
@@ -37,11 +36,22 @@ const Pager: React.FC<Themed<typeof createStyleSheet, PagerProps>> = ({
   const renderItem = (_item: any, index: number) => {
     const itemStyles = [{ backgroundColor: color }, styles.item, itemStyle];
 
-    if (index === selected) {
-      itemStyles.push(styles.itemSelected, selectedItemStyle);
+    if (currentIndex) {
+      const opacity = currentIndex.interpolate({
+        inputRange: [index - 1, index, index + 1],
+        outputRange: [0.5, 1, 0.5],
+        extrapolate: 'clamp',
+      });
+      const scale = currentIndex.interpolate({
+        inputRange: [index - 1, index, index + 1],
+        outputRange: [1, 1.4, 1],
+        extrapolate: 'clamp',
+      });
+
+      itemStyles.push({ opacity: opacity as any, transform: [{ scale }] as any });
     }
 
-    return <View key={index} style={itemStyles} />;
+    return <Animated.View key={index} style={itemStyles} />;
   };
 
   return (
@@ -58,18 +68,10 @@ const createStyleSheet = () =>
       justifyContent: 'center',
     },
     item: {
-      width: 6,
-      height: 6,
+      width: 5,
+      height: 5,
       margin: 3,
-      opacity: 0.5,
       borderRadius: 3,
-    },
-    itemSelected: {
-      width: 7,
-      height: 7,
-      margin: 2.5,
-      opacity: 1,
-      borderRadius: 3.5,
     },
   });
 
