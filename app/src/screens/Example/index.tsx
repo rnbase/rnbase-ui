@@ -109,17 +109,17 @@ const ExampleScreen = () => {
             imageSource={avatars.none}
             badge={{
               value: !!badge,
-              style: { backgroundColor: '#3B0' },
+              style: styles.bgGreen,
             }}
           />
           <Avatar name="John Smith" imageSource={avatars.test} cornerRadius={10} />
           <Avatar email="user@email.com" imageSource={avatars.none} />
         </View>
         <View style={styles.stack}>
-          <Badge value={true} style={{ backgroundColor: '#3B0' }} />
-          <Badge value={true} style={{ backgroundColor: '#FC0' }} cornerRadius={0} />
+          <Badge value={true} style={styles.bgGreen} />
+          <Badge value={true} style={styles.bgYellow} cornerRadius={0} />
           <Badge value={badge} />
-          <Badge value={35} style={{ backgroundColor: '#F20' }} />
+          <Badge value={35} style={styles.bgRed} />
           <Badge value={350} size={30} />
           <Badge value={355} limit={false} cornerRadius={3} />
         </View>
@@ -247,6 +247,15 @@ const styles = StyleSheet.create({
   },
   single: {
     marginVertical: 10,
+  },
+  bgGreen: {
+    backgroundColor: '#3B0',
+  },
+  bgYellow: {
+    backgroundColor: '#FC0',
+  },
+  bgRed: {
+    backgroundColor: '#F20',
   },
 });
 
