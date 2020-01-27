@@ -70,7 +70,10 @@ class StretchyHeader extends React.PureComponent<StretchyHeaderProps, StretchyHe
       if (overflow !== this.overflow) {
         const { current: rootView } = this.refRoot;
 
-        rootView && rootView.setNativeProps({ style: { overflow } });
+        if (rootView) {
+          rootView.setNativeProps({ style: { overflow } });
+        }
+
         this.overflow = overflow;
       }
     });
