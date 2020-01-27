@@ -8,7 +8,7 @@
  * @format
  */
 
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useMemo } from 'react';
 import { Image, StyleSheet, View, Text } from 'react-native';
 
 import {
@@ -38,15 +38,44 @@ const avatars = {
   test: { uri: 'https://randomuser.me/api/portraits/women/68.jpg' },
 };
 
+const segmentedItems = [
+  {
+    text: 'One',
+    iconSource: require('../../assets/star.png'),
+  },
+  {
+    text: 'Two',
+    iconSource: require('../../assets/heart.png'),
+  },
+  {
+    text: 'Three',
+  },
+];
+
 const ExampleScreen = () => {
   const [busy, setBusy] = useState(false);
   const [badge, setBadge] = useState(0);
   const [rating, setRating] = useState(3.5);
   const [userRating, setUserRating] = useState();
-  const [selectedButton, setSelectedButton] = useState(0);
+  const [segmented, setSegmented] = useState(0);
   const [headerImages] = useState(() => generateHeaderImages(3));
 
-  const onSelectButton = (index: number) => setSelectedButton(index);
+  const toggleBusy = useCallback(() => {
+    setBusy(true);
+    setTimeout(() => setBusy(false), 3000);
+  }, []);
+
+  const clearBadge = useCallback(() => setBadge(0), []);
+  const incrementBadge = useCallback(() => setBadge(badge + 1), [badge]);
+
+  const headerBackground = useMemo(() => headerImages.map(source => <Image source={source} />), [
+    headerImages,
+  ]);
+  const headerContent = useMemo(() => <Button text="Welcome to React" onPress={incrementBadge} />, [
+    incrementBadge,
+  ]);
+
+  const handleSegmentedChange = useCallback((index: number) => setSegmented(index), []);
 
   const handleRatingChange = useCallback(setUserRating, []);
   const handleRatingComplete = useCallback(
@@ -59,12 +88,10 @@ const ExampleScreen = () => {
 
   return (
     <StretchyScrollView
-      headerBackground={headerImages.map(source => (
-        <Image source={source} />
-      ))}
       headerHeight={300}
+      headerBackground={headerBackground}
       headerBackgroundColor="#30303C"
-      headerContent={<Button text="Welcome to React" onPress={() => setBadge(badge + 1)} />}
+      headerContent={headerContent}
     >
       <Component>Themed Component</Component>
       <View style={styles.body}>
@@ -98,55 +125,38 @@ const ExampleScreen = () => {
         </View>
         <View style={styles.stack}>
           <Button
-            text="Button"
+            text="Button 1"
             iconSource={require('../../assets/star.png')}
-            onPress={() => setBadge(badge + 1)}
+            onPress={incrementBadge}
           />
           <OutlineButton
-            text="Button"
+            text="Button 2"
             iconSource={require('../../assets/heart.png')}
-            onPress={() => setBadge(0)}
+            onPress={clearBadge}
           />
           <TextButton
-            text="Button"
+            text="Button 3"
             busy={busy}
             iconAlignment="right"
             iconSource={require('../../assets/chevron-right.png')}
-            onPress={() => {
-              setBusy(true);
-              setTimeout(() => setBusy(false), 3000);
-            }}
+            onPress={toggleBusy}
           />
         </View>
         <Button
           busy={busy}
-          style={{ marginVertical: 10 }}
+          style={styles.single}
           text="Activity Button"
           busyAnimationType="slide"
           iconSource={require('../../assets/check-circle.png')}
-          onPress={() => {
-            setBusy(true);
-            setTimeout(() => setBusy(false), 3000);
-          }}
+          onPress={toggleBusy}
         />
         <Segmented
-          selected={selectedButton}
-          onChange={onSelectButton}
-          items={[
-            {
-              text: 'One',
-              iconSource: require('../../assets/star.png'),
-            },
-            {
-              text: 'Two',
-              iconSource: require('../../assets/heart.png'),
-            },
-            {
-              text: 'Three',
-            },
-          ]}
+          items={segmentedItems}
+          selected={segmented}
+          style={styles.single}
+          onChange={handleSegmentedChange}
         />
-        {selectedButton === 0 && (
+        {segmented === 0 && (
           <View style={styles.sectionContainer}>
             <Text style={styles.sectionTitle}>Step One</Text>
             <Text style={styles.sectionDescription}>
@@ -155,7 +165,7 @@ const ExampleScreen = () => {
             </Text>
           </View>
         )}
-        {selectedButton === 1 && (
+        {segmented === 1 && (
           <View style={styles.sectionContainer}>
             <Text style={styles.sectionTitle}>See Your Changes</Text>
             <Text style={styles.sectionDescription}>
@@ -163,7 +173,7 @@ const ExampleScreen = () => {
             </Text>
           </View>
         )}
-        {selectedButton === 2 && (
+        {segmented === 2 && (
           <View style={styles.sectionContainer}>
             <Text style={styles.sectionTitle}>Debug</Text>
             <Text style={styles.sectionDescription}>
@@ -234,6 +244,9 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
+  },
+  single: {
+    marginVertical: 10,
   },
 });
 
