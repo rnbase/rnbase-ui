@@ -17,10 +17,6 @@ const defaultTheme: ThemeFactory = ({ scheme }) => {
   const colors = {
     white: '#ffffff',
     black: '#000000',
-    // >>>>>> TODO: Check
-    underlay: scheme({ default: '#0001', dark: '#fff1' }),
-    separator: scheme({ default: '#0003', dark: '#fff3' }),
-    // <<<<<<<<<<<<<<<<<<
     blue: scheme({ default: '#007aff', dark: '#0a84ff' }),
     green: scheme({ default: '#34c759', dark: '#30d158' }),
     indigo: scheme({ default: '#5856d6', dark: '#5e5ce6' }),
@@ -36,6 +32,8 @@ const defaultTheme: ThemeFactory = ({ scheme }) => {
     gray4: scheme({ default: '#d1d1d6', dark: '#3a3a3c' }),
     gray5: scheme({ default: '#e5e5ea', dark: '#2c2c2e' }),
     gray6: scheme({ default: '#f2f2f7', dark: '#1c1c1e' }),
+    underlay: scheme({ default: '#0001', dark: '#fff1' }),
+    separator: scheme({ default: '#0003', dark: '#fff3' }),
   };
 
   const fonts = {
