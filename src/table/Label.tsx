@@ -22,12 +22,10 @@ const createStyleSheet = ({ colors, fonts }: Theme) =>
   StyleSheet.create({
     root: {
       ...fonts.normal,
-      height: 16,
-      fontSize: 16,
-      lineHeight: 16,
+      fontSize: 17,
       flexShrink: 1,
       marginRight: 20,
-      color: colors.gray,
+      color: colors.black,
     },
   });
 

@@ -14,8 +14,8 @@ exports[`should render as touchable 1`] = `
           "flexDirection": "row",
           "flexWrap": "nowrap",
           "justifyContent": "space-between",
-          "minHeight": 48,
-          "paddingHorizontal": 15,
+          "minHeight": 43,
+          "paddingHorizontal": 20,
         },
         undefined,
       ]
@@ -36,8 +36,8 @@ exports[`should render normally 1`] = `
         "flexDirection": "row",
         "flexWrap": "nowrap",
         "justifyContent": "space-between",
-        "minHeight": 48,
-        "paddingHorizontal": 15,
+        "minHeight": 43,
+        "paddingHorizontal": 20,
       },
       undefined,
     ]
@@ -57,8 +57,8 @@ exports[`should render with custom styles 1`] = `
         "flexDirection": "row",
         "flexWrap": "nowrap",
         "justifyContent": "space-between",
-        "minHeight": 48,
-        "paddingHorizontal": 15,
+        "minHeight": 43,
+        "paddingHorizontal": 20,
       },
       Object {
         "backgroundColor": "red",

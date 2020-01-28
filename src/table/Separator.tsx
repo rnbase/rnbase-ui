@@ -14,7 +14,7 @@ const Separator: React.FC<Themed<typeof createStyleSheet, SeparatorProps>> = ({
 const createStyleSheet = ({ colors }: Theme) =>
   StyleSheet.create({
     root: {
-      marginLeft: 15,
+      marginLeft: 20,
       height: StyleSheet.hairlineWidth,
       backgroundColor: colors.separator,
     },

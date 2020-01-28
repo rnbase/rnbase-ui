@@ -5,14 +5,14 @@ exports[`should render normally 1`] = `
   style={
     Array [
       Object {
-        "marginVertical": 15,
+        "backgroundColor": "#0003",
+        "height": 0.5,
+        "marginLeft": 20,
       },
       undefined,
     ]
   }
->
-  <Row />
-</View>
+/>
 `;
 
 exports[`should render with custom styles 1`] = `
@@ -20,14 +20,14 @@ exports[`should render with custom styles 1`] = `
   style={
     Array [
       Object {
-        "marginVertical": 15,
+        "backgroundColor": "#0003",
+        "height": 0.5,
+        "marginLeft": 20,
       },
       Object {
-        "height": 123,
+        "backgroundColor": "red",
       },
     ]
   }
->
-  <Row />
-</View>
+/>
 `;
