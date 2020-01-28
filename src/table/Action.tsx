@@ -13,7 +13,7 @@ import {
 import { Theme, Themed, withTheme } from '../theming';
 
 interface ActionProps extends TextProps {
-  children: React.ReactNode;
+  children?: React.ReactNode;
   iconSource?: ImageSourcePropType;
   iconStyle?: StyleProp<ImageStyle>;
 }
@@ -27,9 +27,11 @@ const Action: React.FC<Themed<typeof createStyleSheet, ActionProps>> = ({
   ...props
 }) => (
   <View style={styles.root}>
-    <Text {...props} style={[styles.text, style]} numberOfLines={1}>
-      {children}
-    </Text>
+    {children && (
+      <Text {...props} style={[styles.text, style]} numberOfLines={1}>
+        {children}
+      </Text>
+    )}
     {!!iconSource && <Image style={[styles.icon, iconStyle]} source={iconSource} />}
   </View>
 );
@@ -41,7 +43,7 @@ const createStyleSheet = ({ colors, fonts }: Theme) =>
       flexDirection: 'row',
     },
     text: {
-      ...fonts.semibold,
+      ...fonts.normal,
       height: 16,
       fontSize: 16,
       lineHeight: 16,

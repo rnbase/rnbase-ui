@@ -1,0 +1,213 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render normally 1`] = `
+<View
+  style={
+    Array [
+      Object {
+        "marginBottom": 20,
+        "marginTop": 15,
+      },
+      undefined,
+    ]
+  }
+>
+  <View
+    style={
+      Array [
+        Object {
+          "backgroundColor": "#ffffff",
+          "borderBottomWidth": 0.5,
+          "borderColor": "#0003",
+          "borderTopWidth": 0.5,
+        },
+        undefined,
+      ]
+    }
+  >
+    <Row />
+  </View>
+</View>
+`;
+
+exports[`should render with custom styles 1`] = `
+<View
+  style={
+    Array [
+      Object {
+        "marginBottom": 9,
+        "marginTop": 13,
+      },
+      Object {
+        "margin": 0,
+      },
+    ]
+  }
+>
+  <Text
+    numberOfLines={1}
+    style={
+      Array [
+        Object {
+          "backgroundColor": "transparent",
+          "color": "#838387",
+          "fontFamily": "System",
+          "fontSize": 13,
+          "fontWeight": "400",
+          "includeFontPadding": false,
+          "marginBottom": 6.5,
+          "marginHorizontal": 20,
+          "textAlignVertical": "center",
+          "textTransform": "uppercase",
+        },
+        Object {
+          "color": "red",
+        },
+      ]
+    }
+  >
+    HEADER
+  </Text>
+  <View
+    style={
+      Array [
+        Object {
+          "backgroundColor": "#ffffff",
+          "borderBottomWidth": 0.5,
+          "borderColor": "#0003",
+          "borderTopWidth": 0.5,
+        },
+        Object {
+          "backgroundColor": "blue",
+        },
+      ]
+    }
+  >
+    <Row />
+  </View>
+  <Text
+    style={
+      Array [
+        Object {
+          "backgroundColor": "transparent",
+          "color": "#838387",
+          "fontFamily": "System",
+          "fontSize": 13,
+          "fontWeight": "400",
+          "includeFontPadding": false,
+          "marginHorizontal": 20,
+          "marginTop": 7.5,
+          "textAlignVertical": "center",
+        },
+        Object {
+          "color": "green",
+        },
+      ]
+    }
+  >
+    FOOTER
+  </Text>
+</View>
+`;
+
+exports[`should render with footer 1`] = `
+<View
+  style={
+    Array [
+      Object {
+        "marginBottom": 9,
+        "marginTop": 15,
+      },
+      undefined,
+    ]
+  }
+>
+  <View
+    style={
+      Array [
+        Object {
+          "backgroundColor": "#ffffff",
+          "borderBottomWidth": 0.5,
+          "borderColor": "#0003",
+          "borderTopWidth": 0.5,
+        },
+        undefined,
+      ]
+    }
+  >
+    <Row />
+  </View>
+  <Text
+    style={
+      Array [
+        Object {
+          "backgroundColor": "transparent",
+          "color": "#838387",
+          "fontFamily": "System",
+          "fontSize": 13,
+          "fontWeight": "400",
+          "includeFontPadding": false,
+          "marginHorizontal": 20,
+          "marginTop": 7.5,
+          "textAlignVertical": "center",
+        },
+        undefined,
+      ]
+    }
+  >
+    FOOTER
+  </Text>
+</View>
+`;
+
+exports[`should render with header 1`] = `
+<View
+  style={
+    Array [
+      Object {
+        "marginBottom": 20,
+        "marginTop": 13,
+      },
+      undefined,
+    ]
+  }
+>
+  <Text
+    numberOfLines={1}
+    style={
+      Array [
+        Object {
+          "backgroundColor": "transparent",
+          "color": "#838387",
+          "fontFamily": "System",
+          "fontSize": 13,
+          "fontWeight": "400",
+          "includeFontPadding": false,
+          "marginBottom": 6.5,
+          "marginHorizontal": 20,
+          "textAlignVertical": "center",
+          "textTransform": "uppercase",
+        },
+        undefined,
+      ]
+    }
+  >
+    HEADER
+  </Text>
+  <View
+    style={
+      Array [
+        Object {
+          "backgroundColor": "#ffffff",
+          "borderBottomWidth": 0.5,
+          "borderColor": "#0003",
+          "borderTopWidth": 0.5,
+        },
+        undefined,
+      ]
+    }
+  >
+    <Row />
+  </View>
+</View>
+`;

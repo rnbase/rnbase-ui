@@ -30,11 +30,11 @@ const Row: React.FC<Themed<typeof createStyleSheet, RowProps>> = ({
 const createStyleSheet = () =>
   StyleSheet.create({
     root: {
-      minHeight: 48,
+      minHeight: 43,
       flexWrap: 'nowrap',
       flexDirection: 'row',
       alignItems: 'center',
-      paddingHorizontal: 15,
+      paddingHorizontal: 20,
       justifyContent: 'space-between',
     },
   });
