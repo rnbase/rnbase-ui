@@ -1,8 +1,8 @@
 import React from 'react';
-import { Alert, StyleSheet, Switch, View } from 'react-native';
+import { Alert, StyleSheet, Switch } from 'react-native';
 import { NavigationScreenProp } from 'react-navigation';
 
-import { Form, Theme, useTheme } from 'rnbase-ui';
+import { Table, Theme, useTheme } from 'rnbase-ui';
 
 type NavigationState = {
   params: {};
@@ -18,36 +18,42 @@ const FormScreen: React.FC<Props> = () => {
   } = useTheme(createStyles);
 
   return (
-    <View style={styles.root}>
-      <Form.Title>Security</Form.Title>
-      <Form.Fieldset>
-        <Form.Row onPress={() => Alert.alert('Pressed')}>
-          <Form.Label>Password</Form.Label>
-          <Form.Action iconSource={require('../../assets/chevron-right.png')}>change</Form.Action>
-        </Form.Row>
-        <Form.Separator />
-        <Form.Row>
-          <Form.Label>Biometric sign in</Form.Label>
+    <Table style={styles.root}>
+      <Table.Rows header="Appearance">
+        <Table.Row>
+          <Table.Label>Dark Appearance</Table.Label>
           <Switch />
-        </Form.Row>
-        <Form.Help>
-          By enabling biometric sign in, you are approving that your password be saved to the device
-          and protected by the device’s security.
-        </Form.Help>
-      </Form.Fieldset>
-    </View>
+        </Table.Row>
+      </Table.Rows>
+      <Table.Rows
+        header="Paired Devices"
+        footer="Removing trusted computers will delete all of the records of computers that you have paired
+        with previously."
+      >
+        <Table.Row onPress={() => Alert.alert('Pressed')}>
+          <Table.Label>Clear Trusted Computers</Table.Label>
+          <Table.Action iconSource={require('../../assets/chevron-right.png')}>change</Table.Action>
+        </Table.Row>
+      </Table.Rows>
+      <Table.Rows header="UI Automation">
+        <Table.Row>
+          <Table.Label>Enable UI Automation</Table.Label>
+          <Switch value={true} />
+        </Table.Row>
+        <Table.Separator />
+        <Table.Row onPress={() => Alert.alert('Pressed')}>
+          <Table.Label>Multipath Networking</Table.Label>
+          <Table.Action iconSource={require('../../assets/chevron-right.png')} />
+        </Table.Row>
+      </Table.Rows>
+    </Table>
   );
 };
 
-const createStyles = ({ colors, fonts }: Theme) =>
+const createStyles = ({ colors }: Theme) =>
   StyleSheet.create({
     root: {
-      flex: 1,
-    },
-    headerTitle: {
-      ...fonts.bold,
-      fontSize: 35,
-      color: colors.black,
+      backgroundColor: colors.gray6,
     },
   });
 
