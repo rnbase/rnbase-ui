@@ -51,7 +51,10 @@ const Section: React.FC<Themed<typeof createStyleSheet, SectionProps>> = ({
 
           return (
             <>
-              <Separator highlighted={index === highlighted || index - 1 === highlighted} />
+              <Separator
+                highlighted={index === highlighted || index - 1 === highlighted}
+                style={child.props.imageSource && { marginLeft: 60 }}
+              />
               {React.cloneElement(child, {
                 onHighlightRow: () => setHighlighted(index),
                 onUnhighlightRow: () => setHighlighted(null),

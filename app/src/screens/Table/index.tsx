@@ -34,13 +34,20 @@ const TableScreen: React.FC<Props> = () => {
         </Table.Row>
       </Table.Section>
       <Table.Section header="UI Automation">
-        <Table.Row title="Enable UI Automation">
+        <Table.Row title="Enable UI Automation" imageSource={require('../../assets/star.png')}>
           <Switch value={true} />
         </Table.Row>
-        <Table.Row title="Multipath Networking" onPress={() => {}}>
+        <Table.Row
+          title="Multipath Networking"
+          onPress={() => {}}
+          imageSource={require('../../assets/heart.png')}
+        >
           <Table.Action iconSource={require('../../assets/chevron-right.png')} />
         </Table.Row>
-        <Table.Row title="Enable Notifications">
+        <Table.Row
+          title="Enable Notifications"
+          imageSource={require('../../assets/cross-circle.png')}
+        >
           <Switch />
         </Table.Row>
       </Table.Section>
