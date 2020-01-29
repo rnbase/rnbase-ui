@@ -10,11 +10,13 @@ exports[`should render as touchable 1`] = `
     style={
       Array [
         Object {
+          "minHeight": 43,
+        },
+        Object {
           "alignItems": "center",
           "flexDirection": "row",
-          "flexWrap": "nowrap",
           "justifyContent": "space-between",
-          "minHeight": 43,
+          "overflow": "hidden",
           "paddingHorizontal": 20,
           "paddingVertical": 4,
         },
@@ -22,6 +24,13 @@ exports[`should render as touchable 1`] = `
       ]
     }
   >
+    <View
+      style={
+        Object {
+          "flexGrow": 1,
+        }
+      }
+    />
     <Label />
     <Action />
   </View>
@@ -33,11 +42,13 @@ exports[`should render normally 1`] = `
   style={
     Array [
       Object {
+        "minHeight": 43,
+      },
+      Object {
         "alignItems": "center",
         "flexDirection": "row",
-        "flexWrap": "nowrap",
         "justifyContent": "space-between",
-        "minHeight": 43,
+        "overflow": "hidden",
         "paddingHorizontal": 20,
         "paddingVertical": 4,
       },
@@ -45,6 +56,13 @@ exports[`should render normally 1`] = `
     ]
   }
 >
+  <View
+    style={
+      Object {
+        "flexGrow": 1,
+      }
+    }
+  />
   <Label />
   <Action />
 </View>
@@ -55,11 +73,13 @@ exports[`should render with custom styles 1`] = `
   style={
     Array [
       Object {
+        "minHeight": 43,
+      },
+      Object {
         "alignItems": "center",
         "flexDirection": "row",
-        "flexWrap": "nowrap",
         "justifyContent": "space-between",
-        "minHeight": 43,
+        "overflow": "hidden",
         "paddingHorizontal": 20,
         "paddingVertical": 4,
       },
@@ -69,6 +89,13 @@ exports[`should render with custom styles 1`] = `
     ]
   }
 >
+  <View
+    style={
+      Object {
+        "flexGrow": 1,
+      }
+    }
+  />
   <Label />
   <Action />
 </View>
