@@ -12,7 +12,7 @@ type Props = {
   navigation: NavigationScreenProp<NavigationState>;
 };
 
-const FormScreen: React.FC<Props> = () => {
+const TableScreen: React.FC<Props> = () => {
   const {
     theme: { styles },
   } = useTheme(createStyles);
@@ -56,4 +56,4 @@ const createStyles = ({ colors }: Theme) =>
     },
   });
 
-export default FormScreen;
+export default TableScreen;
