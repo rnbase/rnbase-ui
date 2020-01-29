@@ -16,6 +16,7 @@ import { Theme, Themed, withTheme } from '../theming';
 
 interface RowProps extends ViewProps {
   children?: React.ReactNode;
+  height?: number;
   title?: string;
   subtitle?: string;
   imageSource?: ImageSourcePropType;
@@ -32,6 +33,7 @@ interface RowProps extends ViewProps {
 const Row: React.FC<Themed<typeof createStyleSheet, RowProps>> = ({
   theme: { styles, colors },
   children,
+  height,
   title,
   subtitle,
   imageSource,
@@ -58,19 +60,15 @@ const Row: React.FC<Themed<typeof createStyleSheet, RowProps>> = ({
     </Text>
   );
 
-  const label = !subtitle ? (
-    titleText
-  ) : (
-    <View key="label" style={styles.label}>
-      {titleText}
-      {subtitleText}
-    </View>
-  );
+  const minHeight = height || subtitle ? 58 : 43;
 
   const content = (
-    <View {...props} style={[styles.root, style]}>
+    <View {...props} style={[{ minHeight }, styles.root, style]}>
       {imageSource && <Image source={imageSource} style={[styles.image, imageStyle]} />}
-      {label}
+      <View key="label" style={styles.label}>
+        {titleText}
+        {subtitleText}
+      </View>
       {children}
     </View>
   );
@@ -95,8 +93,7 @@ const Row: React.FC<Themed<typeof createStyleSheet, RowProps>> = ({
 const createStyleSheet = ({ colors, fonts }: Theme) =>
   StyleSheet.create({
     root: {
-      minHeight: 43,
-      flexWrap: 'nowrap',
+      overflow: 'hidden',
       flexDirection: 'row',
       alignItems: 'center',
       paddingVertical: 4,
@@ -104,8 +101,7 @@ const createStyleSheet = ({ colors, fonts }: Theme) =>
       justifyContent: 'space-between',
     },
     label: {
-      minHeight: 50,
-      justifyContent: 'center',
+      flexGrow: 1,
     },
     title: {
       ...fonts.normal,
@@ -121,6 +117,8 @@ const createStyleSheet = ({ colors, fonts }: Theme) =>
     image: {
       width: 29,
       height: 29,
+      flexShrink: 0,
+      marginRight: 15,
     },
   });
 
