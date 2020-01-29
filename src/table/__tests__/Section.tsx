@@ -3,15 +3,15 @@ import React from 'react';
 // Note: test renderer must be required after react-native.
 import TestRenderer from 'react-test-renderer';
 
+/**
+ * Under test
+ */
 import Section from '../Section';
 
 type Props = React.ComponentProps<typeof Section>;
 
 const Row = () => React.createElement('Row');
 
-/**
- * Under test
- */
 const createElement = (props: Partial<Props>) => (
   <Section {...props}>
     <Row />

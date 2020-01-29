@@ -40,6 +40,7 @@ const Row: React.FC<Themed<typeof createStyleSheet, RowProps>> = ({
       {title}
     </Text>
   );
+
   const subtitleText = subtitle && (
     <Text key="subtitle" style={[styles.subtitle, subtitleStyle]} numberOfLines={1}>
       {subtitle}
@@ -105,4 +106,4 @@ const createStyleSheet = ({ colors, fonts }: Theme) =>
     },
   });
 
-export default withTheme(Row, createStyleSheet, 'Form.Row');
+export default withTheme(Row, createStyleSheet, 'Table.Row');

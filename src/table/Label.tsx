@@ -29,4 +29,4 @@ const createStyleSheet = ({ colors, fonts }: Theme) =>
     },
   });
 
-export default withTheme(Label, createStyleSheet, 'Form.Label');
+export default withTheme(Label, createStyleSheet, 'Table.Label');
