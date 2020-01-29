@@ -10,12 +10,19 @@ import Field from '../Field';
 
 type Props = React.ComponentProps<typeof Field>;
 
-const createElement = (props: Partial<Props>) => <Field {...props}>input</Field>;
+const Input = (props: any) => React.createElement('Input', props);
 
-const createRenderer = (props: Partial<Props>) => TestRenderer.create(createElement(props));
+const createElement = (props?: Partial<Props>, style?: any) => (
+  <Field {...props}>
+    <Input style={style} />
+  </Field>
+);
+
+const createRenderer = (props?: Partial<Props>, style?: any) =>
+  TestRenderer.create(createElement(props, style));
 
 it('should render normally', () => {
-  expect(createRenderer({})).toMatchSnapshot();
+  expect(createRenderer()).toMatchSnapshot();
 });
 
 it('should render with label', () => {
@@ -28,4 +35,8 @@ it('should render with error', () => {
 
 it('should render without separator', () => {
   expect(createRenderer({ separator: false })).toMatchSnapshot();
+});
+
+it('should render with custom input styles', () => {
+  expect(createRenderer({}, { color: 'red' })).toMatchSnapshot();
 });
