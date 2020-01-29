@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { Children, useState } from 'react';
 import { StyleProp, StyleSheet, Text, TextStyle, View, ViewStyle, ViewProps } from 'react-native';
 
 import { Theme, Themed, withTheme } from '../theming';
+
+import Separator from './Separator';
 
 interface SectionProps extends ViewProps {
   header?: string;
@@ -32,6 +34,8 @@ const Section: React.FC<Themed<typeof createStyleSheet, SectionProps>> = ({
     style,
   ];
 
+  const [highlighted, setHighlighted] = useState();
+
   return (
     <View {...props} style={rootStyles}>
       {header && (
@@ -39,7 +43,23 @@ const Section: React.FC<Themed<typeof createStyleSheet, SectionProps>> = ({
           {header}
         </Text>
       )}
-      <View style={[styles.content, contentStyle]}>{children}</View>
+      <View style={[styles.content, contentStyle]}>
+        {Children.map(children, (child, index) => {
+          if (index === 0 || !React.isValidElement(child)) {
+            return child;
+          }
+
+          return (
+            <>
+              <Separator highlighted={index === highlighted || index - 1 === highlighted} />
+              {React.cloneElement(child, {
+                onHighlightRow: () => setHighlighted(index),
+                onUnhighlightRow: () => setHighlighted(null),
+              })}
+            </>
+          );
+        })}
+      </View>
       {footer && <Text style={[styles.footer, footerStyle]}>{footer}</Text>}
     </View>
   );

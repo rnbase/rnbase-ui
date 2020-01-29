@@ -10,6 +10,7 @@ exports[`should render normally 1`] = `
         "marginLeft": 20,
       },
       undefined,
+      undefined,
     ]
   }
 />
@@ -27,6 +28,7 @@ exports[`should render with custom styles 1`] = `
       Object {
         "backgroundColor": "red",
       },
+      undefined,
     ]
   }
 />

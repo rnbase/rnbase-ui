@@ -37,9 +37,11 @@ const TableScreen: React.FC<Props> = () => {
         <Table.Row title="Enable UI Automation">
           <Switch value={true} />
         </Table.Row>
-        <Table.Separator />
-        <Table.Row title="Multipath Networking" onPress={() => Alert.alert('Pressed')}>
+        <Table.Row title="Multipath Networking" onPress={() => {}}>
           <Table.Action iconSource={require('../../assets/chevron-right.png')} />
+        </Table.Row>
+        <Table.Row title="Enable Notifications">
+          <Switch />
         </Table.Row>
       </Table.Section>
       <Table.Section>

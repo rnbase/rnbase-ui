@@ -20,6 +20,8 @@ interface RowProps extends ViewProps {
   titleStyle?: StyleProp<TextStyle>;
   subtitleStyle?: StyleProp<TextStyle>;
   onPress?: () => void;
+  onHighlightRow?: () => void;
+  onUnhighlightRow?: () => void;
 }
 
 const Row: React.FC<Themed<typeof createStyleSheet, RowProps>> = ({
@@ -33,6 +35,8 @@ const Row: React.FC<Themed<typeof createStyleSheet, RowProps>> = ({
   titleStyle,
   subtitleStyle,
   onPress,
+  onHighlightRow,
+  onUnhighlightRow,
   ...props
 }) => {
   const titleText = title && (
@@ -67,6 +71,8 @@ const Row: React.FC<Themed<typeof createStyleSheet, RowProps>> = ({
     return (
       <TouchableHighlight
         onPress={onPress}
+        onPressIn={onHighlightRow}
+        onPressOut={onUnhighlightRow}
         activeOpacity={activeOpacity}
         underlayColor={underlayColor}
       >
