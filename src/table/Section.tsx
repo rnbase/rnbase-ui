@@ -26,6 +26,8 @@ const Section: React.FC<Themed<typeof createStyleSheet, SectionProps>> = ({
   footerStyle,
   ...props
 }) => {
+  const [highlighted, setHighlighted] = useState();
+
   const rootStyles = [
     {
       marginTop: header ? 13 : 15,
@@ -33,8 +35,6 @@ const Section: React.FC<Themed<typeof createStyleSheet, SectionProps>> = ({
     },
     style,
   ];
-
-  const [highlighted, setHighlighted] = useState();
 
   return (
     <View {...props} style={rootStyles}>
