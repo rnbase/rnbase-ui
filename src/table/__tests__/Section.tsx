@@ -3,9 +3,9 @@ import React from 'react';
 // Note: test renderer must be required after react-native.
 import TestRenderer from 'react-test-renderer';
 
-import Rows from '../Rows';
+import Section from '../Section';
 
-type Props = React.ComponentProps<typeof Rows>;
+type Props = React.ComponentProps<typeof Section>;
 
 const Row = () => React.createElement('Row');
 
@@ -13,9 +13,9 @@ const Row = () => React.createElement('Row');
  * Under test
  */
 const createElement = (props: Partial<Props>) => (
-  <Rows {...props}>
+  <Section {...props}>
     <Row />
-  </Rows>
+  </Section>
 );
 
 const createRenderer = (props: Partial<Props>) => TestRenderer.create(createElement(props));

@@ -3,7 +3,7 @@ import { StyleProp, StyleSheet, Text, TextStyle, View, ViewStyle, ViewProps } fr
 
 import { Theme, Themed, withTheme } from '../theming';
 
-interface RowsProps extends ViewProps {
+interface SectionProps extends ViewProps {
   header?: string;
   footer?: string;
   children: React.ReactNode;
@@ -13,7 +13,7 @@ interface RowsProps extends ViewProps {
   footerStyle?: StyleProp<TextStyle>;
 }
 
-const Rows: React.FC<Themed<typeof createStyleSheet, RowsProps>> = ({
+const Section: React.FC<Themed<typeof createStyleSheet, SectionProps>> = ({
   theme: { styles },
   header,
   footer,
@@ -70,4 +70,4 @@ const createStyleSheet = ({ colors, fonts }: Theme) =>
     },
   });
 
-export default withTheme(Rows, createStyleSheet, 'Table.Rows');
+export default withTheme(Section, createStyleSheet, 'Table.Section');
