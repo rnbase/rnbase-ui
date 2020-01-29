@@ -1,0 +1,215 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render normally 1`] = `
+<View
+  style={Object {}}
+>
+  <View
+    style={
+      Object {
+        "alignItems": "center",
+        "backgroundColor": "#f2f2f7",
+        "borderRadius": 5,
+        "flexDirection": "row",
+      }
+    }
+  >
+    input
+  </View>
+  <View
+    style={
+      Array [
+        Object {
+          "height": 20,
+        },
+        undefined,
+      ]
+    }
+  />
+</View>
+`;
+
+exports[`should render with error 1`] = `
+<View
+  style={Object {}}
+>
+  <View
+    style={
+      Object {
+        "alignItems": "center",
+        "flexDirection": "row",
+        "justifyContent": "space-between",
+      }
+    }
+  >
+    <Text
+      numberOfLines={1}
+      style={
+        Object {
+          "backgroundColor": "#ffffff",
+          "color": "#000000",
+          "flexShrink": 1,
+          "fontFamily": "System",
+          "fontSize": 11,
+          "fontWeight": "600",
+          "height": 11,
+          "includeFontPadding": false,
+          "lineHeight": 11,
+          "marginBottom": 8,
+          "marginTop": 16,
+          "textAlignVertical": "center",
+          "textTransform": "uppercase",
+        }
+      }
+    >
+      label
+    </Text>
+    <Text
+      numberOfLines={1}
+      style={
+        Array [
+          Object {
+            "backgroundColor": "#ffffff",
+            "color": "#000000",
+            "flexShrink": 1,
+            "fontFamily": "System",
+            "fontSize": 11,
+            "fontWeight": "600",
+            "height": 11,
+            "includeFontPadding": false,
+            "lineHeight": 11,
+            "marginBottom": 8,
+            "marginTop": 16,
+            "textAlignVertical": "center",
+            "textTransform": "uppercase",
+          },
+          Object {
+            "color": "#ff3b30",
+            "flexShrink": 0,
+            "marginLeft": 10,
+            "textTransform": "none",
+          },
+        ]
+      }
+    >
+      error
+    </Text>
+  </View>
+  <View
+    style={
+      Object {
+        "alignItems": "center",
+        "backgroundColor": "#f2f2f7",
+        "borderRadius": 5,
+        "flexDirection": "row",
+      }
+    }
+  >
+    input
+    <Image
+      source={
+        Object {
+          "testUri": "../../../src/assets/error.png",
+        }
+      }
+      style={
+        Object {
+          "height": 21,
+          "marginRight": 8,
+          "width": 21,
+        }
+      }
+    />
+  </View>
+  <View
+    style={
+      Array [
+        Object {
+          "height": 20,
+        },
+        undefined,
+      ]
+    }
+  />
+</View>
+`;
+
+exports[`should render with label 1`] = `
+<View
+  style={Object {}}
+>
+  <View
+    style={
+      Object {
+        "alignItems": "center",
+        "flexDirection": "row",
+        "justifyContent": "space-between",
+      }
+    }
+  >
+    <Text
+      numberOfLines={1}
+      style={
+        Object {
+          "backgroundColor": "#ffffff",
+          "color": "#000000",
+          "flexShrink": 1,
+          "fontFamily": "System",
+          "fontSize": 11,
+          "fontWeight": "600",
+          "height": 11,
+          "includeFontPadding": false,
+          "lineHeight": 11,
+          "marginBottom": 8,
+          "marginTop": 16,
+          "textAlignVertical": "center",
+          "textTransform": "uppercase",
+        }
+      }
+    >
+      label
+    </Text>
+  </View>
+  <View
+    style={
+      Object {
+        "alignItems": "center",
+        "backgroundColor": "#f2f2f7",
+        "borderRadius": 5,
+        "flexDirection": "row",
+      }
+    }
+  >
+    input
+  </View>
+  <View
+    style={
+      Array [
+        Object {
+          "height": 20,
+        },
+        undefined,
+      ]
+    }
+  />
+</View>
+`;
+
+exports[`should render without separator 1`] = `
+<View
+  style={Object {}}
+>
+  <View
+    style={
+      Object {
+        "alignItems": "center",
+        "backgroundColor": "#f2f2f7",
+        "borderRadius": 5,
+        "flexDirection": "row",
+      }
+    }
+  >
+    input
+  </View>
+</View>
+`;
