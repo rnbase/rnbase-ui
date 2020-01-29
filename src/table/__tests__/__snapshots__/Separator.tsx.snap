@@ -5,9 +5,11 @@ exports[`should render normally 1`] = `
   style={
     Array [
       Object {
+        "marginLeft": 20,
+      },
+      Object {
         "backgroundColor": "#0003",
         "height": 0.5,
-        "marginLeft": 20,
       },
       undefined,
       undefined,
@@ -21,9 +23,11 @@ exports[`should render with custom styles 1`] = `
   style={
     Array [
       Object {
+        "marginLeft": 20,
+      },
+      Object {
         "backgroundColor": "#0003",
         "height": 0.5,
-        "marginLeft": 20,
       },
       Object {
         "backgroundColor": "red",
