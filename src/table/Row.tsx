@@ -1,5 +1,8 @@
 import React from 'react';
 import {
+  Image,
+  ImageSourcePropType,
+  ImageStyle,
   StyleProp,
   StyleSheet,
   Text,
@@ -15,10 +18,12 @@ interface RowProps extends ViewProps {
   children?: React.ReactNode;
   title?: string;
   subtitle?: string;
+  imageSource?: ImageSourcePropType;
   activeOpacity?: number;
   underlayColor?: string;
   titleStyle?: StyleProp<TextStyle>;
   subtitleStyle?: StyleProp<TextStyle>;
+  imageStyle?: StyleProp<ImageStyle>;
   onPress?: () => void;
   onHighlightRow?: () => void;
   onUnhighlightRow?: () => void;
@@ -29,11 +34,13 @@ const Row: React.FC<Themed<typeof createStyleSheet, RowProps>> = ({
   children,
   title,
   subtitle,
+  imageSource,
   activeOpacity = 1,
   underlayColor = colors.underlay,
   style,
   titleStyle,
   subtitleStyle,
+  imageStyle,
   onPress,
   onHighlightRow,
   onUnhighlightRow,
@@ -62,6 +69,7 @@ const Row: React.FC<Themed<typeof createStyleSheet, RowProps>> = ({
 
   const content = (
     <View {...props} style={[styles.root, style]}>
+      {imageSource && <Image source={imageSource} style={[styles.image, imageStyle]} />}
       {label}
       {children}
     </View>
@@ -109,6 +117,10 @@ const createStyleSheet = ({ colors, fonts }: Theme) =>
       fontSize: 12,
       marginTop: 3,
       color: colors.gray,
+    },
+    image: {
+      width: 29,
+      height: 29,
     },
   });
 
