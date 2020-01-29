@@ -1,6 +1,7 @@
 export { default as Avatar } from './avatar/Avatar';
 export { default as Badge } from './badge/Badge';
 export { default as Button } from './buttons/Button';
+export { default as Field } from './form/Field';
 export { default as Table } from './table';
 export { default as OutlineButton } from './buttons/OutlineButton';
 export { default as Pager } from './pager/Pager';
