@@ -57,4 +57,4 @@ const createStyleSheet = ({ colors, fonts }: Theme) =>
     },
   });
 
-export default withTheme(Action, createStyleSheet, 'Form.Action');
+export default withTheme(Action, createStyleSheet, 'Table.Action');

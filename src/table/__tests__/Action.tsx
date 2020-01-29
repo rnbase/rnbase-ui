@@ -3,13 +3,13 @@ import React from 'react';
 // Note: test renderer must be required after react-native.
 import TestRenderer from 'react-test-renderer';
 
+/**
+ * Under test
+ */
 import Action from '../Action';
 
 type Props = React.ComponentProps<typeof Action>;
 
-/**
- * Under test
- */
 const createElement = (props: Partial<Props>) => <Action {...props}>text</Action>;
 
 const createRenderer = (props: Partial<Props>) => TestRenderer.create(createElement(props));

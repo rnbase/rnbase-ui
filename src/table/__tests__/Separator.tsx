@@ -3,13 +3,13 @@ import React from 'react';
 // Note: test renderer must be required after react-native.
 import TestRenderer from 'react-test-renderer';
 
+/**
+ * Under test
+ */
 import Separator from '../Separator';
 
 type Props = React.ComponentProps<typeof Separator>;
 
-/**
- * Under test
- */
 const createElement = (props: Partial<Props>) => <Separator {...props} />;
 
 const createRenderer = (props: Partial<Props>) => TestRenderer.create(createElement(props));

@@ -20,4 +20,4 @@ const createStyleSheet = ({ colors }: Theme) =>
     },
   });
 
-export default withTheme(Separator, createStyleSheet, 'Form.Separator');
+export default withTheme(Separator, createStyleSheet, 'Table.Separator');
