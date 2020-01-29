@@ -33,6 +33,22 @@ it('should render with error', () => {
   expect(createRenderer({ label: 'label', touch: true, error: 'error' })).toMatchSnapshot();
 });
 
-it('should render with custom input styles', () => {
-  expect(createRenderer({}, { color: 'red' })).toMatchSnapshot();
+it('should render with custom styles', () => {
+  expect(
+    createRenderer(
+      {
+        label: 'label',
+        touch: true,
+        error: 'error',
+        style: { backgroundColor: 'red' },
+        headingStyle: { backgroundColor: 'green' },
+        labelStyle: { color: 'blue' },
+        fieldStyle: { backgroundColor: 'orange' },
+        errorStyle: { color: 'magenta' },
+        errorIconStyle: { tintColor: 'cyan' },
+        errorIconSource: { uri: 'error.png' },
+      },
+      { color: 'yellow' },
+    ),
+  ).toMatchSnapshot();
 });

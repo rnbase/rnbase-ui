@@ -1,43 +1,69 @@
 import React, { Children } from 'react';
-import { Image, StyleProp, StyleSheet, Text, View, ViewStyle } from 'react-native';
+import {
+  Image,
+  ImageStyle,
+  ImageSourcePropType,
+  StyleProp,
+  StyleSheet,
+  Text,
+  TextStyle,
+  View,
+  ViewStyle,
+} from 'react-native';
 
 import { Theme, Themed, withTheme } from '../theming';
 
-interface FieldProps {
+interface FieldProps extends ViewStyle {
   children: React.ReactElement;
   error?: React.ReactNode;
   touch?: boolean;
-  style?: StyleProp<ViewStyle>;
   label?: string;
+  style?: StyleProp<ViewStyle>;
+  headingStyle?: StyleProp<ViewStyle>;
+  labelStyle?: StyleProp<TextStyle>;
+  fieldStyle?: StyleProp<ViewStyle>;
+  errorStyle?: StyleProp<TextStyle>;
+  errorIconStyle?: StyleProp<ImageStyle>;
+  errorIconSource?: ImageSourcePropType;
 }
 
 const Field: React.FC<Themed<typeof createStyleSheet, FieldProps>> = ({
   theme: { styles },
   error,
-  touch = false,
+  touch,
   label,
   children,
+  style,
+  headingStyle,
+  fieldStyle,
+  labelStyle,
+  errorStyle,
+  errorIconStyle,
+  errorIconSource = require('../assets/error.png'),
+  ...props
 }) => (
-  <View style={styles.root}>
+  <View {...props} style={[styles.root, style]}>
     {label && (
-      <View style={styles.heading}>
-        <Text style={styles.label} numberOfLines={1}>
+      <View style={[styles.heading, headingStyle]}>
+        <Text style={[styles.label, labelStyle]} numberOfLines={1}>
           {label}
         </Text>
         {error && touch && (
-          <Text style={[styles.label, styles.labelError]} numberOfLines={1}>
+          <Text style={[styles.label, styles.error, errorStyle]} numberOfLines={1}>
             {error}
           </Text>
         )}
       </View>
     )}
-    <View style={styles.field}>
+    <View style={[styles.field, fieldStyle]}>
       {React.cloneElement(Children.only(children), {
         style: children.props.style
           ? StyleSheet.flatten([styles.input, children.props.style])
           : styles.input,
       })}
-      {error && touch && <Image style={styles.errorIcon} source={require('../assets/error.png')} />}
+      {error && touch && (
+        <Image style={[styles.errorIcon, errorIconStyle]} source={errorIconSource} />
+      )}
     </View>
   </View>
 );
@@ -63,7 +89,7 @@ const createStyleSheet = ({ colors, fonts }: Theme) =>
       textTransform: 'uppercase',
       backgroundColor: colors.white,
     },
-    labelError: {
+    error: {
       flexShrink: 0,
       marginLeft: 10,
       color: colors.red,
