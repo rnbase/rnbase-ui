@@ -9,8 +9,6 @@ interface FieldProps {
   touch?: boolean;
   style?: StyleProp<ViewStyle>;
   label?: string;
-  separator?: boolean;
-  separatorStyle?: StyleProp<ViewStyle>;
 }
 
 const Field: React.FC<Themed<typeof createStyleSheet, FieldProps>> = ({
@@ -19,8 +17,6 @@ const Field: React.FC<Themed<typeof createStyleSheet, FieldProps>> = ({
   touch = false,
   label,
   children,
-  separator = true,
-  separatorStyle,
 }) => (
   <View style={styles.root}>
     {label && (
@@ -43,13 +39,14 @@ const Field: React.FC<Themed<typeof createStyleSheet, FieldProps>> = ({
       })}
       {error && touch && <Image style={styles.errorIcon} source={require('../assets/error.png')} />}
     </View>
-    {separator && <View style={[styles.separator, separatorStyle]} />}
   </View>
 );
 
 const createStyleSheet = ({ colors, fonts }: Theme) =>
   StyleSheet.create({
-    root: {},
+    root: {
+      marginBottom: 20,
+    },
     heading: {
       alignItems: 'center',
       flexDirection: 'row',
@@ -61,7 +58,6 @@ const createStyleSheet = ({ colors, fonts }: Theme) =>
       fontSize: 11,
       lineHeight: 11,
       flexShrink: 1,
-      marginTop: 16,
       marginBottom: 8,
       color: colors.black,
       textTransform: 'uppercase',
@@ -94,9 +90,6 @@ const createStyleSheet = ({ colors, fonts }: Theme) =>
       width: 21,
       height: 21,
       marginRight: 8,
-    },
-    separator: {
-      height: 20,
     },
   });
 
