@@ -33,10 +33,6 @@ it('should render with error', () => {
   expect(createRenderer({ label: 'label', touch: true, error: 'error' })).toMatchSnapshot();
 });
 
-it('should render without separator', () => {
-  expect(createRenderer({ separator: false })).toMatchSnapshot();
-});
-
 it('should render with custom input styles', () => {
   expect(createRenderer({}, { color: 'red' })).toMatchSnapshot();
 });

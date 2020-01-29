@@ -61,7 +61,7 @@ const FormScreen: React.FC<Props> = () => {
                   value={values.email}
                 />
               </Field>
-              <Field label="Name" touch={touched.name} error={errors.name} separator={false}>
+              <Field label="Name" touch={touched.name} error={errors.name}>
                 <TextInput
                   onChangeText={handleChange('name')}
                   onBlur={handleBlur('name')}
@@ -92,7 +92,7 @@ const createStyles = () =>
       padding: 20,
     },
     button: {
-      marginTop: 25,
+      marginTop: 10,
     },
   });
 
