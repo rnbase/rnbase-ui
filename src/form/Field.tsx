@@ -7,8 +7,8 @@ import { Theme, Themed, withTheme } from '../theming';
 
 interface FieldProps {
   children: React.ReactNode;
-  error: React.ReactNode;
-  isError: boolean;
+  error?: React.ReactNode;
+  touch?: boolean;
   style?: StyleProp<ViewStyle>;
   label?: string;
   separator?: boolean;
@@ -18,7 +18,7 @@ interface FieldProps {
 const Field: React.FC<Themed<typeof createStyleSheet, FieldProps>> = ({
   theme: { styles },
   error,
-  isError,
+  touch = false,
   label,
   children,
   separator = true,
@@ -30,7 +30,7 @@ const Field: React.FC<Themed<typeof createStyleSheet, FieldProps>> = ({
         <Text style={styles.label} numberOfLines={1}>
           {label}
         </Text>
-        {isError && (
+        {error && touch && (
           <Text style={[styles.label, styles.labelError]} numberOfLines={1}>
             {error}
           </Text>
@@ -39,7 +39,7 @@ const Field: React.FC<Themed<typeof createStyleSheet, FieldProps>> = ({
     )}
     <View style={styles.field}>
       {children}
-      {isError && <Image style={styles.errorIcon} source={require('../assets/error.png')} />}
+      {error && touch && <Image style={styles.errorIcon} source={require('../assets/error.png')} />}
     </View>
     {separator && <View style={[styles.separator, separatorStyle]} />}
   </View>

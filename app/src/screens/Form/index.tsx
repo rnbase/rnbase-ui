@@ -1,6 +1,8 @@
-import React from 'react';
-import { KeyboardAvoidingView, ScrollView, StyleSheet, TextInput } from 'react-native';
+import React, { useCallback, useState } from 'react';
+import { Alert, KeyboardAvoidingView, ScrollView, StyleSheet, TextInput, View } from 'react-native';
 import { NavigationScreenProp } from 'react-navigation';
+
+import { Formik } from 'formik';
 
 import { Button, Field, Theme, useTheme } from 'rnbase-ui';
 
@@ -17,6 +19,31 @@ const FormScreen: React.FC<Props> = () => {
     theme: { styles },
   } = useTheme(createStyles);
 
+  const [initialValues] = useState(() => ({
+    email: 'john.smith@gmail.com',
+    name: 'John Smith',
+  }));
+
+  const handleFormikSubmit = useCallback(() => {
+    Alert.alert('Submitted');
+  }, []);
+
+  const validate = useCallback(values => {
+    const errors: any = {};
+
+    if (!values.email) {
+      errors.email = 'required';
+    } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
+      errors.email = 'invalid email';
+    }
+
+    if (!values.name) {
+      errors.name = 'required';
+    }
+
+    return errors;
+  }, []);
+
   return (
     <KeyboardAvoidingView behavior="padding" style={styles.container}>
       <ScrollView
@@ -24,13 +51,34 @@ const FormScreen: React.FC<Props> = () => {
         automaticallyAdjustContentInsets={false}
         contentContainerStyle={styles.contentContainer}
       >
-        <Field label="Email" isError={true} error="invalid email">
-          <TextInput value="invalid@email" style={styles.input} />
-        </Field>
-        <Field label="Name" isError={false} error="" separator={false}>
-          <TextInput value="John Smith" style={styles.input} />
-        </Field>
-        <Button text="Update" style={styles.button} />
+        <Formik initialValues={initialValues} onSubmit={handleFormikSubmit} validate={validate}>
+          {({ handleBlur, handleChange, handleSubmit, isValid, errors, touched, values }) => (
+            <View>
+              <Field label="Email" touch={touched.email} error={errors.email}>
+                <TextInput
+                  onChangeText={handleChange('email')}
+                  onBlur={handleBlur('email')}
+                  value={values.email}
+                  style={styles.input}
+                />
+              </Field>
+              <Field label="Name" touch={touched.name} error={errors.name} separator={false}>
+                <TextInput
+                  onChangeText={handleChange('name')}
+                  onBlur={handleBlur('name')}
+                  value={values.name}
+                  style={styles.input}
+                />
+              </Field>
+              <Button
+                text="Update"
+                style={styles.button}
+                disabled={!isValid}
+                onPress={handleSubmit}
+              />
+            </View>
+          )}
+        </Formik>
       </ScrollView>
     </KeyboardAvoidingView>
   );
