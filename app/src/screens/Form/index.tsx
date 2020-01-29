@@ -19,13 +19,13 @@ const FormScreen: React.FC<Props> = () => {
 
   return (
     <Table style={styles.root}>
-      <Table.Rows header="Appearance">
+      <Table.Section header="Appearance">
         <Table.Row>
           <Table.Label>Dark Appearance</Table.Label>
           <Switch />
         </Table.Row>
-      </Table.Rows>
-      <Table.Rows
+      </Table.Section>
+      <Table.Section
         header="Paired Devices"
         footer="Removing trusted computers will delete all of the records of computers that you have paired
         with previously."
@@ -34,8 +34,8 @@ const FormScreen: React.FC<Props> = () => {
           <Table.Label>Clear Trusted Computers</Table.Label>
           <Table.Action iconSource={require('../../assets/chevron-right.png')}>change</Table.Action>
         </Table.Row>
-      </Table.Rows>
-      <Table.Rows header="UI Automation">
+      </Table.Section>
+      <Table.Section header="UI Automation">
         <Table.Row>
           <Table.Label>Enable UI Automation</Table.Label>
           <Switch value={true} />
@@ -45,7 +45,7 @@ const FormScreen: React.FC<Props> = () => {
           <Table.Label>Multipath Networking</Table.Label>
           <Table.Action iconSource={require('../../assets/chevron-right.png')} />
         </Table.Row>
-      </Table.Rows>
+      </Table.Section>
     </Table>
   );
 };
