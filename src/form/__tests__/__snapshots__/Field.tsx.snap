@@ -3,19 +3,25 @@
 exports[`should render normally 1`] = `
 <View
   style={
-    Object {
-      "marginBottom": 20,
-    }
+    Array [
+      Object {
+        "marginBottom": 20,
+      },
+      undefined,
+    ]
   }
 >
   <View
     style={
-      Object {
-        "alignItems": "center",
-        "backgroundColor": "#f2f2f7",
-        "borderRadius": 5,
-        "flexDirection": "row",
-      }
+      Array [
+        Object {
+          "alignItems": "center",
+          "backgroundColor": "#f2f2f7",
+          "borderRadius": 5,
+          "flexDirection": "row",
+        },
+        undefined,
+      ]
     }
   >
     <Input
@@ -40,81 +46,55 @@ exports[`should render normally 1`] = `
 </View>
 `;
 
-exports[`should render with custom input styles 1`] = `
+exports[`should render with custom styles 1`] = `
 <View
   style={
-    Object {
-      "marginBottom": 20,
-    }
+    Array [
+      Object {
+        "marginBottom": 20,
+      },
+      Object {
+        "backgroundColor": "red",
+      },
+    ]
   }
 >
   <View
     style={
-      Object {
-        "alignItems": "center",
-        "backgroundColor": "#f2f2f7",
-        "borderRadius": 5,
-        "flexDirection": "row",
-      }
-    }
-  >
-    <Input
-      style={
+      Array [
         Object {
-          "backgroundColor": undefined,
-          "borderWidth": 0,
-          "color": "red",
-          "flexGrow": 1,
-          "flexShrink": 1,
-          "fontFamily": "System",
-          "fontSize": 18,
-          "fontWeight": "400",
-          "height": 50,
-          "includeFontPadding": false,
-          "paddingHorizontal": 15,
-          "paddingVertical": 0,
-          "textAlignVertical": "center",
-        }
-      }
-    />
-  </View>
-</View>
-`;
-
-exports[`should render with error 1`] = `
-<View
-  style={
-    Object {
-      "marginBottom": 20,
-    }
-  }
->
-  <View
-    style={
-      Object {
-        "alignItems": "center",
-        "flexDirection": "row",
-        "justifyContent": "space-between",
-      }
+          "alignItems": "center",
+          "flexDirection": "row",
+          "justifyContent": "space-between",
+        },
+        Object {
+          "backgroundColor": "green",
+        },
+      ]
     }
   >
     <Text
       numberOfLines={1}
       style={
-        Object {
-          "backgroundColor": "#ffffff",
-          "color": "#000000",
-          "flexShrink": 1,
-          "fontFamily": "System",
-          "fontSize": 11,
-          "fontWeight": "600",
-          "height": 11,
-          "includeFontPadding": false,
-          "lineHeight": 11,
-          "marginBottom": 8,
-          "textAlignVertical": "center",
-          "textTransform": "uppercase",
-        }
+        Array [
+          Object {
+            "backgroundColor": "#ffffff",
+            "color": "#000000",
+            "flexShrink": 1,
+            "fontFamily": "System",
+            "fontSize": 11,
+            "fontWeight": "600",
+            "height": 11,
+            "includeFontPadding": false,
+            "lineHeight": 11,
+            "marginBottom": 8,
+            "textAlignVertical": "center",
+            "textTransform": "uppercase",
+          },
+          Object {
+            "color": "blue",
+          },
+        ]
       }
     >
       label
@@ -143,6 +123,9 @@ exports[`should render with error 1`] = `
             "marginLeft": 10,
             "textTransform": "none",
           },
+          Object {
+            "color": "magenta",
+          },
         ]
       }
     >
@@ -151,12 +134,150 @@ exports[`should render with error 1`] = `
   </View>
   <View
     style={
-      Object {
-        "alignItems": "center",
-        "backgroundColor": "#f2f2f7",
-        "borderRadius": 5,
-        "flexDirection": "row",
+      Array [
+        Object {
+          "alignItems": "center",
+          "backgroundColor": "#f2f2f7",
+          "borderRadius": 5,
+          "flexDirection": "row",
+        },
+        Object {
+          "backgroundColor": "orange",
+        },
+      ]
+    }
+  >
+    <Input
+      style={
+        Object {
+          "backgroundColor": undefined,
+          "borderWidth": 0,
+          "color": "yellow",
+          "flexGrow": 1,
+          "flexShrink": 1,
+          "fontFamily": "System",
+          "fontSize": 18,
+          "fontWeight": "400",
+          "height": 50,
+          "includeFontPadding": false,
+          "paddingHorizontal": 15,
+          "paddingVertical": 0,
+          "textAlignVertical": "center",
+        }
       }
+    />
+    <Image
+      source={
+        Object {
+          "uri": "error.png",
+        }
+      }
+      style={
+        Array [
+          Object {
+            "height": 21,
+            "marginRight": 8,
+            "width": 21,
+          },
+          Object {
+            "tintColor": "cyan",
+          },
+        ]
+      }
+    />
+  </View>
+</View>
+`;
+
+exports[`should render with error 1`] = `
+<View
+  style={
+    Array [
+      Object {
+        "marginBottom": 20,
+      },
+      undefined,
+    ]
+  }
+>
+  <View
+    style={
+      Array [
+        Object {
+          "alignItems": "center",
+          "flexDirection": "row",
+          "justifyContent": "space-between",
+        },
+        undefined,
+      ]
+    }
+  >
+    <Text
+      numberOfLines={1}
+      style={
+        Array [
+          Object {
+            "backgroundColor": "#ffffff",
+            "color": "#000000",
+            "flexShrink": 1,
+            "fontFamily": "System",
+            "fontSize": 11,
+            "fontWeight": "600",
+            "height": 11,
+            "includeFontPadding": false,
+            "lineHeight": 11,
+            "marginBottom": 8,
+            "textAlignVertical": "center",
+            "textTransform": "uppercase",
+          },
+          undefined,
+        ]
+      }
+    >
+      label
+    </Text>
+    <Text
+      numberOfLines={1}
+      style={
+        Array [
+          Object {
+            "backgroundColor": "#ffffff",
+            "color": "#000000",
+            "flexShrink": 1,
+            "fontFamily": "System",
+            "fontSize": 11,
+            "fontWeight": "600",
+            "height": 11,
+            "includeFontPadding": false,
+            "lineHeight": 11,
+            "marginBottom": 8,
+            "textAlignVertical": "center",
+            "textTransform": "uppercase",
+          },
+          Object {
+            "color": "#ff3b30",
+            "flexShrink": 0,
+            "marginLeft": 10,
+            "textTransform": "none",
+          },
+          undefined,
+        ]
+      }
+    >
+      error
+    </Text>
+  </View>
+  <View
+    style={
+      Array [
+        Object {
+          "alignItems": "center",
+          "backgroundColor": "#f2f2f7",
+          "borderRadius": 5,
+          "flexDirection": "row",
+        },
+        undefined,
+      ]
     }
   >
     <Input
@@ -184,11 +305,14 @@ exports[`should render with error 1`] = `
         }
       }
       style={
-        Object {
-          "height": 21,
-          "marginRight": 8,
-          "width": 21,
-        }
+        Array [
+          Object {
+            "height": 21,
+            "marginRight": 8,
+            "width": 21,
+          },
+          undefined,
+        ]
       }
     />
   </View>
@@ -198,37 +322,46 @@ exports[`should render with error 1`] = `
 exports[`should render with label 1`] = `
 <View
   style={
-    Object {
-      "marginBottom": 20,
-    }
+    Array [
+      Object {
+        "marginBottom": 20,
+      },
+      undefined,
+    ]
   }
 >
   <View
     style={
-      Object {
-        "alignItems": "center",
-        "flexDirection": "row",
-        "justifyContent": "space-between",
-      }
+      Array [
+        Object {
+          "alignItems": "center",
+          "flexDirection": "row",
+          "justifyContent": "space-between",
+        },
+        undefined,
+      ]
     }
   >
     <Text
       numberOfLines={1}
       style={
-        Object {
-          "backgroundColor": "#ffffff",
-          "color": "#000000",
-          "flexShrink": 1,
-          "fontFamily": "System",
-          "fontSize": 11,
-          "fontWeight": "600",
-          "height": 11,
-          "includeFontPadding": false,
-          "lineHeight": 11,
-          "marginBottom": 8,
-          "textAlignVertical": "center",
-          "textTransform": "uppercase",
-        }
+        Array [
+          Object {
+            "backgroundColor": "#ffffff",
+            "color": "#000000",
+            "flexShrink": 1,
+            "fontFamily": "System",
+            "fontSize": 11,
+            "fontWeight": "600",
+            "height": 11,
+            "includeFontPadding": false,
+            "lineHeight": 11,
+            "marginBottom": 8,
+            "textAlignVertical": "center",
+            "textTransform": "uppercase",
+          },
+          undefined,
+        ]
       }
     >
       label
@@ -236,12 +369,15 @@ exports[`should render with label 1`] = `
   </View>
   <View
     style={
-      Object {
-        "alignItems": "center",
-        "backgroundColor": "#f2f2f7",
-        "borderRadius": 5,
-        "flexDirection": "row",
-      }
+      Array [
+        Object {
+          "alignItems": "center",
+          "backgroundColor": "#f2f2f7",
+          "borderRadius": 5,
+          "flexDirection": "row",
+        },
+        undefined,
+      ]
     }
   >
     <Input
