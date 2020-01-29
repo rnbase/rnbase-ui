@@ -5,27 +5,40 @@ import { Themed, withTheme } from '../theming';
 
 interface RowProps extends ViewProps {
   children: React.ReactNode;
+  activeOpacity?: number;
+  underlayColor?: string;
   onPress?: () => void;
 }
 
 const Row: React.FC<Themed<typeof createStyleSheet, RowProps>> = ({
   theme: { styles, colors },
   children,
+  activeOpacity = 1,
+  underlayColor = colors.underlay,
   style,
   onPress,
   ...props
-}) =>
-  onPress ? (
-    <TouchableHighlight onPress={onPress} activeOpacity={1} underlayColor={colors.underlay}>
-      <View {...props} style={[styles.root, style]}>
-        {children}
-      </View>
-    </TouchableHighlight>
-  ) : (
+}) => {
+  const content = (
     <View {...props} style={[styles.root, style]}>
       {children}
     </View>
   );
+
+  if (onPress) {
+    return (
+      <TouchableHighlight
+        onPress={onPress}
+        activeOpacity={activeOpacity}
+        underlayColor={underlayColor}
+      >
+        {content}
+      </TouchableHighlight>
+    );
+  }
+
+  return content;
+};
 
 const createStyleSheet = () =>
   StyleSheet.create({
