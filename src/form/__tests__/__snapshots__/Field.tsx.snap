@@ -14,7 +14,71 @@ exports[`should render normally 1`] = `
       }
     }
   >
-    input
+    <Input
+      style={
+        Object {
+          "backgroundColor": undefined,
+          "borderWidth": 0,
+          "flexGrow": 1,
+          "flexShrink": 1,
+          "fontFamily": "System",
+          "fontSize": 18,
+          "fontWeight": "400",
+          "height": 50,
+          "includeFontPadding": false,
+          "paddingHorizontal": 15,
+          "paddingVertical": 0,
+          "textAlignVertical": "center",
+        }
+      }
+    />
+  </View>
+  <View
+    style={
+      Array [
+        Object {
+          "height": 20,
+        },
+        undefined,
+      ]
+    }
+  />
+</View>
+`;
+
+exports[`should render with custom input styles 1`] = `
+<View
+  style={Object {}}
+>
+  <View
+    style={
+      Object {
+        "alignItems": "center",
+        "backgroundColor": "#f2f2f7",
+        "borderRadius": 5,
+        "flexDirection": "row",
+      }
+    }
+  >
+    <Input
+      style={
+        Object {
+          "backgroundColor": undefined,
+          "borderWidth": 0,
+          "color": "red",
+          "flexGrow": 1,
+          "flexShrink": 1,
+          "fontFamily": "System",
+          "fontSize": 18,
+          "fontWeight": "400",
+          "height": 50,
+          "includeFontPadding": false,
+          "paddingHorizontal": 15,
+          "paddingVertical": 0,
+          "textAlignVertical": "center",
+        }
+      }
+    />
   </View>
   <View
     style={
@@ -105,7 +169,24 @@ exports[`should render with error 1`] = `
       }
     }
   >
-    input
+    <Input
+      style={
+        Object {
+          "backgroundColor": undefined,
+          "borderWidth": 0,
+          "flexGrow": 1,
+          "flexShrink": 1,
+          "fontFamily": "System",
+          "fontSize": 18,
+          "fontWeight": "400",
+          "height": 50,
+          "includeFontPadding": false,
+          "paddingHorizontal": 15,
+          "paddingVertical": 0,
+          "textAlignVertical": "center",
+        }
+      }
+    />
     <Image
       source={
         Object {
@@ -180,7 +261,24 @@ exports[`should render with label 1`] = `
       }
     }
   >
-    input
+    <Input
+      style={
+        Object {
+          "backgroundColor": undefined,
+          "borderWidth": 0,
+          "flexGrow": 1,
+          "flexShrink": 1,
+          "fontFamily": "System",
+          "fontSize": 18,
+          "fontWeight": "400",
+          "height": 50,
+          "includeFontPadding": false,
+          "paddingHorizontal": 15,
+          "paddingVertical": 0,
+          "textAlignVertical": "center",
+        }
+      }
+    />
   </View>
   <View
     style={
@@ -209,7 +307,24 @@ exports[`should render without separator 1`] = `
       }
     }
   >
-    input
+    <Input
+      style={
+        Object {
+          "backgroundColor": undefined,
+          "borderWidth": 0,
+          "flexGrow": 1,
+          "flexShrink": 1,
+          "fontFamily": "System",
+          "fontSize": 18,
+          "fontWeight": "400",
+          "height": 50,
+          "includeFontPadding": false,
+          "paddingHorizontal": 15,
+          "paddingVertical": 0,
+          "textAlignVertical": "center",
+        }
+      }
+    />
   </View>
 </View>
 `;
