@@ -4,7 +4,7 @@ import { NavigationScreenProp } from 'react-navigation';
 
 import { Formik } from 'formik';
 
-import { Button, Field, Theme, useTheme } from 'rnbase-ui';
+import { Button, Field, useTheme } from 'rnbase-ui';
 
 type NavigationState = {
   params: {};
@@ -59,7 +59,6 @@ const FormScreen: React.FC<Props> = () => {
                   onChangeText={handleChange('email')}
                   onBlur={handleBlur('email')}
                   value={values.email}
-                  style={styles.input}
                 />
               </Field>
               <Field label="Name" touch={touched.name} error={errors.name} separator={false}>
@@ -67,7 +66,6 @@ const FormScreen: React.FC<Props> = () => {
                   onChangeText={handleChange('name')}
                   onBlur={handleBlur('name')}
                   value={values.name}
-                  style={styles.input}
                 />
               </Field>
               <Button
@@ -84,7 +82,7 @@ const FormScreen: React.FC<Props> = () => {
   );
 };
 
-const createStyles = ({ colors, fonts }: Theme) =>
+const createStyles = () =>
   StyleSheet.create({
     container: {
       flex: 1,
@@ -92,17 +90,6 @@ const createStyles = ({ colors, fonts }: Theme) =>
     contentContainer: {
       flex: 1,
       padding: 20,
-    },
-    input: {
-      ...fonts.normal,
-      height: 50,
-      flexGrow: 1,
-      fontSize: 18,
-      flexShrink: 1,
-      borderWidth: 0,
-      paddingVertical: 0,
-      paddingHorizontal: 15,
-      backgroundColor: colors.transparent,
     },
     button: {
       marginTop: 25,

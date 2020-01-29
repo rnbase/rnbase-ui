@@ -1,12 +1,10 @@
-// @flow
-
-import React from 'react';
+import React, { Children } from 'react';
 import { Image, StyleProp, StyleSheet, Text, View, ViewStyle } from 'react-native';
 
 import { Theme, Themed, withTheme } from '../theming';
 
 interface FieldProps {
-  children: React.ReactNode;
+  children: React.ReactElement;
   error?: React.ReactNode;
   touch?: boolean;
   style?: StyleProp<ViewStyle>;
@@ -38,7 +36,11 @@ const Field: React.FC<Themed<typeof createStyleSheet, FieldProps>> = ({
       </View>
     )}
     <View style={styles.field}>
-      {children}
+      {React.cloneElement(Children.only(children), {
+        style: children.props.style
+          ? StyleSheet.flatten([styles.input, children.props.style])
+          : styles.input,
+      })}
       {error && touch && <Image style={styles.errorIcon} source={require('../assets/error.png')} />}
     </View>
     {separator && <View style={[styles.separator, separatorStyle]} />}
@@ -76,6 +78,17 @@ const createStyleSheet = ({ colors, fonts }: Theme) =>
       alignItems: 'center',
       flexDirection: 'row',
       backgroundColor: colors.gray6,
+    },
+    input: {
+      ...fonts.normal,
+      height: 50,
+      flexGrow: 1,
+      fontSize: 18,
+      flexShrink: 1,
+      borderWidth: 0,
+      paddingVertical: 0,
+      paddingHorizontal: 15,
+      backgroundColor: colors.transparent,
     },
     errorIcon: {
       width: 21,
