@@ -47,9 +47,7 @@ const Field: React.FC<Themed<typeof createStyleSheet, FieldProps>> = ({
 
 const createStyleSheet = ({ colors, fonts }: Theme) =>
   StyleSheet.create({
-    root: {
-      paddingHorizontal: 15,
-    },
+    root: {},
     heading: {
       alignItems: 'center',
       flexDirection: 'row',

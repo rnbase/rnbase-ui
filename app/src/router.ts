@@ -2,6 +2,7 @@ import { createStackNavigator, HeaderStyleInterpolators } from 'react-navigation
 
 import HomeScreen from './screens/Home';
 import ExampleScreen from './screens/Example';
+import FormScreen from './screens/Form';
 import TableScreen from './screens/Table';
 import StretchyFlatListScreen from './screens/StretchyFlatList';
 import StretchyScrollViewScreen from './screens/StretchyScrollView';
@@ -19,6 +20,12 @@ export default createStackNavigator(
       screen: ExampleScreen,
       navigationOptions: {
         title: 'Component Examples',
+      },
+    },
+    Form: {
+      screen: FormScreen,
+      navigationOptions: {
+        title: 'Form Examples',
       },
     },
     Table: {
