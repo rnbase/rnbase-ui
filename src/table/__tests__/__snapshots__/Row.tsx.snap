@@ -16,6 +16,7 @@ exports[`should render as touchable 1`] = `
           "justifyContent": "space-between",
           "minHeight": 43,
           "paddingHorizontal": 20,
+          "paddingVertical": 4,
         },
         undefined,
       ]
@@ -38,6 +39,7 @@ exports[`should render normally 1`] = `
         "justifyContent": "space-between",
         "minHeight": 43,
         "paddingHorizontal": 20,
+        "paddingVertical": 4,
       },
       undefined,
     ]
@@ -59,6 +61,7 @@ exports[`should render with custom styles 1`] = `
         "justifyContent": "space-between",
         "minHeight": 43,
         "paddingHorizontal": 20,
+        "paddingVertical": 4,
       },
       Object {
         "backgroundColor": "red",

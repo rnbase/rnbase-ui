@@ -20,8 +20,7 @@ const FormScreen: React.FC<Props> = () => {
   return (
     <Table style={styles.root}>
       <Table.Section header="Appearance">
-        <Table.Row>
-          <Table.Label>Dark Appearance</Table.Label>
+        <Table.Row title="Dark Appearance">
           <Switch />
         </Table.Row>
       </Table.Section>
@@ -30,21 +29,21 @@ const FormScreen: React.FC<Props> = () => {
         footer="Removing trusted computers will delete all of the records of computers that you have paired
         with previously."
       >
-        <Table.Row onPress={() => Alert.alert('Pressed')}>
-          <Table.Label>Clear Trusted Computers</Table.Label>
+        <Table.Row title="Clear Trusted Computers" onPress={() => Alert.alert('Pressed')}>
           <Table.Action iconSource={require('../../assets/chevron-right.png')}>change</Table.Action>
         </Table.Row>
       </Table.Section>
       <Table.Section header="UI Automation">
-        <Table.Row>
-          <Table.Label>Enable UI Automation</Table.Label>
+        <Table.Row title="Enable UI Automation">
           <Switch value={true} />
         </Table.Row>
         <Table.Separator />
-        <Table.Row onPress={() => Alert.alert('Pressed')}>
-          <Table.Label>Multipath Networking</Table.Label>
+        <Table.Row title="Multipath Networking" onPress={() => Alert.alert('Pressed')}>
           <Table.Action iconSource={require('../../assets/chevron-right.png')} />
         </Table.Row>
+      </Table.Section>
+      <Table.Section>
+        <Table.Row title="Notifications" subtitle="Banners, Sounds, Badges" />
       </Table.Section>
     </Table>
   );
