@@ -50,26 +50,22 @@ const Row: React.FC<Themed<typeof createStyleSheet, RowProps>> = ({
   onUnhighlightRow,
   ...props
 }) => {
-  const titleText = title && (
-    <Text style={[styles.title, titleStyle]} numberOfLines={1}>
-      {title}
-    </Text>
-  );
-
-  const subtitleText = subtitle && (
-    <Text style={[styles.subtitle, subtitleStyle]} numberOfLines={1}>
-      {subtitle}
-    </Text>
-  );
-
   const minHeight = height || subtitle ? 58 : 43;
 
   const content = (
     <View {...props} style={[{ minHeight }, styles.root, style]}>
       {imageSource && <Image source={imageSource} style={[styles.image, imageStyle]} />}
       <View style={styles.label}>
-        {titleText}
-        {subtitleText}
+        {title && (
+          <Text style={[styles.title, titleStyle]} numberOfLines={1}>
+            {title}
+          </Text>
+        )}
+        {subtitle && (
+          <Text style={[styles.subtitle, subtitleStyle]} numberOfLines={1}>
+            {subtitle}
+          </Text>
+        )}
       </View>
       {children}
       {disclosureIndicator !== false && (onPress || disclosureIndicator) && (
