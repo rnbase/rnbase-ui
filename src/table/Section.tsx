@@ -36,6 +36,8 @@ const Section: React.FC<Themed<typeof createStyleSheet, SectionProps>> = ({
     style,
   ];
 
+  let rowIndex = 0;
+
   return (
     <View {...props} style={rootStyles}>
       {header && (
@@ -44,10 +46,12 @@ const Section: React.FC<Themed<typeof createStyleSheet, SectionProps>> = ({
         </Text>
       )}
       <View style={[styles.content, contentStyle]}>
-        {Children.map(children, (child, index) => {
+        {Children.map(children, child => {
           if (!React.isValidElement(child)) {
             return child;
           }
+
+          let index = rowIndex++;
 
           const row = React.cloneElement(child, {
             onHighlightRow: () => setHighlighted(index),
