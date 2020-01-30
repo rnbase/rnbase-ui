@@ -301,7 +301,7 @@ exports[`should render with error 1`] = `
     <Image
       source={
         Object {
-          "testUri": "../../../src/assets/error.png",
+          "testUri": "../../../src/form/assets/error.png",
         }
       }
       style={
