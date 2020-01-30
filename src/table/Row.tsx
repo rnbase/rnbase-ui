@@ -57,7 +57,7 @@ const Row: React.FC<Themed<typeof createStyleSheet, RowProps>> = ({
   const content = (
     <View {...props} style={[{ minHeight }, styles.root, style]}>
       {(imageSource && <Image source={imageSource} style={[styles.image, imageStyle]} />) ||
-        (imageInset && <View style={[styles.image, imageStyle]} />)}
+        (imageInset && <View style={[styles.image, imageStyle, styles.transparent]} />)}
       <View style={styles.label}>
         {title && (
           <Text style={[styles.title, titleStyle]} numberOfLines={1}>
@@ -133,6 +133,9 @@ const createStyleSheet = ({ colors, fonts }: Theme) =>
       flexShrink: 0,
       marginLeft: 10,
       tintColor: colors.gray3,
+    },
+    transparent: {
+      opacity: 0,
     },
   });
 
