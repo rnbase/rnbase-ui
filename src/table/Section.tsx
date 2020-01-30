@@ -62,8 +62,8 @@ const Section: React.FC<Themed<typeof createStyleSheet, SectionProps>> = ({
 
           const row = React.cloneElement(child, {
             imageInset,
-            onHighlightRow: () => setHighlighted(index),
-            onUnhighlightRow: () => setHighlighted(undefined),
+            onPressIn: () => setHighlighted(index),
+            onPressOut: () => setHighlighted(undefined),
           });
 
           if (index === 0) {
