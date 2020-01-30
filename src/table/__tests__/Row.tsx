@@ -17,30 +17,59 @@ import Row from '../Row';
 
 type Props = React.ComponentProps<typeof Row>;
 
-const Label = () => React.createElement('Label');
-const Action = () => React.createElement('Action');
+const Switch = (props: any) => React.createElement('Switch', props);
+
 /**
  * Under test
  */
 const createElement = (props: Partial<Props>) => (
   <Row {...props}>
-    <Label />
-    <Action />
+    <Switch />
   </Row>
 );
 
 const createRenderer = (props: Partial<Props>) => TestRenderer.create(createElement(props));
 
 it('should render normally', () => {
-  expect(createRenderer({})).toMatchSnapshot();
+  expect(createRenderer({ title: 'title', subtitle: 'subtitle' })).toMatchSnapshot();
+});
+
+it('should render with title only', () => {
+  expect(createRenderer({ title: 'title' })).toMatchSnapshot();
+});
+
+it('should render with image', () => {
+  expect(createRenderer({ imageSource: { uri: 'image.png' } })).toMatchSnapshot();
+});
+
+it('should render with disclosure indicator', () => {
+  expect(createRenderer({ disclosureIndicator: undefined, onPress: jest.fn() })).toMatchSnapshot();
+  expect(createRenderer({ disclosureIndicator: true, onPress: undefined })).toMatchSnapshot();
+  expect(createRenderer({ onPress: jest.fn() })).toMatchSnapshot();
+});
+
+it('should render without disclosure indicator', () => {
+  expect(createRenderer({ onPress: undefined })).toMatchSnapshot();
+  expect(createRenderer({ disclosureIndicator: false, onPress: jest.fn() })).toMatchSnapshot();
 });
 
 it('should render with custom styles', () => {
-  expect(createRenderer({ style: { backgroundColor: 'red' } })).toMatchSnapshot();
-});
-
-it('should render as touchable', () => {
-  expect(createRenderer({ onPress: jest.fn() })).toMatchSnapshot();
+  expect(
+    createRenderer({
+      title: 'title',
+      titleStyle: { color: 'red' },
+      subtitle: 'subtitle',
+      subtitleStyle: { color: 'green' },
+      imageSource: { uri: 'image.png' },
+      imageStyle: { tintColor: 'blue' },
+      style: { backgroundColor: 'yellow' },
+      activeOpacity: 0.9,
+      underlayColor: 'cyan',
+      onPress: jest.fn(),
+      onHighlightRow: jest.fn(),
+      onUnhighlightRow: jest.fn(),
+    }),
+  ).toMatchSnapshot();
 });
 
 it('should handle onPress', () => {

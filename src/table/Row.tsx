@@ -72,7 +72,7 @@ const Row: React.FC<Themed<typeof createStyleSheet, RowProps>> = ({
         {subtitleText}
       </View>
       {children}
-      {(disclosureIndicator || onPress) && (
+      {disclosureIndicator !== false && (onPress || disclosureIndicator) && (
         <Image
           source={require('./assets/disclosure-indicator.png')}
           style={styles.disclosureIndicator}
