@@ -74,7 +74,7 @@ const TableScreen: React.FC<Props> = () => {
           imageSource={require('../../assets/settings/screentime-allowed.png')}
         />
         <Table.Row
-          title="Content & Privacy Restrictions"
+          title="Content &amp; Privacy Restrictions"
           subtitle="Block inappropriate content."
           subtitleStyle={styles.subtitleBig}
           onPress={() => {}}

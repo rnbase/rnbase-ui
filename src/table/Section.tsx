@@ -45,20 +45,26 @@ const Section: React.FC<Themed<typeof createStyleSheet, SectionProps>> = ({
       )}
       <View style={[styles.content, contentStyle]}>
         {Children.map(children, (child, index) => {
-          if (index === 0 || !React.isValidElement(child)) {
+          if (!React.isValidElement(child)) {
             return child;
+          }
+
+          const row = React.cloneElement(child, {
+            onHighlightRow: () => setHighlighted(index),
+            onUnhighlightRow: () => setHighlighted(undefined),
+          });
+
+          if (index === 0) {
+            return row;
           }
 
           return (
             <>
               <Separator
                 insetLeft={child.props.imageSource ? 64 : undefined}
-                highlighted={index === highlighted || index - 1 === highlighted}
+                highlighted={highlighted === index || highlighted === index - 1}
               />
-              {React.cloneElement(child, {
-                onHighlightRow: () => setHighlighted(index),
-                onUnhighlightRow: () => setHighlighted(null),
-              })}
+              {row}
             </>
           );
         })}
