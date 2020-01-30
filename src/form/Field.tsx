@@ -39,7 +39,7 @@ const Field: React.FC<Themed<typeof createStyleSheet, FieldProps>> = ({
   labelStyle,
   errorStyle,
   errorIconStyle,
-  errorIconSource = require('../assets/error.png'),
+  errorIconSource = require('./assets/error.png'),
   ...props
 }) => (
   <View {...props} style={[styles.root, style]}>
