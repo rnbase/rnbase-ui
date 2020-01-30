@@ -66,8 +66,8 @@ it('should render with custom styles', () => {
       activeOpacity: 0.9,
       underlayColor: 'cyan',
       onPress: jest.fn(),
-      onHighlightRow: jest.fn(),
-      onUnhighlightRow: jest.fn(),
+      onPressIn: jest.fn(),
+      onPressOut: jest.fn(),
     }),
   ).toMatchSnapshot();
 });

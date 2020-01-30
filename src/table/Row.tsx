@@ -28,8 +28,8 @@ interface RowProps extends ViewProps {
   subtitleStyle?: StyleProp<TextStyle>;
   imageStyle?: StyleProp<ImageStyle>;
   onPress?: () => void;
-  onHighlightRow?: () => void;
-  onUnhighlightRow?: () => void;
+  onPressIn?: () => void;
+  onPressOut?: () => void;
 }
 
 const Row: React.FC<Themed<typeof createStyleSheet, RowProps>> = ({
@@ -48,8 +48,8 @@ const Row: React.FC<Themed<typeof createStyleSheet, RowProps>> = ({
   subtitleStyle,
   imageStyle,
   onPress,
-  onHighlightRow,
-  onUnhighlightRow,
+  onPressIn,
+  onPressOut,
   ...props
 }) => {
   const minHeight = height || subtitle ? 58 : 43;
@@ -84,8 +84,8 @@ const Row: React.FC<Themed<typeof createStyleSheet, RowProps>> = ({
     return (
       <TouchableHighlight
         onPress={onPress}
-        onPressIn={onHighlightRow}
-        onPressOut={onUnhighlightRow}
+        onPressIn={onPressIn}
+        onPressOut={onPressOut}
         activeOpacity={activeOpacity}
         underlayColor={underlayColor}
       >
