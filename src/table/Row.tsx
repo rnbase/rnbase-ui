@@ -22,6 +22,7 @@ interface RowProps extends ViewProps {
   imageSource?: ImageSourcePropType;
   activeOpacity?: number;
   underlayColor?: string;
+  disclosureIndicator?: boolean;
   titleStyle?: StyleProp<TextStyle>;
   subtitleStyle?: StyleProp<TextStyle>;
   imageStyle?: StyleProp<ImageStyle>;
@@ -39,6 +40,7 @@ const Row: React.FC<Themed<typeof createStyleSheet, RowProps>> = ({
   imageSource,
   activeOpacity = 1,
   underlayColor = colors.underlay,
+  disclosureIndicator,
   style,
   titleStyle,
   subtitleStyle,
@@ -49,13 +51,13 @@ const Row: React.FC<Themed<typeof createStyleSheet, RowProps>> = ({
   ...props
 }) => {
   const titleText = title && (
-    <Text key="title" style={[styles.title, titleStyle]} numberOfLines={1}>
+    <Text style={[styles.title, titleStyle]} numberOfLines={1}>
       {title}
     </Text>
   );
 
   const subtitleText = subtitle && (
-    <Text key="subtitle" style={[styles.subtitle, subtitleStyle]} numberOfLines={1}>
+    <Text style={[styles.subtitle, subtitleStyle]} numberOfLines={1}>
       {subtitle}
     </Text>
   );
@@ -65,11 +67,17 @@ const Row: React.FC<Themed<typeof createStyleSheet, RowProps>> = ({
   const content = (
     <View {...props} style={[{ minHeight }, styles.root, style]}>
       {imageSource && <Image source={imageSource} style={[styles.image, imageStyle]} />}
-      <View key="label" style={styles.label}>
+      <View style={styles.label}>
         {titleText}
         {subtitleText}
       </View>
       {children}
+      {(disclosureIndicator || onPress) && (
+        <Image
+          source={require('./assets/disclosure-indicator.png')}
+          style={styles.disclosureIndicator}
+        />
+      )}
     </View>
   );
 
@@ -119,6 +127,13 @@ const createStyleSheet = ({ colors, fonts }: Theme) =>
       height: 29,
       flexShrink: 0,
       marginRight: 15,
+    },
+    disclosureIndicator: {
+      width: 8,
+      height: 12,
+      flexShrink: 0,
+      marginLeft: 10,
+      tintColor: colors.gray3,
     },
   });
 

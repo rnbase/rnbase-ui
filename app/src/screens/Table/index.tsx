@@ -30,16 +30,14 @@ const TableScreen: React.FC<Props> = () => {
         with previously."
       >
         <Table.Row title="Clear Trusted Computers" onPress={() => Alert.alert('Pressed')}>
-          <Table.Action iconSource={require('../../assets/chevron-right.png')}>change</Table.Action>
+          <Table.Action>change</Table.Action>
         </Table.Row>
       </Table.Section>
       <Table.Section header="UI Automation">
         <Table.Row title="Enable UI Automation">
           <Switch value={true} />
         </Table.Row>
-        <Table.Row title="Multipath Networking" onPress={() => {}}>
-          <Table.Action iconSource={require('../../assets/chevron-right.png')} />
-        </Table.Row>
+        <Table.Row title="Multipath Networking" onPress={() => {}} />
         <Table.Row title="Enable Notifications">
           <Switch />
         </Table.Row>
@@ -48,6 +46,7 @@ const TableScreen: React.FC<Props> = () => {
         <Table.Row
           title="Notifications"
           subtitle="Banners, Sounds, Badges"
+          disclosureIndicator={true}
           imageSource={require('../../assets/settings/notifications.png')}
         />
       </Table.Section>
@@ -57,6 +56,7 @@ const TableScreen: React.FC<Props> = () => {
           subtitle="Schedule time away from the screen."
           subtitleStyle={styles.subtitleBig}
           onPress={() => {}}
+          disclosureIndicator={false}
           imageSource={require('../../assets/settings/screentime-downtime.png')}
         />
         <Table.Row
