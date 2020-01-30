@@ -33,6 +33,22 @@ exports[`should render as touchable 1`] = `
     />
     <Label />
     <Action />
+    <Image
+      source={
+        Object {
+          "testUri": "../../../src/table/assets/disclosure-indicator.png",
+        }
+      }
+      style={
+        Object {
+          "flexShrink": 0,
+          "height": 12,
+          "marginLeft": 10,
+          "tintColor": "#c7c7cc",
+          "width": 8,
+        }
+      }
+    />
   </View>
 </TouchableHighlight>
 `;
