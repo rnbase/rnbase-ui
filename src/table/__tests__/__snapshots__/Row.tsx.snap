@@ -1,6 +1,196 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`should render as touchable 1`] = `
+exports[`should render normally 1`] = `
+<View
+  style={
+    Array [
+      Object {
+        "minHeight": 58,
+      },
+      Object {
+        "alignItems": "center",
+        "flexDirection": "row",
+        "justifyContent": "space-between",
+        "overflow": "hidden",
+        "paddingHorizontal": 20,
+        "paddingVertical": 4,
+      },
+      undefined,
+    ]
+  }
+>
+  <View
+    style={
+      Object {
+        "flexGrow": 1,
+      }
+    }
+  >
+    <Text
+      numberOfLines={1}
+      style={
+        Array [
+          Object {
+            "backgroundColor": "transparent",
+            "color": "#000000",
+            "fontFamily": "System",
+            "fontSize": 17,
+            "fontWeight": "400",
+            "includeFontPadding": false,
+            "textAlignVertical": "center",
+          },
+          undefined,
+        ]
+      }
+    >
+      title
+    </Text>
+    <Text
+      numberOfLines={1}
+      style={
+        Array [
+          Object {
+            "backgroundColor": "transparent",
+            "color": "#838387",
+            "fontFamily": "System",
+            "fontSize": 12,
+            "fontWeight": "400",
+            "includeFontPadding": false,
+            "marginTop": 3,
+            "textAlignVertical": "center",
+          },
+          undefined,
+        ]
+      }
+    >
+      subtitle
+    </Text>
+  </View>
+  <Switch />
+</View>
+`;
+
+exports[`should render with custom styles 1`] = `
+<TouchableHighlight
+  activeOpacity={0.9}
+  onPress={[MockFunction]}
+  onPressIn={[MockFunction]}
+  onPressOut={[MockFunction]}
+  underlayColor="cyan"
+>
+  <View
+    style={
+      Array [
+        Object {
+          "minHeight": 58,
+        },
+        Object {
+          "alignItems": "center",
+          "flexDirection": "row",
+          "justifyContent": "space-between",
+          "overflow": "hidden",
+          "paddingHorizontal": 20,
+          "paddingVertical": 4,
+        },
+        Object {
+          "backgroundColor": "yellow",
+        },
+      ]
+    }
+  >
+    <Image
+      source={
+        Object {
+          "uri": "image.png",
+        }
+      }
+      style={
+        Array [
+          Object {
+            "flexShrink": 0,
+            "height": 29,
+            "marginRight": 15,
+            "width": 29,
+          },
+          Object {
+            "tintColor": "blue",
+          },
+        ]
+      }
+    />
+    <View
+      style={
+        Object {
+          "flexGrow": 1,
+        }
+      }
+    >
+      <Text
+        numberOfLines={1}
+        style={
+          Array [
+            Object {
+              "backgroundColor": "transparent",
+              "color": "#000000",
+              "fontFamily": "System",
+              "fontSize": 17,
+              "fontWeight": "400",
+              "includeFontPadding": false,
+              "textAlignVertical": "center",
+            },
+            Object {
+              "color": "red",
+            },
+          ]
+        }
+      >
+        title
+      </Text>
+      <Text
+        numberOfLines={1}
+        style={
+          Array [
+            Object {
+              "backgroundColor": "transparent",
+              "color": "#838387",
+              "fontFamily": "System",
+              "fontSize": 12,
+              "fontWeight": "400",
+              "includeFontPadding": false,
+              "marginTop": 3,
+              "textAlignVertical": "center",
+            },
+            Object {
+              "color": "green",
+            },
+          ]
+        }
+      >
+        subtitle
+      </Text>
+    </View>
+    <Switch />
+    <Image
+      source={
+        Object {
+          "testUri": "../../../src/table/assets/disclosure-indicator.png",
+        }
+      }
+      style={
+        Object {
+          "flexShrink": 0,
+          "height": 12,
+          "marginLeft": 10,
+          "tintColor": "#c7c7cc",
+          "width": 8,
+        }
+      }
+    />
+  </View>
+</TouchableHighlight>
+`;
+
+exports[`should render with disclosure indicator 1`] = `
 <TouchableHighlight
   activeOpacity={1}
   onPress={[MockFunction]}
@@ -31,8 +221,7 @@ exports[`should render as touchable 1`] = `
         }
       }
     />
-    <Label />
-    <Action />
+    <Switch />
     <Image
       source={
         Object {
@@ -53,7 +242,7 @@ exports[`should render as touchable 1`] = `
 </TouchableHighlight>
 `;
 
-exports[`should render normally 1`] = `
+exports[`should render with disclosure indicator 2`] = `
 <View
   style={
     Array [
@@ -79,12 +268,79 @@ exports[`should render normally 1`] = `
       }
     }
   />
-  <Label />
-  <Action />
+  <Switch />
+  <Image
+    source={
+      Object {
+        "testUri": "../../../src/table/assets/disclosure-indicator.png",
+      }
+    }
+    style={
+      Object {
+        "flexShrink": 0,
+        "height": 12,
+        "marginLeft": 10,
+        "tintColor": "#c7c7cc",
+        "width": 8,
+      }
+    }
+  />
 </View>
 `;
 
-exports[`should render with custom styles 1`] = `
+exports[`should render with disclosure indicator 3`] = `
+<TouchableHighlight
+  activeOpacity={1}
+  onPress={[MockFunction]}
+  underlayColor="#0001"
+>
+  <View
+    style={
+      Array [
+        Object {
+          "minHeight": 43,
+        },
+        Object {
+          "alignItems": "center",
+          "flexDirection": "row",
+          "justifyContent": "space-between",
+          "overflow": "hidden",
+          "paddingHorizontal": 20,
+          "paddingVertical": 4,
+        },
+        undefined,
+      ]
+    }
+  >
+    <View
+      style={
+        Object {
+          "flexGrow": 1,
+        }
+      }
+    />
+    <Switch />
+    <Image
+      source={
+        Object {
+          "testUri": "../../../src/table/assets/disclosure-indicator.png",
+        }
+      }
+      style={
+        Object {
+          "flexShrink": 0,
+          "height": 12,
+          "marginLeft": 10,
+          "tintColor": "#c7c7cc",
+          "width": 8,
+        }
+      }
+    />
+  </View>
+</TouchableHighlight>
+`;
+
+exports[`should render with image 1`] = `
 <View
   style={
     Array [
@@ -99,9 +355,105 @@ exports[`should render with custom styles 1`] = `
         "paddingHorizontal": 20,
         "paddingVertical": 4,
       },
+      undefined,
+    ]
+  }
+>
+  <Image
+    source={
       Object {
-        "backgroundColor": "red",
+        "uri": "image.png",
+      }
+    }
+    style={
+      Array [
+        Object {
+          "flexShrink": 0,
+          "height": 29,
+          "marginRight": 15,
+          "width": 29,
+        },
+        undefined,
+      ]
+    }
+  />
+  <View
+    style={
+      Object {
+        "flexGrow": 1,
+      }
+    }
+  />
+  <Switch />
+</View>
+`;
+
+exports[`should render with title only 1`] = `
+<View
+  style={
+    Array [
+      Object {
+        "minHeight": 43,
       },
+      Object {
+        "alignItems": "center",
+        "flexDirection": "row",
+        "justifyContent": "space-between",
+        "overflow": "hidden",
+        "paddingHorizontal": 20,
+        "paddingVertical": 4,
+      },
+      undefined,
+    ]
+  }
+>
+  <View
+    style={
+      Object {
+        "flexGrow": 1,
+      }
+    }
+  >
+    <Text
+      numberOfLines={1}
+      style={
+        Array [
+          Object {
+            "backgroundColor": "transparent",
+            "color": "#000000",
+            "fontFamily": "System",
+            "fontSize": 17,
+            "fontWeight": "400",
+            "includeFontPadding": false,
+            "textAlignVertical": "center",
+          },
+          undefined,
+        ]
+      }
+    >
+      title
+    </Text>
+  </View>
+  <Switch />
+</View>
+`;
+
+exports[`should render without disclosure indicator 1`] = `
+<View
+  style={
+    Array [
+      Object {
+        "minHeight": 43,
+      },
+      Object {
+        "alignItems": "center",
+        "flexDirection": "row",
+        "justifyContent": "space-between",
+        "overflow": "hidden",
+        "paddingHorizontal": 20,
+        "paddingVertical": 4,
+      },
+      undefined,
     ]
   }
 >
@@ -112,7 +464,42 @@ exports[`should render with custom styles 1`] = `
       }
     }
   />
-  <Label />
-  <Action />
+  <Switch />
 </View>
+`;
+
+exports[`should render without disclosure indicator 2`] = `
+<TouchableHighlight
+  activeOpacity={1}
+  onPress={[MockFunction]}
+  underlayColor="#0001"
+>
+  <View
+    style={
+      Array [
+        Object {
+          "minHeight": 43,
+        },
+        Object {
+          "alignItems": "center",
+          "flexDirection": "row",
+          "justifyContent": "space-between",
+          "overflow": "hidden",
+          "paddingHorizontal": 20,
+          "paddingVertical": 4,
+        },
+        undefined,
+      ]
+    }
+  >
+    <View
+      style={
+        Object {
+          "flexGrow": 1,
+        }
+      }
+    />
+    <Switch />
+  </View>
+</TouchableHighlight>
 `;
