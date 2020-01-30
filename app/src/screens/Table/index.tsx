@@ -34,25 +34,52 @@ const TableScreen: React.FC<Props> = () => {
         </Table.Row>
       </Table.Section>
       <Table.Section header="UI Automation">
-        <Table.Row title="Enable UI Automation" imageSource={require('../../assets/star.png')}>
+        <Table.Row title="Enable UI Automation">
           <Switch value={true} />
         </Table.Row>
-        <Table.Row
-          title="Multipath Networking"
-          onPress={() => {}}
-          imageSource={require('../../assets/heart.png')}
-        >
+        <Table.Row title="Multipath Networking" onPress={() => {}}>
           <Table.Action iconSource={require('../../assets/chevron-right.png')} />
         </Table.Row>
-        <Table.Row
-          title="Enable Notifications"
-          imageSource={require('../../assets/cross-circle.png')}
-        >
+        <Table.Row title="Enable Notifications">
           <Switch />
         </Table.Row>
       </Table.Section>
       <Table.Section>
-        <Table.Row title="Notifications" subtitle="Banners, Sounds, Badges" />
+        <Table.Row
+          title="Notifications"
+          subtitle="Banners, Sounds, Badges"
+          imageSource={require('../../assets/settings/notifications.png')}
+        />
+      </Table.Section>
+      <Table.Section>
+        <Table.Row
+          title="Downtime"
+          subtitle="Schedule time away from the screen."
+          subtitleStyle={styles.subtitleBig}
+          onPress={() => {}}
+          imageSource={require('../../assets/settings/screentime-downtime.png')}
+        />
+        <Table.Row
+          title="Apps Limits"
+          subtitle="Set time limits for apps."
+          subtitleStyle={styles.subtitleBig}
+          onPress={() => {}}
+          imageSource={require('../../assets/settings/screentime-limits.png')}
+        />
+        <Table.Row
+          title="Always Allowed"
+          subtitle="Choose apps you want at all times."
+          subtitleStyle={styles.subtitleBig}
+          onPress={() => {}}
+          imageSource={require('../../assets/settings/screentime-allowed.png')}
+        />
+        <Table.Row
+          title="Content & Privacy Restrictions"
+          subtitle="Block inappropriate content."
+          subtitleStyle={styles.subtitleBig}
+          onPress={() => {}}
+          imageSource={require('../../assets/settings/screentime-blocked.png')}
+        />
       </Table.Section>
     </Table>
   );
@@ -62,6 +89,9 @@ const createStyles = ({ colors }: Theme) =>
   StyleSheet.create({
     root: {
       backgroundColor: colors.gray6,
+    },
+    subtitleBig: {
+      fontSize: 15,
     },
   });
 
