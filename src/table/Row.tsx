@@ -19,6 +19,7 @@ interface RowProps extends ViewProps {
   height?: number;
   title?: string;
   subtitle?: string;
+  imageInset?: boolean;
   imageSource?: ImageSourcePropType;
   activeOpacity?: number;
   underlayColor?: string;
@@ -37,6 +38,7 @@ const Row: React.FC<Themed<typeof createStyleSheet, RowProps>> = ({
   height,
   title,
   subtitle,
+  imageInset,
   imageSource,
   activeOpacity = 1,
   underlayColor = colors.underlay,
@@ -54,7 +56,8 @@ const Row: React.FC<Themed<typeof createStyleSheet, RowProps>> = ({
 
   const content = (
     <View {...props} style={[{ minHeight }, styles.root, style]}>
-      {imageSource && <Image source={imageSource} style={[styles.image, imageStyle]} />}
+      {(imageSource && <Image source={imageSource} style={[styles.image, imageStyle]} />) ||
+        (imageInset && <View style={[styles.image, imageStyle]} />)}
       <View style={styles.label}>
         {title && (
           <Text style={[styles.title, titleStyle]} numberOfLines={1}>

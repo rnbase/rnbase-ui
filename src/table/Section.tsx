@@ -37,6 +37,13 @@ const Section: React.FC<Themed<typeof createStyleSheet, SectionProps>> = ({
   ];
 
   let rowIndex = 0;
+  let imageInset = false;
+
+  Children.forEach(children, child => {
+    if (React.isValidElement(child) && child.props.imageSource) {
+      imageInset = true;
+    }
+  });
 
   return (
     <View {...props} style={rootStyles}>
@@ -54,6 +61,7 @@ const Section: React.FC<Themed<typeof createStyleSheet, SectionProps>> = ({
           let index = rowIndex++;
 
           const row = React.cloneElement(child, {
+            imageInset,
             onHighlightRow: () => setHighlighted(index),
             onUnhighlightRow: () => setHighlighted(undefined),
           });
@@ -65,7 +73,7 @@ const Section: React.FC<Themed<typeof createStyleSheet, SectionProps>> = ({
           return (
             <>
               <Separator
-                insetLeft={child.props.imageSource ? 64 : undefined}
+                insetLeft={imageInset ? 64 : undefined}
                 highlighted={highlighted === index || highlighted === index - 1}
               />
               {row}
