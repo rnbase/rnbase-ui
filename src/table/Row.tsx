@@ -13,14 +13,14 @@ import {
 } from 'react-native';
 
 import { Theme, Themed, withTheme } from '../theming';
+import RowImage from './RowImage';
 
 interface RowProps extends ViewProps {
   children?: React.ReactNode;
   height?: number;
   title?: string;
   subtitle?: string;
-  imageInset?: boolean;
-  imageSource?: ImageSourcePropType;
+  image?: ImageSourcePropType | React.ReactElement;
   activeOpacity?: number;
   underlayColor?: string;
   disclosureIndicator?: boolean;
@@ -38,8 +38,7 @@ const Row: React.FC<Themed<typeof createStyleSheet, RowProps>> = ({
   height,
   title,
   subtitle,
-  imageInset,
-  imageSource,
+  image,
   activeOpacity = 1,
   underlayColor = colors.underlay,
   disclosureIndicator,
@@ -54,11 +53,18 @@ const Row: React.FC<Themed<typeof createStyleSheet, RowProps>> = ({
 }) => {
   const minHeight = height || subtitle ? 58 : 43;
 
+  let imageComponent;
+
+  if (React.isValidElement(image)) {
+    imageComponent = <RowImage style={imageStyle}>{image}</RowImage>;
+  } else if (image) {
+    imageComponent = <RowImage imageSource={image} imageStyle={imageStyle} />;
+  }
+
   const content = (
     <View {...props} style={[{ minHeight }, styles.root, style]}>
-      {(imageSource && <Image source={imageSource} style={[styles.image, imageStyle]} />) ||
-        (imageInset && <View style={[styles.image, imageStyle, styles.transparent]} />)}
-      <View style={styles.label}>
+      {imageComponent}
+      <View style={styles.content}>
         {title && (
           <Text style={[styles.title, titleStyle]} numberOfLines={1}>
             {title}
@@ -107,7 +113,7 @@ const createStyleSheet = ({ colors, fonts }: Theme) =>
       paddingHorizontal: 20,
       justifyContent: 'space-between',
     },
-    label: {
+    content: {
       flexGrow: 1,
     },
     title: {
@@ -121,21 +127,12 @@ const createStyleSheet = ({ colors, fonts }: Theme) =>
       marginTop: 3,
       color: colors.gray,
     },
-    image: {
-      width: 29,
-      height: 29,
-      flexShrink: 0,
-      marginRight: 15,
-    },
     disclosureIndicator: {
       width: 8,
       height: 12,
       flexShrink: 0,
       marginLeft: 10,
       tintColor: colors.gray3,
-    },
-    transparent: {
-      opacity: 0,
     },
   });
 

@@ -98,26 +98,36 @@ exports[`should render with custom styles 1`] = `
       ]
     }
   >
-    <Image
-      source={
-        Object {
-          "uri": "image.png",
-        }
-      }
+    <View
       style={
         Array [
           Object {
             "flexShrink": 0,
-            "height": 29,
             "marginRight": 15,
-            "width": 29,
           },
-          Object {
-            "tintColor": "blue",
-          },
+          undefined,
         ]
       }
-    />
+    >
+      <Image
+        source={
+          Object {
+            "uri": "image.png",
+          }
+        }
+        style={
+          Array [
+            Object {
+              "height": 29,
+              "width": 29,
+            },
+            Object {
+              "tintColor": "blue",
+            },
+          ]
+        }
+      />
+    </View>
     <View
       style={
         Object {
@@ -359,24 +369,34 @@ exports[`should render with image 1`] = `
     ]
   }
 >
-  <Image
-    source={
-      Object {
-        "uri": "image.png",
-      }
-    }
+  <View
     style={
       Array [
         Object {
           "flexShrink": 0,
-          "height": 29,
           "marginRight": 15,
-          "width": 29,
         },
         undefined,
       ]
     }
-  />
+  >
+    <Image
+      source={
+        Object {
+          "uri": "image.png",
+        }
+      }
+      style={
+        Array [
+          Object {
+            "height": 29,
+            "width": 29,
+          },
+          undefined,
+        ]
+      }
+    />
+  </View>
   <View
     style={
       Object {
