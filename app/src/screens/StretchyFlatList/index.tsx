@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { Image, StyleSheet, Text, TouchableHighlight, View } from 'react-native';
+import { Image, StyleSheet, Text, View } from 'react-native';
 import { NavigationScreenProp } from 'react-navigation';
 
-import { Avatar, StretchyFlatList, Theme, useTheme } from 'rnbase-ui';
+import { Avatar, StretchyFlatList, Table, Theme, useTheme } from 'rnbase-ui';
 
 import { generateHeaderImages, generateUsers } from '../../data';
 
@@ -45,25 +45,21 @@ const StretchyFlatListScreen: React.FC<Props> = ({ navigation }) => {
       }
       data={users}
       keyExtractor={item => `item-${item.id}`}
-      ItemSeparatorComponent={() => <View style={styles.separator} />}
-      renderItem={({ item }) => (
-        <TouchableHighlight
-          activeOpacity={1}
-          underlayColor={colors.underlay}
+      ItemSeparatorComponent={({ highlighted }) => (
+        <Table.Separator insetLeft={80} highlighted={highlighted} />
+      )}
+      renderItem={({ item, separators }) => (
+        <Table.Row
+          title={item.name}
+          subtitle={item.email}
+          style={styles.itemRow}
+          titleStyle={styles.itemTitle}
+          subtitleStyle={styles.itemSubtitle}
+          image={<Avatar size={50} imageSource={{ uri: item.image }} />}
           onPress={() => navigation.navigate('StretchyScrollView', { item })}
-        >
-          <View style={styles.item}>
-            <Avatar size={50} imageSource={{ uri: item.image }} />
-            <View style={styles.itemContent}>
-              <Text style={styles.itemTitle} numberOfLines={1}>
-                {item.name}
-              </Text>
-              <Text style={styles.itemText} numberOfLines={1}>
-                {item.email}
-              </Text>
-            </View>
-          </View>
-        </TouchableHighlight>
+          onPressIn={separators.highlight}
+          onPressOut={separators.unhighlight}
+        />
       )}
     />
   );
@@ -87,28 +83,16 @@ const createStyles = ({ colors, fonts }: Theme) =>
       fontSize: 18,
       color: colors.white,
     },
-    separator: {
-      marginHorizontal: 10,
-      backgroundColor: colors.separator,
-      height: StyleSheet.hairlineWidth,
-    },
-    item: {
-      flex: 1,
+    itemRow: {
       paddingVertical: 10,
       paddingHorizontal: 15,
-      flexDirection: 'row',
-      alignItems: 'center',
-    },
-    itemContent: {
-      flex: 1,
-      marginLeft: 10,
     },
     itemTitle: {
       ...fonts.semibold,
       fontSize: 16,
       color: colors.black,
     },
-    itemText: {
+    itemSubtitle: {
       ...fonts.normal,
       fontSize: 13,
       color: colors.gray,
