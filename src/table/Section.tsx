@@ -16,6 +16,7 @@ interface SectionProps extends ViewProps {
   headerStyle?: StyleProp<TextStyle>;
   footerStyle?: StyleProp<TextStyle>;
   contentStyle?: StyleProp<ViewStyle>;
+  separatorStyle?: StyleProp<ViewStyle>;
 }
 
 const Section: React.FC<Themed<typeof createStyleSheet, SectionProps>> = ({
@@ -28,6 +29,7 @@ const Section: React.FC<Themed<typeof createStyleSheet, SectionProps>> = ({
   headerStyle,
   footerStyle,
   contentStyle,
+  separatorStyle,
   ...props
 }) => {
   const [highlighted, setHighlighted] = useState();
@@ -39,15 +41,6 @@ const Section: React.FC<Themed<typeof createStyleSheet, SectionProps>> = ({
     },
     style,
   ];
-
-  let rowIndex = 0;
-  let imageInset = false;
-
-  Children.forEach(children, child => {
-    if (React.isValidElement(child) && child.props.image) {
-      imageInset = true;
-    }
-  });
 
   let headerComponent;
   let footerComponent;
@@ -64,6 +57,8 @@ const Section: React.FC<Themed<typeof createStyleSheet, SectionProps>> = ({
     footerComponent = <SectionFooter text={footer} textStyle={footerStyle} />;
   }
 
+  let rowIndex = 0;
+
   return (
     <View {...props} style={rootStyles}>
       {headerComponent}
@@ -75,23 +70,21 @@ const Section: React.FC<Themed<typeof createStyleSheet, SectionProps>> = ({
 
           let index = rowIndex++;
 
-          const row = React.cloneElement(child, {
-            imageInset,
+          const rowComponent = React.cloneElement(child, {
             onPressIn: () => setHighlighted(index),
             onPressOut: () => setHighlighted(undefined),
           });
 
-          if (index === 0) {
-            return row;
-          }
-
           return (
             <>
-              <Separator
-                insetLeft={imageInset ? 64 : separatorInsetLeft}
-                highlighted={highlighted === index || highlighted === index - 1}
-              />
-              {row}
+              {index > 0 && (
+                <Separator
+                  insetLeft={separatorInsetLeft}
+                  highlighted={highlighted === index || highlighted === index - 1}
+                  style={separatorStyle}
+                />
+              )}
+              {rowComponent}
             </>
           );
         })}
