@@ -4,27 +4,31 @@ import { StyleProp, StyleSheet, Text, TextStyle, View, ViewProps } from 'react-n
 import { Theme, Themed, withTheme } from '../theming';
 
 interface SectionHeaderProps extends ViewProps {
-  children?: React.ReactNode;
-  text?: string;
-  textStyle?: StyleProp<TextStyle>;
+  content?: string | React.ReactNode;
+  style?: StyleProp<TextStyle>;
 }
 
 const SectionHeader: React.FC<Themed<typeof createStyleSheet, SectionHeaderProps>> = ({
   theme: { styles },
-  children,
-  text,
+  content,
   style,
-  textStyle,
-  ...props
-}) => (
-  <View {...props} style={[styles.root, style]}>
-    {children || (
-      <Text style={[styles.text, textStyle]} numberOfLines={1}>
-        {text}
+}) => {
+  if (!content) {
+    return null;
+  }
+
+  if (React.isValidElement(content)) {
+    return <View style={[styles.root, style]}>{content}</View>;
+  }
+
+  return (
+    <View style={styles.root}>
+      <Text style={[styles.text, style]} numberOfLines={1}>
+        {content}
       </Text>
-    )}
-  </View>
-);
+    </View>
+  );
+};
 
 const createStyleSheet = ({ colors, fonts }: Theme) =>
   StyleSheet.create({
