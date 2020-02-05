@@ -29,9 +29,7 @@ const TableScreen: React.FC<Props> = () => {
         footer="Removing trusted computers will delete all of the records of computers that you have paired
         with previously."
       >
-        <Table.Row title="Clear Trusted Computers" onPress={() => Alert.alert('Pressed')}>
-          <Table.Action>change</Table.Action>
-        </Table.Row>
+        <Table.Button title="Clear Trusted Computers" onPress={() => Alert.alert('Pressed')} />
       </Table.Section>
       <Table.Section header="UI Automation">
         <Table.Row title="Enable UI Automation">
