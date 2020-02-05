@@ -42,26 +42,11 @@ const Section: React.FC<Themed<typeof createStyleSheet, SectionProps>> = ({
     style,
   ];
 
-  let headerComponent;
-  let footerComponent;
-
-  if (React.isValidElement(header)) {
-    headerComponent = <SectionHeader style={headerStyle}>{header}</SectionHeader>;
-  } else if (header) {
-    headerComponent = <SectionHeader text={header} textStyle={headerStyle} />;
-  }
-
-  if (React.isValidElement(footer)) {
-    footerComponent = <SectionFooter style={footerStyle}>{footer}</SectionFooter>;
-  } else if (header) {
-    footerComponent = <SectionFooter text={footer} textStyle={footerStyle} />;
-  }
-
   let rowIndex = 0;
 
   return (
     <View {...props} style={rootStyles}>
-      {headerComponent}
+      <SectionHeader content={header} style={headerStyle} />
       <View style={[styles.content, contentStyle]}>
         {Children.map(children, child => {
           if (!React.isValidElement(child)) {
@@ -89,7 +74,7 @@ const Section: React.FC<Themed<typeof createStyleSheet, SectionProps>> = ({
           );
         })}
       </View>
-      {footerComponent}
+      <SectionFooter content={footer} style={footerStyle} />
     </View>
   );
 };

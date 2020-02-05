@@ -46,13 +46,10 @@ exports[`should render with custom styles 1`] = `
 >
   <View
     style={
-      Array [
-        Object {
-          "marginBottom": 6.5,
-          "marginHorizontal": 20,
-        },
-        undefined,
-      ]
+      Object {
+        "marginBottom": 6.5,
+        "marginHorizontal": 20,
+      }
     }
   >
     <Text
@@ -97,13 +94,10 @@ exports[`should render with custom styles 1`] = `
   </View>
   <View
     style={
-      Array [
-        Object {
-          "marginHorizontal": 20,
-          "marginTop": 7.5,
-        },
-        undefined,
-      ]
+      Object {
+        "marginHorizontal": 20,
+        "marginTop": 7.5,
+      }
     }
   >
     <Text
@@ -157,6 +151,33 @@ exports[`should render with footer 1`] = `
   >
     <Row />
   </View>
+  <View
+    style={
+      Object {
+        "marginHorizontal": 20,
+        "marginTop": 7.5,
+      }
+    }
+  >
+    <Text
+      style={
+        Array [
+          Object {
+            "backgroundColor": "transparent",
+            "color": "#838387",
+            "fontFamily": "System",
+            "fontSize": 13,
+            "fontWeight": "400",
+            "includeFontPadding": false,
+            "textAlignVertical": "center",
+          },
+          undefined,
+        ]
+      }
+    >
+      FOOTER
+    </Text>
+  </View>
 </View>
 `;
 
@@ -174,13 +195,10 @@ exports[`should render with header 1`] = `
 >
   <View
     style={
-      Array [
-        Object {
-          "marginBottom": 6.5,
-          "marginHorizontal": 20,
-        },
-        undefined,
-      ]
+      Object {
+        "marginBottom": 6.5,
+        "marginHorizontal": 20,
+      }
     }
   >
     <Text
@@ -218,34 +236,6 @@ exports[`should render with header 1`] = `
     }
   >
     <Row />
-  </View>
-  <View
-    style={
-      Array [
-        Object {
-          "marginHorizontal": 20,
-          "marginTop": 7.5,
-        },
-        undefined,
-      ]
-    }
-  >
-    <Text
-      style={
-        Array [
-          Object {
-            "backgroundColor": "transparent",
-            "color": "#838387",
-            "fontFamily": "System",
-            "fontSize": 13,
-            "fontWeight": "400",
-            "includeFontPadding": false,
-            "textAlignVertical": "center",
-          },
-          undefined,
-        ]
-      }
-    />
   </View>
 </View>
 `;
