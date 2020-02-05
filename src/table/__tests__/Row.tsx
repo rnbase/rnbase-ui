@@ -39,7 +39,7 @@ it('should render with title only', () => {
 });
 
 it('should render with image', () => {
-  expect(createRenderer({ imageSource: { uri: 'image.png' } })).toMatchSnapshot();
+  expect(createRenderer({ image: { uri: 'image.png' } })).toMatchSnapshot();
 });
 
 it('should render with disclosure indicator', () => {
@@ -60,7 +60,7 @@ it('should render with custom styles', () => {
       titleStyle: { color: 'red' },
       subtitle: 'subtitle',
       subtitleStyle: { color: 'green' },
-      imageSource: { uri: 'image.png' },
+      image: { uri: 'image.png' },
       imageStyle: { tintColor: 'blue' },
       style: { backgroundColor: 'yellow' },
       activeOpacity: 0.9,
