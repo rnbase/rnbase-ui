@@ -45,38 +45,38 @@ const TableScreen: React.FC<Props> = () => {
           title="Notifications"
           subtitle="Banners, Sounds, Badges"
           disclosureIndicator={true}
-          imageSource={require('../../assets/settings/notifications.png')}
+          image={require('../../assets/settings/notifications.png')}
         />
       </Table.Section>
-      <Table.Section>
+      <Table.Section separatorInsetLeft={64}>
         <Table.Row
           title="Downtime"
           subtitle="Schedule time away from the screen."
           subtitleStyle={styles.subtitleBig}
           onPress={() => {}}
           disclosureIndicator={false}
-          imageSource={require('../../assets/settings/screentime-downtime.png')}
+          image={require('../../assets/settings/screentime-downtime.png')}
         />
         <Table.Row
           title="Apps Limits"
           subtitle="Set time limits for apps."
           subtitleStyle={styles.subtitleBig}
           onPress={() => {}}
-          imageSource={require('../../assets/settings/screentime-limits.png')}
+          image={require('../../assets/settings/screentime-limits.png')}
         />
         <Table.Row
           title="Always Allowed"
           subtitle="Choose apps you want at all times."
           subtitleStyle={styles.subtitleBig}
           onPress={() => {}}
-          imageSource={require('../../assets/settings/screentime-allowed.png')}
+          image={require('../../assets/settings/screentime-allowed.png')}
         />
         <Table.Row
           title="Content &amp; Privacy Restrictions"
           subtitle="Block inappropriate content."
           subtitleStyle={styles.subtitleBig}
           onPress={() => {}}
-          imageSource={require('../../assets/settings/screentime-blocked.png')}
+          image={require('../../assets/settings/screentime-blocked.png')}
         />
       </Table.Section>
     </Table>
