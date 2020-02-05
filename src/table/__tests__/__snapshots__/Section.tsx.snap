@@ -44,30 +44,40 @@ exports[`should render with custom styles 1`] = `
     ]
   }
 >
-  <Text
-    numberOfLines={1}
+  <View
     style={
       Array [
         Object {
-          "backgroundColor": "transparent",
-          "color": "#838387",
-          "fontFamily": "System",
-          "fontSize": 13,
-          "fontWeight": "400",
-          "includeFontPadding": false,
           "marginBottom": 6.5,
           "marginHorizontal": 20,
-          "textAlignVertical": "center",
-          "textTransform": "uppercase",
         },
-        Object {
-          "color": "red",
-        },
+        undefined,
       ]
     }
   >
-    HEADER
-  </Text>
+    <Text
+      numberOfLines={1}
+      style={
+        Array [
+          Object {
+            "backgroundColor": "transparent",
+            "color": "#838387",
+            "fontFamily": "System",
+            "fontSize": 13,
+            "fontWeight": "400",
+            "includeFontPadding": false,
+            "textAlignVertical": "center",
+            "textTransform": "uppercase",
+          },
+          Object {
+            "color": "red",
+          },
+        ]
+      }
+    >
+      HEADER
+    </Text>
+  </View>
   <View
     style={
       Array [
@@ -85,28 +95,38 @@ exports[`should render with custom styles 1`] = `
   >
     <Row />
   </View>
-  <Text
+  <View
     style={
       Array [
         Object {
-          "backgroundColor": "transparent",
-          "color": "#838387",
-          "fontFamily": "System",
-          "fontSize": 13,
-          "fontWeight": "400",
-          "includeFontPadding": false,
           "marginHorizontal": 20,
           "marginTop": 7.5,
-          "textAlignVertical": "center",
         },
-        Object {
-          "color": "green",
-        },
+        undefined,
       ]
     }
   >
-    FOOTER
-  </Text>
+    <Text
+      style={
+        Array [
+          Object {
+            "backgroundColor": "transparent",
+            "color": "#838387",
+            "fontFamily": "System",
+            "fontSize": 13,
+            "fontWeight": "400",
+            "includeFontPadding": false,
+            "textAlignVertical": "center",
+          },
+          Object {
+            "color": "green",
+          },
+        ]
+      }
+    >
+      FOOTER
+    </Text>
+  </View>
 </View>
 `;
 
@@ -137,26 +157,6 @@ exports[`should render with footer 1`] = `
   >
     <Row />
   </View>
-  <Text
-    style={
-      Array [
-        Object {
-          "backgroundColor": "transparent",
-          "color": "#838387",
-          "fontFamily": "System",
-          "fontSize": 13,
-          "fontWeight": "400",
-          "includeFontPadding": false,
-          "marginHorizontal": 20,
-          "marginTop": 7.5,
-          "textAlignVertical": "center",
-        },
-        undefined,
-      ]
-    }
-  >
-    FOOTER
-  </Text>
 </View>
 `;
 
@@ -172,28 +172,38 @@ exports[`should render with header 1`] = `
     ]
   }
 >
-  <Text
-    numberOfLines={1}
+  <View
     style={
       Array [
         Object {
-          "backgroundColor": "transparent",
-          "color": "#838387",
-          "fontFamily": "System",
-          "fontSize": 13,
-          "fontWeight": "400",
-          "includeFontPadding": false,
           "marginBottom": 6.5,
           "marginHorizontal": 20,
-          "textAlignVertical": "center",
-          "textTransform": "uppercase",
         },
         undefined,
       ]
     }
   >
-    HEADER
-  </Text>
+    <Text
+      numberOfLines={1}
+      style={
+        Array [
+          Object {
+            "backgroundColor": "transparent",
+            "color": "#838387",
+            "fontFamily": "System",
+            "fontSize": 13,
+            "fontWeight": "400",
+            "includeFontPadding": false,
+            "textAlignVertical": "center",
+            "textTransform": "uppercase",
+          },
+          undefined,
+        ]
+      }
+    >
+      HEADER
+    </Text>
+  </View>
   <View
     style={
       Array [
@@ -208,6 +218,34 @@ exports[`should render with header 1`] = `
     }
   >
     <Row />
+  </View>
+  <View
+    style={
+      Array [
+        Object {
+          "marginHorizontal": 20,
+          "marginTop": 7.5,
+        },
+        undefined,
+      ]
+    }
+  >
+    <Text
+      style={
+        Array [
+          Object {
+            "backgroundColor": "transparent",
+            "color": "#838387",
+            "fontFamily": "System",
+            "fontSize": 13,
+            "fontWeight": "400",
+            "includeFontPadding": false,
+            "textAlignVertical": "center",
+          },
+          undefined,
+        ]
+      }
+    />
   </View>
 </View>
 `;

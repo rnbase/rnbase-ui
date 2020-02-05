@@ -1,9 +1,11 @@
 import { ScrollView, StyleSheet } from 'react-native';
 
 import Action from './Action';
-import Section from './Section';
 import Label from './Label';
 import Row from './Row';
+import Section from './Section';
+import SectionHeader from './SectionHeader';
+import SectionFooter from './SectionFooter';
 import Separator from './Separator';
 
 const styles = StyleSheet.create({
@@ -23,8 +25,10 @@ export default class Table extends ScrollView {
   };
 
   public static Action = Action;
-  public static Section = Section;
   public static Label = Label;
   public static Row = Row;
+  public static Section = Section;
+  public static SectionHeader = SectionHeader;
+  public static SectionFooter = SectionFooter;
   public static Separator = Separator;
 }

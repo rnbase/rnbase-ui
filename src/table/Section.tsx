@@ -1,29 +1,33 @@
 import React, { Children, useState } from 'react';
-import { StyleProp, StyleSheet, Text, TextStyle, View, ViewStyle, ViewProps } from 'react-native';
+import { StyleProp, StyleSheet, TextStyle, View, ViewStyle, ViewProps } from 'react-native';
 
 import { Theme, Themed, withTheme } from '../theming';
 
 import Separator from './Separator';
+import SectionHeader from './SectionHeader';
+import SectionFooter from './SectionFooter';
 
 interface SectionProps extends ViewProps {
-  header?: string;
-  footer?: string;
   children: React.ReactNode;
+  header?: string | React.ReactElement;
+  footer?: string | React.ReactElement;
+  separatorInsetLeft?: number;
   style?: StyleProp<ViewStyle>;
-  contentStyle?: StyleProp<ViewStyle>;
   headerStyle?: StyleProp<TextStyle>;
   footerStyle?: StyleProp<TextStyle>;
+  contentStyle?: StyleProp<ViewStyle>;
 }
 
 const Section: React.FC<Themed<typeof createStyleSheet, SectionProps>> = ({
   theme: { styles },
+  children,
   header,
   footer,
-  children,
+  separatorInsetLeft,
   style,
-  contentStyle,
   headerStyle,
   footerStyle,
+  contentStyle,
   ...props
 }) => {
   const [highlighted, setHighlighted] = useState();
@@ -40,18 +44,29 @@ const Section: React.FC<Themed<typeof createStyleSheet, SectionProps>> = ({
   let imageInset = false;
 
   Children.forEach(children, child => {
-    if (React.isValidElement(child) && child.props.imageSource) {
+    if (React.isValidElement(child) && child.props.image) {
       imageInset = true;
     }
   });
 
+  let headerComponent;
+  let footerComponent;
+
+  if (React.isValidElement(header)) {
+    headerComponent = <SectionHeader style={headerStyle}>{header}</SectionHeader>;
+  } else if (header) {
+    headerComponent = <SectionHeader text={header} textStyle={headerStyle} />;
+  }
+
+  if (React.isValidElement(footer)) {
+    footerComponent = <SectionFooter style={footerStyle}>{footer}</SectionFooter>;
+  } else if (header) {
+    footerComponent = <SectionFooter text={footer} textStyle={footerStyle} />;
+  }
+
   return (
     <View {...props} style={rootStyles}>
-      {header && (
-        <Text style={[styles.header, headerStyle]} numberOfLines={1}>
-          {header}
-        </Text>
-      )}
+      {headerComponent}
       <View style={[styles.content, contentStyle]}>
         {Children.map(children, child => {
           if (!React.isValidElement(child)) {
@@ -73,7 +88,7 @@ const Section: React.FC<Themed<typeof createStyleSheet, SectionProps>> = ({
           return (
             <>
               <Separator
-                insetLeft={imageInset ? 64 : undefined}
+                insetLeft={imageInset ? 64 : separatorInsetLeft}
                 highlighted={highlighted === index || highlighted === index - 1}
               />
               {row}
@@ -81,33 +96,18 @@ const Section: React.FC<Themed<typeof createStyleSheet, SectionProps>> = ({
           );
         })}
       </View>
-      {footer && <Text style={[styles.footer, footerStyle]}>{footer}</Text>}
+      {footerComponent}
     </View>
   );
 };
 
-const createStyleSheet = ({ colors, fonts }: Theme) =>
+const createStyleSheet = ({ colors }: Theme) =>
   StyleSheet.create({
     content: {
       backgroundColor: colors.white,
       borderColor: colors.separator,
       borderTopWidth: StyleSheet.hairlineWidth,
       borderBottomWidth: StyleSheet.hairlineWidth,
-    },
-    header: {
-      ...fonts.normal,
-      fontSize: 13,
-      marginBottom: 6.5,
-      marginHorizontal: 20,
-      color: colors.gray,
-      textTransform: 'uppercase',
-    },
-    footer: {
-      ...fonts.normal,
-      fontSize: 13,
-      marginTop: 7.5,
-      marginHorizontal: 20,
-      color: colors.gray,
     },
   });
 
