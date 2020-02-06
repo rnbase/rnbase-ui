@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { Image, StyleSheet, Text, TouchableHighlight, View } from 'react-native';
+import { Image, StyleSheet, Text, View } from 'react-native';
 import { NavigationScreenProp } from 'react-navigation';
 
-import { Avatar, StretchySectionList, Theme, useTheme } from 'rnbase-ui';
+import { Avatar, StretchySectionList, Table, Theme, useTheme } from 'rnbase-ui';
 
 import { generateHeaderImages, generateUsers } from '../../data';
 
@@ -49,30 +49,27 @@ const StretchySectionListScreen: React.FC<Props> = ({ navigation }) => {
       }
       sections={sections}
       keyExtractor={item => `item-${item.id}`}
-      ItemSeparatorComponent={() => <View style={styles.separator} />}
-      renderSectionHeader={({ section }) => (
-        <View style={styles.section}>
-          <Text style={styles.sectionText}>{section.title}</Text>
-        </View>
+      ItemSeparatorComponent={({ highlighted }) => (
+        <Table.Separator insetLeft={80} highlighted={highlighted} />
       )}
-      renderItem={({ item }) => (
-        <TouchableHighlight
-          activeOpacity={1}
-          underlayColor={colors.underlay}
+      renderSectionHeader={({ section }) => (
+        <Table.SectionHeader
+          style={styles.section}
+          content={<Text style={styles.sectionText}>{section.title}</Text>}
+        />
+      )}
+      renderItem={({ item, separators }) => (
+        <Table.Row
+          title={item.name}
+          subtitle={item.email}
+          style={styles.itemRow}
+          titleStyle={styles.itemTitle}
+          subtitleStyle={styles.itemSubtitle}
+          image={<Avatar size={50} imageSource={{ uri: item.image }} />}
           onPress={() => navigation.navigate('StretchyScrollView', { item })}
-        >
-          <View style={styles.item}>
-            <Avatar size={50} imageSource={{ uri: item.image }} />
-            <View style={styles.itemContent}>
-              <Text style={styles.itemTitle} numberOfLines={1}>
-                {item.name}
-              </Text>
-              <Text style={styles.itemText} numberOfLines={1}>
-                {item.email}
-              </Text>
-            </View>
-          </View>
-        </TouchableHighlight>
+          onPressIn={separators.highlight}
+          onPressOut={separators.unhighlight}
+        />
       )}
     />
   );
@@ -96,37 +93,27 @@ const createStyles = ({ colors, fonts }: Theme) =>
       fontSize: 18,
       color: colors.white,
     },
-    separator: {
-      marginHorizontal: 10,
-      backgroundColor: colors.separator,
-      height: StyleSheet.hairlineWidth,
-    },
     section: {
+      padding: 15,
+      marginBottom: 0,
+      marginHorizontal: 0,
       backgroundColor: colors.gray6,
     },
     sectionText: {
       ...fonts.semibold,
       fontSize: 18,
       color: colors.blue,
-      padding: 15,
     },
-    item: {
-      flex: 1,
+    itemRow: {
       paddingVertical: 10,
       paddingHorizontal: 15,
-      flexDirection: 'row',
-      alignItems: 'center',
-    },
-    itemContent: {
-      flex: 1,
-      marginLeft: 10,
     },
     itemTitle: {
       ...fonts.semibold,
       fontSize: 16,
       color: colors.black,
     },
-    itemText: {
+    itemSubtitle: {
       ...fonts.normal,
       fontSize: 13,
       color: colors.gray,
