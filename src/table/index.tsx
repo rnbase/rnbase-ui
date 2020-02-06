@@ -2,9 +2,7 @@ import { ScrollView, StyleSheet } from 'react-native';
 
 import Action from './Action';
 import Button from './Button';
-import Label from './Label';
 import Row from './Row';
-import RowImage from './RowImage';
 import Section from './Section';
 import SectionHeader from './SectionHeader';
 import SectionFooter from './SectionFooter';
@@ -28,9 +26,7 @@ export default class Table extends ScrollView {
 
   public static Action = Action;
   public static Button = Button;
-  public static Label = Label;
   public static Row = Row;
-  public static RowImage = RowImage;
   public static Section = Section;
   public static SectionHeader = SectionHeader;
   public static SectionFooter = SectionFooter;
