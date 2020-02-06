@@ -21,9 +21,12 @@ exports[`should render normally 1`] = `
 >
   <View
     style={
-      Object {
-        "flexGrow": 1,
-      }
+      Array [
+        Object {
+          "flexGrow": 1,
+        },
+        undefined,
+      ]
     }
   >
     <Text
@@ -66,7 +69,6 @@ exports[`should render normally 1`] = `
       subtitle
     </Text>
   </View>
-  <Switch />
 </View>
 `;
 
@@ -100,13 +102,10 @@ exports[`should render with custom styles 1`] = `
   >
     <View
       style={
-        Array [
-          Object {
-            "flexShrink": 0,
-            "marginRight": 15,
-          },
-          undefined,
-        ]
+        Object {
+          "flexShrink": 0,
+          "marginRight": 15,
+        }
       }
     >
       <Image
@@ -130,9 +129,12 @@ exports[`should render with custom styles 1`] = `
     </View>
     <View
       style={
-        Object {
-          "flexGrow": 1,
-        }
+        Array [
+          Object {
+            "flexGrow": 1,
+          },
+          undefined,
+        ]
       }
     >
       <Text
@@ -179,7 +181,6 @@ exports[`should render with custom styles 1`] = `
         subtitle
       </Text>
     </View>
-    <Switch />
     <Image
       source={
         Object {
@@ -226,12 +227,14 @@ exports[`should render with disclosure indicator 1`] = `
   >
     <View
       style={
-        Object {
-          "flexGrow": 1,
-        }
+        Array [
+          Object {
+            "flexGrow": 1,
+          },
+          undefined,
+        ]
       }
     />
-    <Switch />
     <Image
       source={
         Object {
@@ -273,12 +276,14 @@ exports[`should render with disclosure indicator 2`] = `
 >
   <View
     style={
-      Object {
-        "flexGrow": 1,
-      }
+      Array [
+        Object {
+          "flexGrow": 1,
+        },
+        undefined,
+      ]
     }
   />
-  <Switch />
   <Image
     source={
       Object {
@@ -324,12 +329,14 @@ exports[`should render with disclosure indicator 3`] = `
   >
     <View
       style={
-        Object {
-          "flexGrow": 1,
-        }
+        Array [
+          Object {
+            "flexGrow": 1,
+          },
+          undefined,
+        ]
       }
     />
-    <Switch />
     <Image
       source={
         Object {
@@ -371,13 +378,10 @@ exports[`should render with image 1`] = `
 >
   <View
     style={
-      Array [
-        Object {
-          "flexShrink": 0,
-          "marginRight": 15,
-        },
-        undefined,
-      ]
+      Object {
+        "flexShrink": 0,
+        "marginRight": 15,
+      }
     }
   >
     <Image
@@ -399,16 +403,18 @@ exports[`should render with image 1`] = `
   </View>
   <View
     style={
-      Object {
-        "flexGrow": 1,
-      }
+      Array [
+        Object {
+          "flexGrow": 1,
+        },
+        undefined,
+      ]
     }
   />
-  <Switch />
 </View>
 `;
 
-exports[`should render with title only 1`] = `
+exports[`should render with title and detail component 1`] = `
 <View
   style={
     Array [
@@ -429,9 +435,12 @@ exports[`should render with title only 1`] = `
 >
   <View
     style={
-      Object {
-        "flexGrow": 1,
-      }
+      Array [
+        Object {
+          "flexGrow": 1,
+        },
+        undefined,
+      ]
     }
   >
     <Text
@@ -454,7 +463,18 @@ exports[`should render with title only 1`] = `
       title
     </Text>
   </View>
-  <Switch />
+  <View
+    style={
+      Array [
+        Object {
+          "marginLeft": 10,
+        },
+        undefined,
+      ]
+    }
+  >
+    <Switch />
+  </View>
 </View>
 `;
 
@@ -479,12 +499,14 @@ exports[`should render without disclosure indicator 1`] = `
 >
   <View
     style={
-      Object {
-        "flexGrow": 1,
-      }
+      Array [
+        Object {
+          "flexGrow": 1,
+        },
+        undefined,
+      ]
     }
   />
-  <Switch />
 </View>
 `;
 
@@ -514,12 +536,14 @@ exports[`should render without disclosure indicator 2`] = `
   >
     <View
       style={
-        Object {
-          "flexGrow": 1,
-        }
+        Array [
+          Object {
+            "flexGrow": 1,
+          },
+          undefined,
+        ]
       }
     />
-    <Switch />
   </View>
 </TouchableHighlight>
 `;

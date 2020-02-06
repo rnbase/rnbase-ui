@@ -22,20 +22,15 @@ const Switch = (props: any) => React.createElement('Switch', props);
 /**
  * Under test
  */
-const createElement = (props: Partial<Props>) => (
-  <Row {...props}>
-    <Switch />
-  </Row>
-);
-
+const createElement = (props: Partial<Props>) => <Row {...props} />;
 const createRenderer = (props: Partial<Props>) => TestRenderer.create(createElement(props));
 
 it('should render normally', () => {
   expect(createRenderer({ title: 'title', subtitle: 'subtitle' })).toMatchSnapshot();
 });
 
-it('should render with title only', () => {
-  expect(createRenderer({ title: 'title' })).toMatchSnapshot();
+it('should render with title and detail component', () => {
+  expect(createRenderer({ title: 'title', detail: <Switch /> })).toMatchSnapshot();
 });
 
 it('should render with image', () => {
