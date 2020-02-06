@@ -23,7 +23,7 @@ exports[`should render normally 1`] = `
     style={
       Array [
         Object {
-          "flexGrow": 1,
+          "flex": 1,
         },
         undefined,
       ]
@@ -56,7 +56,7 @@ exports[`should render normally 1`] = `
             "backgroundColor": "transparent",
             "color": "#838387",
             "fontFamily": "System",
-            "fontSize": 12,
+            "fontSize": 13,
             "fontWeight": "400",
             "includeFontPadding": false,
             "marginTop": 3,
@@ -131,7 +131,7 @@ exports[`should render with custom styles 1`] = `
       style={
         Array [
           Object {
-            "flexGrow": 1,
+            "flex": 1,
           },
           undefined,
         ]
@@ -166,7 +166,7 @@ exports[`should render with custom styles 1`] = `
               "backgroundColor": "transparent",
               "color": "#838387",
               "fontFamily": "System",
-              "fontSize": 12,
+              "fontSize": 13,
               "fontWeight": "400",
               "includeFontPadding": false,
               "marginTop": 3,
@@ -236,7 +236,7 @@ exports[`should render with disclosure indicator 1`] = `
       style={
         Array [
           Object {
-            "flexGrow": 1,
+            "flex": 1,
           },
           undefined,
         ]
@@ -292,7 +292,7 @@ exports[`should render with disclosure indicator 2`] = `
     style={
       Array [
         Object {
-          "flexGrow": 1,
+          "flex": 1,
         },
         undefined,
       ]
@@ -352,7 +352,7 @@ exports[`should render with disclosure indicator 3`] = `
       style={
         Array [
           Object {
-            "flexGrow": 1,
+            "flex": 1,
           },
           undefined,
         ]
@@ -421,7 +421,7 @@ exports[`should render with image component 1`] = `
     style={
       Array [
         Object {
-          "flexGrow": 1,
+          "flex": 1,
         },
         undefined,
       ]
@@ -468,7 +468,7 @@ exports[`should render with image component 2`] = `
     style={
       Array [
         Object {
-          "flexGrow": 1,
+          "flex": 1,
         },
         undefined,
       ]
@@ -525,7 +525,7 @@ exports[`should render with image source 1`] = `
     style={
       Array [
         Object {
-          "flexGrow": 1,
+          "flex": 1,
         },
         undefined,
       ]
@@ -584,7 +584,7 @@ exports[`should render with image source 2`] = `
     style={
       Array [
         Object {
-          "flexGrow": 1,
+          "flex": 1,
         },
         undefined,
       ]
@@ -616,7 +616,7 @@ exports[`should render with title and detail component 1`] = `
     style={
       Array [
         Object {
-          "flexGrow": 1,
+          "flex": 1,
         },
         undefined,
       ]
@@ -680,7 +680,7 @@ exports[`should render without disclosure indicator 1`] = `
     style={
       Array [
         Object {
-          "flexGrow": 1,
+          "flex": 1,
         },
         undefined,
       ]
@@ -717,7 +717,7 @@ exports[`should render without disclosure indicator 2`] = `
       style={
         Array [
           Object {
-            "flexGrow": 1,
+            "flex": 1,
           },
           undefined,
         ]

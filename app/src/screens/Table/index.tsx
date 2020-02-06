@@ -39,6 +39,7 @@ const TableScreen: React.FC<Props> = () => {
           title="Notifications"
           subtitle="Banners, Sounds, Badges"
           disclosure={true}
+          subtitleStyle={styles.subtitleSmall}
           image={require('../../assets/settings/notifications.png')}
         />
       </Table.Section>
@@ -81,6 +82,9 @@ const createStyles = ({ colors }: Theme) =>
   StyleSheet.create({
     root: {
       backgroundColor: colors.gray6,
+    },
+    subtitleSmall: {
+      fontSize: 12,
     },
     subtitleBig: {
       fontSize: 15,
