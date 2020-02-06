@@ -38,7 +38,7 @@ const TableScreen: React.FC<Props> = () => {
         <Table.Row
           title="Notifications"
           subtitle="Banners, Sounds, Badges"
-          disclosureIndicator={true}
+          disclosure={true}
           image={require('../../assets/settings/notifications.png')}
         />
       </Table.Section>
@@ -48,7 +48,7 @@ const TableScreen: React.FC<Props> = () => {
           subtitle="Schedule time away from the screen."
           subtitleStyle={styles.subtitleBig}
           onPress={() => {}}
-          disclosureIndicator={false}
+          disclosure={false}
           image={require('../../assets/settings/screentime-downtime.png')}
         />
         <Table.Row
