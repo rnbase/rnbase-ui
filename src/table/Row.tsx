@@ -31,7 +31,7 @@ interface RowProps extends ViewProps {
   activeOpacity?: number;
   underlayColor?: string;
   accessory?: React.ReactElement | 'info' | 'checkmark';
-  disclosureIndicator?: boolean;
+  disclosure?: boolean;
   imageStyle?: StyleProp<ImageStyle>;
   titleStyle?: StyleProp<TextStyle>;
   subtitleStyle?: StyleProp<TextStyle>;
@@ -54,7 +54,7 @@ const Row: React.FC<Themed<typeof createStyleSheet, RowProps>> = ({
   activeOpacity = 1,
   underlayColor = colors.underlay,
   accessory,
-  disclosureIndicator,
+  disclosure,
   style,
   imageStyle,
   titleStyle,
@@ -126,7 +126,7 @@ const Row: React.FC<Themed<typeof createStyleSheet, RowProps>> = ({
       </View>
       {rowDetail}
       {rowAccessory}
-      {disclosureIndicator !== false && (onPress || disclosureIndicator) && (
+      {disclosure !== false && (onPress || disclosure) && (
         <View style={styles.accessoryView}>
           <Image source={icons.disclosure} style={styles.disclosure} />
         </View>
