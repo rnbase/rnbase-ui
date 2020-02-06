@@ -20,9 +20,7 @@ const TableScreen: React.FC<Props> = () => {
   return (
     <Table style={styles.root}>
       <Table.Section header="Appearance">
-        <Table.Row title="Dark Appearance">
-          <Switch />
-        </Table.Row>
+        <Table.Row title="Dark Appearance" detail={<Switch />} />
       </Table.Section>
       <Table.Section
         header="Paired Devices"
@@ -32,13 +30,9 @@ const TableScreen: React.FC<Props> = () => {
         <Table.Button title="Clear Trusted Computers" onPress={() => Alert.alert('Pressed')} />
       </Table.Section>
       <Table.Section header="UI Automation">
-        <Table.Row title="Enable UI Automation">
-          <Switch value={true} />
-        </Table.Row>
-        <Table.Row title="Multipath Networking" onPress={() => {}} />
-        <Table.Row title="Enable Notifications">
-          <Switch />
-        </Table.Row>
+        <Table.Row title="Enable UI Automation" detail={<Switch value={true} />} />
+        <Table.Row title="Multipath Networking" onPress={() => {}} detail="enabled" />
+        <Table.Row title="Enable Notifications" detail={<Switch />} />
       </Table.Section>
       <Table.Section>
         <Table.Row
