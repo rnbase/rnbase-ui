@@ -357,7 +357,99 @@ exports[`should render with disclosure indicator 3`] = `
 </TouchableHighlight>
 `;
 
-exports[`should render with image 1`] = `
+exports[`should render with image component 1`] = `
+<View
+  style={
+    Array [
+      Object {
+        "minHeight": 43,
+      },
+      Object {
+        "alignItems": "center",
+        "flexDirection": "row",
+        "justifyContent": "space-between",
+        "overflow": "hidden",
+        "paddingHorizontal": 20,
+        "paddingVertical": 4,
+      },
+      undefined,
+    ]
+  }
+>
+  <View
+    style={
+      Array [
+        Object {
+          "flexShrink": 0,
+          "marginRight": 15,
+        },
+        undefined,
+      ]
+    }
+  >
+    <Switch />
+  </View>
+  <View
+    style={
+      Array [
+        Object {
+          "flexGrow": 1,
+        },
+        undefined,
+      ]
+    }
+  />
+</View>
+`;
+
+exports[`should render with image component 2`] = `
+<View
+  style={
+    Array [
+      Object {
+        "minHeight": 43,
+      },
+      Object {
+        "alignItems": "center",
+        "flexDirection": "row",
+        "justifyContent": "space-between",
+        "overflow": "hidden",
+        "paddingHorizontal": 20,
+        "paddingVertical": 4,
+      },
+      undefined,
+    ]
+  }
+>
+  <View
+    style={
+      Array [
+        Object {
+          "flexShrink": 0,
+          "marginRight": 15,
+        },
+        Object {
+          "tintColor": "red",
+        },
+      ]
+    }
+  >
+    <Switch />
+  </View>
+  <View
+    style={
+      Array [
+        Object {
+          "flexGrow": 1,
+        },
+        undefined,
+      ]
+    }
+  />
+</View>
+`;
+
+exports[`should render with image source 1`] = `
 <View
   style={
     Array [
@@ -397,6 +489,65 @@ exports[`should render with image 1`] = `
             "width": 29,
           },
           undefined,
+        ]
+      }
+    />
+  </View>
+  <View
+    style={
+      Array [
+        Object {
+          "flexGrow": 1,
+        },
+        undefined,
+      ]
+    }
+  />
+</View>
+`;
+
+exports[`should render with image source 2`] = `
+<View
+  style={
+    Array [
+      Object {
+        "minHeight": 43,
+      },
+      Object {
+        "alignItems": "center",
+        "flexDirection": "row",
+        "justifyContent": "space-between",
+        "overflow": "hidden",
+        "paddingHorizontal": 20,
+        "paddingVertical": 4,
+      },
+      undefined,
+    ]
+  }
+>
+  <View
+    style={
+      Object {
+        "flexShrink": 0,
+        "marginRight": 15,
+      }
+    }
+  >
+    <Image
+      source={
+        Object {
+          "uri": "image.png",
+        }
+      }
+      style={
+        Array [
+          Object {
+            "height": 29,
+            "width": 29,
+          },
+          Object {
+            "tintColor": "red",
+          },
         ]
       }
     />
