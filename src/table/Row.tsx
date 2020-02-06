@@ -170,7 +170,7 @@ const createStyleSheet = ({ colors, fonts }: Theme) =>
       height: 29,
     },
     content: {
-      flexGrow: 1,
+      flex: 1,
     },
     title: {
       ...fonts.normal,
@@ -179,7 +179,7 @@ const createStyleSheet = ({ colors, fonts }: Theme) =>
     },
     subtitle: {
       ...fonts.normal,
-      fontSize: 12,
+      fontSize: 13,
       marginTop: 3,
       color: colors.gray,
     },
