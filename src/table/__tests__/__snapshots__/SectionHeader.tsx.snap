@@ -1,0 +1,101 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render normally as component 1`] = `
+<View
+  style={
+    Array [
+      Object {
+        "marginBottom": 6.5,
+        "marginHorizontal": 20,
+      },
+      undefined,
+    ]
+  }
+>
+  <Component />
+</View>
+`;
+
+exports[`should render normally as component with custom styles 1`] = `
+<View
+  style={
+    Array [
+      Object {
+        "marginBottom": 6.5,
+        "marginHorizontal": 20,
+      },
+      Object {
+        "color": "red",
+      },
+    ]
+  }
+>
+  <Component />
+</View>
+`;
+
+exports[`should render normally as text 1`] = `
+<View
+  style={
+    Object {
+      "marginBottom": 6.5,
+      "marginHorizontal": 20,
+    }
+  }
+>
+  <Text
+    numberOfLines={1}
+    style={
+      Array [
+        Object {
+          "backgroundColor": "transparent",
+          "color": "#838387",
+          "fontFamily": "System",
+          "fontSize": 13,
+          "fontWeight": "400",
+          "includeFontPadding": false,
+          "textAlignVertical": "center",
+          "textTransform": "uppercase",
+        },
+        undefined,
+      ]
+    }
+  >
+    TEXT
+  </Text>
+</View>
+`;
+
+exports[`should render normally as text with custom styles 1`] = `
+<View
+  style={
+    Object {
+      "marginBottom": 6.5,
+      "marginHorizontal": 20,
+    }
+  }
+>
+  <Text
+    numberOfLines={1}
+    style={
+      Array [
+        Object {
+          "backgroundColor": "transparent",
+          "color": "#838387",
+          "fontFamily": "System",
+          "fontSize": 13,
+          "fontWeight": "400",
+          "includeFontPadding": false,
+          "textAlignVertical": "center",
+          "textTransform": "uppercase",
+        },
+        Object {
+          "color": "red",
+        },
+      ]
+    }
+  >
+    TEXT
+  </Text>
+</View>
+`;
