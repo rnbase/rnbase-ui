@@ -15,6 +15,12 @@ import {
 
 import { Theme, Themed, withTheme } from '../theming';
 
+const icons = {
+  info: require('./assets/accessory-info.png'),
+  checkmark: require('./assets/accessory-checkmark.png'),
+  disclosure: require('./assets/disclosure-indicator.png'),
+};
+
 interface RowProps extends ViewProps {
   children?: React.ReactNode;
   height?: number;
@@ -24,12 +30,14 @@ interface RowProps extends ViewProps {
   detail?: string | React.ReactElement;
   activeOpacity?: number;
   underlayColor?: string;
+  accessory?: React.ReactElement | 'info' | 'checkmark';
   disclosureIndicator?: boolean;
   imageStyle?: StyleProp<ImageStyle>;
   titleStyle?: StyleProp<TextStyle>;
   subtitleStyle?: StyleProp<TextStyle>;
   contentStyle?: StyleProp<ViewStyle>;
   detailStyle?: StyleProp<TextStyle>;
+  accessoryStyle?: StyleProp<ImageStyle>;
   onPress?: () => void;
   onPressIn?: () => void;
   onPressOut?: () => void;
@@ -45,6 +53,7 @@ const Row: React.FC<Themed<typeof createStyleSheet, RowProps>> = ({
   detail,
   activeOpacity = 1,
   underlayColor = colors.underlay,
+  accessory,
   disclosureIndicator,
   style,
   imageStyle,
@@ -52,6 +61,7 @@ const Row: React.FC<Themed<typeof createStyleSheet, RowProps>> = ({
   subtitleStyle,
   contentStyle,
   detailStyle,
+  accessoryStyle,
   onPress,
   onPressIn,
   onPressOut,
@@ -59,6 +69,7 @@ const Row: React.FC<Themed<typeof createStyleSheet, RowProps>> = ({
 }) => {
   let rowImage;
   let rowDetail;
+  let rowAccessory;
 
   if (React.isValidElement(image)) {
     rowImage = <View style={[styles.imageView, imageStyle]}>{image}</View>;
@@ -78,6 +89,16 @@ const Row: React.FC<Themed<typeof createStyleSheet, RowProps>> = ({
         <Text style={[styles.detail, detailStyle]} numberOfLines={1}>
           {detail}
         </Text>
+      </View>
+    );
+  }
+
+  if (React.isValidElement(accessory)) {
+    rowAccessory = <View style={[styles.accessoryView, accessoryStyle]}>{accessory}</View>;
+  } else if (accessory) {
+    rowAccessory = (
+      <View style={styles.accessoryView}>
+        <Image source={icons[accessory]} style={[styles.accessory, accessoryStyle]} />
       </View>
     );
   }
@@ -104,11 +125,11 @@ const Row: React.FC<Themed<typeof createStyleSheet, RowProps>> = ({
         )}
       </View>
       {rowDetail}
+      {rowAccessory}
       {disclosureIndicator !== false && (onPress || disclosureIndicator) && (
-        <Image
-          source={require('./assets/disclosure-indicator.png')}
-          style={styles.disclosureIndicator}
-        />
+        <View style={styles.accessoryView}>
+          <Image source={icons.disclosure} style={styles.disclosure} />
+        </View>
       )}
     </View>
   );
@@ -170,11 +191,18 @@ const createStyleSheet = ({ colors, fonts }: Theme) =>
       fontSize: 17,
       color: colors.gray,
     },
-    disclosureIndicator: {
+    accessoryView: {
+      flexShrink: 0,
+      marginLeft: 8,
+    },
+    accessory: {
+      width: 22,
+      height: 22,
+      tintColor: colors.blue,
+    },
+    disclosure: {
       width: 8,
       height: 12,
-      flexShrink: 0,
-      marginLeft: 10,
       tintColor: colors.gray3,
     },
   });
