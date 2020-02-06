@@ -18,6 +18,14 @@ it('should render normally', () => {
   expect(createRenderer({})).toMatchSnapshot();
 });
 
+it('should render as highlighted', () => {
+  expect(createRenderer({ highlighted: true })).toMatchSnapshot();
+});
+
+it('should render with custom inset', () => {
+  expect(createRenderer({ insetLeft: 123 })).toMatchSnapshot();
+});
+
 it('should render with custom styles', () => {
   expect(createRenderer({ style: { backgroundColor: 'red' } })).toMatchSnapshot();
 });

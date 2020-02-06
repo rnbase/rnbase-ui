@@ -1,11 +1,49 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`should render as highlighted 1`] = `
+<View
+  style={
+    Array [
+      Object {
+        "marginLeft": 20,
+      },
+      Object {
+        "backgroundColor": "#0003",
+        "height": 0.5,
+      },
+      undefined,
+      Object {
+        "opacity": 0,
+      },
+    ]
+  }
+/>
+`;
+
 exports[`should render normally 1`] = `
 <View
   style={
     Array [
       Object {
         "marginLeft": 20,
+      },
+      Object {
+        "backgroundColor": "#0003",
+        "height": 0.5,
+      },
+      undefined,
+      undefined,
+    ]
+  }
+/>
+`;
+
+exports[`should render with custom inset 1`] = `
+<View
+  style={
+    Array [
+      Object {
+        "marginLeft": 123,
       },
       Object {
         "backgroundColor": "#0003",
