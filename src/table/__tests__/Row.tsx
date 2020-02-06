@@ -33,8 +33,16 @@ it('should render with title and detail component', () => {
   expect(createRenderer({ title: 'title', detail: <Switch /> })).toMatchSnapshot();
 });
 
-it('should render with image', () => {
+it('should render with image source', () => {
   expect(createRenderer({ image: { uri: 'image.png' } })).toMatchSnapshot();
+  expect(
+    createRenderer({ image: { uri: 'image.png' }, imageStyle: { tintColor: 'red' } }),
+  ).toMatchSnapshot();
+});
+
+it('should render with image component', () => {
+  expect(createRenderer({ image: <Switch /> })).toMatchSnapshot();
+  expect(createRenderer({ image: <Switch />, imageStyle: { tintColor: 'red' } })).toMatchSnapshot();
 });
 
 it('should render with disclosure indicator', () => {

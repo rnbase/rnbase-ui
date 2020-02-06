@@ -88,18 +88,20 @@ const Row: React.FC<Themed<typeof createStyleSheet, RowProps>> = ({
     <View {...props} style={[{ minHeight }, styles.root, style]}>
       {rowImage}
       <View style={[styles.content, contentStyle]}>
-        {children || [
-          title && (
-            <Text key="title" style={[styles.title, titleStyle]} numberOfLines={1}>
-              {title}
-            </Text>
-          ),
-          subtitle && (
-            <Text key="subtitle" style={[styles.subtitle, subtitleStyle]} numberOfLines={1}>
-              {subtitle}
-            </Text>
-          ),
-        ]}
+        {children || (
+          <>
+            {title && (
+              <Text style={[styles.title, titleStyle]} numberOfLines={1}>
+                {title}
+              </Text>
+            )}
+            {subtitle && (
+              <Text style={[styles.subtitle, subtitleStyle]} numberOfLines={1}>
+                {subtitle}
+              </Text>
+            )}
+          </>
+        )}
       </View>
       {rowDetail}
       {disclosureIndicator !== false && (onPress || disclosureIndicator) && (
