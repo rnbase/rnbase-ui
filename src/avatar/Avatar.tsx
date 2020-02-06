@@ -43,7 +43,7 @@ const Avatar: React.FC<Themed<typeof createStyleSheet, AvatarProps>> = ({
   badge,
   badgePosition = 'top-right',
   imageSource,
-  defaultImageSource = require('./default.png'),
+  defaultImageSource = require('./assets/default.png'),
   style,
   textStyle,
   imageStyle,

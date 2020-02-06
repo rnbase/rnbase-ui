@@ -67,7 +67,7 @@ exports[`should render as circle with bottom-left badge 1`] = `
     onLayout={[Function]}
     source={
       Object {
-        "testUri": "../../../src/avatar/default.png",
+        "testUri": "../../../src/avatar/assets/default.png",
       }
     }
     style={
@@ -135,7 +135,7 @@ exports[`should render as circle with bottom-right badge 1`] = `
     onLayout={[Function]}
     source={
       Object {
-        "testUri": "../../../src/avatar/default.png",
+        "testUri": "../../../src/avatar/assets/default.png",
       }
     }
     style={
@@ -203,7 +203,7 @@ exports[`should render as circle with top-left badge 1`] = `
     onLayout={[Function]}
     source={
       Object {
-        "testUri": "../../../src/avatar/default.png",
+        "testUri": "../../../src/avatar/assets/default.png",
       }
     }
     style={
@@ -271,7 +271,7 @@ exports[`should render as circle with top-right badge 1`] = `
     onLayout={[Function]}
     source={
       Object {
-        "testUri": "../../../src/avatar/default.png",
+        "testUri": "../../../src/avatar/assets/default.png",
       }
     }
     style={
@@ -339,7 +339,7 @@ exports[`should render as rounded square 1`] = `
     onLayout={[Function]}
     source={
       Object {
-        "testUri": "../../../src/avatar/default.png",
+        "testUri": "../../../src/avatar/assets/default.png",
       }
     }
     style={
@@ -382,7 +382,7 @@ exports[`should render as square with bottom-left badge 1`] = `
     onLayout={[Function]}
     source={
       Object {
-        "testUri": "../../../src/avatar/default.png",
+        "testUri": "../../../src/avatar/assets/default.png",
       }
     }
     style={
@@ -450,7 +450,7 @@ exports[`should render as square with bottom-right badge 1`] = `
     onLayout={[Function]}
     source={
       Object {
-        "testUri": "../../../src/avatar/default.png",
+        "testUri": "../../../src/avatar/assets/default.png",
       }
     }
     style={
@@ -518,7 +518,7 @@ exports[`should render as square with top-left badge 1`] = `
     onLayout={[Function]}
     source={
       Object {
-        "testUri": "../../../src/avatar/default.png",
+        "testUri": "../../../src/avatar/assets/default.png",
       }
     }
     style={
@@ -586,7 +586,7 @@ exports[`should render as square with top-right badge 1`] = `
     onLayout={[Function]}
     source={
       Object {
-        "testUri": "../../../src/avatar/default.png",
+        "testUri": "../../../src/avatar/assets/default.png",
       }
     }
     style={
@@ -654,7 +654,7 @@ exports[`should render default image 1`] = `
     onLayout={[Function]}
     source={
       Object {
-        "testUri": "../../../src/avatar/default.png",
+        "testUri": "../../../src/avatar/assets/default.png",
       }
     }
     style={
