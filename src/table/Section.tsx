@@ -46,7 +46,7 @@ const Section: React.FC<Themed<typeof createStyleSheet, SectionProps>> = ({
 
   return (
     <View {...props} style={rootStyles}>
-      <SectionHeader content={header} style={headerStyle} />
+      <SectionHeader style={headerStyle}>{header}</SectionHeader>
       <View style={[styles.content, contentStyle]}>
         {Children.map(children, child => {
           if (!React.isValidElement(child)) {
@@ -74,7 +74,7 @@ const Section: React.FC<Themed<typeof createStyleSheet, SectionProps>> = ({
           );
         })}
       </View>
-      <SectionFooter content={footer} style={footerStyle} />
+      <SectionFooter style={footerStyle}>{footer}</SectionFooter>
     </View>
   );
 };
