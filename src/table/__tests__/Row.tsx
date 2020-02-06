@@ -46,14 +46,14 @@ it('should render with image component', () => {
 });
 
 it('should render with disclosure indicator', () => {
-  expect(createRenderer({ disclosureIndicator: undefined, onPress: jest.fn() })).toMatchSnapshot();
-  expect(createRenderer({ disclosureIndicator: true, onPress: undefined })).toMatchSnapshot();
+  expect(createRenderer({ disclosure: undefined, onPress: jest.fn() })).toMatchSnapshot();
+  expect(createRenderer({ disclosure: true, onPress: undefined })).toMatchSnapshot();
   expect(createRenderer({ onPress: jest.fn() })).toMatchSnapshot();
 });
 
 it('should render without disclosure indicator', () => {
   expect(createRenderer({ onPress: undefined })).toMatchSnapshot();
-  expect(createRenderer({ disclosureIndicator: false, onPress: jest.fn() })).toMatchSnapshot();
+  expect(createRenderer({ disclosure: false, onPress: jest.fn() })).toMatchSnapshot();
 });
 
 it('should render with custom styles', () => {

@@ -181,22 +181,29 @@ exports[`should render with custom styles 1`] = `
         subtitle
       </Text>
     </View>
-    <Image
-      source={
-        Object {
-          "testUri": "../../../src/table/assets/disclosure-indicator.png",
-        }
-      }
+    <View
       style={
         Object {
           "flexShrink": 0,
-          "height": 12,
-          "marginLeft": 10,
-          "tintColor": "#c7c7cc",
-          "width": 8,
+          "marginLeft": 8,
         }
       }
-    />
+    >
+      <Image
+        source={
+          Object {
+            "testUri": "../../../src/table/assets/disclosure-indicator.png",
+          }
+        }
+        style={
+          Object {
+            "height": 12,
+            "tintColor": "#c7c7cc",
+            "width": 8,
+          }
+        }
+      />
+    </View>
   </View>
 </TouchableHighlight>
 `;
@@ -235,22 +242,29 @@ exports[`should render with disclosure indicator 1`] = `
         ]
       }
     />
-    <Image
-      source={
-        Object {
-          "testUri": "../../../src/table/assets/disclosure-indicator.png",
-        }
-      }
+    <View
       style={
         Object {
           "flexShrink": 0,
-          "height": 12,
-          "marginLeft": 10,
-          "tintColor": "#c7c7cc",
-          "width": 8,
+          "marginLeft": 8,
         }
       }
-    />
+    >
+      <Image
+        source={
+          Object {
+            "testUri": "../../../src/table/assets/disclosure-indicator.png",
+          }
+        }
+        style={
+          Object {
+            "height": 12,
+            "tintColor": "#c7c7cc",
+            "width": 8,
+          }
+        }
+      />
+    </View>
   </View>
 </TouchableHighlight>
 `;
@@ -284,22 +298,29 @@ exports[`should render with disclosure indicator 2`] = `
       ]
     }
   />
-  <Image
-    source={
-      Object {
-        "testUri": "../../../src/table/assets/disclosure-indicator.png",
-      }
-    }
+  <View
     style={
       Object {
         "flexShrink": 0,
-        "height": 12,
-        "marginLeft": 10,
-        "tintColor": "#c7c7cc",
-        "width": 8,
+        "marginLeft": 8,
       }
     }
-  />
+  >
+    <Image
+      source={
+        Object {
+          "testUri": "../../../src/table/assets/disclosure-indicator.png",
+        }
+      }
+      style={
+        Object {
+          "height": 12,
+          "tintColor": "#c7c7cc",
+          "width": 8,
+        }
+      }
+    />
+  </View>
 </View>
 `;
 
@@ -337,22 +358,29 @@ exports[`should render with disclosure indicator 3`] = `
         ]
       }
     />
-    <Image
-      source={
-        Object {
-          "testUri": "../../../src/table/assets/disclosure-indicator.png",
-        }
-      }
+    <View
       style={
         Object {
           "flexShrink": 0,
-          "height": 12,
-          "marginLeft": 10,
-          "tintColor": "#c7c7cc",
-          "width": 8,
+          "marginLeft": 8,
         }
       }
-    />
+    >
+      <Image
+        source={
+          Object {
+            "testUri": "../../../src/table/assets/disclosure-indicator.png",
+          }
+        }
+        style={
+          Object {
+            "height": 12,
+            "tintColor": "#c7c7cc",
+            "width": 8,
+          }
+        }
+      />
+    </View>
   </View>
 </TouchableHighlight>
 `;
