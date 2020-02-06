@@ -53,10 +53,9 @@ const StretchySectionListScreen: React.FC<Props> = ({ navigation }) => {
         <Table.Separator insetLeft={80} highlighted={highlighted} />
       )}
       renderSectionHeader={({ section }) => (
-        <Table.SectionHeader
-          style={styles.section}
-          content={<Text style={styles.sectionText}>{section.title}</Text>}
-        />
+        <Table.SectionHeader style={styles.section}>
+          <Text style={styles.sectionText}>{section.title}</Text>
+        </Table.SectionHeader>
       )}
       renderItem={({ item, separators }) => (
         <Table.Row

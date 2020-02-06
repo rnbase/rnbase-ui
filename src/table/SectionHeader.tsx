@@ -1,30 +1,29 @@
 import React from 'react';
-import { StyleProp, StyleSheet, Text, TextStyle, View, ViewProps } from 'react-native';
+import { StyleProp, StyleSheet, Text, TextStyle, View } from 'react-native';
 
 import { Theme, Themed, withTheme } from '../theming';
 
-interface SectionHeaderProps extends ViewProps {
-  content?: string | React.ReactNode;
+interface SectionHeaderProps {
   style?: StyleProp<TextStyle>;
 }
 
 const SectionHeader: React.FC<Themed<typeof createStyleSheet, SectionHeaderProps>> = ({
   theme: { styles },
-  content,
+  children,
   style,
 }) => {
-  if (!content) {
+  if (!children) {
     return null;
   }
 
-  if (React.isValidElement(content)) {
-    return <View style={[styles.root, style]}>{content}</View>;
+  if (React.isValidElement(children)) {
+    return <View style={[styles.root, style]}>{children}</View>;
   }
 
   return (
     <View style={styles.root}>
       <Text style={[styles.text, style]} numberOfLines={1}>
-        {content}
+        {children}
       </Text>
     </View>
   );

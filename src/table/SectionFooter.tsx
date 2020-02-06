@@ -1,29 +1,28 @@
 import React from 'react';
-import { StyleProp, StyleSheet, Text, TextStyle, View, ViewProps } from 'react-native';
+import { StyleProp, StyleSheet, Text, TextStyle, View } from 'react-native';
 
 import { Theme, Themed, withTheme } from '../theming';
 
-interface SectionFooterProps extends ViewProps {
-  content?: string | React.ReactNode;
+interface SectionFooterProps {
   style?: StyleProp<TextStyle>;
 }
 
 const SectionFooter: React.FC<Themed<typeof createStyleSheet, SectionFooterProps>> = ({
   theme: { styles },
-  content,
+  children,
   style,
 }) => {
-  if (!content) {
+  if (!children) {
     return null;
   }
 
-  if (React.isValidElement(content)) {
-    return <View style={[styles.root, style]}>{content}</View>;
+  if (React.isValidElement(children)) {
+    return <View style={[styles.root, style]}>{children}</View>;
   }
 
   return (
     <View style={styles.root}>
-      <Text style={[styles.text, style]}>{content}</Text>
+      <Text style={[styles.text, style]}>{children}</Text>
     </View>
   );
 };
