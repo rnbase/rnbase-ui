@@ -6,6 +6,7 @@ export { default as Pager } from './pager/Pager';
 export { default as ProgressBar } from './progress/ProgressBar';
 export { default as Rating } from './rating/Rating';
 export { default as Segmented } from './segmented/Segmented';
+export { default as StackBar } from './stackbar/StackBar';
 export { default as TextButton } from './buttons/TextButton';
 export { default as StretchyFlatList } from './stretchy/StretchyFlatList';
 export { default as StretchyScrollView } from './stretchy/StretchyScrollView';
