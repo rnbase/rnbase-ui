@@ -4,6 +4,14 @@ import { StyleProp, StyleSheet, Text, TextStyle, View, ViewProps, ViewStyle } fr
 import { Theme, Themed, WithThemeProps, withTheme } from '../theming';
 import { getArrayColor, getRadius } from '../helpers';
 
+function getTopItems(items: DataProps[], count: number) {
+  return [...items.entries()]
+    .sort((a, b) => b[1].value - a[1].value)
+    .splice(0, count)
+    .sort((a, b) => a[0] - b[0])
+    .map(item => item[1]);
+}
+
 interface DataProps {
   value: number;
   color?: string;
@@ -14,10 +22,9 @@ interface StackBarProps extends ViewProps {
   size?: number;
   cornerRadius?: number | string;
   data: DataProps[];
-  sorting?: 'asc' | 'desc';
-  showLegend?: boolean;
-  renderLegend?: (item: DataProps, index: number) => void;
   separatorWidth?: number;
+  showLabels?: number;
+  renderLabel?: (item: DataProps, index: number) => void;
   style?: StyleProp<ViewStyle>;
   legendStyle?: StyleProp<ViewStyle>;
   legendLabelStyle?: StyleProp<ViewStyle>;
@@ -30,10 +37,9 @@ const StackBar: React.FC<Themed<typeof createStyleSheet, StackBarProps>> = ({
   data,
   size = 10,
   cornerRadius = '50%',
-  sorting,
-  showLegend = true,
-  renderLegend,
   separatorWidth = 1,
+  showLabels = data.length,
+  renderLabel: propRenderLabel,
   style,
   legendStyle,
   legendLabelStyle,
@@ -41,17 +47,17 @@ const StackBar: React.FC<Themed<typeof createStyleSheet, StackBarProps>> = ({
   legendTextStyle,
   ...props
 }) => {
-  let items = data;
-
-  if (sorting) {
-    items = data.sort((a, b) => (sorting === 'asc' ? a.value - b.value : b.value - a.value));
-  }
+  const count = data.length;
+  const items = data.map((item, index) => ({
+    ...item,
+    color: item.color || getArrayColor(index, count),
+  }));
 
   const renderItem = ({ value, color }: DataProps, index: number) => {
     const itemStyles = {
       height: '100%',
       flexGrow: value,
-      backgroundColor: color || getArrayColor(index, data.length),
+      backgroundColor: color,
       marginLeft: index > 0 ? separatorWidth : 0,
     };
 
@@ -59,13 +65,9 @@ const StackBar: React.FC<Themed<typeof createStyleSheet, StackBarProps>> = ({
   };
 
   const renderLabel = ({ color, label }: DataProps, index: number) => {
-    const swatchStyles = [
-      { backgroundColor: color || getArrayColor(index, data.length) },
-      styles.legendSwatch,
-      legendSwatchStyle,
-    ];
+    const swatchStyles = [{ backgroundColor: color }, styles.legendSwatch, legendSwatchStyle];
 
-    return (
+    return !label ? null : (
       <View key={index} style={[styles.legendLabel, legendLabelStyle]}>
         <View style={swatchStyles} />
         <Text style={[styles.legendText, legendTextStyle]} numberOfLines={1}>
@@ -86,8 +88,10 @@ const StackBar: React.FC<Themed<typeof createStyleSheet, StackBarProps>> = ({
   return (
     <View {...props} style={style}>
       <View style={rootStyles}>{items.map(renderItem)}</View>
-      {showLegend && (
-        <View style={[styles.legend, legendStyle]}>{items.map(renderLegend || renderLabel)}</View>
+      {showLabels > 0 && (
+        <View style={[styles.legend, legendStyle]}>
+          {getTopItems(items, showLabels).map(propRenderLabel || renderLabel)}
+        </View>
       )}
     </View>
   );
