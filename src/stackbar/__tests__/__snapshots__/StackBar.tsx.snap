@@ -1,0 +1,258 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render normally 1`] = `
+<View>
+  <View
+    style={
+      Array [
+        Object {
+          "borderRadius": 5,
+          "height": 10,
+        },
+        Object {
+          "flexDirection": "row",
+          "overflow": "hidden",
+        },
+      ]
+    }
+  >
+    <View
+      style={
+        Object {
+          "backgroundColor": "red",
+          "flexGrow": 1,
+          "height": "100%",
+          "marginLeft": 0,
+        }
+      }
+    />
+    <View
+      style={
+        Object {
+          "backgroundColor": "green",
+          "flexGrow": 2,
+          "height": "100%",
+          "marginLeft": 1,
+        }
+      }
+    />
+    <View
+      style={
+        Object {
+          "backgroundColor": "blue",
+          "flexGrow": 3,
+          "height": "100%",
+          "marginLeft": 1,
+        }
+      }
+    />
+  </View>
+  <View
+    style={
+      Array [
+        Object {
+          "flexDirection": "row",
+          "flexWrap": "wrap",
+          "marginTop": 8,
+        },
+        undefined,
+      ]
+    }
+  >
+    <View
+      style={
+        Array [
+          Object {
+            "alignItems": "center",
+            "flexDirection": "row",
+            "marginRight": 10,
+          },
+          undefined,
+        ]
+      }
+    >
+      <View
+        style={
+          Array [
+            Object {
+              "backgroundColor": "red",
+            },
+            Object {
+              "borderRadius": 5,
+              "height": 10,
+              "marginRight": 3,
+              "width": 10,
+            },
+            undefined,
+          ]
+        }
+      />
+      <Text
+        numberOfLines={1}
+        style={
+          Array [
+            Object {
+              "backgroundColor": "transparent",
+              "color": "#000000",
+              "fontFamily": "System",
+              "fontSize": 12,
+              "fontWeight": "400",
+              "includeFontPadding": false,
+              "textAlignVertical": "center",
+            },
+            undefined,
+          ]
+        }
+      >
+        One
+      </Text>
+    </View>
+    <View
+      style={
+        Array [
+          Object {
+            "alignItems": "center",
+            "flexDirection": "row",
+            "marginRight": 10,
+          },
+          undefined,
+        ]
+      }
+    >
+      <View
+        style={
+          Array [
+            Object {
+              "backgroundColor": "green",
+            },
+            Object {
+              "borderRadius": 5,
+              "height": 10,
+              "marginRight": 3,
+              "width": 10,
+            },
+            undefined,
+          ]
+        }
+      />
+      <Text
+        numberOfLines={1}
+        style={
+          Array [
+            Object {
+              "backgroundColor": "transparent",
+              "color": "#000000",
+              "fontFamily": "System",
+              "fontSize": 12,
+              "fontWeight": "400",
+              "includeFontPadding": false,
+              "textAlignVertical": "center",
+            },
+            undefined,
+          ]
+        }
+      >
+        Two
+      </Text>
+    </View>
+    <View
+      style={
+        Array [
+          Object {
+            "alignItems": "center",
+            "flexDirection": "row",
+            "marginRight": 10,
+          },
+          undefined,
+        ]
+      }
+    >
+      <View
+        style={
+          Array [
+            Object {
+              "backgroundColor": "blue",
+            },
+            Object {
+              "borderRadius": 5,
+              "height": 10,
+              "marginRight": 3,
+              "width": 10,
+            },
+            undefined,
+          ]
+        }
+      />
+      <Text
+        numberOfLines={1}
+        style={
+          Array [
+            Object {
+              "backgroundColor": "transparent",
+              "color": "#000000",
+              "fontFamily": "System",
+              "fontSize": 12,
+              "fontWeight": "400",
+              "includeFontPadding": false,
+              "textAlignVertical": "center",
+            },
+            undefined,
+          ]
+        }
+      >
+        Three
+      </Text>
+    </View>
+  </View>
+</View>
+`;
+
+exports[`should render without colors and labels 1`] = `
+<View>
+  <View
+    style={
+      Array [
+        Object {
+          "borderRadius": 5,
+          "height": 10,
+        },
+        Object {
+          "flexDirection": "row",
+          "overflow": "hidden",
+        },
+      ]
+    }
+  >
+    <View
+      style={
+        Object {
+          "backgroundColor": "hsl(360, 65%, 65%)",
+          "flexGrow": 1,
+          "height": "100%",
+          "marginLeft": 0,
+        }
+      }
+    />
+    <View
+      style={
+        Object {
+          "backgroundColor": "hsl(240, 65%, 65%)",
+          "flexGrow": 2,
+          "height": "100%",
+          "marginLeft": 1,
+        }
+      }
+    />
+    <View
+      style={
+        Object {
+          "backgroundColor": "hsl(120, 65%, 65%)",
+          "flexGrow": 3,
+          "height": "100%",
+          "marginLeft": 1,
+        }
+      }
+    />
+  </View>
+</View>
+`;
