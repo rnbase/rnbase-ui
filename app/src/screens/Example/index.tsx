@@ -27,6 +27,7 @@ import {
   Rating,
   TextButton,
   Segmented,
+  StackBar,
   StretchyScrollView,
   Component,
 } from 'rnbase-ui';
@@ -49,6 +50,25 @@ const segmentedItems = [
   },
   {
     text: 'Three',
+  },
+];
+
+const stackBarData = [
+  {
+    value: 123,
+    label: 'Apps',
+  },
+  {
+    value: 234,
+    label: 'Photos',
+  },
+  {
+    value: 345,
+    label: 'Media',
+  },
+  {
+    value: 189,
+    label: 'Mail',
   },
 ];
 
@@ -150,6 +170,7 @@ const ExampleScreen = () => {
           iconSource={require('../../assets/check-circle.png')}
           onPress={toggleBusy}
         />
+        <StackBar style={styles.single} data={stackBarData} sorting="desc" />
         <Segmented
           items={segmentedItems}
           selected={segmented}
