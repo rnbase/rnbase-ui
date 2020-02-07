@@ -30,7 +30,7 @@ it('should render normally', () => {
 });
 
 it('should render with title and detail component', () => {
-  expect(createRenderer({ title: 'title', detail: <Switch /> })).toMatchSnapshot();
+  expect(createRenderer({ title: 'title', children: <Switch /> })).toMatchSnapshot();
 });
 
 it('should render with image source', () => {

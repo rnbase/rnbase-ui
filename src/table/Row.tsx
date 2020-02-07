@@ -27,7 +27,7 @@ interface RowProps extends ViewProps {
   image?: ImageSourcePropType | React.ReactElement;
   title?: string;
   subtitle?: string;
-  detail?: string | React.ReactElement;
+  content?: React.ReactNode;
   activeOpacity?: number;
   underlayColor?: string;
   accessory?: React.ReactElement | 'info' | 'checkmark';
@@ -50,7 +50,7 @@ const Row: React.FC<Themed<typeof createStyleSheet, RowProps>> = ({
   image,
   title,
   subtitle,
-  detail,
+  content,
   activeOpacity = 1,
   underlayColor = colors.underlay,
   accessory,
@@ -81,13 +81,13 @@ const Row: React.FC<Themed<typeof createStyleSheet, RowProps>> = ({
     );
   }
 
-  if (React.isValidElement(detail)) {
-    rowDetail = <View style={[styles.detailView, detailStyle]}>{detail}</View>;
-  } else if (detail) {
+  if (React.isValidElement(children)) {
+    rowDetail = <View style={[styles.detailView, detailStyle]}>{children}</View>;
+  } else if (children) {
     rowDetail = (
       <View style={styles.detailView}>
         <Text style={[styles.detail, detailStyle]} numberOfLines={1}>
-          {detail}
+          {children}
         </Text>
       </View>
     );
@@ -109,7 +109,7 @@ const Row: React.FC<Themed<typeof createStyleSheet, RowProps>> = ({
     <View {...props} style={[{ minHeight }, styles.root, style]}>
       {rowImage}
       <View style={[styles.content, contentStyle]}>
-        {children || (
+        {content || (
           <>
             {title && (
               <Text style={[styles.title, titleStyle]} numberOfLines={1}>
