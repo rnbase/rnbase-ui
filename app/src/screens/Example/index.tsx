@@ -170,7 +170,7 @@ const ExampleScreen = () => {
           iconSource={require('../../assets/check-circle.png')}
           onPress={toggleBusy}
         />
-        <StackBar style={styles.single} data={stackBarData} sorting="desc" />
+        <StackBar style={styles.single} data={stackBarData} />
         <Segmented
           items={segmentedItems}
           selected={segmented}

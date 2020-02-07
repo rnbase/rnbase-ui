@@ -35,7 +35,7 @@ it('should render normally', () => {
 });
 
 it('should render without colors and labels', () => {
-  const props = { showLegend: false, data: [{ value: 1 }, { value: 2 }, { value: 3 }] };
+  const props = { showLabels: 0, data: [{ value: 1 }, { value: 2 }, { value: 3 }] };
 
   expect(createRenderer(props)).toMatchSnapshot();
 });
