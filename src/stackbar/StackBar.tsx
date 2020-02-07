@@ -2,11 +2,7 @@ import React from 'react';
 import { StyleProp, StyleSheet, Text, TextStyle, View, ViewProps, ViewStyle } from 'react-native';
 
 import { Theme, Themed, WithThemeProps, withTheme } from '../theming';
-import { getRadius } from '../helpers';
-
-function getArrayColor(index: number, length: number): string {
-  return `hsl(${360 * (1 - index / length)}, 65%, 65%)`;
-}
+import { getArrayColor, getRadius } from '../helpers';
 
 interface DataProps {
   value: number;

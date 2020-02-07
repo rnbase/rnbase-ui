@@ -33,7 +33,7 @@ export function getRadius(value: number | string, height: number): number {
   return value;
 }
 
-export function getColor(string: string): string {
+export function getStringColor(string: string): string {
   let hash = 0;
 
   if (string.length > 0) {
@@ -46,6 +46,10 @@ export function getColor(string: string): string {
   }
 
   return `hsl(${hash % 360}, 75%, 50%)`;
+}
+
+export function getArrayColor(index: number, length: number): string {
+  return `hsl(${Math.round(360 * (1 - index / length))}, 65%, 65%)`;
 }
 
 export function getInitials(name: string): string {

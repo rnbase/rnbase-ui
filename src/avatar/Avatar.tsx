@@ -15,7 +15,7 @@ import {
 } from 'react-native';
 
 import { Themed, Theme, WithThemeProps, withTheme } from '../theming';
-import { getColor, getInitials, getRadius, useLayout } from '../helpers';
+import { getInitials, getStringColor, getRadius, useLayout } from '../helpers';
 import Badge, { Props as BadgeProps } from '../badge/Badge';
 
 interface AvatarProps extends ViewProps {
@@ -77,7 +77,7 @@ const Avatar: React.FC<Themed<typeof createStyleSheet, AvatarProps>> = ({
     () =>
       name &&
       avatarImageSource === defaultImageSource && {
-        color: colorize ? getColor(name) : undefined,
+        color: colorize ? getStringColor(name) : undefined,
         text: getInitials(name),
       },
     [name, colorize, avatarImageSource, defaultImageSource],
