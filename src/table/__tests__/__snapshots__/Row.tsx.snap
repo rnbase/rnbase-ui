@@ -24,6 +24,7 @@ exports[`should render normally 1`] = `
       Array [
         Object {
           "flex": 1,
+          "marginRight": 10,
         },
         undefined,
       ]
@@ -132,6 +133,7 @@ exports[`should render with custom styles 1`] = `
         Array [
           Object {
             "flex": 1,
+            "marginRight": 10,
           },
           undefined,
         ]
@@ -234,16 +236,6 @@ exports[`should render with disclosure indicator 1`] = `
   >
     <View
       style={
-        Array [
-          Object {
-            "flex": 1,
-          },
-          undefined,
-        ]
-      }
-    />
-    <View
-      style={
         Object {
           "flexShrink": 0,
           "marginLeft": 8,
@@ -288,16 +280,6 @@ exports[`should render with disclosure indicator 2`] = `
     ]
   }
 >
-  <View
-    style={
-      Array [
-        Object {
-          "flex": 1,
-        },
-        undefined,
-      ]
-    }
-  />
   <View
     style={
       Object {
@@ -348,16 +330,6 @@ exports[`should render with disclosure indicator 3`] = `
       ]
     }
   >
-    <View
-      style={
-        Array [
-          Object {
-            "flex": 1,
-          },
-          undefined,
-        ]
-      }
-    />
     <View
       style={
         Object {
@@ -417,16 +389,6 @@ exports[`should render with image component 1`] = `
   >
     <Switch />
   </View>
-  <View
-    style={
-      Array [
-        Object {
-          "flex": 1,
-        },
-        undefined,
-      ]
-    }
-  />
 </View>
 `;
 
@@ -464,16 +426,6 @@ exports[`should render with image component 2`] = `
   >
     <Switch />
   </View>
-  <View
-    style={
-      Array [
-        Object {
-          "flex": 1,
-        },
-        undefined,
-      ]
-    }
-  />
 </View>
 `;
 
@@ -521,16 +473,6 @@ exports[`should render with image source 1`] = `
       }
     />
   </View>
-  <View
-    style={
-      Array [
-        Object {
-          "flex": 1,
-        },
-        undefined,
-      ]
-    }
-  />
 </View>
 `;
 
@@ -580,16 +522,6 @@ exports[`should render with image source 2`] = `
       }
     />
   </View>
-  <View
-    style={
-      Array [
-        Object {
-          "flex": 1,
-        },
-        undefined,
-      ]
-    }
-  />
 </View>
 `;
 
@@ -617,6 +549,7 @@ exports[`should render with title and detail component 1`] = `
       Array [
         Object {
           "flex": 1,
+          "marginRight": 10,
         },
         undefined,
       ]
@@ -642,16 +575,7 @@ exports[`should render with title and detail component 1`] = `
       title
     </Text>
   </View>
-  <View
-    style={
-      Array [
-        Object {
-          "marginLeft": 10,
-        },
-        undefined,
-      ]
-    }
-  >
+  <View>
     <Switch />
   </View>
 </View>
@@ -675,18 +599,7 @@ exports[`should render without disclosure indicator 1`] = `
       undefined,
     ]
   }
->
-  <View
-    style={
-      Array [
-        Object {
-          "flex": 1,
-        },
-        undefined,
-      ]
-    }
-  />
-</View>
+/>
 `;
 
 exports[`should render without disclosure indicator 2`] = `
@@ -712,17 +625,6 @@ exports[`should render without disclosure indicator 2`] = `
         undefined,
       ]
     }
-  >
-    <View
-      style={
-        Array [
-          Object {
-            "flex": 1,
-          },
-          undefined,
-        ]
-      }
-    />
-  </View>
+  />
 </TouchableHighlight>
 `;

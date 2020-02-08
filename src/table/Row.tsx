@@ -68,6 +68,7 @@ const Row: React.FC<Themed<typeof createStyleSheet, RowProps>> = ({
   ...props
 }) => {
   let rowImage;
+  let rowContent;
   let rowDetail;
   let rowAccessory;
 
@@ -81,15 +82,33 @@ const Row: React.FC<Themed<typeof createStyleSheet, RowProps>> = ({
     );
   }
 
+  if (content) {
+    rowContent = <View style={[styles.content, contentStyle]}>{content}</View>;
+  } else if (title || subtitle) {
+    rowContent = (
+      <View style={[styles.content, contentStyle]}>
+        {title && (
+          <Text style={[styles.title, titleStyle]} numberOfLines={1}>
+            {title}
+          </Text>
+        )}
+        {subtitle && (
+          <Text style={[styles.subtitle, subtitleStyle]} numberOfLines={1}>
+            {subtitle}
+          </Text>
+        )}
+      </View>
+    );
+  }
+
+  // TODO: Multiple child elements should be allowed
   if (React.isValidElement(children)) {
-    rowDetail = <View style={[styles.detailView, detailStyle]}>{children}</View>;
+    rowDetail = <View style={detailStyle}>{children}</View>;
   } else if (children) {
     rowDetail = (
-      <View style={styles.detailView}>
-        <Text style={[styles.detail, detailStyle]} numberOfLines={1}>
-          {children}
-        </Text>
-      </View>
+      <Text style={[styles.detail, detailStyle]} numberOfLines={1}>
+        {children}
+      </Text>
     );
   }
 
@@ -108,22 +127,7 @@ const Row: React.FC<Themed<typeof createStyleSheet, RowProps>> = ({
   const container = (
     <View {...props} style={[{ minHeight }, styles.root, style]}>
       {rowImage}
-      <View style={[styles.content, contentStyle]}>
-        {content || (
-          <>
-            {title && (
-              <Text style={[styles.title, titleStyle]} numberOfLines={1}>
-                {title}
-              </Text>
-            )}
-            {subtitle && (
-              <Text style={[styles.subtitle, subtitleStyle]} numberOfLines={1}>
-                {subtitle}
-              </Text>
-            )}
-          </>
-        )}
-      </View>
+      {rowContent}
       {rowDetail}
       {rowAccessory}
       {disclosure !== false && (onPress || disclosure) && (
@@ -171,6 +175,7 @@ const createStyleSheet = ({ colors, fonts }: Theme) =>
     },
     content: {
       flex: 1,
+      marginRight: 10,
     },
     title: {
       ...fonts.normal,
@@ -182,9 +187,6 @@ const createStyleSheet = ({ colors, fonts }: Theme) =>
       fontSize: 13,
       marginTop: 3,
       color: colors.gray,
-    },
-    detailView: {
-      marginLeft: 10,
     },
     detail: {
       ...fonts.normal,
