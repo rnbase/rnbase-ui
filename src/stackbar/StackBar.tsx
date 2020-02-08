@@ -24,7 +24,7 @@ interface StackBarProps extends ViewProps {
   data: DataProps[];
   separatorWidth?: number;
   showLabels?: number;
-  renderLabel?: (item: DataProps, index: number) => void;
+  renderLabel?: (item: DataProps, index: number) => React.ReactNode;
   style?: StyleProp<ViewStyle>;
   legendStyle?: StyleProp<ViewStyle>;
   legendLabelStyle?: StyleProp<ViewStyle>;
