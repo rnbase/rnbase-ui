@@ -32,6 +32,8 @@ const screenTimeData = [
   },
 ];
 
+const totalTime = screenTimeData.reduce((a, b) => a + (b.value || 0), 0);
+
 type NavigationState = {
   params: {};
 };
@@ -44,8 +46,6 @@ const TableScreen: React.FC<Props> = () => {
   const {
     theme: { styles, colors },
   } = useTheme(createStyles);
-
-  const totalTime = screenTimeData.reduce((a, b) => a + (b.value || 0), 0);
 
   const ScreenTimeSectionHeader = (
     <View style={styles.sectionHeader}>
